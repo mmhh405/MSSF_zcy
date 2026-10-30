@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 import torch
+from mmdet3d.structures import Det3DDataSample
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location(
@@ -56,6 +57,16 @@ class CorruptionTest(unittest.TestCase):
         self.assertEqual(module.uniform_indices(1296, 1296), list(range(1296)))
         with self.assertRaises(ValueError):
             module.uniform_indices(1296, 1297)
+
+    def test_subset_indices_restore_original_annotation_mapping(self):
+        annotations = [dict(lidar_points=dict(lidar_path=f'{i:05d}.bin')) for i in range(3)]
+        sample = Det3DDataSample(metainfo=dict(sample_idx=0, lidar_path='/data/00002.bin'))
+        offset = module.align_sample_indices([sample], [2], 0, annotations)
+        self.assertEqual(offset, 1)
+        self.assertEqual(sample.sample_idx, 2)
+        wrong = Det3DDataSample(metainfo=dict(sample_idx=0, lidar_path='/data/00001.bin'))
+        with self.assertRaisesRegex(ValueError, 'Frame/annotation mismatch'):
+            module.align_sample_indices([wrong], [2], 0, annotations)
 
 
 if __name__ == '__main__':

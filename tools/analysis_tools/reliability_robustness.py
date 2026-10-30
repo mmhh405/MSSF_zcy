@@ -78,6 +78,20 @@ def uniform_indices(total, count):
     return np.rint(np.linspace(0, total - 1, count)).astype(int).tolist()
 
 
+def align_sample_indices(predictions, indices, offset, annotations):
+    """Undo BaseDataset's subset renumbering for VODMetric's full annotation list."""
+    if offset + len(predictions) > len(indices):
+        raise ValueError('More predictions than selected annotation indices')
+    for local, prediction in enumerate(predictions):
+        source = indices[offset + local]
+        expected = Path(annotations[source]['lidar_points']['lidar_path']).name
+        actual = Path(prediction.lidar_path).name
+        if actual != expected:
+            raise ValueError(f'Frame/annotation mismatch: {actual} != {expected}')
+        prediction.set_metainfo(dict(sample_idx=source))
+    return offset + len(predictions)
+
+
 class GateObserver:
     """Read actual gate scores; repeated forward calls bypass module hooks."""
     def __init__(self, model):
@@ -186,9 +200,11 @@ def main():
     register_all_modules()
     MMLogger.get_instance('reliability_robustness', log_file=str(output / 'metrics.log'))
     conditions = ['clean'] + [c for c in dict.fromkeys(args.conditions) if c != 'clean']
-    total = len(load('data/vod/kitti_infos_val.pkl')['data_list'])
+    annotations = load('data/vod/kitti_infos_val.pkl')['data_list']
+    total = len(annotations)
     indices = uniform_indices(total, args.samples)
-    report = dict(run_id=run_id, samples=len(indices), full_validation=len(indices) == total,
+    report = dict(run_id=run_id, valid=False, original_frame_alignment_checked=True,
+                  samples=len(indices), full_validation=len(indices) == total,
                   indices=indices, conditions=conditions, corruption_settings=SETTINGS,
                   seed=0, gpu=torch.cuda.get_device_name(0), torch_version=torch.__version__,
                   cudnn_benchmark=torch.backends.cudnn.benchmark,
@@ -223,13 +239,17 @@ def main():
             evaluator = Evaluator(metrics)
             evaluator.dataset_meta = loader.dataset.metainfo
             observer = GateObserver(model)
+            offset = 0
             with torch.no_grad():
                 for index, data in enumerate(loader):
                     data = corrupt_batch(data, condition)
                     predictions = model.test_step(data)
+                    offset = align_sample_indices(predictions, indices, offset, annotations)
                     evaluator.process(data_samples=predictions, data_batch=data)
                     if (index + 1) % 16 == 0:
                         print(f'{name}/{condition}: {index+1}/{len(indices)}', flush=True)
+            if offset != len(indices):
+                raise ValueError('Prediction count differs from selected annotation count')
             scores = {key: float(value) for key, value in evaluator.evaluate(len(indices)).items()}
             row = dict(model=name, condition=condition, metrics=scores,
                        eaa_map=next(v for k, v in scores.items() if k.endswith('entire_area/map')),
@@ -245,6 +265,7 @@ def main():
         row['eaa_drop_from_clean'] = round(clean['eaa_map'] - row['eaa_map'], 4)
         row['dc_drop_from_clean'] = round(clean['dc_map'] - row['dc_map'], 4)
     report['completed_at'] = datetime.now().astimezone().isoformat()
+    report['valid'] = True
     (output / 'summary.json').write_text(json.dumps(report, indent=2) + '\n')
     if not args.no_record_readme:
         write_readme(report)

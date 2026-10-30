@@ -201,11 +201,11 @@ Hook 按运行目录和时间标识更新每次运行的最近一次验证结果
 新增文件：
 
 - [tools/analysis_tools/reliability_robustness.py:1](tools/analysis_tools/reliability_robustness.py#L1)：成对精度与门控分布诊断、固定图像退化、结果归档和本 README 更新。
-- [tests/test_reliability_robustness.py:1](tests/test_reliability_robustness.py#L1)：5 项检查，验证图像变化、尺寸/类型、确定性及雷达/标注/几何不变。
+- [tests/test_reliability_robustness.py:1](tests/test_reliability_robustness.py#L1)：6 项检查，验证图像变化、尺寸/类型、确定性、雷达/标注/几何不变，以及子集预测与原始标注的逐帧对应。
 
 条件在评测前固定：`clean` 原图；`dark` 像素乘 0.2；`blur` 21×21 Gaussian、sigma=5；`occlusion` 中心 50% 宽×50% 高区域置零（约 25% 面积）。可选 `blackout` 将全部像素置零，但仍执行图像分支，并非雷达单模态回退。上述变化只在图像解码后的内存中执行，不改变几何尺寸、雷达点或标注，也不写回数据集。
 
-两组分别严格加载各自第 6 epoch checkpoint，采用相同均匀样本索引、条件和随机种子。先使用 32 帧排查门控是否响应图像变化；子集 AP 仅用于诊断。完整确认时使用 `--samples 1296`。合成退化结果不能直接称作真实夜间或恶劣天气性能。
+两组分别严格加载各自第 6 epoch checkpoint，采用相同均匀样本索引、条件和随机种子。 子集经 MMEngine 加载后会重新编号；脚本逐帧核对雷达文件名，并恢复在原始完整标注列表中的索引，避免预测与 GT 错配。先使用 32 帧排查门控是否响应图像变化；子集 AP 仅用于诊断。完整确认时使用 `--samples 1296`。合成退化结果不能直接称作真实夜间或恶劣天气性能。
 
 ```bash
 conda activate mssf-bench
@@ -225,3 +225,11 @@ tail -f "$RUN/console.log"
 脚本顺序评测两组的全部条件，全部完成后生成 `summary.json` 并更新下方独立诊断区；历史摘要保存到 `repro/reliability_fusion/robustness/`，训练结果表不受覆盖。`progress.json` 是未完成运行的进度，不能当成完整结果。完整日志、解析配置和每种条件的预测保留在运行目录。
 
 判断时同时检查退化后 AP、相对各自 clean 的下降，以及有效投影体素的门控均值/标准差。门控低不等于预测更准确，是否有效仍需精度支持。门控统计会重新计算该小模块以读取实际分数，因此本脚本不能用作 FPS 基准。
+
+## 受控图像退化诊断（自动更新）
+
+<!-- ROBUSTNESS_RESULTS_START -->
+
+首次子集诊断存在样本重编号与完整标注索引不一致，所得精度分数无效。已加入逐帧文件名核对及原始索引映射，正在重跑。无效输出仅保留在忽略的运行目录供审计。
+
+<!-- ROBUSTNESS_RESULTS_END -->
