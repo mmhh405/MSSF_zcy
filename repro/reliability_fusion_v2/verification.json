@@ -76,7 +76,7 @@
     "mmdet3d/models/layers/fusion_layers/voxel_fusion_block.py": "51b2076c2305c0aa618ee8181244dfc061b1a46b3f23cd9851c55f80e9419fda",
     "mmdet3d/models/middle_encoders/pillar_scatter_fuse.py": "4938ec8bf0a1d79a3fe1fc427943c33720d8fa7d3d7b0e7e0052781d0ba7cc97",
     "tests/test_reliability_fusion_v2.py": "f4abe3cc379499a3cef3c38c4b7d50fe07f170c3b1d045ca8fd0886d6be43be3",
-    "tools/analysis_tools/reliability_robustness.py": "e8f80e089db6aaa3dac71a5e9cdac38397266519f1da91c4c819dfd933d0341d"
+    "tools/analysis_tools/reliability_robustness.py": "9ddf76843999e3786cfa95e166a4cf850b7320c881fa3ce08f8f62ef14f8d2a7"
   },
   "formal_training_started": false,
   "accuracy_improvement_claimed": false,
@@ -84,5 +84,6 @@
     "Training smoke started after inference updated only V2 result documentation; algorithm sources were fixed at code_commit.",
     "The positive clean-anchor test used an artificial bias only in a disposable in-memory model.",
     "BatchNorm running statistics are frozen in both V2 controls and V2 candidates; V1 controls are not a matched replacement."
-  ]
+  ],
+  "report_text_correction": "Post-verification report-only change: do not assume custom checkpoints are epoch 6. V2 diagnostic smoke used official original-architecture and untrained identity V2 weights."
 }

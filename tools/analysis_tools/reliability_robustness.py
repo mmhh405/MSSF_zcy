@@ -171,7 +171,7 @@ def write_readme(report, readme_path='README_reliability_fusion.md',
                                 f"{stats['mean']:.7f} | {stats['std']:.7f} | "
                                 f"{stats['fraction_below_0_9']:.5f} |")
         kind = '完整验证集受控退化评测' if report['full_validation'] else '子集诊断，不能与论文完整验证集分数比较'
-        block = (f"\n\n{kind}。同一批 {report['samples']} 帧、固定两组第 6 epoch 权重，"
+        block = (f"\n\n{kind}。同一批 {report['samples']} 帧、固定所指定的两组权重，"
                  f"无训练。运行 `{report['run_id']}`；合成退化不等同真实夜间或恶劣天气。\n\n"
                  + '\n'.join(rows) + f"\n\n[完整参数、逐类指标与门控分布]({archive.relative_to(ROOT).as_posix()})\n\n")
         if START not in text:
