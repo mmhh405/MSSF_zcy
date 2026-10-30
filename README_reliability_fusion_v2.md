@@ -53,7 +53,6 @@ V2 控制组与门控组均固定 BatchNorm/SyncBN 的运行统计量，仿射�
 | [configs/experiments/reliability_fusion_v2/gate_main.py:2](configs/experiments/reliability_fusion_v2/gate_main.py#L2) | V2 控制、消融或接入检查配置；详下方配置表 |
 | [configs/experiments/reliability_fusion_v2/smoke_inference.py:2](configs/experiments/reliability_fusion_v2/smoke_inference.py#L2) | V2 控制、消融或接入检查配置；详下方配置表 |
 | [configs/experiments/reliability_fusion_v2/smoke_train.py:2](configs/experiments/reliability_fusion_v2/smoke_train.py#L2) | V2 控制、消融或接入检查配置；详下方配置表 |
-
 | [repro/reliability_fusion_v2/verification.json:1](repro/reliability_fusion_v2/verification.json#L1) | 本次测试、梯度、BN 统计、源码哈希和真实接入记录 |
 
 <!-- FILE_LOCATIONS_END -->
@@ -66,7 +65,7 @@ V2 控制组与门控组均固定 BatchNorm/SyncBN 的运行统计量，仿射�
 |---|---|
 | `control_clean.py` | 原结构、无图像退化，验证 V2 共同训练设置 |
 | `control_aug.py` | 原结构＋图像退化，隔离增强本身的收益 |
-| `gate_attention_clean.py` | 仅 V2 注意力门控，无退化、无清晰约束，检查参数化 |
+| `gate_attention_clean.py` | 仅 V2 注意力门控包，无退化、无清晰约束（同时包含居中参数化与能量特征） |
 | `gate_both_clean.py` | query＋注意力门控、清晰约束，无退化 |
 | `gate_aug_attention_only.py` | 与主版本相同退化/约束，关闭 query 门控 |
 | `gate_aug_no_anchor.py` | 与主版本相同退化/两类门控，关闭清晰约束 |
@@ -106,7 +105,7 @@ python -u tools/train.py configs/experiments/reliability_fusion_v2/smoke_train.p
 
 ## 正式实验（本次不启动）
 
-先完成 `control_clean.py` 与 `control_aug.py`，再运行 `gate_main.py`；其他配置用于拆分参数化、query 入口、增强和清晰约束的作用。各运行使用独立 `work_dirs/reliability_fusion_v2/<variant>/<timestamp>`。同一 GPU 顺序运行。
+先完成 `control_clean.py` 与 `control_aug.py`，再运行 `gate_main.py`；其他配置用于比较最简 V2 注意力门控包、query 入口、增强和清晰约束。当前未单独消融能量特征，因此不能把最简 V2 与旧版的差异仅归因于门控函数或初始化。各运行使用独立 `work_dirs/reliability_fusion_v2/<variant>/<timestamp>`。同一 GPU 顺序运行。
 
 训练命令模板：
 
