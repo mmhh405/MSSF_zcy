@@ -1,1 +1,41 @@
-[]
+[
+  {
+    "run_id": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/smoke_inference/20261030_175948/20261030_175949",
+    "variant": "v2-untrained-inference",
+    "purpose": "smoke",
+    "work_dir": "work_dirs/reliability_fusion_v2/smoke_inference/20261030_175948",
+    "git_commit": "e237d7f1bacf68e971ab47b7793a11e0df936a3e",
+    "git_dirty_at_start": false,
+    "config": "configs/experiments/reliability_fusion_v2/smoke_inference.py",
+    "initialization_checkpoint": "exps/mssf_pp_vod/epoch_40.pth",
+    "random_seed": 0,
+    "status": "smoke_only",
+    "training_completed": false,
+    "updated_at": "2026-10-30T18:00:00.881520+08:00",
+    "phase": "test_only",
+    "eaa_map": 25.0645,
+    "dc_map": 17.7489,
+    "samples": 16
+  },
+  {
+    "run_id": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/smoke_train/20261030_180638/20261030_180639",
+    "variant": "v2-four-iteration-backward",
+    "purpose": "smoke",
+    "work_dir": "work_dirs/reliability_fusion_v2/smoke_train/20261030_180638",
+    "git_commit": "e237d7f1bacf68e971ab47b7793a11e0df936a3e",
+    "git_dirty_at_start": true,
+    "config": "configs/experiments/reliability_fusion_v2/smoke_train.py",
+    "initialization_checkpoint": "exps/mssf_pp_vod/epoch_40.pth",
+    "random_seed": 0,
+    "status": "smoke_only",
+    "training_completed": true,
+    "updated_at": "2026-10-30T18:06:48.229634+08:00",
+    "phase": "training_completed",
+    "iterations": 4,
+    "train_samples": 4,
+    "last_logged_train_loss": 0.5407943725585938,
+    "last_logged_loss_gate_clean": 0.0,
+    "last_logged_gate_clean_mse": 0.0,
+    "last_checkpoint": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/smoke_train/20261030_180638/iter_4.pth"
+  }
+]

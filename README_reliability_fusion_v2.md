@@ -2,7 +2,7 @@
 
 分支：`feat/reliability-gate-v2`，从 V1 全量退化分析提交 `8fde873` 创建。V1 的模型、配置和结果保留在原分支/标签及 `README_reliability_fusion.md` 中。
 
-当前阶段：实现与接入验证中。未启动正式训练，尚无 V2 完整验证集精度或鲁棒性结论。
+当前阶段：代码与接入验证完成，共新增 18820 个参数、4 个门控。正式 6 epoch 训练尚未启动，尚无 V2 完整验证集精度或鲁棒性结论。
 
 ## 设计与边界
 
@@ -53,6 +53,8 @@ V2 控制组与门控组均固定 BatchNorm/SyncBN 的运行统计量，仿射�
 | [configs/experiments/reliability_fusion_v2/gate_main.py:2](configs/experiments/reliability_fusion_v2/gate_main.py#L2) | V2 控制、消融或接入检查配置；详下方配置表 |
 | [configs/experiments/reliability_fusion_v2/smoke_inference.py:2](configs/experiments/reliability_fusion_v2/smoke_inference.py#L2) | V2 控制、消融或接入检查配置；详下方配置表 |
 | [configs/experiments/reliability_fusion_v2/smoke_train.py:2](configs/experiments/reliability_fusion_v2/smoke_train.py#L2) | V2 控制、消融或接入检查配置；详下方配置表 |
+
+| [repro/reliability_fusion_v2/verification.json:1](repro/reliability_fusion_v2/verification.json#L1) | 本次测试、梯度、BN 统计、源码哈希和真实接入记录 |
 
 <!-- FILE_LOCATIONS_END -->
 
@@ -139,12 +141,53 @@ python tools/analysis_tools/reliability_robustness.py --samples 1296 \
 
 ## 本次验证记录
 
-待接入检查完成后更新。初始恒等门控和小样本训练只证明实现可用，不代表已经学到可靠性，也不能作为完整验证集成绩。
+验收证据：[repro/reliability_fusion_v2/verification.json](repro/reliability_fusion_v2/verification.json)。实现代码提交为 `e237d7f`。
+
+- 22 项测试通过：9 项 V2 测试、7 项 V1 回归、6 项退化诊断回归。
+- 有效投影上的初始门控为 1；固定输入的注意力输出与冻结基线源码逐元素一致，query 图像入口初始也保持恒等。
+- 16 帧真实推理完成，普通 EAA/DC 为 25.0645%/17.7489%，与原基线相同样本的接入检查一致。仅为小样本流程验证。
+- 4 次优化器更新正常完成，四个门控的输出层权重均从零更新，243 个 BN 运行统计缓冲量与官方 checkpoint 逐项一致。
+- 真实清晰批次的独立探针确认约束损失大于零，四个门控均收到非零梯度；同一批次改为非清晰标记后，该约束为零。探针只在丢弃的内存模型中临时设置偏置，没有覆盖任何 checkpoint。
+- V2 的 4 帧 clean/blur 诊断接口通过，可分别记录 query 与注意力四个门控并写入独立 V2 归档。使用的是未训练、初始权重为 1 的 V2 检查 checkpoint，不是鲁棒性实验结论。
+- 官方 checkpoint 与 V1 已训练 checkpoint 均仍可严格加载；V1 README、结果索引及全量结论文件与 `8fde873` 保持逐字节一致。
+
+初始恒等门控和小样本训练只证明实现可用，不代表已经学到可靠性，也不能作为完整验证集成绩。四步检查的工作区 dirty 标记来自前一轮推理自动生成的 V2 结果文档；算法文件与记录中的实现提交一致。正式实验前应提交结果文档并确认工作区状态。
+
+首先执行 V2 控制组，而非直接复用 V1 控制结果：`control_clean.py`、`control_aug.py`、`gate_main.py`，分别使用独立目录和相同预算。
 
 ## 训练与评测结果（自动更新）
 
 <!-- RELIABILITY_RESULTS_START -->
 
-正式训练尚未执行。
+| 实验 | 类型/状态 | 样本数 | 验证 epoch | EAA mAP (%) | DC mAP (%) | 代码 | 运行目录 |
+|---|---|---:|---:|---:|---:|---|---|
+| v2-untrained-inference | smoke_only | 16 | — | 25.0645 | 17.7489 | e237d7f1 | work_dirs/reliability_fusion_v2/smoke_inference/20261030_175948 |
+| v2-four-iteration-backward | smoke_only | — | — | — | — | e237d7f1+dirty | work_dirs/reliability_fusion_v2/smoke_train/20261030_180638 |
 
 <!-- RELIABILITY_RESULTS_END -->
+
+## 受控图像退化诊断（自动更新）
+
+<!-- ROBUSTNESS_RESULTS_START -->
+
+子集诊断，不能与论文完整验证集分数比较。同一批 4 帧、固定两组第 6 epoch 权重，无训练。运行 `20261030_181240`；合成退化不等同真实夜间或恶劣天气。
+
+| 条件 | 样本数 | 对照 EAA | 门控 EAA | 门控减对照 | 对照 DC | 门控 DC | 门控减对照 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| clean | 4 | 14.1414 | 14.1414 | +0.0000 | 7.5758 | 7.5758 | +0.0000 |
+| blur | 4 | 2.5712 | 2.5712 | +0.0000 | 1.5152 | 1.5152 | +0.0000 |
+
+| 条件 | 门控阶段 | 有效查询门控均值 | 标准差 | 低于 0.9 的比例 |
+|---|---|---:|---:|---:|
+| clean | backbone/attention | 1.0000000 | 0.0000000 | 0.00000 |
+| clean | backbone/query | 1.0000000 | 0.0000000 | 0.00000 |
+| clean | middle_encoder/attention | 1.0000000 | 0.0000000 | 0.00000 |
+| clean | middle_encoder/query | 1.0000000 | 0.0000000 | 0.00000 |
+| blur | backbone/attention | 1.0000000 | 0.0000000 | 0.00000 |
+| blur | backbone/query | 1.0000000 | 0.0000000 | 0.00000 |
+| blur | middle_encoder/attention | 1.0000000 | 0.0000000 | 0.00000 |
+| blur | middle_encoder/query | 1.0000000 | 0.0000000 | 0.00000 |
+
+[完整参数、逐类指标与门控分布](repro/reliability_fusion_v2/robustness/20261030_181240.json)
+
+<!-- ROBUSTNESS_RESULTS_END -->

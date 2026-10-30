@@ -1,0 +1,88 @@
+{
+  "verified_at": "2026-10-30T18:16:11.518221+08:00",
+  "status": "passed",
+  "branch": "feat/reliability-gate-v2",
+  "code_commit": "e237d7f1bacf68e971ab47b7793a11e0df936a3e",
+  "v1_base": "8fde873bf8715ee2c2884b14ee769a573eb1f678",
+  "tests": {
+    "v2": 9,
+    "v1_regression": 7,
+    "diagnostic_regression": 6,
+    "total": 22
+  },
+  "v1_readme_and_results_unchanged": true,
+  "v1_and_official_checkpoints_strict_load": true,
+  "new_parameters": 18820,
+  "v2_gate_count": 4,
+  "expected_new_state_keys": 48,
+  "inference": {
+    "samples": 16,
+    "eaa_map": 25.0645,
+    "dc_map": 17.7489,
+    "purpose": "untrained initial identity smoke only",
+    "run_dir": "work_dirs/reliability_fusion_v2/smoke_inference/20261030_175948"
+  },
+  "training_integration": {
+    "optimizer_updates": 4,
+    "run_dir": "work_dirs/reliability_fusion_v2/smoke_train/20261030_180638",
+    "audit": {
+      "all_four_gate_output_layers_updated": {
+        "backbone.fusion_blocks.x_conv1.img_cross_att.deformable_attention.reliability_gate.predictor.2.weight": 0.000343504041666165,
+        "backbone.query_reliability_gate.predictor.2.weight": 0.0003636167966760695,
+        "middle_encoder.fusion_blocks.x_conv1.img_cross_att.deformable_attention.reliability_gate.predictor.2.weight": 0.000362801511073485,
+        "middle_encoder.query_reliability_gate.predictor.2.weight": 0.00033565968624316156
+      },
+      "frozen_normalization_buffers_unchanged": 243,
+      "real_clean_anchor_loss": 0.006007575895637274,
+      "clean_anchor_bias_gradients": [
+        0.005687079392373562,
+        0.0056854672729969025,
+        0.005830253008753061,
+        0.005834951065480709
+      ],
+      "degraded_mask_anchor_loss": 0.0,
+      "note": "Bias was changed only in a disposable in-memory probe; no checkpoint was overwritten."
+    }
+  },
+  "diagnostic_interface": {
+    "samples": 4,
+    "conditions": [
+      "clean",
+      "blur"
+    ],
+    "gate_count": 4,
+    "checkpoint_purpose": "untrained initialization only",
+    "run_dir": "work_dirs/reliability_fusion_v2/diagnostic_smoke/20261030_181239"
+  },
+  "source_sha256": {
+    "configs/experiments/reliability_fusion_v2/control_aug.py": "db1a2b7483dfaf17462ac47cb648eaff4c0339c83f9d7eb6613d57b4905afb11",
+    "configs/experiments/reliability_fusion_v2/control_clean.py": "6db8b0945278b6032ca8a9bda81a103caa582c37dc488ee48a25971d4ea1f500",
+    "configs/experiments/reliability_fusion_v2/gate_attention_clean.py": "4034e247d262a8bf7a03b58ab7d213d44a4118031eb70957498ef42dd8574680",
+    "configs/experiments/reliability_fusion_v2/gate_aug_attention_only.py": "f9cf839d65babbe81202e40358a940fb9b3379b57e5d74283d7453b4151612eb",
+    "configs/experiments/reliability_fusion_v2/gate_aug_no_anchor.py": "226840cacd09ccd3451059a26ceaf16c68217dafc7079b11bafa700dbd8bff95",
+    "configs/experiments/reliability_fusion_v2/gate_both_clean.py": "39a583734e38f619eb7aa010fbb294a8cc077a9bb820ec902a62e01077c21745",
+    "configs/experiments/reliability_fusion_v2/gate_main.py": "92a78749850b824047f8e5426d10a4bf54ebab64f8e4b4626e0e803e1445e053",
+    "configs/experiments/reliability_fusion_v2/smoke_inference.py": "917cebfa327ead1e032cca952b5c5ea54f287f448fe94e44b13bf3048e4ae119",
+    "configs/experiments/reliability_fusion_v2/smoke_train.py": "b402e5094fc04e760802dfcc69f9aef97d36f7111162b6af5fcefb7340236643",
+    "mmdet3d/datasets/transforms/__init__.py": "645ceba4716a6563a2a88d2e704d7f4258f5fafa8bd0b1458236b37e3412d056",
+    "mmdet3d/datasets/transforms/image_degradation.py": "ca44c3f56c1b80ec38aaa0e331530c65feda181dbc0866e7e5ef8fbf7b3281d8",
+    "mmdet3d/engine/hooks/reliability_experiment_hook.py": "85cccb108f9b9d69915ce00961c7044d857921ff98dd95444702430df306ce9c",
+    "mmdet3d/models/backbones/second_fuse.py": "923028a199868528f53fe4c38f11defa3a6b1b915155ca89a95a9b447c68b782",
+    "mmdet3d/models/detectors/voxelnet_fuse.py": "afc05ae1181cf43471aeb6fbf907bf25a8ce913cab473236d14dfc5836b69eea",
+    "mmdet3d/models/layers/fusion_layers/__init__.py": "56760f036e66e299ee2ce00d59682118d6c02239f8f937d827d712b2cbabe9ae",
+    "mmdet3d/models/layers/fusion_layers/query_reliability.py": "3adc719812dc6570394a3fa9afb1b7b9147cc2b6e22088ea85b2f32a4af2249c",
+    "mmdet3d/models/layers/fusion_layers/radar_img_cross_att.py": "24c3ac761d394b6ceaf23605da353acf9e118fa7577236e08f5e2d80440b8d1e",
+    "mmdet3d/models/layers/fusion_layers/reliability_gate_v2.py": "3c57dadf1e2aea9332637211621ae51a3fcbad3b94703699bc0fe897eecdaf2e",
+    "mmdet3d/models/layers/fusion_layers/voxel_fusion_block.py": "51b2076c2305c0aa618ee8181244dfc061b1a46b3f23cd9851c55f80e9419fda",
+    "mmdet3d/models/middle_encoders/pillar_scatter_fuse.py": "4938ec8bf0a1d79a3fe1fc427943c33720d8fa7d3d7b0e7e0052781d0ba7cc97",
+    "tests/test_reliability_fusion_v2.py": "f4abe3cc379499a3cef3c38c4b7d50fe07f170c3b1d045ca8fd0886d6be43be3",
+    "tools/analysis_tools/reliability_robustness.py": "e8f80e089db6aaa3dac71a5e9cdac38397266519f1da91c4c819dfd933d0341d"
+  },
+  "formal_training_started": false,
+  "accuracy_improvement_claimed": false,
+  "notes": [
+    "Training smoke started after inference updated only V2 result documentation; algorithm sources were fixed at code_commit.",
+    "The positive clean-anchor test used an artificial bias only in a disposable in-memory model.",
+    "BatchNorm running statistics are frozen in both V2 controls and V2 candidates; V1 controls are not a matched replacement."
+  ]
+}
