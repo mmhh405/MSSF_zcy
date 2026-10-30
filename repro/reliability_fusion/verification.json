@@ -1,0 +1,45 @@
+{
+  "verified_at": "2026-10-30T11:04:28.835681+08:00",
+  "baseline_commit": "a67da656d954cc9a14ab87b3d99654a37205b444",
+  "unit_tests": 7,
+  "unit_status": "passed",
+  "new_parameters": 5890,
+  "expected_new_checkpoint_keys": 24,
+  "baseline_checkpoint_strict_load": true,
+  "frozen_baseline_attention_fixed_input": "bitwise equal on CPU with gating disabled",
+  "gate_parameters_updated_in_both_stages": true,
+  "runs": {
+    "gate": "work_dirs/reliability_fusion/gate_smoke/20261030_105333",
+    "train": "work_dirs/reliability_fusion/train_smoke/20261030_105443",
+    "epoch": "work_dirs/reliability_fusion/epoch_smoke/20261030_105628",
+    "off": "work_dirs/reliability_fusion/baseline_off/20261030_105751"
+  },
+  "independent_gpu_baseline_replay": {
+    "samples": 16,
+    "same_labels": true,
+    "eaa_map": 25.0645,
+    "dc_map": 17.7489,
+    "max_score_difference": 7.987022399902344e-05,
+    "max_image_bbox_difference_pixels": 0.02001953125,
+    "max_yaw_difference_radians": 0.00022268295288085938,
+    "bitwise_equal": false
+  },
+  "formal_finetuning_completed": false,
+  "full_set_gate_accuracy_measured": false,
+  "source_sha256": {
+    "mmdet3d/models/layers/fusion_layers/reliability_gate.py": "bf7b13cd2cb22bc7a0f74ee10c8659883a889c69cb0af07bae5119c3cc9ffa69",
+    "mmdet3d/models/layers/fusion_layers/radar_img_cross_att.py": "4d15024ca437b3278f0f117d4d9b51f551854f81d1820ce1c6a45a54c9e01825",
+    "mmdet3d/models/layers/fusion_layers/voxel_fusion_block.py": "fda678c7418556a2be45a68ac99a4f96a0b2e7044b9047827ace3264afc67d6b",
+    "mmdet3d/models/middle_encoders/pillar_scatter_fuse.py": "81154556df5a248f650ecb0b1b3a529a2e84cb91ca44853021f067ecfccb36d3",
+    "mmdet3d/models/backbones/second_fuse.py": "1bfa710a0b45a0059c909b8ef357d782680f8f2cf955bb321efe4ad2f20270fa",
+    "mmdet3d/models/layers/fusion_layers/__init__.py": "d038dc0e0b0ae38b1070509ba5b3637da2d04b906570dfab3456aa09c2563183",
+    "mmdet3d/engine/hooks/reliability_experiment_hook.py": "b0d8f75366ec8a6ee3985fa3904d6edc6823672fb1f875e101a2e92ea2bb91a7",
+    "mmdet3d/engine/hooks/__init__.py": "5f16cabb1f84b44fe4d7c2b3988384d0bedfdcf5538e75b088f1171d3136a441",
+    "tools/train.py": "4856a3e01f564646e5251ef3e506e5b0addfde71c8e1c26ebad0c3e1b97056dc",
+    "configs/experiments/reliability_fusion/mssf_pp_vod_control.py": "dd5eb99596c521ae93f5adaae1bdac6d425005297e78052a9514daa3f451576d",
+    "configs/experiments/reliability_fusion/mssf_pp_vod_gate.py": "85557ad488be0ce80005d36c3902bf0e9079b9a22a39d9dc9735f9c95b7eedb3",
+    "configs/experiments/reliability_fusion/mssf_pp_vod_gate_smoke.py": "088c18cea0d63318fc80d0b218e2e6f2135af465038454268c1da62dcbc7ccdb",
+    "configs/experiments/reliability_fusion/mssf_pp_vod_gate_train_smoke.py": "26150f12b35dfbc615764b3f1708978647f115287b3a0fadf8d429f7fb15391b",
+    "tests/test_reliability_fusion.py": "829f4387aa65198d075d273f037d7705d27d9a6c456e87873dc7de6b520eb0ae"
+  }
+}

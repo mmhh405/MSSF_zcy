@@ -38,6 +38,7 @@ class RadarImageCrossAttention(BaseModule):
                  dropout=0.1,
                  init_cfg=None,
                  batch_first=True,
+                 reliability_cfg=None,
                  deformable_attention=dict(
                      type='MSDeformableAttention',
                      query_embed_dims=256,
@@ -51,9 +52,12 @@ class RadarImageCrossAttention(BaseModule):
         #self.dropout = nn.Dropout(dropout)
         self.pc_range = pc_range
         self.fp16_enabled = False
+        deformable_attention = dict(deformable_attention)
         deformable_attention.update(query_embed_dims=query_embed_dims,
                                     value_embed_dims=value_embed_dims,
                                     output_embed_dims=output_embed_dims,)
+        if reliability_cfg is not None:
+            deformable_attention['reliability_cfg'] = reliability_cfg
         self.deformable_attention = MODELS.build(deformable_attention)
         self.query_embed_dims = query_embed_dims
         self.value_embed_dims = value_embed_dims
@@ -75,7 +79,8 @@ class RadarImageCrossAttention(BaseModule):
                 residual=None,
                 spatial_shapes=None,
                 reference_points_cams=None,
-                level_start_index=None):
+                level_start_index=None,
+                radar_features=None, projection_valid=None, geometry=None):
         """Forward Function of Detr3DCrossAtten.
 
         Args:
@@ -114,6 +119,9 @@ class RadarImageCrossAttention(BaseModule):
             reference_points=reference_points_cams,
             spatial_shapes=spatial_shapes,
             level_start_index=level_start_index,
+            radar_features=radar_features,
+            projection_valid=projection_valid,
+            geometry=geometry,
         )
 
         return updated_query, sample_locs, sample_weights
@@ -161,7 +169,8 @@ class MSDeformableAttention(BaseModule):
                  weight_act_func: Optional[str] = 'softmax',
                  residual: Optional[bool] = True,
                  norm_cfg: Optional[dict] = None,
-                 init_cfg: Optional[dict] = None):
+                 init_cfg: Optional[dict] = None,
+                 reliability_cfg: Optional[dict] = None):
         super().__init__(init_cfg)
         if value_embed_dims % num_heads != 0:
             raise ValueError(f'embed_dims must be divisible by num_heads, '
@@ -201,6 +210,16 @@ class MSDeformableAttention(BaseModule):
                                            num_heads * num_levels * num_points)
         self.value_proj = nn.Linear(value_embed_dims, value_embed_dims)
         self.output_proj = nn.Linear(value_embed_dims, output_embed_dims)
+        self.reliability_gate = None
+        if reliability_cfg is not None:
+            cfg = dict(reliability_cfg)
+            enabled = cfg.pop('enabled', True)
+            if enabled:
+                if query_embed_dims != output_embed_dims:
+                    raise ValueError('Reliability gating requires equal query/output channels')
+                cfg.setdefault('type', 'ReliabilityGate')
+                cfg['channels'] = output_embed_dims
+                self.reliability_gate = MODELS.build(cfg)
         self.init_weights()
 
     def init_weights(self) -> None:
@@ -330,6 +349,15 @@ class MSDeformableAttention(BaseModule):
                 value, spatial_shapes, sampling_locations, attention_weights)
 
         output = self.output_proj(output)
+
+        if self.reliability_gate is not None:
+            required = ('radar_features', 'projection_valid', 'geometry')
+            if any(kwargs.get(key) is None for key in required):
+                raise ValueError('Enabled reliability gate requires radar/projection context')
+            # Gate only the image update, before adding the original identity.
+            output = self.reliability_gate(kwargs['radar_features'],
+                                           output, kwargs['projection_valid'],
+                                           kwargs['geometry'])
 
         if not self.batch_first:
             # (num_query, bs ,embed_dims)

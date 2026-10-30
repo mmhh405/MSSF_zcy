@@ -8,3 +8,6 @@ __pycache__/
 *.pth
 *.pt
 *.zip
+
+# Transient lock used by the experiment result recorder.
+/repro/reliability_fusion/*.lock

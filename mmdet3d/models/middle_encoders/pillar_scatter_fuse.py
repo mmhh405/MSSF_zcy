@@ -83,6 +83,7 @@ class PointPillarsScatterFuse(nn.Module):
             fusion_block = dict(type='VoxelFusionBlock',
                         img_cross_att = 
                                 dict(type='RadarImageCrossAttention',
+                                    reliability_cfg=self.optional_cfg.get('reliability_gate'),
                                     query_embed_dims=self.base_channels,
                                     value_embed_dims=self.img_dim,
                                     output_embed_dims=self.base_channels,
@@ -449,6 +450,7 @@ class PointPillarsScatterFuse(nn.Module):
         if imgs is not None:
             pts_voxel_dict = self.voxelize(points)
             img_data_dict = self.flatten_img_feats(img_feats)
+            img_data_dict['batch_input_metas'] = batch_input_metas
             img_data_dict['imgs'] = imgs
             self.use_img = True
         else:

@@ -1,0 +1,134 @@
+# MSSF-PP 可靠性感知融合：第一版
+
+分支：`feat/reliability-gate`。固定基线：`baseline/mssf-pp-vod-v1`（`a67da65`）。
+
+当前阶段：代码与训练/评测接入验收完成。两个门控共新增 5890 个参数。正式 6 epoch 微调尚未执行，新增模块的精度收益尚未确认。
+
+## 实现的功能
+
+- 在 MSSF-PP 的 `PointPillarsScatterFuse` 与 `SECONDFuse` 两个 MSDFF 融合阶段加入独立的逐体素门控。
+- 使用雷达上下文特征、图像注意力增量、可学习特征空间中的余弦一致性及归一化投影位置/深度预测标量权重。
+- 校验正深度、有限坐标和未填充图像范围。投影无效时将图像注意力增量置零；原查询/雷达残差继续保留。
+- 在 `output_proj` 之后、原注意力残差相加之前门控：`output = identity + dropout(gate * image_update)`。代码中的 `identity` 是原查询，查询本身可能已包含图像信息；这并不是把全部图像信息从网络中清除，也不是雷达单模态回退。
+- 默认配置不启用门控，原模型参数键与旧权重保持兼容。启用时有效投影的初始门控约为 0.99，接近原模型但并不完全等价；新增参数必须微调。
+- 训练验证及独立评测完成后，将真实结果自动写入本 README，并保存 JSON 摘要和每个 epoch 的指标历史。
+
+门控分数是学习到的特征权重，不是已经校准的置信概率。第一版不增加新的监督损失或模态退化增强；先验证门控本身，再单独消融增强。这是研究候选实现，尚不能据此声称具有学术新颖性或精度提升。
+
+## 修改文件及位置
+
+<!-- FILE_LOCATIONS_START -->
+
+| 文件及入口行 | 修改内容 |
+|---|---|
+| [mmdet3d/models/layers/fusion_layers/reliability_gate.py:12](mmdet3d/models/layers/fusion_layers/reliability_gate.py#L12) | 新增门控、一致性特征、硬有效性屏蔽与梯度路径 |
+| [mmdet3d/models/layers/fusion_layers/radar_img_cross_att.py:41](mmdet3d/models/layers/fusion_layers/radar_img_cross_att.py#L41) | 透传开关；在图像增量投影后、原残差之前门控 |
+| [mmdet3d/models/layers/fusion_layers/voxel_fusion_block.py:27](mmdet3d/models/layers/fusion_layers/voxel_fusion_block.py#L27) | 按增强后的正深度、真实图像范围构造投影上下文 |
+| [mmdet3d/models/middle_encoders/pillar_scatter_fuse.py:86](mmdet3d/models/middle_encoders/pillar_scatter_fuse.py#L86) | 第一阶段启用门控并传递图像元信息 |
+| [mmdet3d/models/backbones/second_fuse.py:152](mmdet3d/models/backbones/second_fuse.py#L152) | 第二阶段启用门控并传递图像元信息 |
+| [mmdet3d/models/layers/fusion_layers/__init__.py:6](mmdet3d/models/layers/fusion_layers/__init__.py#L6) | 注册新门控模块 |
+| [mmdet3d/engine/hooks/reliability_experiment_hook.py:28](mmdet3d/engine/hooks/reliability_experiment_hook.py#L28) | 原子更新 README/JSON；保存验证历史、代码状态及训练完成状态 |
+| [mmdet3d/engine/hooks/__init__.py:6](mmdet3d/engine/hooks/__init__.py#L6) | 注册结果记录 Hook |
+| [tools/train.py:6](tools/train.py#L6) | 训练入口尊重调用者选择的 GPU |
+| [configs/experiments/reliability_fusion/mssf_pp_vod_control.py:2](configs/experiments/reliability_fusion/mssf_pp_vod_control.py#L2) | 同预算的原模型微调对照 |
+| [configs/experiments/reliability_fusion/mssf_pp_vod_gate.py:2](configs/experiments/reliability_fusion/mssf_pp_vod_gate.py#L2) | 启用两个阶段门控的微调配置 |
+| [configs/experiments/reliability_fusion/mssf_pp_vod_gate_smoke.py:2](configs/experiments/reliability_fusion/mssf_pp_vod_gate_smoke.py#L2) | 16 帧未训练推理检查 |
+| [configs/experiments/reliability_fusion/mssf_pp_vod_gate_train_smoke.py:2](configs/experiments/reliability_fusion/mssf_pp_vod_gate_train_smoke.py#L2) | 两次优化器更新的训练接入检查 |
+| [tests/test_reliability_fusion.py:24](tests/test_reliability_fusion.py#L24) | 7 项针对性测试，含冻结基线源码对照和结果记录集成 |
+| [repro/reliability_fusion/results.json:1](repro/reliability_fusion/results.json#L1) | 每个实验最近一次实际结果的索引 |
+| [repro/reliability_fusion/verification.json:1](repro/reliability_fusion/verification.json#L1) | 本次验收、数值回归范围和源码哈希 |
+| [.gitignore:12](.gitignore#L12) | 忽略结果写入锁文件 |
+| [README.md:102](README.md#L102) | 新增实验说明入口 |
+| [README_reliability_fusion.md:1](README_reliability_fusion.md#L1) | 本版本功能、文件位置、运行命令、验收与结果汇总 |
+
+<!-- FILE_LOCATIONS_END -->
+
+## 配置与兼容性
+
+`model.middle_encoder.optional_cfg.reliability_gate` 和 `model.backbone.optional_cfg.reliability_gate` 分别控制两个阶段：
+
+```python
+dict(enabled=True, hidden_channels=16, init_probability=0.99)
+```
+
+不设置该字段或设置 `enabled=False` 即不创建门控参数。原始 checkpoint 在启用配置中会缺少新增 `reliability_gate.*` 参数，这是预期的初始化行为；任何其他缺失键、额外键或形状不匹配都应排查。禁止把 2 步反向传播检查的 checkpoint 当作训练完成的模型。
+
+当前微调起点：官方 `exps/mssf_pp_vod/epoch_40.pth`；原图像分支沿用冻结策略；batch size 1，AdamW 初始学习率 1e-5，6 个 epoch，随机种子 0，每 epoch 验证一次。原模型对照使用同一预算。以上为第一版实验设置，尚未证明最优。
+
+## 验收与运行命令
+
+```bash
+conda activate mssf-bench
+cd '/home/d514/桌面/zcy/MSSF_zcy'
+set -o pipefail
+python tests/test_reliability_fusion.py
+```
+
+16 帧未训练门控检查：
+
+```bash
+RUN="work_dirs/reliability_fusion/gate_smoke/$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$RUN"
+python -u tools/test.py \
+  configs/experiments/reliability_fusion/mssf_pp_vod_gate_smoke.py \
+  --checkpoint exps/mssf_pp_vod/epoch_40.pth --metric VODMetric \
+  --work-dir "$RUN" --pkl_save_dir "$RUN/predictions" 2>&1 | tee "$RUN/console.log"
+```
+
+2 个优化器更新的训练接入检查（不是正式微调）：
+
+```bash
+RUN="work_dirs/reliability_fusion/train_smoke/$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$RUN"
+python -u tools/train.py \
+  configs/experiments/reliability_fusion/mssf_pp_vod_gate_train_smoke.py \
+  --work-dir "$RUN" 2>&1 | tee "$RUN/console.log"
+```
+
+正式实验前提交源码和配置，保持运行期间代码不变。分别运行同预算对照和门控版本：
+
+```bash
+RUN="work_dirs/reliability_fusion/control/$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$RUN"
+python -u tools/train.py \
+  configs/experiments/reliability_fusion/mssf_pp_vod_control.py \
+  --work-dir "$RUN" 2>&1 | tee "$RUN/console.log"
+
+RUN="work_dirs/reliability_fusion/gate/$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$RUN"
+python -u tools/train.py \
+  configs/experiments/reliability_fusion/mssf_pp_vod_gate.py \
+  --work-dir "$RUN" 2>&1 | tee "$RUN/console.log"
+```
+
+最终 checkpoint 独立评测使用 `mssf_pp_vod_gate.py` 与本次训练权重，显式设置新的 `--work-dir` 和 `--pkl_save_dir`。从官方权重开始新实验使用 `load_from`，不使用 `--resume` 恢复作者的优化器状态；自己的中断训练才使用 `--resume`。
+
+## 验收记录
+
+已完成以下实际检查，日志与证据见 `repro/reliability_fusion/verification.json`：
+
+- 7 项测试通过，覆盖非法投影、图像填充区、非有限值、可训练梯度、配置隔离、原版注意力对照和 README 记录。
+- 关闭门控后可严格加载官方 checkpoint；固定输入下，与冻结基线源码的注意力输出在 CPU 上逐元素一致。
+- 独立 GPU 运行的前 16 帧与历史基线类别及普通 AP 一致，未达到逐位一致：最大分数差约 8e-5、图像框坐标差约 0.020 像素、朝向差约 2.23e-4 弧度。这里只报告观测差异，没有单独定位其来源。
+- 启用门控完成 16 帧真实推理并自动写入结果，新增缺失键仅为预期的 24 个门控状态键。
+- 完成 2 个优化器更新，loss/梯度有限、checkpoint 保存成功，两个阶段门控的输出层权重均从零发生实际更新。
+- 完成另外一个 2 帧训练、16 帧验证的单 epoch 接入检查；验证指标、checkpoint 路径及训练完成状态均自动进入结果记录。
+
+上述小实验均是接入检查；表中的小样本数值不能与论文完整验证集精度比较。正式训练结果尚待后续实验。
+
+## 训练与评测结果（自动更新）
+
+Hook 按运行目录和时间标识更新每次运行的最近一次验证结果，不自动选择最好 epoch；完整历史保存在该运行目录的 `reliability_result.json`。`smoke_only` 行仅用于流程检查。缺失指标显示“—”。正式训练结束后状态更新为 `training_completed`，保留最近一次验证指标。
+
+<!-- RELIABILITY_RESULTS_START -->
+
+| 实验 | 类型/状态 | 样本数 | 验证 epoch | EAA mAP (%) | DC mAP (%) | 代码 | 运行目录 |
+|---|---|---:|---:|---:|---:|---|---|
+| 官方权重基线 | official_pretrained | 1296 | — | 63.2253 | 79.7823 | a67da656 | work_dirs/baseline_mssf_pp_vod/20261030_095709 |
+| gate-untrained-inference | smoke_only | 16 | — | 24.9956 | 17.7489 | a67da656+dirty | work_dirs/reliability_fusion/gate_smoke/20261030_105333 |
+| gate-two-iteration-backward | smoke_only | — | — | — | — | a67da656+dirty | work_dirs/reliability_fusion/train_smoke/20261030_105443 |
+| gate-epoch-validation-integration | smoke_only | 16 | 1 | 25.4473 | 17.8030 | a67da656+dirty | work_dirs/reliability_fusion/epoch_smoke/20261030_105628 |
+
+<!-- RELIABILITY_RESULTS_END -->
+
+结果索引：`repro/reliability_fusion/results.json`。README 和小体积结果索引可提交到 Git；数据、模型权重、优化器状态和完整预测继续存放在已忽略的实验目录/NAS。记录中的 `git_dirty_at_start` 表示启动时是否存在未提交修改，正式对照前应确认源码和配置已固定。

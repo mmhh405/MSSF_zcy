@@ -98,3 +98,7 @@ If you find our paper and code useful for your research, please consider citing 
   doi={10.1109/TITS.2025.3554313}}
 ```
 
+
+## Reliability-aware fusion experiment
+
+See [the implementation and experiment log](README_reliability_fusion.md).
