@@ -54,6 +54,11 @@ class SingleStage3DDetector(Base3DDetector):
         self.train_cfg = train_cfg
         self.test_cfg = test_cfg
 
+    @property
+    def with_backbone(self) -> bool:
+        """Whether a point-cloud backbone is configured."""
+        return hasattr(self, 'backbone') and self.backbone is not None
+
     def loss(self, batch_inputs_dict: dict, batch_data_samples: SampleList,
              **kwargs) -> Union[dict, list]:
         """Calculate losses from a batch of inputs dict and data samples.

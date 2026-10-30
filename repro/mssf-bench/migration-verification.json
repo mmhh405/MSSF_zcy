@@ -1,0 +1,45 @@
+{
+  "migrated_at": "2026-10-30T09:53:49.504228+08:00",
+  "source": "/home/d514/projects/MSSF_zcy",
+  "destination": "/home/d514/桌面/zcy/MSSF_zcy",
+  "compatibility_symlink": "/home/d514/projects/MSSF_zcy",
+  "git_head": "0c9482f8b0d9dc1c43b17a68fd5312bad97e7ea7",
+  "all_entries_identical": true,
+  "files": 1322,
+  "file_bytes": 198326037,
+  "symlinks": {
+    "mmdet3d/.mim/configs": "../../configs",
+    "mmdet3d/.mim/dataset-index.yml": "../../dataset-index.yml",
+    "mmdet3d/.mim/demo": "../../demo",
+    "mmdet3d/.mim/model-index.yml": "../../model-index.yml",
+    "mmdet3d/.mim/tools": "../../tools",
+    "data/vod": "/mnt/nas-share/MSSF_zcy/radar_5frames"
+  },
+  "manifest": "/home/d514/projects/.mssf-migration-20261030_095349/before.json",
+  "verified_at": "2026-10-30T09:55:39.362173+08:00",
+  "status": "passed",
+  "imported_package": "/home/d514/桌面/zcy/MSSF_zcy/mmdet3d/__init__.py",
+  "editable_install_updated": true,
+  "pip_check": "No broken requirements found.",
+  "git_branch": "main",
+  "git_remotes": [
+    "origin\thttps://github.com/mmhh405/MSSF_zcy.git (fetch)",
+    "origin\thttps://github.com/mmhh405/MSSF_zcy.git (push)",
+    "upstream\thttps://github.com/EricLiuhhh/MSSF.git (fetch)",
+    "upstream\thttps://github.com/EricLiuhhh/MSSF.git (push)"
+  ],
+  "smoke": {
+    "samples": 16,
+    "num_workers": 2,
+    "exit_code": 0,
+    "run_dir": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/baseline_mssf_pp_vod_smoke/20261030_095428_migration",
+    "metrics": {
+      "entire_area": 25.0645,
+      "roi": 17.7489
+    }
+  },
+  "environment_prefix": "/home/d514/miniconda3/envs/mssf-bench",
+  "dataset": "/mnt/nas-share/MSSF_zcy/radar_5frames",
+  "training_executed": false,
+  "full_validation_executed": false
+}

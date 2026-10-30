@@ -1,0 +1,11 @@
+name: mssf-bench
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.9
+  - pip
+  - cudatoolkit=11.8
+variables:
+  NUMBA_CUDA_USE_NVIDIA_BINDING: "1"
+  PYTHONDONTWRITEBYTECODE: "1"

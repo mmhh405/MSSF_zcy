@@ -395,8 +395,12 @@ class VODMetric(BaseMetric):
         Returns:
             List[dict]: A list of dictionaries with the kitti format.
         """
-        assert len(net_outputs) == len(self.data_infos), \
-            'invalid list length of network outputs'
+        # Dataset indices may select a subset for a smoke evaluation.
+        # Each prediction still maps to the full annotation list by sample_idx.
+        assert len(net_outputs) == len(sample_idx_list), \
+            'prediction and sample index counts differ'
+        assert all(0 <= index < len(self.data_infos)
+                   for index in sample_idx_list), 'sample index out of range'
         if submission_prefix is not None:
             mmengine.mkdir_or_exist(submission_prefix)
 
@@ -525,8 +529,12 @@ class VODMetric(BaseMetric):
         Returns:
             List[dict]: A list of dictionaries with the kitti format.
         """
-        assert len(net_outputs) == len(self.data_infos), \
-            'invalid list length of network outputs'
+        # Dataset indices may select a subset for a smoke evaluation.
+        # Each prediction still maps to the full annotation list by sample_idx.
+        assert len(net_outputs) == len(sample_idx_list), \
+            'prediction and sample index counts differ'
+        assert all(0 <= index < len(self.data_infos)
+                   for index in sample_idx_list), 'sample index out of range'
         det_annos = []
         print('\nConverting 2D prediction to KITTI format')
         for i, bboxes_per_sample in enumerate(

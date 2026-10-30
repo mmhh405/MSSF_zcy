@@ -1,0 +1,30 @@
+[
+  {
+    "package": "mmcv",
+    "file": "mmcv-2.0.1-cp39-cp39-manylinux1_x86_64.whl",
+    "url": "https://download.openmmlab.com/mmcv/dist/cu118/torch2.0.0/mmcv-2.0.1-cp39-cp39-manylinux1_x86_64.whl",
+    "bytes": 74377845,
+    "sha256": "9add31d2e7b5db8d3ba5c2333338b09848ac45565f793ac8ba6e87e8f699dfb6"
+  },
+  {
+    "package": "torch",
+    "file": "torch-2.0.1+cu118-cp39-cp39-linux_x86_64.whl",
+    "url": "https://download-r2.pytorch.org/whl/cu118/torch-2.0.1%2Bcu118-cp39-cp39-linux_x86_64.whl",
+    "bytes": 2267322772,
+    "sha256": "eb55f29db5744eda8a96f5594e637daed0d52278273005de759970e67cfa6a5a"
+  },
+  {
+    "package": "torchvision",
+    "file": "torchvision-0.15.2+cu118-cp39-cp39-linux_x86_64.whl",
+    "url": "https://download-r2.pytorch.org/whl/cu118/torchvision-0.15.2%2Bcu118-cp39-cp39-linux_x86_64.whl",
+    "bytes": 6071672,
+    "sha256": "f2c6f5a100bcf9020b82f5d4c87cd7e26af0409cf33b90fb797b1127dcd42de6"
+  },
+  {
+    "package": "torch-scatter",
+    "file": "torch_scatter-2.1.2+pt20cu118-cp39-cp39-linux_x86_64.whl",
+    "url": "https://data.pyg.org/whl/torch-2.0.0%2Bcu118/torch_scatter-2.1.2%2Bpt20cu118-cp39-cp39-linux_x86_64.whl",
+    "bytes": 10155173,
+    "sha256": "269a5abd09a4270203b7b570bb2897295e54a6234ae6e893938871315444a3c6"
+  }
+]

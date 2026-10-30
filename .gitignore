@@ -1,0 +1,10 @@
+
+# Generated data, logs and downloaded model files
+/data/
+/work_dirs/
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.pth
+*.pt
+*.zip

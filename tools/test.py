@@ -2,7 +2,7 @@
 import argparse
 import os
 import os.path as osp
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ.setdefault('CUDA_VISIBLE_DEVICES', '0')
 from mmengine.config import Config, ConfigDict, DictAction
 from mmengine.registry import RUNNERS
 from mmengine.runner import Runner
@@ -130,8 +130,8 @@ def main():
         all_checkpoints = sorted(all_checkpoints, key=lambda x: int(x.split('_')[-1].split('.')[0]))
         all_checkpoints = [os.path.join(args.checkpoint, name) for name in all_checkpoints] 
         cfg.load_from = all_checkpoints
-    else:
-        cfg.load_from = [args.checkpoint]
+    elif args.checkpoint is not None:
+        cfg.load_from = args.checkpoint
 
     if args.show or args.show_dir:
         cfg = trigger_visualization_hook(cfg, args)

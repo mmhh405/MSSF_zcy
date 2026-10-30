@@ -1,0 +1,20 @@
+{
+  "verified_at": "2026-10-30T09:48:19.316414+08:00",
+  "status": "passed",
+  "mode": "pretrained_inference_only",
+  "samples": 16,
+  "run_dir": "/home/d514/projects/MSSF_zcy/work_dirs/baseline_mssf_pp_vod_smoke/20261030_094730_hookfix",
+  "log": "/home/d514/projects/MSSF_zcy/work_dirs/baseline_mssf_pp_vod_smoke/20261030_094730_hookfix/console.log",
+  "predictions": "/home/d514/projects/MSSF_zcy/work_dirs/baseline_mssf_pp_vod_smoke/20261030_094730_hookfix/predictions/pred_instances_3d.pkl",
+  "exit_code": 0,
+  "git_head": "0c9482f8b0d9dc1c43b17a68fd5312bad97e7ea7",
+  "working_tree_uncommitted": true,
+  "source_sha256": {
+    "configs/benchmark/mssf_pp_vod.py": "0b06c15a395fff63104d1e8e89da23b83b98a6b75724daac6af7e87109e93e5a",
+    "configs/benchmark/mssf_pp_vod_smoke.py": "de67f409fffd0cb9d5da453e419bddb9c1f41aaee906ad5ab987c7c5565d28be",
+    "mmdet3d/models/detectors/single_stage.py": "644e4e5e0010bb4bb8d3aab04f65fd5b115f24b719bad37ea3afa2bb77f587e8",
+    "mmdet3d/evaluation/metrics/vod_metric.py": "f5b6c80f4d12757d67486a11965bef4c2ba1e69ca8bcc7061960f8130964e36a",
+    "tools/test.py": "b8c7dd9131ddc47b2ef539b3ffe71bc1090b60124b3757f9c12f1a9186df0860"
+  },
+  "scope": "Smoke test only. Full 1296-frame paper accuracy and FPS have not been measured."
+}

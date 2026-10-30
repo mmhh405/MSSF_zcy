@@ -1,0 +1,13 @@
+{
+  "method": "MSSF-PP",
+  "samples": 1296,
+  "eaa_map": 63.2253,
+  "dc_map": 79.7823,
+  "metric": "ordinary 3D AP",
+  "config": "configs/benchmark/mssf_pp_vod.py",
+  "checkpoint": "exps/mssf_pp_vod/epoch_40.pth",
+  "checkpoint_sha256": "a81ba54ccb036adeb6cf0454034e5ab37cdda12d155c385a6fa4133f02dee504",
+  "run_dir": "work_dirs/baseline_mssf_pp_vod/20261030_095709",
+  "code_ref": "baseline/mssf-pp-vod-v1",
+  "training": "official pretrained checkpoint; no local training"
+}

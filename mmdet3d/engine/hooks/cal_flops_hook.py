@@ -14,7 +14,7 @@ from mmcv.ops.modulated_deform_conv import ModulatedDeformConv2dPack
 from torch.nn import MultiheadAttention
 from mmcv.cnn.bricks.transformer import MultiheadAttention as MultiheadAttention_mmcv
 from mmdet.models.backbones.swin import WindowMSA, ShiftWindowMSA
-from thop import profile, clever_format, profile_acts
+from thop import profile, clever_format
 
 class AverageMeter(object):
     """Computes and stores the average and current value"""
@@ -61,6 +61,13 @@ class CalFLOPsHook(Hook):
         return points
 
     def after_test_iter(self, runner: Runner, batch_idx: int, data_batch = None, outputs = None) -> None:
+        try:
+            from thop import profile_acts
+        except ImportError as exc:
+            raise RuntimeError(
+                'CalFLOPsHook requires the author-customized THOP profile_acts. '
+                'Leave this optional hook disabled for inference and benchmarking.'
+            ) from exc
         data_batch['inputs']['points'][0] = self.predefined_pts
         data = runner.model.data_preprocessor(data_batch, False)
         macs, params, acts, layer_infos = profile_acts(runner.model, inputs=(data['inputs'], data['data_samples'], 'predict'),

@@ -1,0 +1,21 @@
+{
+  "source_repository": "EricLiuhhh/MSSF",
+  "huggingface_revision": "0c4106c2640c536bc3d36fd1059c585ca7896401",
+  "source_archive": "MSSF_ckpt.zip",
+  "source_archive_lfs_sha256": "90f11603ab4310927afe39970cf6320778a20ae8339d0a2742bec181e0ac04cb",
+  "verification": "ZIP member CRC32 and size checked; member SHA256 calculated; full archive not downloaded",
+  "files": [
+    {
+      "path": "pointpillars_hv_secfpn_8xb6-160e_vod-3d-3class_mm_bb_bevfeat_lr0001.py",
+      "bytes": 20886,
+      "sha256": "17e7af9283de818f243e488d6e1494b9d49085897127bdaf07eb97bff2eee63b",
+      "crc32": "a65387c1"
+    },
+    {
+      "path": "epoch_40.pth",
+      "bytes": 182937759,
+      "sha256": "a81ba54ccb036adeb6cf0454034e5ab37cdda12d155c385a6fa4133f02dee504",
+      "crc32": "5fed0d91"
+    }
+  ]
+}

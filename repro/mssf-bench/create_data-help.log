@@ -1,0 +1,23 @@
+usage: create_data.py [-h] [--root-path ROOT_PATH] [--version VERSION]
+                      [--max-sweeps MAX_SWEEPS] [--with-plane]
+                      [--out-dir OUT_DIR] [--extra-tag EXTRA_TAG]
+                      [--workers WORKERS] [--only-gt-database]
+                      kitti
+
+Data converter arg parser
+
+positional arguments:
+  kitti                 name of the dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --root-path ROOT_PATH
+                        specify the root path of dataset
+  --version VERSION     specify the dataset version, no need for kitti
+  --max-sweeps MAX_SWEEPS
+                        specify sweeps of lidar per example
+  --with-plane          Whether to use plane information for kitti.
+  --out-dir OUT_DIR     name of info pkl
+  --extra-tag EXTRA_TAG
+  --workers WORKERS     number of threads to be used
+  --only-gt-database    Whether to only generate ground truth database.

@@ -1,0 +1,34 @@
+{
+  "source": "G:\\111\\VoD\\view_of_delft_PUBLIC\\radar_5frames",
+  "dataset_path": "/mnt/nas-share/MSSF_zcy/radar_5frames",
+  "variant": "radar_5frames",
+  "source_file_count": 82331,
+  "source_bytes": 6114650602,
+  "source_manifest_sha256": "a4b31569cc555d0ff1d6d1d58798f1710ee8c34ac3bb5bd7e62c3f1a8289b8d5",
+  "hashes_match": true,
+  "mismatch_count": 0,
+  "extra_files_count": 0,
+  "splits": {
+    "train": {
+      "count": 5139,
+      "sha256": "016f860b82f91a6c32d72a7fc7d00c0af3edc5b59ee112379c2046f67d6c1baa"
+    },
+    "val": {
+      "count": 1296,
+      "sha256": "12aa11983ebf881e65e6a1c6e3c6d2a6c6049805f3aa4c0cbfb866c01bf09dd8"
+    },
+    "test": {
+      "count": 2247,
+      "sha256": "1bf5a0a63030501ecfbef05209d8140f3e10fb9b748d1a9b83a4095c50dfb401"
+    }
+  },
+  "split_files_missing": [],
+  "verification_seconds": 40.96,
+  "passed": true,
+  "verified_at": "2026-10-29T20:46:36+08:00",
+  "repository_data_link": "/home/d514/projects/MSSF_zcy/data/vod",
+  "repository_data_link_target": "/mnt/nas-share/MSSF_zcy/radar_5frames",
+  "verification_record_directory": "/mnt/nas-share/MSSF_zcy/.verification/a4b31569cc555d0f",
+  "transfer_action": "reused_existing_NAS_dataset_after_complete_source_SHA256_comparison",
+  "all_split_files_available": true
+}

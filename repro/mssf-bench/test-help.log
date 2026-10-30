@@ -1,0 +1,56 @@
+usage: test.py [-h] [--checkpoint CHECKPOINT] [--save_dir SAVE_DIR]
+               [--pkl_save_dir PKL_SAVE_DIR]
+               [--pr_curve_save_dir PR_CURVE_SAVE_DIR]
+               [--output_detsample_dir OUTPUT_DETSAMPLE_DIR] [--metric METRIC]
+               [--work-dir WORK_DIR] [--ceph] [--show] [--show-dir SHOW_DIR]
+               [--score-thr SCORE_THR]
+               [--task {mono_det,multi-view_det,lidar_det,lidar_seg,multi-modality_det}]
+               [--wait-time WAIT_TIME]
+               [--cfg-options CFG_OPTIONS [CFG_OPTIONS ...]]
+               [--launcher {none,pytorch,slurm,mpi}] [--tta]
+               [--local_rank LOCAL_RANK]
+               config
+
+MMDet3D test (and eval) a model
+
+positional arguments:
+  config                test config file path
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --checkpoint CHECKPOINT
+                        checkpoint file
+  --save_dir SAVE_DIR   save detection results
+  --pkl_save_dir PKL_SAVE_DIR
+                        save pickle file
+  --pr_curve_save_dir PR_CURVE_SAVE_DIR
+                        save PR curve
+  --output_detsample_dir OUTPUT_DETSAMPLE_DIR
+                        output_detsample_dir
+  --metric METRIC       metric
+  --work-dir WORK_DIR   the directory to save the file containing evaluation
+                        metrics
+  --ceph                Use ceph as data storage backend
+  --show                show prediction results
+  --show-dir SHOW_DIR   directory where painted images will be saved. If
+                        specified, it will be automatically saved to the
+                        work_dir/timestamp/show_dir
+  --score-thr SCORE_THR
+                        bbox score threshold
+  --task {mono_det,multi-view_det,lidar_det,lidar_seg,multi-modality_det}
+                        Determine the visualization method depending on the
+                        task.
+  --wait-time WAIT_TIME
+                        the interval of show (s)
+  --cfg-options CFG_OPTIONS [CFG_OPTIONS ...]
+                        override some settings in the used config, the key-
+                        value pair in xxx=yyy format will be merged into
+                        config file. If the value to be overwritten is a list,
+                        it should be like key="[a,b]" or key=a,b It also
+                        allows nested list/tuple values, e.g.
+                        key="[(a,b),(c,d)]" Note that the quotation marks are
+                        necessary and that no white space is allowed.
+  --launcher {none,pytorch,slurm,mpi}
+                        job launcher
+  --tta                 Test time augmentation
+  --local_rank LOCAL_RANK, --local-rank LOCAL_RANK
