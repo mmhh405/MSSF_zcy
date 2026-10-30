@@ -1,6 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 from .dbsampler import DataBaseSampler
 from .formating import Pack3DDetInputs
+from .image_degradation import RandomImageDegradation, PackReliabilityInputs
 from .loading import (LidarDet3DInferencerLoader, LoadAnnotations3D,
                       LoadImageFromFileMono3D, LoadMultiViewImageFromFiles,
                       LoadPointsFromDict, LoadPointsFromFile,
@@ -20,7 +21,8 @@ from .transforms_3d import (AffineResize, BackgroundPointsFilter,
                             RandomShiftScale, Resize3D, VoxelBasedPointSampler)
 
 __all__ = [
-    'ObjectSample', 'RandomFlip3D', 'ObjectNoise', 'GlobalRotScaleTrans',
+    'ObjectSample', 'RandomFlip3D', 'RandomImageDegradation', 'PackReliabilityInputs',
+    'ObjectNoise', 'GlobalRotScaleTrans',
     'PointShuffle', 'ObjectRangeFilter', 'PointsRangeFilter',
     'Pack3DDetInputs', 'LoadMultiViewImageFromFiles', 'LoadPointsFromFile',
     'DataBaseSampler', 'NormalizePointsColor', 'LoadAnnotations3D',

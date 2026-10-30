@@ -18,6 +18,7 @@ from mmdet3d.models.data_preprocessors.voxelize import VoxelizationByGridShape
 from mmdet3d.models.layers import make_sparse_convmodule
 from mmdet3d.structures.bbox_3d import get_proj_mat_by_coord_type
 from mmdet3d.models.layers.fusion_layers.voxel_fusion import proj_to_img
+from mmdet3d.models.layers.fusion_layers.query_reliability import build_query_gate, gate_query_image
 
 if IS_SPCONV2_AVAILABLE:
     from spconv.pytorch import SparseConvTensor, SparseSequential
@@ -205,6 +206,9 @@ class SECONDFuse(BaseModule):
                         lateral_conv=False, 
                         fuse_out=False)
         self.voxel_fuse = MODELS.build(voxel_fuse)
+        self.query_reliability_gate = build_query_gate(
+            self.optional_cfg.get('query_reliability_gate'), self.base_channels,
+            self.init_query_img_dim)
 
         self.fuse_bev = fuse_bev
         if fuse_bev:
@@ -386,6 +390,10 @@ class SECONDFuse(BaseModule):
             for i in range(bs):
                 sampled_img_feats[batch_mask_list[i]] = sampled_img_feats_list[i]
             #sampled_img_feats = torch.cat(sampled_img_feats_list)
+            sampled_img_feats = gate_query_image(
+                self.query_reliability_gate, x_conv.features[non_empty_inds],
+                sampled_img_feats, non_empty_centroids, non_empty_centroids_coor,
+                batch_input_meta)
             init_query.append(sampled_img_feats)
 
         if 'voxel' in self.query_init_feat_src:

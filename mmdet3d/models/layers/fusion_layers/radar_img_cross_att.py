@@ -80,7 +80,8 @@ class RadarImageCrossAttention(BaseModule):
                 spatial_shapes=None,
                 reference_points_cams=None,
                 level_start_index=None,
-                radar_features=None, projection_valid=None, geometry=None):
+                radar_features=None, projection_valid=None, geometry=None,
+                clean_mask=None):
         """Forward Function of Detr3DCrossAtten.
 
         Args:
@@ -122,6 +123,7 @@ class RadarImageCrossAttention(BaseModule):
             radar_features=radar_features,
             projection_valid=projection_valid,
             geometry=geometry,
+            clean_mask=clean_mask,
         )
 
         return updated_query, sample_locs, sample_weights
@@ -355,9 +357,12 @@ class MSDeformableAttention(BaseModule):
             if any(kwargs.get(key) is None for key in required):
                 raise ValueError('Enabled reliability gate requires radar/projection context')
             # Gate only the image update, before adding the original identity.
+            gate_kwargs = {}
+            if getattr(self.reliability_gate, 'supports_clean_anchor', False):
+                gate_kwargs['clean_mask'] = kwargs.get('clean_mask')
             output = self.reliability_gate(kwargs['radar_features'],
                                            output, kwargs['projection_valid'],
-                                           kwargs['geometry'])
+                                           kwargs['geometry'], **gate_kwargs)
 
         if not self.batch_first:
             # (num_query, bs ,embed_dims)

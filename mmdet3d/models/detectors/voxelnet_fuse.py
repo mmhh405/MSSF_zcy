@@ -13,6 +13,7 @@ else:
     from mmcv.ops import SparseConvTensor
 from .single_stage import SingleStage3DDetector
 from ..backbones.second_fuse import SECONDFuse
+from ..layers.fusion_layers.reliability_gate_v2 import ReliabilityGateV2
 
 @MODELS.register_module()
 class VoxelNetFuse(SingleStage3DDetector):
@@ -29,7 +30,9 @@ class VoxelNetFuse(SingleStage3DDetector):
                  train_cfg: OptConfigType = None,
                  test_cfg: OptConfigType = None,
                  data_preprocessor: OptConfigType = None,
-                 init_cfg: OptMultiConfig = None) -> None:
+                 init_cfg: OptMultiConfig = None,
+                 gate_clean_weight: float = 0.,
+                 freeze_norm_stats: bool = False) -> None:
         super().__init__(
             backbone=backbone,
             neck=neck,
@@ -47,6 +50,17 @@ class VoxelNetFuse(SingleStage3DDetector):
             self.img_neck = MODELS.build(img_neck)
             
         self.freeze_img = True
+        self.gate_clean_weight = float(gate_clean_weight)
+        self.freeze_norm_stats = freeze_norm_stats
+        self._v2_gates = [m for m in self.modules() if isinstance(m, ReliabilityGateV2)]
+
+    def train(self, mode=True):
+        super().train(mode)
+        if mode and self.freeze_norm_stats:
+            for module in self.modules():
+                if isinstance(module, torch.nn.modules.batchnorm._BatchNorm):
+                    module.eval()
+        return self
 
     def init_weights(self):
         """Initialize model weights."""
@@ -231,7 +245,20 @@ class VoxelNetFuse(SingleStage3DDetector):
         return detsamples
 
     
-    def loss(self, batch_inputs_dict: Dict[List, torch.Tensor],
+    def loss(self, batch_inputs_dict, batch_data_samples, **kwargs):
+        for gate in self._v2_gates:
+            gate.reset_clean_anchor()
+        losses = self._loss_detection(batch_inputs_dict, batch_data_samples, **kwargs)
+        if self._v2_gates:
+            totals = [gate.consume_clean_anchor() for gate in self._v2_gates]
+            numerator = sum(item[0] for item in totals)
+            denominator = sum(item[1] for item in totals).clamp_min(1)
+            anchor = numerator / denominator
+            losses['loss_gate_clean'] = anchor * self.gate_clean_weight
+            losses['gate_clean_mse'] = anchor
+        return losses
+
+    def _loss_detection(self, batch_inputs_dict: Dict[List, torch.Tensor],
              batch_data_samples: List[Det3DDataSample],
              **kwargs) -> List[Det3DDataSample]:
         """

@@ -102,3 +102,7 @@ If you find our paper and code useful for your research, please consider citing 
 ## Reliability-aware fusion experiment
 
 See [the implementation and experiment log](README_reliability_fusion.md).
+
+## Reliability-aware fusion V2
+
+See [V2 implementation, ablations and experiment results](README_reliability_fusion_v2.md).

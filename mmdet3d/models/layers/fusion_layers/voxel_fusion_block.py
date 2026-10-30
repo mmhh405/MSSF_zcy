@@ -78,6 +78,10 @@ class VoxelFusionBlock(BaseModule):
                 valid, geometry = self.projection_context(points, meta)
                 reliability_context = dict(radar_features=x.features[inds][None],
                                            projection_valid=valid, geometry=geometry)
+                if getattr(self.img_cross_att.deformable_attention.reliability_gate,
+                           'supports_clean_anchor', False):
+                    reliability_context['clean_mask'] = torch.full_like(
+                        valid, bool(meta.get('v2_is_clean', True)))
             
             ms_feats, sample_locs, sample_weights = self.img_cross_att(
                             query=non_empty_voxel_feats.unsqueeze(0),

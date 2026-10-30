@@ -11,3 +11,5 @@ __pycache__/
 
 # Transient lock used by the experiment result recorder.
 /repro/reliability_fusion/*.lock
+
+/repro/reliability_fusion_v2/*.lock

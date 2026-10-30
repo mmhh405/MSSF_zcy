@@ -25,11 +25,14 @@ def _atomic_write(path, text):
     temporary.replace(path)
 
 
-def update_result_files(root, entry):
+def update_result_files(root, entry, readme_path='README_reliability_fusion.md',
+                        ledger_path='repro/reliability_fusion/results.json'):
     """Upsert a run's latest result; full epoch history remains in the run folder."""
     root = Path(root)
-    ledger = root / 'repro/reliability_fusion/results.json'
-    readme = root / 'README_reliability_fusion.md'
+    ledger = root / ledger_path
+    readme = root / readme_path
+    if any(root.resolve() not in p.resolve().parents for p in [ledger, readme]):
+        raise ValueError('Result paths must stay inside the project')
     ledger.parent.mkdir(parents=True, exist_ok=True)
     with FileLock(str(ledger) + '.lock'):
         records = json.loads(ledger.read_text()) if ledger.exists() else []
@@ -68,6 +71,11 @@ class ReliabilityExperimentHook(Hook):
     Smoke runs are explicitly labelled; absent metrics are never filled with zero.
     """
     priority = 'LOWEST'
+
+    def __init__(self, readme='README_reliability_fusion.md',
+                 results='repro/reliability_fusion/results.json'):
+        self.readme = readme
+        self.results = results
 
     def before_run(self, runner):
         self.history = []
@@ -117,6 +125,12 @@ class ReliabilityExperimentHook(Hook):
                     runner.message_hub.get_scalar('train/loss').current())
             except KeyError:
                 pass
+            for key in ['loss_gate_clean', 'gate_clean_mse']:
+                try:
+                    entry['last_logged_' + key] = float(
+                        runner.message_hub.get_scalar('train/' + key).current())
+                except KeyError:
+                    pass
         checkpoint = runner.message_hub.get_info('last_ckpt')
         if checkpoint:
             entry['last_checkpoint'] = checkpoint
@@ -124,7 +138,7 @@ class ReliabilityExperimentHook(Hook):
                       json.dumps(dict(summary=entry, history=self.history),
                                  ensure_ascii=False, indent=2) + '\n')
         try:
-            update_result_files(ROOT, entry)
+            update_result_files(ROOT, entry, self.readme, self.results)
         except (OSError, ValueError) as error:
             runner.logger.warning('Could not update experiment README: %s. '
                                   'Metrics remain in reliability_result.json.', error)

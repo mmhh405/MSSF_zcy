@@ -98,7 +98,7 @@ class GateObserver:
         self.records = {}
         self.handles = []
         for name, module in model.named_modules():
-            if module.__class__.__name__ != 'ReliabilityGate':
+            if module.__class__.__name__ not in ('ReliabilityGate', 'ReliabilityGateV2'):
                 continue
             self.records[name] = dict(scores=[], queries=0, valid=0)
             def observe(gate, args, output, name=name):
@@ -138,13 +138,16 @@ def file_hash(path):
     return digest.hexdigest()
 
 
-def write_readme(report):
+def write_readme(report, readme_path='README_reliability_fusion.md',
+                 archive_dir='repro/reliability_fusion/robustness'):
     """Keep training results intact; update a separate diagnostic section."""
     from mmdet3d.engine.hooks.reliability_experiment_hook import _atomic_write
-    target = ROOT / 'README_reliability_fusion.md'
-    archive = ROOT / 'repro/reliability_fusion/robustness' / (report['run_id'] + '.json')
+    target = ROOT / readme_path
+    archive = ROOT / archive_dir / (report['run_id'] + '.json')
+    if any(ROOT not in p.resolve().parents for p in [target, archive]):
+        raise ValueError('Result paths must stay inside the project')
     archive.parent.mkdir(parents=True, exist_ok=True)
-    with FileLock(str(ROOT / 'repro/reliability_fusion/robustness.lock')):
+    with FileLock(str(archive.parent.parent / 'robustness.lock')):
         text = target.read_text(encoding='utf-8')
         rows = ['| 条件 | 样本数 | 对照 EAA | 门控 EAA | 门控减对照 | 对照 DC | 门控 DC | 门控减对照 |',
                 '|---|---:|---:|---:|---:|---:|---:|---:|']
@@ -163,7 +166,8 @@ def write_readme(report):
                 continue
             for name, stats in row['gates'].items():
                 if stats['mean'] is not None:
-                    rows.append(f"| {row['condition']} | {name.split('.')[0]} | "
+                    label = name.split('.')[0] + ('/query' if 'query_reliability_gate' in name else '/attention')
+                    rows.append(f"| {row['condition']} | {label} | "
                                 f"{stats['mean']:.7f} | {stats['std']:.7f} | "
                                 f"{stats['fraction_below_0_9']:.5f} |")
         kind = '完整验证集受控退化评测' if report['full_validation'] else '子集诊断，不能与论文完整验证集分数比较'
@@ -186,6 +190,10 @@ def main():
     parser.add_argument('--control-checkpoint', default='work_dirs/reliability_fusion/control/20261030_111629/epoch_6.pth')
     parser.add_argument('--gate-checkpoint', default='work_dirs/reliability_fusion/gate/20261030_152139/epoch_6.pth')
     parser.add_argument('--work-dir')
+    parser.add_argument('--control-config', default='configs/experiments/reliability_fusion/mssf_pp_vod_control.py')
+    parser.add_argument('--gate-config', default='configs/experiments/reliability_fusion/mssf_pp_vod_gate.py')
+    parser.add_argument('--readme', default='README_reliability_fusion.md')
+    parser.add_argument('--archive-dir', default='repro/reliability_fusion/robustness')
     parser.add_argument('--no-record-readme', action='store_true')
     args = parser.parse_args()
     if Path.cwd().resolve() != ROOT:
@@ -215,7 +223,7 @@ def main():
                   git_dirty_at_start=bool(subprocess.check_output(['git', 'status', '--porcelain'], text=True).strip()),
                   checkpoints={}, results=[], training=False, output_dir=str(output))
     for name, checkpoint in [('control', args.control_checkpoint), ('gate', args.gate_checkpoint)]:
-        config_path = f'configs/experiments/reliability_fusion/mssf_pp_vod_{name}.py'
+        config_path = args.control_config if name == 'control' else args.gate_config
         cfg = Config.fromfile(config_path)
         cfg.test_dataloader.dataset.indices = indices
         cfg.test_dataloader.num_workers = 0
@@ -268,7 +276,7 @@ def main():
     report['valid'] = True
     (output / 'summary.json').write_text(json.dumps(report, indent=2) + '\n')
     if not args.no_record_readme:
-        write_readme(report)
+        write_readme(report, args.readme, args.archive_dir)
     print('COMPLETED', output / 'summary.json', flush=True)
 
 
