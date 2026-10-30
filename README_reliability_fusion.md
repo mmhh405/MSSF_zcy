@@ -193,3 +193,35 @@ Hook 按运行目录和时间标识更新每次运行的最近一次验证结果
 第一版源码与结果保留；本次没有修改算法、训练配置或启动下一轮训练。后续版本应独立记录，不能覆盖这一轮结果。
 
 实验及 checkpoint 哈希：[门控实验记录](repro/reliability_fusion/gate-20261030_152139.json)；抽样索引和完整分布：[门控诊断](repro/reliability_fusion/gate-probe-20261030_162211.json)。完整 epoch 历史仍在运行目录 `reliability_result.json` 中。
+
+## 下一阶段：成对图像退化评测
+
+诊断分支：`analysis/reliability-robustness`，从已固定的 `experiment/reliability-gate-v1` 创建。本阶段仅新增诊断工具，不修改模型、checkpoint、训练配置或原始数据。
+
+新增文件：
+
+- [tools/analysis_tools/reliability_robustness.py:1](tools/analysis_tools/reliability_robustness.py#L1)：成对精度与门控分布诊断、固定图像退化、结果归档和本 README 更新。
+- [tests/test_reliability_robustness.py:1](tests/test_reliability_robustness.py#L1)：5 项检查，验证图像变化、尺寸/类型、确定性及雷达/标注/几何不变。
+
+条件在评测前固定：`clean` 原图；`dark` 像素乘 0.2；`blur` 21×21 Gaussian、sigma=5；`occlusion` 中心 50% 宽×50% 高区域置零（约 25% 面积）。可选 `blackout` 将全部像素置零，但仍执行图像分支，并非雷达单模态回退。上述变化只在图像解码后的内存中执行，不改变几何尺寸、雷达点或标注，也不写回数据集。
+
+两组分别严格加载各自第 6 epoch checkpoint，采用相同均匀样本索引、条件和随机种子。先使用 32 帧排查门控是否响应图像变化；子集 AP 仅用于诊断。完整确认时使用 `--samples 1296`。合成退化结果不能直接称作真实夜间或恶劣天气性能。
+
+```bash
+conda activate mssf-bench
+cd '/home/d514/桌面/zcy/MSSF_zcy'
+git switch analysis/reliability-robustness
+python tests/test_reliability_robustness.py
+
+RUN="work_dirs/reliability_fusion/robustness/$(date +%Y%m%d_%H%M%S)_full"
+mkdir -p "$RUN"
+nohup env CUDA_VISIBLE_DEVICES=0 python -u tools/analysis_tools/reliability_robustness.py \
+  --samples 1296 --conditions clean dark blur occlusion \
+  --work-dir "$RUN" > "$RUN/console.log" 2>&1 < /dev/null &
+echo $! > "$RUN/process.pid"
+tail -f "$RUN/console.log"
+```
+
+脚本顺序评测两组的全部条件，全部完成后生成 `summary.json` 并更新下方独立诊断区；历史摘要保存到 `repro/reliability_fusion/robustness/`，训练结果表不受覆盖。`progress.json` 是未完成运行的进度，不能当成完整结果。完整日志、解析配置和每种条件的预测保留在运行目录。
+
+判断时同时检查退化后 AP、相对各自 clean 的下降，以及有效投影体素的门控均值/标准差。门控低不等于预测更准确，是否有效仍需精度支持。门控统计会重新计算该小模块以读取实际分数，因此本脚本不能用作 FPS 基准。
