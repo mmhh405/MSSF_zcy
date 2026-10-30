@@ -2,7 +2,7 @@
 
 分支：`feat/reliability-gate-v2`，从 V1 全量退化分析提交 `8fde873` 创建。V1 的模型、配置和结果保留在原分支/标签及 `README_reliability_fusion.md` 中。
 
-当前阶段：代码与接入验证完成，共新增 18820 个参数、4 个门控。正式 6 epoch 训练尚未启动，尚无 V2 完整验证集精度或鲁棒性结论。
+当前阶段：代码与接入验证完成，共新增 18820 个参数、4 个门控。正式实验使用顺序队列运行三个 6 epoch 任务；实时状态见队列 status.json，尚无 V2 完整验证集精度或鲁棒性结论。
 
 ## 设计与边界
 
@@ -54,6 +54,7 @@ V2 控制组与门控组均固定 BatchNorm/SyncBN 的运行统计量，仿射�
 | [configs/experiments/reliability_fusion_v2/smoke_inference.py:2](configs/experiments/reliability_fusion_v2/smoke_inference.py#L2) | V2 控制、消融或接入检查配置；详下方配置表 |
 | [configs/experiments/reliability_fusion_v2/smoke_train.py:2](configs/experiments/reliability_fusion_v2/smoke_train.py#L2) | V2 控制、消融或接入检查配置；详下方配置表 |
 | [repro/reliability_fusion_v2/verification.json:1](repro/reliability_fusion_v2/verification.json#L1) | 本次测试、梯度、BN 统计、源码哈希和真实接入记录 |
+| [tools/analysis_tools/run_reliability_v2.py:1](tools/analysis_tools/run_reliability_v2.py#L1) | GPU 0 顺序运行三个正式实验，保存状态、日志与代码哈希，失败时停止后续实验 |
 
 <!-- FILE_LOCATIONS_END -->
 
@@ -103,7 +104,7 @@ python -u tools/train.py configs/experiments/reliability_fusion_v2/smoke_train.p
   --work-dir "$RUN" 2>&1 | tee "$RUN/console.log"
 ```
 
-## 正式实验（本次不启动）
+## 正式实验
 
 先完成 `control_clean.py` 与 `control_aug.py`，再运行 `gate_main.py`；其他配置用于比较最简 V2 注意力门控包、query 入口、增强和清晰约束。当前未单独消融能量特征，因此不能把最简 V2 与旧版的差异仅归因于门控函数或初始化。各运行使用独立 `work_dirs/reliability_fusion_v2/<variant>/<timestamp>`。同一 GPU 顺序运行。
 
@@ -119,6 +120,19 @@ tail -f "$RUN/console.log"
 ```
 
 主版本应与 `control_aug.py` 的同预算结果比较，并分别报告是否超过官方未额外微调基线。所有配置的训练/验证 Hook 均只更新本 V2 README 和 `repro/reliability_fusion_v2/results.json`，不会覆盖 V1 结果。完整逐轮历史在运行目录的 `reliability_result.json` 中；表中只显示每次运行最近一次验证值。
+
+
+### 顺序队列
+
+使用已激活的 mssf-bench 环境，在项目根目录执行：
+
+```bash
+QUEUE="work_dirs/reliability_fusion_v2/queue/$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$(dirname "$QUEUE")"
+nohup python -u tools/analysis_tools/run_reliability_v2.py --work-dir "$QUEUE" > "${QUEUE}.log" 2>&1 < /dev/null &
+```
+
+队列顺序为 control_clean、control_aug、gate_main，各 6 epoch、seed 0、batch size 1，均从官方 epoch_40.pth 初始化。队列的 status.json 记录进程、每组目录、代码提交与源文件哈希，失败时停止。每组 console.log 位于各自运行目录；SSH 断开后继续运行。代码在运行期间应保持不变。首组启动后，结果 Hook 自动更新 README/结果 JSON，所以后续组的全工作区 dirty 标记可能为真；队列仍逐组核对算法文件哈希与提交，确保代码一致。
 
 ## 训练后退化评测
 
