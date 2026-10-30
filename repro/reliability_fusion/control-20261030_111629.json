@@ -1,0 +1,58 @@
+{
+  "experiment": "control-finetune",
+  "status": "training_completed",
+  "code_commit": "d5d1a9595789c0e2abf444491c53d80e0ca478a5",
+  "git_dirty_at_start": false,
+  "config": "configs/experiments/reliability_fusion/mssf_pp_vod_control.py",
+  "initialization_checkpoint": "exps/mssf_pp_vod/epoch_40.pth",
+  "epochs": 6,
+  "train_samples": 5139,
+  "validation_samples": 1296,
+  "iterations": 30834,
+  "batch_size": 1,
+  "initial_lr": 1e-05,
+  "random_seed": 0,
+  "checkpoint": "work_dirs/reliability_fusion/control/20261030_111629/epoch_6.pth",
+  "checkpoint_sha256": "b4b74b53748e271b94e44ad4ee4447a6498cfebba1f7285bffffe8cedd334cf0",
+  "checkpoint_bytes": 178790661,
+  "eaa_map": 62.8621,
+  "dc_map": 79.6676,
+  "delta_vs_official_checkpoint": {
+    "eaa_map": -0.3632,
+    "dc_map": -0.1147
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "eaa_map": 62.9696,
+      "dc_map": 79.6965
+    },
+    {
+      "epoch": 2,
+      "eaa_map": 62.972,
+      "dc_map": 79.6907
+    },
+    {
+      "epoch": 3,
+      "eaa_map": 62.865,
+      "dc_map": 79.3789
+    },
+    {
+      "epoch": 4,
+      "eaa_map": 62.8975,
+      "dc_map": 79.6645
+    },
+    {
+      "epoch": 5,
+      "eaa_map": 62.9251,
+      "dc_map": 79.7046
+    },
+    {
+      "epoch": 6,
+      "eaa_map": 62.8621,
+      "dc_map": 79.6676
+    }
+  ],
+  "run_dir": "work_dirs/reliability_fusion/control/20261030_111629",
+  "completed_at": "2026-10-30T11:58:32.049710+08:00"
+}

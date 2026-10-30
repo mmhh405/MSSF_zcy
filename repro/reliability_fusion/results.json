@@ -64,5 +64,28 @@
     "validation_epoch": 1,
     "last_checkpoint": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion/epoch_smoke/20261030_105628/epoch_1.pth",
     "iterations": 2
+  },
+  {
+    "run_id": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion/control/20261030_111629/20261030_111631",
+    "variant": "control-finetune",
+    "purpose": "finetune",
+    "work_dir": "work_dirs/reliability_fusion/control/20261030_111629",
+    "git_commit": "d5d1a9595789c0e2abf444491c53d80e0ca478a5",
+    "git_dirty_at_start": false,
+    "config": "configs/experiments/reliability_fusion/mssf_pp_vod_control.py",
+    "initialization_checkpoint": "exps/mssf_pp_vod/epoch_40.pth",
+    "random_seed": 0,
+    "status": "training_completed",
+    "training_completed": true,
+    "updated_at": "2026-10-30T11:58:32.049710+08:00",
+    "phase": "training_completed",
+    "eaa_map": 62.8621,
+    "dc_map": 79.6676,
+    "samples": 1296,
+    "validation_epoch": 6,
+    "last_checkpoint": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion/control/20261030_111629/epoch_6.pth",
+    "iterations": 30834,
+    "train_samples": 5139,
+    "last_logged_train_loss": 0.2170848399400711
   }
 ]

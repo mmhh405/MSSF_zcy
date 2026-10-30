@@ -128,7 +128,29 @@ Hook 按运行目录和时间标识更新每次运行的最近一次验证结果
 | gate-untrained-inference | smoke_only | 16 | — | 24.9956 | 17.7489 | a67da656+dirty | work_dirs/reliability_fusion/gate_smoke/20261030_105333 |
 | gate-two-iteration-backward | smoke_only | — | — | — | — | a67da656+dirty | work_dirs/reliability_fusion/train_smoke/20261030_105443 |
 | gate-epoch-validation-integration | smoke_only | 16 | 1 | 25.4473 | 17.8030 | a67da656+dirty | work_dirs/reliability_fusion/epoch_smoke/20261030_105628 |
+| control-finetune | training_completed | 1296 | 6 | 62.8621 | 79.6676 | d5d1a959 | work_dirs/reliability_fusion/control/20261030_111629 |
 
 <!-- RELIABILITY_RESULTS_END -->
 
 结果索引：`repro/reliability_fusion/results.json`。README 和小体积结果索引可提交到 Git；数据、模型权重、优化器状态和完整预测继续存放在已忽略的实验目录/NAS。记录中的 `git_dirty_at_start` 表示启动时是否存在未提交修改，正式对照前应确认源码和配置已固定。
+
+## 对照实验分析（2026-10-30）
+
+运行目录：`work_dirs/reliability_fusion/control/20261030_111629`。训练正常完成：5139 帧训练、6 epoch、30834 次迭代；每次验证 1296 帧，未启用可靠性门控。启动时源码干净，代码提交为 `d5d1a959`。
+
+| Epoch | EAA mAP (%) | DC mAP (%) |
+|---:|---:|---:|
+| 1 | 62.9696 | 79.6965 |
+| 2 | 62.9720 | 79.6907 |
+| 3 | 62.8650 | 79.3789 |
+| 4 | 62.8975 | 79.6645 |
+| 5 | 62.9251 | 79.7046 |
+| 6 | 62.8621 | 79.6676 |
+
+**首轮按预先约定使用第 6 个 epoch：EAA 62.8621%、DC 79.6676%。** 相对官方 checkpoint 的本机基线（63.2253% / 79.7823%），分别下降 0.3632 和 0.1147 个百分点。6 个 epoch 的两项指标均低于该初始基线，说明当前额外微调方案没有提高原模型精度。具体回落原因尚未单独定位，不据此判定过拟合。
+
+接下来保持相同初始化、训练预算、学习率、batch size 和随机种子评估门控版本。门控实验仍从官方 `exps/mssf_pp_vod/epoch_40.pth` 初始化，不从本次对照微调的 `epoch_6.pth` 继续训练。
+
+门控相对 **62.8621% / 79.6676%** 的变化用于评估同预算下的模块作用；相对 **63.2253% / 79.7823%** 的变化用于评估是否超过原官方权重基线。两种比较均需报告，不能仅凭超过退化后的对照就宣称已超过原始 MSSF。
+
+本次使用普通 3D AP；截图上方的 R40 和 strict R40 另属不同口径。checkpoint 哈希、实验设置和完整 epoch 摘要见 [对照实验记录](repro/reliability_fusion/control-20261030_111629.json)。
