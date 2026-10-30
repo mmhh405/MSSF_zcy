@@ -1,0 +1,115 @@
+{
+  "reviewed_at": "2026-10-30T17:31:11.738269+08:00",
+  "run_dir": "work_dirs/reliability_fusion/robustness/20261030_164721_full",
+  "run_id": "20261030_164722",
+  "samples": 1296,
+  "valid": true,
+  "seed": 0,
+  "comparison": {
+    "clean": {
+      "control_eaa": 62.8621,
+      "gate_eaa": 62.8664,
+      "delta_eaa": 0.0043,
+      "control_dc": 79.6676,
+      "gate_dc": 79.6756,
+      "delta_dc": 0.008,
+      "control_eaa_drop": 0.0,
+      "gate_eaa_drop": 0.0,
+      "control_dc_drop": 0.0,
+      "gate_dc_drop": 0.0
+    },
+    "dark": {
+      "control_eaa": 48.8175,
+      "gate_eaa": 48.8351,
+      "delta_eaa": 0.0176,
+      "control_dc": 68.6226,
+      "gate_dc": 68.6164,
+      "delta_dc": -0.0062,
+      "control_eaa_drop": 14.0446,
+      "gate_eaa_drop": 14.0313,
+      "control_dc_drop": 11.045,
+      "gate_dc_drop": 11.0592
+    },
+    "blur": {
+      "control_eaa": 36.7055,
+      "gate_eaa": 36.774,
+      "delta_eaa": 0.0685,
+      "control_dc": 52.4652,
+      "gate_dc": 52.5132,
+      "delta_dc": 0.048,
+      "control_eaa_drop": 26.1566,
+      "gate_eaa_drop": 26.0924,
+      "control_dc_drop": 27.2024,
+      "gate_dc_drop": 27.1624
+    },
+    "occlusion": {
+      "control_eaa": 26.1116,
+      "gate_eaa": 26.1119,
+      "delta_eaa": 0.0003,
+      "control_dc": 36.9464,
+      "gate_dc": 37.0489,
+      "delta_dc": 0.1025,
+      "control_eaa_drop": 36.7505,
+      "gate_eaa_drop": 36.7545,
+      "control_dc_drop": 42.7212,
+      "gate_dc_drop": 42.6267
+    }
+  },
+  "gate_response": {
+    "backbone.fusion_blocks.x_conv1.img_cross_att.deformable_attention.reliability_gate": {
+      "means": {
+        "clean": 0.9905023574829102,
+        "dark": 0.9905343055725098,
+        "blur": 0.9904838800430298,
+        "occlusion": 0.9904658794403076
+      },
+      "standard_deviations": {
+        "clean": 0.00014104794536251575,
+        "dark": 0.00014801105135120451,
+        "blur": 0.00013357495481614023,
+        "occlusion": 0.00012325396528467536
+      },
+      "mean_range": 6.842613220214844e-05,
+      "all_projections_valid_in_protocol": true,
+      "all_fraction_below_0_9_zero": true
+    },
+    "middle_encoder.fusion_blocks.x_conv1.img_cross_att.deformable_attention.reliability_gate": {
+      "means": {
+        "clean": 0.990211546421051,
+        "dark": 0.9902256727218628,
+        "blur": 0.9902486205101013,
+        "occlusion": 0.9902306199073792
+      },
+      "standard_deviations": {
+        "clean": 5.8820918638957664e-05,
+        "dark": 5.370980215957388e-05,
+        "blur": 5.236463402980007e-05,
+        "occlusion": 5.274856084724888e-05
+      },
+      "mean_range": 3.707408905029297e-05,
+      "all_projections_valid_in_protocol": true,
+      "all_fraction_below_0_9_zero": true
+    }
+  },
+  "checkpoints": {
+    "control": {
+      "path": "work_dirs/reliability_fusion/control/20261030_111629/epoch_6.pth",
+      "sha256": "b4b74b53748e271b94e44ad4ee4447a6498cfebba1f7285bffffe8cedd334cf0",
+      "config": "configs/experiments/reliability_fusion/mssf_pp_vod_control.py",
+      "config_sha256": "dd5eb99596c521ae93f5adaae1bdac6d425005297e78052a9514daa3f451576d"
+    },
+    "gate": {
+      "path": "work_dirs/reliability_fusion/gate/20261030_152139/epoch_6.pth",
+      "sha256": "2debbcb5dc0c49fa0096523de8153ef82eb08e41483c697dc3a7e0a82cb044ad",
+      "config": "configs/experiments/reliability_fusion/mssf_pp_vod_gate.py",
+      "config_sha256": "85557ad488be0ce80005d36c3902bf0e9079b9a22a39d9dc9735f9c95b7eedb3"
+    }
+  },
+  "evaluation_code_commit": "22eae52e996f596dbd40335836ebcbd2ce819744",
+  "full_metrics": "repro/reliability_fusion/robustness/20261030_164722.json",
+  "scope": "Synthetic image changes at fixed severities on VoD validation; one seed, no statistical significance claim; not real nighttime/weather validation.",
+  "conclusion": "V1 gates remain near constant 0.99 across conditions; precision gains are small and inconsistent. The expected degradation-dependent reliability response is not demonstrated.",
+  "clean_gate_reevaluation_difference": 0.001,
+  "training_started": false,
+  "algorithm_changed": false
+}
