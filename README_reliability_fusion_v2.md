@@ -2,7 +2,7 @@
 
 分支：`feat/reliability-gate-v2`，从 V1 全量退化分析提交 `8fde873` 创建。V1 的模型、配置和结果保留在原分支/标签及 `README_reliability_fusion.md` 中。
 
-当前阶段：代码与接入验证完成，共新增 18820 个参数、4 个门控。正式实验使用顺序队列运行三个 6 epoch 任务；实时状态见队列 status.json，尚无 V2 完整验证集精度或鲁棒性结论。
+当前阶段：代码与接入验证完成，共新增 18820 个参数、4 个门控。三个 seed=0 正式实验已于 2026-10-30 23:53 完成，各 6 epoch，并完成 1296 帧干净验证；完整退化评测尚未进行。
 
 ## 设计与边界
 
@@ -55,6 +55,7 @@ V2 控制组与门控组均固定 BatchNorm/SyncBN 的运行统计量，仿射�
 | [configs/experiments/reliability_fusion_v2/smoke_train.py:2](configs/experiments/reliability_fusion_v2/smoke_train.py#L2) | V2 控制、消融或接入检查配置；详下方配置表 |
 | [repro/reliability_fusion_v2/verification.json:1](repro/reliability_fusion_v2/verification.json#L1) | 本次测试、梯度、BN 统计、源码哈希和真实接入记录 |
 | [tools/analysis_tools/run_reliability_v2.py:1](tools/analysis_tools/run_reliability_v2.py#L1) | GPU 0 顺序运行三个正式实验，保存状态、日志与代码哈希，失败时停止后续实验 |
+| [repro/reliability_fusion_v2/formal-seed0-20261030.json:1](repro/reliability_fusion_v2/formal-seed0-20261030.json#L1) | 首轮三个正式实验的逐轮指标、固定第 6 轮对比、权重哈希及证据 |
 
 <!-- FILE_LOCATIONS_END -->
 
@@ -176,6 +177,9 @@ python tools/analysis_tools/reliability_robustness.py --samples 1296 \
 |---|---|---:|---:|---:|---:|---|---|
 | v2-untrained-inference | smoke_only | 16 | — | 25.0645 | 17.7489 | e237d7f1 | work_dirs/reliability_fusion_v2/smoke_inference/20261030_175948 |
 | v2-four-iteration-backward | smoke_only | — | — | — | — | e237d7f1+dirty | work_dirs/reliability_fusion_v2/smoke_train/20261030_180638 |
+| v2-control-clean | training_completed | 1296 | 6 | 63.2782 | 79.7903 | bfa3c22d | work_dirs/reliability_fusion_v2/control_clean/20261030_214524 |
+| v2-control-aug | training_completed | 1296 | 6 | 63.5594 | 79.9024 | bfa3c22d+dirty | work_dirs/reliability_fusion_v2/control_aug/20261030_214524 |
+| v2-main | training_completed | 1296 | 6 | 63.5679 | 79.9167 | bfa3c22d+dirty | work_dirs/reliability_fusion_v2/gate_main/20261030_214524 |
 
 <!-- RELIABILITY_RESULTS_END -->
 
@@ -204,3 +208,30 @@ python tools/analysis_tools/reliability_robustness.py --samples 1296 \
 [完整参数、逐类指标与门控分布](repro/reliability_fusion_v2/robustness/20261030_181240.json)
 
 <!-- ROBUSTNESS_RESULTS_END -->
+
+## V2 首轮正式实验结论
+
+<!-- FORMAL_V2_SEED0_START -->
+
+三个实验均正常退出，各训练 5139 帧 × 6 epoch = 30834 步，验证 1296 帧，seed=0；统一比较预先固定的第 6 epoch，没有选择各组最优 epoch。代码提交 bfa3c22，队列记录的全部源文件哈希与审核时一致。后两组 dirty 标记来自前组自动更新 README/结果 JSON，算法文件没有变化。
+
+| 实验 | EAA mAP (%) | DC mAP (%) |
+|---|---:|---:|
+| 官方权重，本机未微调基线 | 63.2253 | 79.7823 |
+| V2 control_clean，无增强 | 63.2782 | 79.7903 |
+| V2 control_aug，同等图像增强 | 63.5594 | 79.9024 |
+| V2 gate_main，增强＋门控＋清晰约束 | 63.5679 | 79.9167 |
+
+口径为普通 3D AP 的 entire_area/map 与 roi/map，不是 R40/strict/BEV/AOS。截图 10/30 22:26:14 的结果属于 control_clean，而非 gate_main。
+
+- 增强相对无增强控制：EAA +0.2812、DC +0.1121 个百分点。
+- V2 主版本相对同增强控制：EAA +0.0085、DC +0.0143 个百分点。
+- V2 主版本相对本机官方权重：EAA +0.3426、DC +0.1344 个百分点，但包含额外训练和增强，不能全归因于门控。
+
+本轮干净集上的数值增益主要来自增强。门控与约束组合相对匹配控制的增益很小，单种子不足以认定有效或显著。四个门控输出层已从零初始化更新，训练日志也有非零清晰约束；这仅证明模块参与学习，不证明已学会可靠性。尚未进行正式退化评测，不能宣称鲁棒性改善。
+
+下一步固定 control_aug 与 gate_main 的 epoch_6.pth，在同一 1296 帧上进行 clean/dark/blur/occlusion 评测，并检查四个门控随图像质量变化的分布。
+
+[完整逐轮指标、checkpoint SHA-256 与审核证据](repro/reliability_fusion_v2/formal-seed0-20261030.json)
+
+<!-- FORMAL_V2_SEED0_END -->
