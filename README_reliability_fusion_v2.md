@@ -2,7 +2,7 @@
 
 分支：`feat/reliability-gate-v2`，从 V1 全量退化分析提交 `8fde873` 创建。V1 的模型、配置和结果保留在原分支/标签及 `README_reliability_fusion.md` 中。
 
-当前阶段：代码与接入验证完成，共新增 18820 个参数、4 个门控。主实验与同增强控制已完成 seed=0、1、2 的训练和完整评测，共 24 组模型/条件评测。遮挡收益在三个 seed 均为正；干净集基本持平；模糊 EAA 的行人表现仍需消融分析。
+当前阶段：代码与接入验证完成，共新增 18820 个参数、4 个门控。主实验与同增强控制已完成三个 seed 的完整评测；attention_only 与 no_anchor 的 seed=0 消融也于 2026-10-31 17:19 完成。query_only 已准备，尚未正式训练，用于补齐两类门控的组件组合。
 
 ## 设计与边界
 
@@ -61,6 +61,10 @@ V2 控制组与门控组均固定 BatchNorm/SyncBN 的运行统计量，仿射�
 | [repro/reliability_fusion_v2/multiseed/training-seeds0-1-2-20261031.json:1](repro/reliability_fusion_v2/multiseed/training-seeds0-1-2-20261031.json#L1) | 六个正式训练运行的完整逐轮记录和权重哈希 |
 | [repro/reliability_fusion_v2/multiseed/next-ablation-steps.md:1](repro/reliability_fusion_v2/multiseed/next-ablation-steps.md#L1) | 两项消融的目标、完整运行命令与判断标准 |
 | [tools/analysis_tools/run_reliability_v2_ablation.sh:1](tools/analysis_tools/run_reliability_v2_ablation.sh#L1) | 两项 seed=0 消融的顺序训练和完整评测入口 |
+| [configs/experiments/reliability_fusion_v2/gate_aug_query_only.py:1](configs/experiments/reliability_fusion_v2/gate_aug_query_only.py#L1) | 仅保留 query 门控的互补消融配置 |
+| [repro/reliability_fusion_v2/ablation/summary-seed0-20261031.json:1](repro/reliability_fusion_v2/ablation/summary-seed0-20261031.json#L1) | 两项消融相对完整 V2 和匹配控制的指标、逐类差值及核验 |
+| [repro/reliability_fusion_v2/ablation/training-seed0-20261031.json:1](repro/reliability_fusion_v2/ablation/training-seed0-20261031.json#L1) | 两项 seed=0 消融的逐轮训练验证记录 |
+| [repro/reliability_fusion_v2/ablation/next-query-only-steps.md:1](repro/reliability_fusion_v2/ablation/next-query-only-steps.md#L1) | query_only 下一步命令与判断标准 |
 
 <!-- FILE_LOCATIONS_END -->
 
@@ -189,6 +193,9 @@ python tools/analysis_tools/reliability_robustness.py --samples 1296 \
 | v2-gate_main-seed1 | training_completed | 1296 | 6 | 63.6084 | 79.9280 | 9b6cf69f+dirty | work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed1/gate_main |
 | v2-control_aug-seed2 | training_completed | 1296 | 6 | 63.4854 | 79.8451 | 9b6cf69f+dirty | work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed2/control_aug |
 | v2-gate_main-seed2 | training_completed | 1296 | 6 | 63.4799 | 79.8369 | 9b6cf69f+dirty | work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed2/gate_main |
+| v2-gate_aug_attention_only-seed0 | training_completed | 1296 | 6 | 63.6246 | 79.9244 | 96585b3d | work_dirs/reliability_fusion_v2/ablation/20261031_152210/gate_aug_attention_only |
+| v2-gate_aug_no_anchor-seed0 | training_completed | 1296 | 6 | 63.5951 | 79.9448 | 96585b3d+dirty | work_dirs/reliability_fusion_v2/ablation/20261031_152210/gate_aug_no_anchor |
+| v2-query-only-inference-smoke | smoke_only | 16 | — | 25.0645 | 17.7489 | 96585b3d+dirty | work_dirs/reliability_fusion_v2/verification/query_only_20261031_201158 |
 
 <!-- RELIABILITY_RESULTS_END -->
 
@@ -196,35 +203,35 @@ python tools/analysis_tools/reliability_robustness.py --samples 1296 \
 
 <!-- ROBUSTNESS_RESULTS_START -->
 
-完整验证集受控退化评测。同一批 1296 帧、固定所指定的两组权重，无训练。运行 `20261031_131224`；合成退化不等同真实夜间或恶劣天气。
+完整验证集受控退化评测。同一批 1296 帧、固定所指定的两组权重，无训练。运行 `20261031_170828`；合成退化不等同真实夜间或恶劣天气。
 
 | 条件 | 样本数 | 对照 EAA | 门控 EAA | 门控减对照 | 对照 DC | 门控 DC | 门控减对照 |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| clean | 1296 | 63.4854 | 63.4799 | -0.0055 | 79.8451 | 79.8369 | -0.0082 |
-| dark | 1296 | 56.3481 | 56.4804 | +0.1323 | 73.2276 | 73.3142 | +0.0866 |
-| blur | 1296 | 50.3926 | 50.7768 | +0.3842 | 68.1387 | 68.5057 | +0.3670 |
-| occlusion | 1296 | 48.1980 | 49.6764 | +1.4784 | 68.6256 | 70.7364 | +2.1108 |
+| clean | 1296 | 63.5594 | 63.5951 | +0.0357 | 79.9024 | 79.9448 | +0.0424 |
+| dark | 1296 | 56.4797 | 56.6613 | +0.1816 | 73.1134 | 73.2495 | +0.1361 |
+| blur | 1296 | 51.5202 | 50.8794 | -0.6408 | 68.1297 | 68.3783 | +0.2486 |
+| occlusion | 1296 | 48.0425 | 49.6233 | +1.5808 | 68.3006 | 70.9987 | +2.6981 |
 
 | 条件 | 门控阶段 | 有效查询门控均值 | 标准差 | 低于 0.9 的比例 |
 |---|---|---:|---:|---:|
-| clean | backbone/attention | 0.9904434 | 0.0657206 | 0.08191 |
-| clean | backbone/query | 1.0180882 | 0.0443156 | 0.02584 |
-| clean | middle_encoder/attention | 0.9690269 | 0.0296230 | 0.03024 |
-| clean | middle_encoder/query | 1.0255884 | 0.0569669 | 0.03090 |
-| dark | backbone/attention | 0.8392932 | 0.1764426 | 0.50001 |
-| dark | backbone/query | 1.0047565 | 0.0560005 | 0.06387 |
-| dark | middle_encoder/attention | 0.9333069 | 0.0424060 | 0.24281 |
-| dark | middle_encoder/query | 0.9312341 | 0.0833616 | 0.36479 |
-| blur | backbone/attention | 0.9466155 | 0.0909168 | 0.21444 |
-| blur | backbone/query | 0.8552787 | 0.1214637 | 0.63429 |
-| blur | middle_encoder/attention | 0.9381966 | 0.0363097 | 0.17062 |
-| blur | middle_encoder/query | 0.8941109 | 0.0782095 | 0.51135 |
-| occlusion | backbone/attention | 0.6796598 | 0.2877574 | 0.62979 |
-| occlusion | backbone/query | 1.0218196 | 0.0433870 | 0.02739 |
-| occlusion | middle_encoder/attention | 0.9092597 | 0.0651480 | 0.45461 |
-| occlusion | middle_encoder/query | 0.9138049 | 0.1370478 | 0.44336 |
+| clean | backbone/attention | 0.9731515 | 0.0782874 | 0.11243 |
+| clean | backbone/query | 1.0013696 | 0.0533558 | 0.05671 |
+| clean | middle_encoder/attention | 0.9594359 | 0.0326508 | 0.05496 |
+| clean | middle_encoder/query | 1.0302396 | 0.0538398 | 0.03463 |
+| dark | backbone/attention | 0.8392379 | 0.1909081 | 0.47593 |
+| dark | backbone/query | 0.9791718 | 0.0617231 | 0.12738 |
+| dark | middle_encoder/attention | 0.9324175 | 0.0458004 | 0.26450 |
+| dark | middle_encoder/query | 0.9411049 | 0.0942612 | 0.31942 |
+| blur | backbone/attention | 0.9388751 | 0.1068277 | 0.25380 |
+| blur | backbone/query | 0.8474076 | 0.1032608 | 0.68811 |
+| blur | middle_encoder/attention | 0.9212304 | 0.0380420 | 0.31036 |
+| blur | middle_encoder/query | 0.8983120 | 0.1017769 | 0.46099 |
+| occlusion | backbone/attention | 0.6276639 | 0.3082207 | 0.66806 |
+| occlusion | backbone/query | 0.9912169 | 0.0531147 | 0.07145 |
+| occlusion | middle_encoder/attention | 0.8971699 | 0.0638216 | 0.51277 |
+| occlusion | middle_encoder/query | 0.8895301 | 0.1697988 | 0.45899 |
 
-[完整参数、逐类指标与门控分布](repro/reliability_fusion_v2/robustness/20261031_131224.json)
+[完整参数、逐类指标与门控分布](repro/reliability_fusion_v2/robustness/20261031_170828.json)
 
 <!-- ROBUSTNESS_RESULTS_END -->
 
@@ -314,6 +321,29 @@ python tools/analysis_tools/reliability_robustness.py --samples 1296 \
 
 ### 接下来的实验
 
-先顺序运行 gate_aug_attention_only 与 gate_aug_no_anchor，seed=0、同一官方初始化、6 epoch，完整评测四种条件并比较现有控制与主模型。前者移除 query 门控组件及对应约束项，后者只将清晰约束系数置零。筛查后对关键消融补 seed=1、2，再讨论 V3。本次分析未启动新的训练。
+后续已完成 gate_aug_attention_only 与 gate_aug_no_anchor 的 seed=0 实验，结果见下节；下一步补 query_only，再对关键组件配置补 seed=1、2，之后讨论 V3。
 
 [多种子汇总 JSON](repro/reliability_fusion_v2/multiseed/summary-20261031.json)；[六个训练运行记录](repro/reliability_fusion_v2/multiseed/training-seeds0-1-2-20261031.json)；[下一步完整操作命令](repro/reliability_fusion_v2/multiseed/next-ablation-steps.md)。
+
+## seed=0 组件消融结果（2026-10-31）
+
+两项训练均为 6 epoch、30834 步；各完成四条件 × 两模型 × 1296 帧评测。源码提交 96585b3，所有 checkpoint 和配置哈希、相同控制权重及原始样本索引均已核对。两项实验是单 seed 筛查，不能当作多种子组件结论。
+
+下表每个单元为普通 3D AP 的 EAA / DC (%)。
+
+| 条件 | 完整 V2 | 关闭 query 门控 | 关闭清晰约束 |
+|---|---:|---:|---:|
+| clean | 63.5679 / 79.9167 | 63.6246 / 79.9244 | 63.5951 / 79.9448 |
+| dark | 56.6386 / 73.2465 | 56.5179 / 73.0787 | 56.6613 / 73.2495 |
+| blur | 50.9930 / 68.4166 | 50.6874 / 68.3685 | 50.8794 / 68.3783 |
+| occlusion | 49.5090 / 70.9080 | 49.4842 / 69.2434 | 49.6233 / 70.9987 |
+
+- 关闭 query 后，模糊 EAA/DC 相对完整 V2 为 -0.3056/-0.0481 个百分点，行人 EAA 也再降 0.1913。因此本轮不支持将模糊退步直接归因于 query 门控。
+- 关闭 query 后，遮挡 DC 下降 1.6646 个百分点，主要表现为 DC 行人 AP 下降 4.8742；完整 V2 暂保留 query 组件。
+- 关闭清晰约束后，干净 EAA/DC +0.0272/+0.0281、遮挡 +0.1143/+0.0907、模糊 -0.1136/-0.0383。变化较小且只有一个 seed，当前不能证明约束必要或不必要。
+- 各次控制组 checkpoint 完全相同，但 clean EAA 有最大约 0.0015 的重复评测差异，原始记录均保留。表格比较模型本身 AP；JSON 同时记录各自运行内的控制差值。
+- 下一步只运行 gate_aug_query_only：保留两个 query 门控、关闭两个注意力输出门控，补齐无门控/仅注意力/仅 query/两者都有的组合。anchor 仍按活动门控求平均，结果应解释为组件整体消融。
+
+[完整消融汇总](repro/reliability_fusion_v2/ablation/summary-seed0-20261031.json)；[query_only 操作命令](repro/reliability_fusion_v2/ablation/next-query-only-steps.md)。
+
+query_only 接入检查：CPU 模型确认只有两个 query 门控，官方权重仅缺少预期的 24 个新参数键；16 帧真实推理完成，初始恒等门控的 EAA/DC 为 25.0645/17.7489，与同前缀基线一致。这是未训练小样本验证，不是正式精度结果。正式训练仍待运行。

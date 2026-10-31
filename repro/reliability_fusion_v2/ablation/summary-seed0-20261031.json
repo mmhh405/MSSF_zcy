@@ -1,0 +1,720 @@
+{
+  "recorded_at": "2026-10-31T20:13:23.974196+08:00",
+  "training_seed": 0,
+  "epochs": 6,
+  "optimizer_steps": 30834,
+  "samples": 1296,
+  "completed_at": "2026-10-31T17:19:12+08:00",
+  "source_commit": "96585b3db4e34d768b588e322c55224d68f03e73",
+  "metric": "ordinary 3D AP, EAA=entire_area/map and DC=roi/map; all models use final epoch 6",
+  "rows": [
+    {
+      "condition": "clean",
+      "models": {
+        "full_v2": {
+          "eaa_map": 63.5679,
+          "dc_map": 79.9167,
+          "control_eaa": 63.5609,
+          "control_dc": 79.9024,
+          "delta_vs_own_control_pp": {
+            "eaa_map": 0.007,
+            "dc_map": 0.0143
+          },
+          "delta_vs_full_v2_pp": {
+            "eaa_map": 0.0,
+            "dc_map": 0.0
+          }
+        },
+        "attention_only": {
+          "eaa_map": 63.6246,
+          "dc_map": 79.9244,
+          "control_eaa": 63.5594,
+          "control_dc": 79.9024,
+          "delta_vs_own_control_pp": {
+            "eaa_map": 0.0652,
+            "dc_map": 0.022
+          },
+          "delta_vs_full_v2_pp": {
+            "eaa_map": 0.0567,
+            "dc_map": 0.0077
+          }
+        },
+        "no_anchor": {
+          "eaa_map": 63.5951,
+          "dc_map": 79.9448,
+          "control_eaa": 63.5594,
+          "control_dc": 79.9024,
+          "delta_vs_own_control_pp": {
+            "eaa_map": 0.0357,
+            "dc_map": 0.0424
+          },
+          "delta_vs_full_v2_pp": {
+            "eaa_map": 0.0272,
+            "dc_map": 0.0281
+          }
+        }
+      }
+    },
+    {
+      "condition": "dark",
+      "models": {
+        "full_v2": {
+          "eaa_map": 56.6386,
+          "dc_map": 73.2465,
+          "control_eaa": 56.4797,
+          "control_dc": 73.1134,
+          "delta_vs_own_control_pp": {
+            "eaa_map": 0.1589,
+            "dc_map": 0.1331
+          },
+          "delta_vs_full_v2_pp": {
+            "eaa_map": 0.0,
+            "dc_map": 0.0
+          }
+        },
+        "attention_only": {
+          "eaa_map": 56.5179,
+          "dc_map": 73.0787,
+          "control_eaa": 56.4797,
+          "control_dc": 73.1134,
+          "delta_vs_own_control_pp": {
+            "eaa_map": 0.0382,
+            "dc_map": -0.0347
+          },
+          "delta_vs_full_v2_pp": {
+            "eaa_map": -0.1207,
+            "dc_map": -0.1678
+          }
+        },
+        "no_anchor": {
+          "eaa_map": 56.6613,
+          "dc_map": 73.2495,
+          "control_eaa": 56.4797,
+          "control_dc": 73.1134,
+          "delta_vs_own_control_pp": {
+            "eaa_map": 0.1816,
+            "dc_map": 0.1361
+          },
+          "delta_vs_full_v2_pp": {
+            "eaa_map": 0.0227,
+            "dc_map": 0.003
+          }
+        }
+      }
+    },
+    {
+      "condition": "blur",
+      "models": {
+        "full_v2": {
+          "eaa_map": 50.993,
+          "dc_map": 68.4166,
+          "control_eaa": 51.5202,
+          "control_dc": 68.1297,
+          "delta_vs_own_control_pp": {
+            "eaa_map": -0.5272,
+            "dc_map": 0.2869
+          },
+          "delta_vs_full_v2_pp": {
+            "eaa_map": 0.0,
+            "dc_map": 0.0
+          }
+        },
+        "attention_only": {
+          "eaa_map": 50.6874,
+          "dc_map": 68.3685,
+          "control_eaa": 51.52,
+          "control_dc": 68.1297,
+          "delta_vs_own_control_pp": {
+            "eaa_map": -0.8326,
+            "dc_map": 0.2388
+          },
+          "delta_vs_full_v2_pp": {
+            "eaa_map": -0.3056,
+            "dc_map": -0.0481
+          }
+        },
+        "no_anchor": {
+          "eaa_map": 50.8794,
+          "dc_map": 68.3783,
+          "control_eaa": 51.5202,
+          "control_dc": 68.1297,
+          "delta_vs_own_control_pp": {
+            "eaa_map": -0.6408,
+            "dc_map": 0.2486
+          },
+          "delta_vs_full_v2_pp": {
+            "eaa_map": -0.1136,
+            "dc_map": -0.0383
+          }
+        }
+      }
+    },
+    {
+      "condition": "occlusion",
+      "models": {
+        "full_v2": {
+          "eaa_map": 49.509,
+          "dc_map": 70.908,
+          "control_eaa": 48.0431,
+          "control_dc": 68.3006,
+          "delta_vs_own_control_pp": {
+            "eaa_map": 1.4659,
+            "dc_map": 2.6074
+          },
+          "delta_vs_full_v2_pp": {
+            "eaa_map": 0.0,
+            "dc_map": 0.0
+          }
+        },
+        "attention_only": {
+          "eaa_map": 49.4842,
+          "dc_map": 69.2434,
+          "control_eaa": 48.0425,
+          "control_dc": 68.3006,
+          "delta_vs_own_control_pp": {
+            "eaa_map": 1.4417,
+            "dc_map": 0.9428
+          },
+          "delta_vs_full_v2_pp": {
+            "eaa_map": -0.0248,
+            "dc_map": -1.6646
+          }
+        },
+        "no_anchor": {
+          "eaa_map": 49.6233,
+          "dc_map": 70.9987,
+          "control_eaa": 48.0425,
+          "control_dc": 68.3006,
+          "delta_vs_own_control_pp": {
+            "eaa_map": 1.5808,
+            "dc_map": 2.6981
+          },
+          "delta_vs_full_v2_pp": {
+            "eaa_map": 0.1143,
+            "dc_map": 0.0907
+          }
+        }
+      }
+    }
+  ],
+  "per_class_deltas_vs_full_v2": [
+    {
+      "variant": "attention_only",
+      "condition": "clean",
+      "area": "entire_area",
+      "category": "Car",
+      "ap": 61.3479,
+      "full_v2_ap": 61.2787,
+      "delta_vs_full_v2_pp": 0.0692
+    },
+    {
+      "variant": "attention_only",
+      "condition": "clean",
+      "area": "entire_area",
+      "category": "Pedestrian",
+      "ap": 51.8209,
+      "full_v2_ap": 51.8086,
+      "delta_vs_full_v2_pp": 0.0123
+    },
+    {
+      "variant": "attention_only",
+      "condition": "clean",
+      "area": "entire_area",
+      "category": "Cyclist",
+      "ap": 77.7051,
+      "full_v2_ap": 77.6163,
+      "delta_vs_full_v2_pp": 0.0888
+    },
+    {
+      "variant": "attention_only",
+      "condition": "clean",
+      "area": "roi",
+      "category": "Car",
+      "ap": 90.4673,
+      "full_v2_ap": 90.4771,
+      "delta_vs_full_v2_pp": -0.0098
+    },
+    {
+      "variant": "attention_only",
+      "condition": "clean",
+      "area": "roi",
+      "category": "Pedestrian",
+      "ap": 60.9642,
+      "full_v2_ap": 60.9872,
+      "delta_vs_full_v2_pp": -0.023
+    },
+    {
+      "variant": "attention_only",
+      "condition": "clean",
+      "area": "roi",
+      "category": "Cyclist",
+      "ap": 88.3417,
+      "full_v2_ap": 88.2858,
+      "delta_vs_full_v2_pp": 0.0559
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "clean",
+      "area": "entire_area",
+      "category": "Car",
+      "ap": 61.2826,
+      "full_v2_ap": 61.2787,
+      "delta_vs_full_v2_pp": 0.0039
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "clean",
+      "area": "entire_area",
+      "category": "Pedestrian",
+      "ap": 51.8443,
+      "full_v2_ap": 51.8086,
+      "delta_vs_full_v2_pp": 0.0357
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "clean",
+      "area": "entire_area",
+      "category": "Cyclist",
+      "ap": 77.6583,
+      "full_v2_ap": 77.6163,
+      "delta_vs_full_v2_pp": 0.042
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "clean",
+      "area": "roi",
+      "category": "Car",
+      "ap": 90.4968,
+      "full_v2_ap": 90.4771,
+      "delta_vs_full_v2_pp": 0.0197
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "clean",
+      "area": "roi",
+      "category": "Pedestrian",
+      "ap": 61.0115,
+      "full_v2_ap": 60.9872,
+      "delta_vs_full_v2_pp": 0.0243
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "clean",
+      "area": "roi",
+      "category": "Cyclist",
+      "ap": 88.326,
+      "full_v2_ap": 88.2858,
+      "delta_vs_full_v2_pp": 0.0402
+    },
+    {
+      "variant": "attention_only",
+      "condition": "dark",
+      "area": "entire_area",
+      "category": "Car",
+      "ap": 50.8319,
+      "full_v2_ap": 50.9491,
+      "delta_vs_full_v2_pp": -0.1172
+    },
+    {
+      "variant": "attention_only",
+      "condition": "dark",
+      "area": "entire_area",
+      "category": "Pedestrian",
+      "ap": 41.1336,
+      "full_v2_ap": 41.2639,
+      "delta_vs_full_v2_pp": -0.1303
+    },
+    {
+      "variant": "attention_only",
+      "condition": "dark",
+      "area": "entire_area",
+      "category": "Cyclist",
+      "ap": 77.5881,
+      "full_v2_ap": 77.7028,
+      "delta_vs_full_v2_pp": -0.1147
+    },
+    {
+      "variant": "attention_only",
+      "condition": "dark",
+      "area": "roi",
+      "category": "Car",
+      "ap": 79.478,
+      "full_v2_ap": 79.7183,
+      "delta_vs_full_v2_pp": -0.2403
+    },
+    {
+      "variant": "attention_only",
+      "condition": "dark",
+      "area": "roi",
+      "category": "Pedestrian",
+      "ap": 51.3287,
+      "full_v2_ap": 51.6221,
+      "delta_vs_full_v2_pp": -0.2934
+    },
+    {
+      "variant": "attention_only",
+      "condition": "dark",
+      "area": "roi",
+      "category": "Cyclist",
+      "ap": 88.4293,
+      "full_v2_ap": 88.3993,
+      "delta_vs_full_v2_pp": 0.03
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "dark",
+      "area": "entire_area",
+      "category": "Car",
+      "ap": 50.9213,
+      "full_v2_ap": 50.9491,
+      "delta_vs_full_v2_pp": -0.0278
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "dark",
+      "area": "entire_area",
+      "category": "Pedestrian",
+      "ap": 41.3573,
+      "full_v2_ap": 41.2639,
+      "delta_vs_full_v2_pp": 0.0934
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "dark",
+      "area": "entire_area",
+      "category": "Cyclist",
+      "ap": 77.7051,
+      "full_v2_ap": 77.7028,
+      "delta_vs_full_v2_pp": 0.0023
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "dark",
+      "area": "roi",
+      "category": "Car",
+      "ap": 79.7134,
+      "full_v2_ap": 79.7183,
+      "delta_vs_full_v2_pp": -0.0049
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "dark",
+      "area": "roi",
+      "category": "Pedestrian",
+      "ap": 51.6214,
+      "full_v2_ap": 51.6221,
+      "delta_vs_full_v2_pp": -0.0007
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "dark",
+      "area": "roi",
+      "category": "Cyclist",
+      "ap": 88.4137,
+      "full_v2_ap": 88.3993,
+      "delta_vs_full_v2_pp": 0.0144
+    },
+    {
+      "variant": "attention_only",
+      "condition": "blur",
+      "area": "entire_area",
+      "category": "Car",
+      "ap": 38.1751,
+      "full_v2_ap": 38.6111,
+      "delta_vs_full_v2_pp": -0.436
+    },
+    {
+      "variant": "attention_only",
+      "condition": "blur",
+      "area": "entire_area",
+      "category": "Pedestrian",
+      "ap": 39.4296,
+      "full_v2_ap": 39.6209,
+      "delta_vs_full_v2_pp": -0.1913
+    },
+    {
+      "variant": "attention_only",
+      "condition": "blur",
+      "area": "entire_area",
+      "category": "Cyclist",
+      "ap": 74.4576,
+      "full_v2_ap": 74.7471,
+      "delta_vs_full_v2_pp": -0.2895
+    },
+    {
+      "variant": "attention_only",
+      "condition": "blur",
+      "area": "roi",
+      "category": "Car",
+      "ap": 66.4416,
+      "full_v2_ap": 66.2597,
+      "delta_vs_full_v2_pp": 0.1819
+    },
+    {
+      "variant": "attention_only",
+      "condition": "blur",
+      "area": "roi",
+      "category": "Pedestrian",
+      "ap": 50.3477,
+      "full_v2_ap": 50.7162,
+      "delta_vs_full_v2_pp": -0.3685
+    },
+    {
+      "variant": "attention_only",
+      "condition": "blur",
+      "area": "roi",
+      "category": "Cyclist",
+      "ap": 88.3161,
+      "full_v2_ap": 88.2738,
+      "delta_vs_full_v2_pp": 0.0423
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "blur",
+      "area": "entire_area",
+      "category": "Car",
+      "ap": 38.4935,
+      "full_v2_ap": 38.6111,
+      "delta_vs_full_v2_pp": -0.1176
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "blur",
+      "area": "entire_area",
+      "category": "Pedestrian",
+      "ap": 39.4509,
+      "full_v2_ap": 39.6209,
+      "delta_vs_full_v2_pp": -0.17
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "blur",
+      "area": "entire_area",
+      "category": "Cyclist",
+      "ap": 74.694,
+      "full_v2_ap": 74.7471,
+      "delta_vs_full_v2_pp": -0.0531
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "blur",
+      "area": "roi",
+      "category": "Car",
+      "ap": 66.316,
+      "full_v2_ap": 66.2597,
+      "delta_vs_full_v2_pp": 0.0563
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "blur",
+      "area": "roi",
+      "category": "Pedestrian",
+      "ap": 50.5602,
+      "full_v2_ap": 50.7162,
+      "delta_vs_full_v2_pp": -0.156
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "blur",
+      "area": "roi",
+      "category": "Cyclist",
+      "ap": 88.2586,
+      "full_v2_ap": 88.2738,
+      "delta_vs_full_v2_pp": -0.0152
+    },
+    {
+      "variant": "attention_only",
+      "condition": "occlusion",
+      "area": "entire_area",
+      "category": "Car",
+      "ap": 31.771,
+      "full_v2_ap": 31.9709,
+      "delta_vs_full_v2_pp": -0.1999
+    },
+    {
+      "variant": "attention_only",
+      "condition": "occlusion",
+      "area": "entire_area",
+      "category": "Pedestrian",
+      "ap": 44.5203,
+      "full_v2_ap": 44.1973,
+      "delta_vs_full_v2_pp": 0.323
+    },
+    {
+      "variant": "attention_only",
+      "condition": "occlusion",
+      "area": "entire_area",
+      "category": "Cyclist",
+      "ap": 72.1613,
+      "full_v2_ap": 72.3587,
+      "delta_vs_full_v2_pp": -0.1974
+    },
+    {
+      "variant": "attention_only",
+      "condition": "occlusion",
+      "area": "roi",
+      "category": "Car",
+      "ap": 69.7024,
+      "full_v2_ap": 69.6884,
+      "delta_vs_full_v2_pp": 0.014
+    },
+    {
+      "variant": "attention_only",
+      "condition": "occlusion",
+      "area": "roi",
+      "category": "Pedestrian",
+      "ap": 50.3357,
+      "full_v2_ap": 55.2099,
+      "delta_vs_full_v2_pp": -4.8742
+    },
+    {
+      "variant": "attention_only",
+      "condition": "occlusion",
+      "area": "roi",
+      "category": "Cyclist",
+      "ap": 87.6921,
+      "full_v2_ap": 87.8257,
+      "delta_vs_full_v2_pp": -0.1336
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "occlusion",
+      "area": "entire_area",
+      "category": "Car",
+      "ap": 32.0579,
+      "full_v2_ap": 31.9709,
+      "delta_vs_full_v2_pp": 0.087
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "occlusion",
+      "area": "entire_area",
+      "category": "Pedestrian",
+      "ap": 44.3634,
+      "full_v2_ap": 44.1973,
+      "delta_vs_full_v2_pp": 0.1661
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "occlusion",
+      "area": "entire_area",
+      "category": "Cyclist",
+      "ap": 72.4487,
+      "full_v2_ap": 72.3587,
+      "delta_vs_full_v2_pp": 0.09
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "occlusion",
+      "area": "roi",
+      "category": "Car",
+      "ap": 69.7406,
+      "full_v2_ap": 69.6884,
+      "delta_vs_full_v2_pp": 0.0522
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "occlusion",
+      "area": "roi",
+      "category": "Pedestrian",
+      "ap": 55.2435,
+      "full_v2_ap": 55.2099,
+      "delta_vs_full_v2_pp": 0.0336
+    },
+    {
+      "variant": "no_anchor",
+      "condition": "occlusion",
+      "area": "roi",
+      "category": "Cyclist",
+      "ap": 88.0118,
+      "full_v2_ap": 87.8257,
+      "delta_vs_full_v2_pp": 0.1861
+    }
+  ],
+  "sources": [
+    {
+      "variant": "full_v2",
+      "source": "repro/reliability_fusion_v2/robustness/20261031_093806.json",
+      "source_sha256": "c7e3ddb470fe9da6f1cd838e5add9b8e62f8857f838acfd72783d71dfe63b60b",
+      "run_id": "20261031_093806",
+      "source_commit": "f446c3fdb4e69476ac6b525c7d3f5b9611e4b8e5",
+      "checkpoints": {
+        "control": {
+          "path": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/control_aug/20261030_214524/epoch_6.pth",
+          "sha256": "31e2133c241083d382cd9762fa101f4ad885b033368b9d8432f4cc3443ea5a5f",
+          "config": "/home/d514/桌面/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v2/control_aug.py",
+          "config_sha256": "db1a2b7483dfaf17462ac47cb648eaff4c0339c83f9d7eb6613d57b4905afb11"
+        },
+        "gate": {
+          "path": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+          "sha256": "b1d920410f976921c3941e197c47c0531cbe91a3afe54c5af18ca226ad66f1fb",
+          "config": "/home/d514/桌面/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v2/gate_main.py",
+          "config_sha256": "92a78749850b824047f8e5426d10a4bf54ebab64f8e4b4626e0e803e1445e053"
+        }
+      },
+      "completed_at": "2026-10-31T09:49:16.364277+08:00"
+    },
+    {
+      "variant": "attention_only",
+      "source": "work_dirs/reliability_fusion_v2/ablation/20261031_152210/gate_aug_attention_only/robustness/summary.json",
+      "source_sha256": "c28bb7e968c78c8433c3aad6cfdeb2aa9c14f34dbd7283085d5132e80539039c",
+      "run_id": "20261031_161157",
+      "source_commit": "96585b3db4e34d768b588e322c55224d68f03e73",
+      "checkpoints": {
+        "control": {
+          "path": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/control_aug/20261030_214524/epoch_6.pth",
+          "sha256": "31e2133c241083d382cd9762fa101f4ad885b033368b9d8432f4cc3443ea5a5f",
+          "config": "/home/d514/桌面/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v2/control_aug.py",
+          "config_sha256": "db1a2b7483dfaf17462ac47cb648eaff4c0339c83f9d7eb6613d57b4905afb11"
+        },
+        "gate": {
+          "path": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/ablation/20261031_152210/gate_aug_attention_only/epoch_6.pth",
+          "sha256": "d48a761ce8fc535c728302bb742f049d97d07a84c7e61c00252bcba4f5903df5",
+          "config": "/home/d514/桌面/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v2/gate_aug_attention_only.py",
+          "config_sha256": "f9cf839d65babbe81202e40358a940fb9b3379b57e5d74283d7453b4151612eb"
+        }
+      },
+      "completed_at": "2026-10-31T16:22:44.887219+08:00"
+    },
+    {
+      "variant": "no_anchor",
+      "source": "work_dirs/reliability_fusion_v2/ablation/20261031_152210/gate_aug_no_anchor/robustness/summary.json",
+      "source_sha256": "3eaa02db405cfd7bbd58d9b655beda70463ea009b366d7bcac4a1f170006102c",
+      "run_id": "20261031_170828",
+      "source_commit": "96585b3db4e34d768b588e322c55224d68f03e73",
+      "checkpoints": {
+        "control": {
+          "path": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/control_aug/20261030_214524/epoch_6.pth",
+          "sha256": "31e2133c241083d382cd9762fa101f4ad885b033368b9d8432f4cc3443ea5a5f",
+          "config": "/home/d514/桌面/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v2/control_aug.py",
+          "config_sha256": "db1a2b7483dfaf17462ac47cb648eaff4c0339c83f9d7eb6613d57b4905afb11"
+        },
+        "gate": {
+          "path": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/ablation/20261031_152210/gate_aug_no_anchor/epoch_6.pth",
+          "sha256": "f66dede76c2a731d75fbf5bebb78300d01cb424458119d2123ee855bae0f3007",
+          "config": "/home/d514/桌面/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v2/gate_aug_no_anchor.py",
+          "config_sha256": "226840cacd09ccd3451059a26ceaf16c68217dafc7079b11bafa700dbd8bff95"
+        }
+      },
+      "completed_at": "2026-10-31T17:19:11.033464+08:00"
+    }
+  ],
+  "audit": {
+    "queue_all_completed": true,
+    "two_training_runs_complete": true,
+    "checkpoint_and_config_sha256_verified": true,
+    "same_control_checkpoint": true,
+    "same_corruptions_annotation_and_1296_indices": true,
+    "each_evaluation_has_eight_completed_groups": true,
+    "source_hashes_matched_at_audit_before_preparing_next_config": true
+  },
+  "conclusions": [
+    "Removing query gates does not resolve blur degradation in this seed: versus full V2, blur EAA/DC change -0.3056/-0.0481 pp.",
+    "Without query gates, occlusion DC decreases 1.6646 pp relative to full V2, mainly Pedestrian AP -4.8742 pp; this supports retaining query gates as the working candidate, pending replication.",
+    "Removing clean anchor changes clean EAA/DC by +0.0272/+0.0281, occlusion by +0.1143/+0.0907, blur by -0.1136/-0.0383 pp. One seed does not establish necessity or dispensability of the anchor.",
+    "Attention-only keeps the average anchor policy on remaining gates, so removing query gates also removes their anchor terms and changes active-gate averaging.",
+    "Small repeated-control differences (up to 0.0015 EAA pp) occur with the same checkpoint. Preserve every run and compare using its own control, while full-model AP comparisons use the recorded identical corruption protocol."
+  ],
+  "next_step": "Complementary query-only seed-0 ablation: keep query gates and disable attention-output gates. This fills the missing component combination before modifying the design.",
+  "next_config": "configs/experiments/reliability_fusion_v2/gate_aug_query_only.py"
+}

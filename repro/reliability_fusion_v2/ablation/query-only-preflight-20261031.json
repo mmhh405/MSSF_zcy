@@ -1,0 +1,54 @@
+{
+  "config": "configs/experiments/reliability_fusion_v2/gate_aug_query_only.py",
+  "checks": [
+    "configuration loaded",
+    "CPU model built",
+    "two active query gates, no attention gates",
+    "official checkpoint matches except 24 expected new query-gate keys",
+    "six epochs, seed 0, batch 1, clean-anchor coefficient 0.1",
+    "launcher bash syntax",
+    "real 16-frame inference passed with official checkpoint; same small-subset scores as baseline"
+  ],
+  "active_gates": [
+    "backbone.query_reliability_gate",
+    "middle_encoder.query_reliability_gate"
+  ],
+  "missing_new_state_keys": [
+    "backbone.query_reliability_gate.radar_norm.weight",
+    "backbone.query_reliability_gate.radar_norm.bias",
+    "backbone.query_reliability_gate.image_norm.weight",
+    "backbone.query_reliability_gate.image_norm.bias",
+    "backbone.query_reliability_gate.radar_proj.weight",
+    "backbone.query_reliability_gate.radar_proj.bias",
+    "backbone.query_reliability_gate.image_proj.weight",
+    "backbone.query_reliability_gate.image_proj.bias",
+    "backbone.query_reliability_gate.predictor.0.weight",
+    "backbone.query_reliability_gate.predictor.0.bias",
+    "backbone.query_reliability_gate.predictor.2.weight",
+    "backbone.query_reliability_gate.predictor.2.bias",
+    "middle_encoder.query_reliability_gate.radar_norm.weight",
+    "middle_encoder.query_reliability_gate.radar_norm.bias",
+    "middle_encoder.query_reliability_gate.image_norm.weight",
+    "middle_encoder.query_reliability_gate.image_norm.bias",
+    "middle_encoder.query_reliability_gate.radar_proj.weight",
+    "middle_encoder.query_reliability_gate.radar_proj.bias",
+    "middle_encoder.query_reliability_gate.image_proj.weight",
+    "middle_encoder.query_reliability_gate.image_proj.bias",
+    "middle_encoder.query_reliability_gate.predictor.0.weight",
+    "middle_encoder.query_reliability_gate.predictor.0.bias",
+    "middle_encoder.query_reliability_gate.predictor.2.weight",
+    "middle_encoder.query_reliability_gate.predictor.2.bias"
+  ],
+  "unexpected_keys": [],
+  "formal_training_started": false,
+  "inference_executed": true,
+  "inference_smoke": {
+    "work_dir": "work_dirs/reliability_fusion_v2/verification/query_only_20261031_201158",
+    "samples": 16,
+    "eaa_map": 25.0645,
+    "dc_map": 17.7489,
+    "purpose": "untrained identity-gate integration check only",
+    "git_dirty_at_start": true
+  },
+  "config_sha256": "4252d2686e08cfd8033d1d299a09fdff3ed31d7548ceeef71fc2ff85e8193b7a"
+}

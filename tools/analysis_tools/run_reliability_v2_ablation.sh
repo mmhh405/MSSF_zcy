@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
-# Run two seed-0 ablations sequentially; use the existing matched control.
+# Run selected seed-0 ablations sequentially; defaults preserve the original pair.
 set -Eeuo pipefail
 ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd -P)"
 cd "$ROOT"
 BATCH="${1:-$ROOT/work_dirs/reliability_fusion_v2/ablation/$(date +%Y%m%d_%H%M%S)}"
+if (( $# > 0 )); then shift; fi
+if (( $# > 0 )); then
+  VARIANTS=("$@")
+else
+  VARIANTS=(gate_aug_attention_only gate_aug_no_anchor)
+fi
+for VARIANT in "${VARIANTS[@]}"; do
+  case "$VARIANT" in
+    gate_aug_attention_only|gate_aug_no_anchor|gate_aug_query_only) ;;
+    *) echo "Unsupported ablation: $VARIANT" >&2; exit 2 ;;
+  esac
+done
 case "$BATCH" in "$ROOT"/work_dirs/reliability_fusion_v2/ablation/*) ;; *) echo 'Batch path must be inside this project ablation directory' >&2; exit 2 ;; esac
 exec 9>"$ROOT/work_dirs/reliability_fusion_v2/.gpu0-queue.lock"
 if ! flock -n 9; then
@@ -25,7 +37,7 @@ test -s "$CONTROL"
 TASK='initialization'
 on_error() { local code=$?; echo "$(date --iso-8601=seconds) FAILED task=$TASK exit=$code; inspect the task console.log" >&2; exit "$code"; }
 trap on_error ERR
-for VARIANT in gate_aug_attention_only gate_aug_no_anchor; do
+for VARIANT in "${VARIANTS[@]}"; do
   test "$(git rev-parse HEAD)" = "$CODE"
   sha256sum --status -c "$BATCH/source.sha256"
   RUN="$BATCH/$VARIANT"
