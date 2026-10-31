@@ -2,7 +2,7 @@
 
 分支：`feat/reliability-gate-v2`，从 V1 全量退化分析提交 `8fde873` 创建。V1 的模型、配置和结果保留在原分支/标签及 `README_reliability_fusion.md` 中。
 
-当前阶段：代码与接入验证完成，共新增 18820 个参数、4 个门控。三个 seed=0 正式实验已于 2026-10-30 23:53 完成，各 6 epoch，并完成 1296 帧干净验证；完整退化评测尚未进行。
+当前阶段：代码与接入验证完成，共新增 18820 个参数、4 个门控。三个 seed=0 正式训练均已完成；1296 帧 clean/dark/blur/occlusion 完整评测于 2026-10-31 09:49 完成。遮挡有正向结果，模糊存在 EAA 退步，尚未进行多种子验证。
 
 ## 设计与边界
 
@@ -56,6 +56,7 @@ V2 控制组与门控组均固定 BatchNorm/SyncBN 的运行统计量，仿射�
 | [repro/reliability_fusion_v2/verification.json:1](repro/reliability_fusion_v2/verification.json#L1) | 本次测试、梯度、BN 统计、源码哈希和真实接入记录 |
 | [tools/analysis_tools/run_reliability_v2.py:1](tools/analysis_tools/run_reliability_v2.py#L1) | GPU 0 顺序运行三个正式实验，保存状态、日志与代码哈希，失败时停止后续实验 |
 | [repro/reliability_fusion_v2/formal-seed0-20261030.json:1](repro/reliability_fusion_v2/formal-seed0-20261030.json#L1) | 首轮三个正式实验的逐轮指标、固定第 6 轮对比、权重哈希及证据 |
+| [repro/reliability_fusion_v2/robustness/full-v2-conclusion-20261031.json:1](repro/reliability_fusion_v2/robustness/full-v2-conclusion-20261031.json#L1) | V2 完整退化评测的对比、逐类差值、门控响应与核验结论 |
 
 <!-- FILE_LOCATIONS_END -->
 
@@ -187,25 +188,35 @@ python tools/analysis_tools/reliability_robustness.py --samples 1296 \
 
 <!-- ROBUSTNESS_RESULTS_START -->
 
-子集诊断，不能与论文完整验证集分数比较。同一批 4 帧、官方原结构权重与未训练、初始权重为 1 的 V2 权重，仅验证接口，无训练。运行 `20261030_181240`；合成退化不等同真实夜间或恶劣天气。
+完整验证集受控退化评测。同一批 1296 帧、固定所指定的两组权重，无训练。运行 `20261031_093806`；合成退化不等同真实夜间或恶劣天气。
 
 | 条件 | 样本数 | 对照 EAA | 门控 EAA | 门控减对照 | 对照 DC | 门控 DC | 门控减对照 |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| clean | 4 | 14.1414 | 14.1414 | +0.0000 | 7.5758 | 7.5758 | +0.0000 |
-| blur | 4 | 2.5712 | 2.5712 | +0.0000 | 1.5152 | 1.5152 | +0.0000 |
+| clean | 1296 | 63.5609 | 63.5679 | +0.0070 | 79.9024 | 79.9167 | +0.0143 |
+| dark | 1296 | 56.4797 | 56.6386 | +0.1589 | 73.1134 | 73.2465 | +0.1331 |
+| blur | 1296 | 51.5202 | 50.9930 | -0.5272 | 68.1297 | 68.4166 | +0.2869 |
+| occlusion | 1296 | 48.0431 | 49.5090 | +1.4659 | 68.3006 | 70.9080 | +2.6074 |
 
 | 条件 | 门控阶段 | 有效查询门控均值 | 标准差 | 低于 0.9 的比例 |
 |---|---|---:|---:|---:|
-| clean | backbone/attention | 1.0000000 | 0.0000000 | 0.00000 |
-| clean | backbone/query | 1.0000000 | 0.0000000 | 0.00000 |
-| clean | middle_encoder/attention | 1.0000000 | 0.0000000 | 0.00000 |
-| clean | middle_encoder/query | 1.0000000 | 0.0000000 | 0.00000 |
-| blur | backbone/attention | 1.0000000 | 0.0000000 | 0.00000 |
-| blur | backbone/query | 1.0000000 | 0.0000000 | 0.00000 |
-| blur | middle_encoder/attention | 1.0000000 | 0.0000000 | 0.00000 |
-| blur | middle_encoder/query | 1.0000000 | 0.0000000 | 0.00000 |
+| clean | backbone/attention | 0.9839524 | 0.0623020 | 0.08036 |
+| clean | backbone/query | 1.0105560 | 0.0441211 | 0.02931 |
+| clean | middle_encoder/attention | 0.9752091 | 0.0236100 | 0.00485 |
+| clean | middle_encoder/query | 1.0212631 | 0.0450430 | 0.02810 |
+| dark | backbone/attention | 0.8499406 | 0.1853581 | 0.45465 |
+| dark | backbone/query | 0.9873455 | 0.0552698 | 0.08875 |
+| dark | middle_encoder/attention | 0.9502934 | 0.0393629 | 0.13549 |
+| dark | middle_encoder/query | 0.9371080 | 0.0863248 | 0.32389 |
+| blur | backbone/attention | 0.9487255 | 0.0983580 | 0.21981 |
+| blur | backbone/query | 0.8595420 | 0.0991813 | 0.65788 |
+| blur | middle_encoder/attention | 0.9446920 | 0.0327178 | 0.10357 |
+| blur | middle_encoder/query | 0.8925397 | 0.0929290 | 0.48985 |
+| occlusion | backbone/attention | 0.6451328 | 0.3056491 | 0.64689 |
+| occlusion | backbone/query | 1.0013905 | 0.0460090 | 0.04220 |
+| occlusion | middle_encoder/attention | 0.9190133 | 0.0583401 | 0.42012 |
+| occlusion | middle_encoder/query | 0.8905763 | 0.1552557 | 0.45520 |
 
-[完整参数、逐类指标与门控分布](repro/reliability_fusion_v2/robustness/20261030_181240.json)
+[完整参数、逐类指标与门控分布](repro/reliability_fusion_v2/robustness/20261031_093806.json)
 
 <!-- ROBUSTNESS_RESULTS_END -->
 
@@ -228,10 +239,32 @@ python tools/analysis_tools/reliability_robustness.py --samples 1296 \
 - V2 主版本相对同增强控制：EAA +0.0085、DC +0.0143 个百分点。
 - V2 主版本相对本机官方权重：EAA +0.3426、DC +0.1344 个百分点，但包含额外训练和增强，不能全归因于门控。
 
-本轮干净集上的数值增益主要来自增强。门控与约束组合相对匹配控制的增益很小，单种子不足以认定有效或显著。四个门控输出层已从零初始化更新，训练日志也有非零清晰约束；这仅证明模块参与学习，不证明已学会可靠性。尚未进行正式退化评测，不能宣称鲁棒性改善。
+本轮干净集上的数值增益主要来自增强。门控与约束组合相对匹配控制的增益很小，单种子不足以认定有效或显著。四个门控输出层已从零初始化更新，训练日志也有非零清晰约束；这仅证明模块参与学习，不证明已学会可靠性。上述为当时的干净集结论；后续完整退化评测结果见下节，不能据单种子结果宣称普遍鲁棒性改善。
 
-下一步固定 control_aug 与 gate_main 的 epoch_6.pth，在同一 1296 帧上进行 clean/dark/blur/occlusion 评测，并检查四个门控随图像质量变化的分布。
+后续已固定 control_aug 与 gate_main 的 epoch_6.pth 完成同一 1296 帧的 clean/dark/blur/occlusion 评测，结果见下节。
 
 [完整逐轮指标、checkpoint SHA-256 与审核证据](repro/reliability_fusion_v2/formal-seed0-20261030.json)
 
 <!-- FORMAL_V2_SEED0_END -->
+
+## V2 完整退化评测结论（2026-10-31）
+
+对照为同增强的 control_aug，主模型为 gate_main；都使用固定第 6 轮权重。八组均完成 1296 帧，样本索引为 0–1295，checkpoint 哈希与正式训练归档一致。评测源码提交 f446c3f，启动时工作区干净，算法源文件哈希与训练队列一致。
+
+| 图像条件 | 对照 EAA | V2 EAA | 差值（百分点） | 对照 DC | V2 DC | 差值（百分点） |
+|---|---:|---:|---:|---:|---:|---:|
+| clean | 63.5609 | 63.5679 | +0.0070 | 79.9024 | 79.9167 | +0.0143 |
+| dark | 56.4797 | 56.6386 | +0.1589 | 73.1134 | 73.2465 | +0.1331 |
+| blur | 51.5202 | 50.9930 | -0.5272 | 68.1297 | 68.4166 | +0.2869 |
+| occlusion | 48.0431 | 49.5090 | +1.4659 | 68.3006 | 70.9080 | +2.6074 |
+
+- 遮挡收益最大，且三个类别在 EAA 和 DC 下均提高；DC 行人 AP 从 49.6440 提高到 55.2099（+5.5659 个百分点）。
+- 模糊不是全面改善：EAA 行人 AP 从 42.2073 降为 39.6209（-2.5864），是该区域 mAP 下降的主要来源；DC 三类均小幅提高。
+- backbone 注意力门控均值：clean 0.983952、dark 0.849941、blur 0.948726、occlusion 0.645133；遮挡时低于 0.9 的比例从 8.04% 升至 64.69%。其他门控也会随部分退化改变，说明 V2 已有输入相关响应，不能据此单独归因性能收益。
+- 全部记录的投影均有效，本次没有验证无效投影分支的实际收益。
+- clean 对照重复评测 EAA 为 63.5609，原训练验证记录为 63.5594，差 0.0015 个百分点；checkpoint 哈希相同，差异来源未单独定位。原记录保留，退化对比统一使用本次评测值。
+- 当前只支持单种子、固定合成退化下的观察，不能认定统计显著或真实夜间/天气均有效；门控与清晰约束的各自贡献仍待消融。
+
+下一步优先补 seed=1、2 的 control_aug 与 gate_main 配对实验，并使用相同完整评测。随后结合模糊行人错误分析，使用既有 attention_only 和 no_anchor 配置分离 query 入口与约束的影响。
+
+[核验与逐类差值 JSON](repro/reliability_fusion_v2/robustness/full-v2-conclusion-20261031.json)；[本轮完整原始汇总](repro/reliability_fusion_v2/robustness/20261031_093806.json)。
