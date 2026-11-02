@@ -1,0 +1,33 @@
+{
+  "launcher": "tools/analysis_tools/run_reliability_v2_ablation.sh",
+  "launcher_sha256": "f647169c846ad6d5d724554c3d243a2b7e3523b9422745368531dc73ef42df65",
+  "training_seeds": [
+    1,
+    2
+  ],
+  "variant": "gate_aug_query_only",
+  "paired_controls": {
+    "1": {
+      "path": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed1/control_aug/epoch_6.pth",
+      "sha256": "8b10dc9adce321dd5816fc2d3a85d857188831b776160977c4b8805250471348",
+      "config": "/home/d514/桌面/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v2/control_aug.py",
+      "config_sha256": "db1a2b7483dfaf17462ac47cb648eaff4c0339c83f9d7eb6613d57b4905afb11"
+    },
+    "2": {
+      "path": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed2/control_aug/epoch_6.pth",
+      "sha256": "3de41882e52579a8088421b2361430471bd92f78f142658f50e6f6d65b38eba7",
+      "config": "/home/d514/桌面/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v2/control_aug.py",
+      "config_sha256": "db1a2b7483dfaf17462ac47cb648eaff4c0339c83f9d7eb6613d57b4905afb11"
+    }
+  },
+  "checks": [
+    "bash syntax",
+    "dry-run seeds 1 and 2 map to their original controls",
+    "default dry-run still runs original seed-0 ablation pair",
+    "Config seed overrides preserve six epochs, original checkpoint and query-only structure",
+    "original control checkpoint SHA-256 values verified"
+  ],
+  "output_alias": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/ablation/nas",
+  "output_resolved": "/mnt/nas-share/MSSF_zcy/experiments/reliability_fusion_v2/ablation",
+  "new_training_started": false
+}

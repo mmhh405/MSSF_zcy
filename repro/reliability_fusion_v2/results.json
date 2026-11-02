@@ -272,5 +272,30 @@
     "eaa_map": 25.0645,
     "dc_map": 17.7489,
     "samples": 16
+  },
+  {
+    "run_id": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/ablation/query_only_20261031_201602/gate_aug_query_only/20261031_201604",
+    "variant": "v2-gate_aug_query_only-seed0",
+    "purpose": "finetune",
+    "work_dir": "work_dirs/reliability_fusion_v2/ablation/query_only_20261031_201602/gate_aug_query_only",
+    "git_commit": "e9b3f255049596dbd4621bc27665873e3ddc2c59",
+    "git_dirty_at_start": false,
+    "config": "/home/d514/桌面/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v2/gate_aug_query_only.py",
+    "initialization_checkpoint": "exps/mssf_pp_vod/epoch_40.pth",
+    "random_seed": 0,
+    "status": "training_completed",
+    "training_completed": true,
+    "updated_at": "2026-10-31T20:57:59.697534+08:00",
+    "phase": "training_completed",
+    "eaa_map": 63.5144,
+    "dc_map": 79.8779,
+    "samples": 1296,
+    "validation_epoch": 6,
+    "last_checkpoint": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/ablation/query_only_20261031_201602/gate_aug_query_only/epoch_6.pth",
+    "iterations": 30834,
+    "train_samples": 5139,
+    "last_logged_train_loss": 0.4858225882053375,
+    "last_logged_loss_gate_clean": 0.0,
+    "last_logged_gate_clean_mse": 0.0
   }
 ]

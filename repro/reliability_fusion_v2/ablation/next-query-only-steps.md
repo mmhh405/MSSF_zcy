@@ -1,3 +1,5 @@
+> 进度更新：本计划的 seed=0 query-only 已完成。下一步见 [两个种子的复验](next-query-only-repeats-20261102.md)。
+
 # 两项消融完成后的下一步
 
 已有结果：seed=0 的 attention_only 和 no_anchor 均完成 6 epoch 和四种条件各 1296 帧评测。关闭 query 没有解决模糊问题，且遮挡 DC 低于完整 V2 1.6646 个百分点；关闭清晰约束差异较小，不能据一个 seed 决定删除。
