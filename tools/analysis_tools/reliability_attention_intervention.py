@@ -1,4 +1,4 @@
-"""Inference-only attention-gate intervention on one fixed trained V2 checkpoint."""
+"""Inference-only attention or query intervention on one fixed V2 checkpoint."""
 import argparse
 import copy
 import fcntl
@@ -36,21 +36,26 @@ START = '<!-- ATTENTION_INTERVENTION_START -->'
 END = '<!-- ATTENTION_INTERVENTION_END -->'
 
 
-def apply_intervention(model, policy):
-    """Change only selected final gate logits; keep attention and query gates."""
+def apply_intervention(model, policy, gate_kind='attention'):
+    """Change only selected final gate logits; retain all feature branches."""
+    if gate_kind not in ('attention', 'query'):
+        raise ValueError(gate_kind)
     gates = {name: module for name, module in model.named_modules()
              if module.__class__.__name__ == 'ReliabilityGateV2'}
     attention = {name: gate for name, gate in gates.items()
                  if 'query_reliability_gate' not in name}
+    query = {name: gate for name, gate in gates.items()
+             if 'query_reliability_gate' in name}
     if len(gates) != 4 or len(attention) != 2:
         raise ValueError('Expected a full V2 model with two query/two attention gates')
-    for stage in ('middle_encoder', 'backbone'):
-        if sum(name.startswith(stage + '.') for name in attention) != 1:
-            raise ValueError(f'Expected exactly one attention gate in {stage}')
+    for group_name, group in [('attention', attention), ('query', query)]:
+        for stage in ('middle_encoder', 'backbone'):
+            if sum(name.startswith(stage + '.') for name in group) != 1:
+                raise ValueError(f'Expected exactly one {group_name} gate in {stage}')
     before = {name: {key: value.detach().clone()
                      for key, value in gate.state_dict().items()}
               for name, gate in gates.items()}
-    selected = [name for name in attention
+    selected = [name for name in (attention if gate_kind == 'attention' else query)
                 if name.split('.')[0] in POLICIES[policy]]
     allowed, changed = set(), set()
     with torch.no_grad():
@@ -67,11 +72,13 @@ def apply_intervention(model, policy):
                 changed.add((name, key))
     if not changed.issubset(allowed):
         raise AssertionError('Intervention changed a parameter outside selected logits')
-    return dict(identity_gate_names=selected,
+    return dict(gate_kind=gate_kind, identity_gate_names=selected,
                 changed_parameter_keys=sorted(f'{name}.{key}' for name, key in changed),
-                query_parameters_unchanged=True, mutation_scope_checked=True,
+                query_parameters_unchanged=not any(name in query for name, key in changed),
+                attention_parameters_unchanged=not any(name in attention for name, key in changed),
+                untargeted_gate_parameters_unchanged=True, mutation_scope_checked=True,
                 semantics='selected valid gates=2*sigmoid(0)=1; invalid mask retained; '
-                          'attention branch retained; checkpoint is never rewritten')
+                          'all feature branches retained; checkpoint is never rewritten')
 
 
 def save_report(path, report):
@@ -79,10 +86,15 @@ def save_report(path, report):
 
 
 def record_full_result(report):
-    archive = ROOT / 'repro/reliability_fusion_v2/attention_intervention' / (report['run_id'] + '.json')
+    kind = report.get('gate_kind', 'attention')
+    archive = ROOT / f'repro/reliability_fusion_v2/{kind}_intervention' / (report['run_id'] + '.json')
     target = ROOT / 'README_reliability_fusion_v2.md'
     archive.parent.mkdir(parents=True, exist_ok=True)
-    with FileLock(str(archive.parent / '.record.lock')):
+    start, end = (START, END) if kind == 'attention' else (
+        '<!-- QUERY_INTERVENTION_START -->', '<!-- QUERY_INTERVENTION_END -->')
+    label = '注意力输出' if kind == 'attention' else 'query'
+    retained = '两个 query' if kind == 'attention' else '两个注意力输出'
+    with FileLock(str(ROOT / 'work_dirs/reliability_fusion_v2/.intervention-record.lock')):
         rows = ['| 条件 | 策略 | EAA (%) | 相对 learned | DC (%) | 相对 learned |',
                 '|---|---|---:|---:|---:|---:|']
         for condition in report['conditions']:
@@ -94,17 +106,17 @@ def record_full_result(report):
                                 f"{row['eaa_map']-baseline['eaa_map']:+.4f} | "
                                 f"{row['dc_map']:.4f} | {row['dc_map']-baseline['dc_map']:+.4f} |")
         block = ('\n\n这是同一个完整 V2 checkpoint 的推理干预，无训练；'
-                 '两个 query 门控保持学习值，选中的注意力输出门控仅在内存中设为恒等。'
+                 f'{retained}门控参数保持学习值，选中的{label}门控仅在内存中设为恒等。'
                  '不能当作重新训练后的结构消融。每组同一 1296 帧，普通 3D AP。\n\n'
                  + '\n'.join(rows) + '\n\n[逐类指标、门控分布及不可变权重核验]('
                  + archive.relative_to(ROOT).as_posix() + ')\n\n')
         text = target.read_text(encoding='utf-8')
-        if START not in text:
-            text += '\n## 固定权重注意力门控干预（自动更新）\n\n' + START + END + '\n'
-        prefix, remainder = text.split(START)
-        _, suffix = remainder.split(END)
+        if start not in text:
+            text += f'\n## 固定权重{label}门控干预（自动更新）\n\n' + start + end + '\n'
+        prefix, remainder = text.split(start)
+        _, suffix = remainder.split(end)
         save_report(archive, report)
-        _atomic_write(target, prefix + START + block + END + suffix)
+        _atomic_write(target, prefix + start + block + end + suffix)
 
 
 def evaluate(args):
@@ -123,7 +135,7 @@ def evaluate(args):
     if args.record_readme and (not full or set(conditions) != set(CONDITIONS)):
         raise ValueError('Only full-validation four-condition runs may update the README')
     register_all_modules()
-    MMLogger.get_instance('attention_intervention', log_file=str(output / 'metrics.log'))
+    MMLogger.get_instance(f'{args.gate_kind}_intervention', log_file=str(output / 'metrics.log'))
     checkpoint = Path(args.checkpoint).resolve()
     checkpoint_hash = file_hash(checkpoint)
     state = torch.load(checkpoint, map_location='cpu')['state_dict']
@@ -135,9 +147,12 @@ def evaluate(args):
     report = dict(
         run_id=datetime.now().strftime('%Y%m%d_%H%M%S'), valid=False,
         experiment_type='fixed-checkpoint inference intervention', training=False,
+        gate_kind=args.gate_kind,
         full_validation=full, samples=len(indices), indices=indices, conditions=conditions,
         policies=list(POLICIES), seed=0, corruption_settings=SETTINGS,
-        original_frame_alignment_checked=True, query_gates='learned and unchanged',
+        original_frame_alignment_checked=True,
+        query_gates='policy-controlled' if args.gate_kind == 'query' else 'learned parameters unchanged',
+        attention_gates='policy-controlled' if args.gate_kind == 'attention' else 'learned parameters unchanged',
         checkpoint=dict(path=str(checkpoint), sha256=checkpoint_hash, strict_load=True),
         config=dict(path=args.config, sha256=file_hash(args.config)),
         annotation_sha256=file_hash('data/vod/kitti_infos_val.pkl'),
@@ -157,7 +172,7 @@ def evaluate(args):
         random.seed(0)
         model = MODELS.build(cfg.model).cuda().eval()
         model.load_state_dict(state, strict=True)
-        report['interventions'][policy] = apply_intervention(model, policy)
+        report['interventions'][policy] = apply_intervention(model, policy, args.gate_kind)
         loader = Runner.build_dataloader(cfg.test_dataloader, seed=0)
         for condition in conditions:
             torch.manual_seed(0)
@@ -213,6 +228,7 @@ def evaluate(args):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--gate-kind', choices=('attention', 'query'), default='attention')
     parser.add_argument('--config', default='configs/experiments/reliability_fusion_v2/gate_main.py')
     parser.add_argument('--checkpoint', default='work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth')
     parser.add_argument('--samples', type=int, default=1296)

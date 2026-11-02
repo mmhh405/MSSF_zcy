@@ -417,7 +417,7 @@ seed=0、1、2 均完成固定第 6 轮及同一 1296 帧四条件评测；seed=
 
 ### 下一步：固定权重，分阶段 attention 门控干预
 
-脚本已准备并完成 4 帧 clean/blur、全部四策略的接入检查。保持同一完整 V2 seed=0 checkpoint 和两个 query 参数，只在内存中将 middle_encoder、backbone 的 attention 门控分别或共同设为恒等，连同原学习门控共四组；注意力特征分支和无效投影掩码保留。完整实验为四策略 × 四条件 × 1296 帧，无训练，尚未启动。
+脚本已准备并完成 4 帧 clean/blur、全部四策略的接入检查。保持同一完整 V2 seed=0 checkpoint 和两个 query 参数，只在内存中将 middle_encoder、backbone 的 attention 门控分别或共同设为恒等，连同原学习门控共四组；注意力特征分支和无效投影掩码保留。完整实验为四策略 × 四条件 × 1296 帧，无训练；现已完成，结果和后续计划见文末。
 
 先检查 learned 能否复现原记录，再看各阶段恒等干预对模糊行人和遮挡的联合影响。若定位到单个阶段，再决定弱化抑制的具体候选并重新训练；当前不直接将 query-only 升为主版本。固定权重诊断与重训练结构消融须分别解释。
 
@@ -426,3 +426,66 @@ seed=0、1、2 均完成固定第 6 轮及同一 1296 帧四条件评测；seed=
 Query-only 原始评测：[seed=0](repro/reliability_fusion_v2/robustness/20261031_205802.json)、[seed=1](repro/reliability_fusion_v2/robustness/20261102_114158.json)、[seed=2](repro/reliability_fusion_v2/robustness/20261102_123324.json)。
 
 <!-- QUERY_ONLY_3SEED_END -->
+
+## 固定权重注意力门控干预（自动更新）
+
+<!-- ATTENTION_INTERVENTION_START -->
+
+这是同一个完整 V2 checkpoint 的推理干预，无训练；两个 query 门控保持学习值，选中的注意力输出门控仅在内存中设为恒等。不能当作重新训练后的结构消融。每组同一 1296 帧，普通 3D AP。
+
+| 条件 | 策略 | EAA (%) | 相对 learned | DC (%) | 相对 learned |
+|---|---|---:|---:|---:|---:|
+| clean | learned | 63.5679 | +0.0000 | 79.9167 | +0.0000 |
+| clean | middle_identity | 63.5675 | -0.0004 | 79.9281 | +0.0114 |
+| clean | backbone_identity | 63.5644 | -0.0035 | 79.9270 | +0.0103 |
+| clean | both_identity | 63.5908 | +0.0229 | 79.9370 | +0.0203 |
+| dark | learned | 56.6386 | +0.0000 | 73.2465 | +0.0000 |
+| dark | middle_identity | 56.5344 | -0.1042 | 73.2489 | +0.0024 |
+| dark | backbone_identity | 56.3733 | -0.2653 | 72.7456 | -0.5009 |
+| dark | both_identity | 56.3181 | -0.3205 | 72.6629 | -0.5836 |
+| blur | learned | 50.9930 | +0.0000 | 68.4145 | +0.0000 |
+| blur | middle_identity | 50.9755 | -0.0175 | 68.4098 | -0.0047 |
+| blur | backbone_identity | 50.9779 | -0.0151 | 68.3745 | -0.0400 |
+| blur | both_identity | 50.9247 | -0.0683 | 68.3676 | -0.0469 |
+| occlusion | learned | 49.5090 | +0.0000 | 70.9080 | +0.0000 |
+| occlusion | middle_identity | 49.3201 | -0.1889 | 69.2481 | -1.6599 |
+| occlusion | backbone_identity | 44.4458 | -5.0632 | 67.4589 | -3.4491 |
+| occlusion | both_identity | 43.9079 | -5.6011 | 67.1369 | -3.7711 |
+
+[逐类指标、门控分布及不可变权重核验](repro/reliability_fusion_v2/attention_intervention/20261102_160250.json)
+
+<!-- ATTENTION_INTERVENTION_END -->
+
+## Attention 固定权重诊断结论与下一步（2026-11-02）
+
+<!-- ATTENTION_INTERVENTION_CONCLUSION_START -->
+
+运行于 2026-11-02 16:24:53 完成，总耗时约 22 分钟；四策略 × 四条件各 1296 帧，无训练。源码提交 d783e72，启动工作区干净，原始帧索引、checkpoint 和源码哈希核验通过。选中有效门控均为 1，其余 query 参数未改；全部观测投影有效。
+
+下表每格为本轮普通 3D AP 的 EAA / DC (%)。
+
+| 条件 | learned 完整 V2 | middle attention 恒等 | backbone attention 恒等 | 两个 attention 恒等 |
+|---|---:|---:|---:|---:|
+| clean | 63.5679 / 79.9167 | 63.5675 / 79.9281 | 63.5644 / 79.9270 | 63.5908 / 79.9370 |
+| dark | 56.6386 / 73.2465 | 56.5344 / 73.2489 | 56.3733 / 72.7456 | 56.3181 / 72.6629 |
+| blur | 50.9930 / 68.4145 | 50.9755 / 68.4098 | 50.9779 / 68.3745 | 50.9247 / 68.3676 |
+| occlusion | 49.5090 / 70.9080 | 49.3201 / 69.2481 | 44.4458 / 67.4589 | 43.9079 / 67.1369 |
+
+**本轮没有找到通过 attention 恒等干预恢复模糊精度的方案，完整 V2 保留。**
+
+- learned 的 clean/dark/occlusion EAA/DC 与原记录一致；blur EAA 一致，DC 为 68.4145，原为 68.4166，差 -0.0021。所有本轮策略差值统一对本轮 learned 计算。
+- 模糊 EAA：middle、backbone、两者恒等相对 learned 分别 -0.0175、-0.0151、-0.0683；模糊 DC 分别 -0.0047、-0.0400、-0.0469。小差值不能解释为显著，但没有观察到恢复。
+- 模糊 EAA 行人 AP：learned 39.6209，middle 恒等 39.5413，backbone 恒等 39.4727，两者恒等 39.3761。本轮不支持将行人退步直接归因于 attention 前向抑制。
+- 遮挡：middle 恒等 EAA/DC -0.1889/-1.6599，DC 行人 AP 下降 4.7460；backbone 恒等 -5.0632/-3.4491；两者恒等 -5.6011/-3.7711。该已训练模型依赖 attention 门控处理本次合成遮挡。
+- 推理恒等干预与 query-only 重训练的结果并不相同：联合训练后的特征已适应原门控。不能把上述下降直接解释为相对独立训练无门控基线的收益，也不能据此断言某个模块是唯一原因。
+- 只有一个训练 seed，验证集已参与开发；本轮无新增多 seed 或真实天气证据。
+
+### 下一步执行 query 前向干预
+
+已扩展同一入口支持 --gate-kind query，保持两个 attention 参数，按相同四策略干预 query。默认仍是 attention，原有命令含义不变；两个结果分别归档、分别写 README。本轮接入检查完成，但完整 query 评测和新训练均未启动。
+
+先用这一次固定权重诊断判断是否有 query 阶段可减轻模糊行人损失且保留遮挡；若有，再设计一个明确的残差混合候选并按匹配协议重训练；若没有，转向共享特征漂移/正则项检查，不再盲扫推理门控强度。
+
+[核验与逐类差值](repro/reliability_fusion_v2/attention_intervention/conclusion-seed0-20261102.json)；[本轮完整原始结果](repro/reliability_fusion_v2/attention_intervention/20261102_160250.json)；[下一步完整运行命令](repro/reliability_fusion_v2/ablation/next-query-intervention-20261102.md)；[扩展后的干预脚本](tools/analysis_tools/reliability_attention_intervention.py)；[两类入口接入验证](repro/reliability_fusion_v2/ablation/query-intervention-smoke-20261102.json)。
+
+<!-- ATTENTION_INTERVENTION_CONCLUSION_END -->

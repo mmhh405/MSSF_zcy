@@ -1,0 +1,734 @@
+{
+  "reviewed_at": "2026-11-02T16:44:26.013709+08:00",
+  "training_seed": 0,
+  "evaluation_seed": 0,
+  "training": false,
+  "samples": 1296,
+  "completed_at": "2026-11-02T16:24:53.770354+08:00",
+  "metric": "ordinary 3D AP, EAA=entire_area/map; DC=roi/map",
+  "comparison": "Within the same fixed checkpoint, each policy minus learned in this run; no retraining",
+  "rows": [
+    {
+      "policy": "learned",
+      "condition": "clean",
+      "eaa_map": 63.5679,
+      "dc_map": 79.9167,
+      "eaa_delta_from_learned_pp": 0.0,
+      "dc_delta_from_learned_pp": 0.0,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 51.8086,
+          "learned_ap": 51.8086,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 77.6163,
+          "learned_ap": 77.6163,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 61.2787,
+          "learned_ap": 61.2787,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 60.9872,
+          "learned_ap": 60.9872,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 88.2858,
+          "learned_ap": 88.2858,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 90.4771,
+          "learned_ap": 90.4771,
+          "delta_pp": 0.0
+        }
+      }
+    },
+    {
+      "policy": "learned",
+      "condition": "dark",
+      "eaa_map": 56.6386,
+      "dc_map": 73.2465,
+      "eaa_delta_from_learned_pp": 0.0,
+      "dc_delta_from_learned_pp": 0.0,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 41.2639,
+          "learned_ap": 41.2639,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 77.7028,
+          "learned_ap": 77.7028,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 50.9491,
+          "learned_ap": 50.9491,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 51.6221,
+          "learned_ap": 51.6221,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 88.3993,
+          "learned_ap": 88.3993,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 79.7183,
+          "learned_ap": 79.7183,
+          "delta_pp": 0.0
+        }
+      }
+    },
+    {
+      "policy": "learned",
+      "condition": "blur",
+      "eaa_map": 50.993,
+      "dc_map": 68.4145,
+      "eaa_delta_from_learned_pp": 0.0,
+      "dc_delta_from_learned_pp": 0.0,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 39.6209,
+          "learned_ap": 39.6209,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 74.7471,
+          "learned_ap": 74.7471,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 38.6111,
+          "learned_ap": 38.6111,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 50.7101,
+          "learned_ap": 50.7101,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 88.2738,
+          "learned_ap": 88.2738,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 66.2597,
+          "learned_ap": 66.2597,
+          "delta_pp": 0.0
+        }
+      }
+    },
+    {
+      "policy": "learned",
+      "condition": "occlusion",
+      "eaa_map": 49.509,
+      "dc_map": 70.908,
+      "eaa_delta_from_learned_pp": 0.0,
+      "dc_delta_from_learned_pp": 0.0,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 44.1973,
+          "learned_ap": 44.1973,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 72.3587,
+          "learned_ap": 72.3587,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 31.9709,
+          "learned_ap": 31.9709,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 55.2099,
+          "learned_ap": 55.2099,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 87.8257,
+          "learned_ap": 87.8257,
+          "delta_pp": 0.0
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 69.6884,
+          "learned_ap": 69.6884,
+          "delta_pp": 0.0
+        }
+      }
+    },
+    {
+      "policy": "middle_identity",
+      "condition": "clean",
+      "eaa_map": 63.5675,
+      "dc_map": 79.9281,
+      "eaa_delta_from_learned_pp": -0.00039999999999906777,
+      "dc_delta_from_learned_pp": 0.011399999999994748,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 51.834,
+          "learned_ap": 51.8086,
+          "delta_pp": 0.025400000000004752
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 77.61,
+          "learned_ap": 77.6163,
+          "delta_pp": -0.0062999999999959755
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 61.2585,
+          "learned_ap": 61.2787,
+          "delta_pp": -0.02020000000000266
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 61.008,
+          "learned_ap": 60.9872,
+          "delta_pp": 0.020800000000001262
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 88.2794,
+          "learned_ap": 88.2858,
+          "delta_pp": -0.006399999999999295
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 90.4968,
+          "learned_ap": 90.4771,
+          "delta_pp": 0.019700000000000273
+        }
+      }
+    },
+    {
+      "policy": "middle_identity",
+      "condition": "dark",
+      "eaa_map": 56.5344,
+      "dc_map": 73.2489,
+      "eaa_delta_from_learned_pp": -0.10419999999999874,
+      "dc_delta_from_learned_pp": 0.0024000000000086175,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 41.1301,
+          "learned_ap": 41.2639,
+          "delta_pp": -0.1338000000000008
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 77.5728,
+          "learned_ap": 77.7028,
+          "delta_pp": -0.12999999999999545
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 50.9002,
+          "learned_ap": 50.9491,
+          "delta_pp": -0.048900000000003274
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 51.663,
+          "learned_ap": 51.6221,
+          "delta_pp": 0.0408999999999935
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 88.4221,
+          "learned_ap": 88.3993,
+          "delta_pp": 0.022800000000003706
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 79.6616,
+          "learned_ap": 79.7183,
+          "delta_pp": -0.0566999999999922
+        }
+      }
+    },
+    {
+      "policy": "middle_identity",
+      "condition": "blur",
+      "eaa_map": 50.9755,
+      "dc_map": 68.4098,
+      "eaa_delta_from_learned_pp": -0.0175000000000054,
+      "dc_delta_from_learned_pp": -0.004699999999999704,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 39.5413,
+          "learned_ap": 39.6209,
+          "delta_pp": -0.07959999999999923
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 74.7625,
+          "learned_ap": 74.7471,
+          "delta_pp": 0.015399999999999636
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 38.6228,
+          "learned_ap": 38.6111,
+          "delta_pp": 0.011699999999997601
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 50.6757,
+          "learned_ap": 50.7101,
+          "delta_pp": -0.03439999999999799
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 88.2267,
+          "learned_ap": 88.2738,
+          "delta_pp": -0.047100000000000364
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 66.3271,
+          "learned_ap": 66.2597,
+          "delta_pp": 0.06740000000000634
+        }
+      }
+    },
+    {
+      "policy": "middle_identity",
+      "condition": "occlusion",
+      "eaa_map": 49.3201,
+      "dc_map": 69.2481,
+      "eaa_delta_from_learned_pp": -0.18890000000000384,
+      "dc_delta_from_learned_pp": -1.6599000000000075,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 43.8764,
+          "learned_ap": 44.1973,
+          "delta_pp": -0.32090000000000174
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 71.9797,
+          "learned_ap": 72.3587,
+          "delta_pp": -0.3790000000000049
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 32.1042,
+          "learned_ap": 31.9709,
+          "delta_pp": 0.13329999999999842
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 50.4639,
+          "learned_ap": 55.2099,
+          "delta_pp": -4.745999999999995
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 87.6003,
+          "learned_ap": 87.8257,
+          "delta_pp": -0.22539999999999338
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 69.6803,
+          "learned_ap": 69.6884,
+          "delta_pp": -0.008099999999998886
+        }
+      }
+    },
+    {
+      "policy": "backbone_identity",
+      "condition": "clean",
+      "eaa_map": 63.5644,
+      "dc_map": 79.927,
+      "eaa_delta_from_learned_pp": -0.003500000000002501,
+      "dc_delta_from_learned_pp": 0.010300000000000864,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 51.8443,
+          "learned_ap": 51.8086,
+          "delta_pp": 0.03569999999999851
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 77.6198,
+          "learned_ap": 77.6163,
+          "delta_pp": 0.003500000000002501
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 61.2292,
+          "learned_ap": 61.2787,
+          "delta_pp": -0.049500000000001876
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 61.0336,
+          "learned_ap": 60.9872,
+          "delta_pp": 0.04639999999999844
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 88.2703,
+          "learned_ap": 88.2858,
+          "delta_pp": -0.015499999999988745
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 90.4771,
+          "learned_ap": 90.4771,
+          "delta_pp": 0.0
+        }
+      }
+    },
+    {
+      "policy": "backbone_identity",
+      "condition": "dark",
+      "eaa_map": 56.3733,
+      "dc_map": 72.7456,
+      "eaa_delta_from_learned_pp": -0.2652999999999963,
+      "dc_delta_from_learned_pp": -0.5009000000000015,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 40.6611,
+          "learned_ap": 41.2639,
+          "delta_pp": -0.602800000000002
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 77.7516,
+          "learned_ap": 77.7028,
+          "delta_pp": 0.048799999999999955
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 50.7071,
+          "learned_ap": 50.9491,
+          "delta_pp": -0.24200000000000443
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 50.5076,
+          "learned_ap": 51.6221,
+          "delta_pp": -1.1145000000000067
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 88.3336,
+          "learned_ap": 88.3993,
+          "delta_pp": -0.06569999999999254
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 79.3956,
+          "learned_ap": 79.7183,
+          "delta_pp": -0.32269999999999754
+        }
+      }
+    },
+    {
+      "policy": "backbone_identity",
+      "condition": "blur",
+      "eaa_map": 50.9779,
+      "dc_map": 68.3745,
+      "eaa_delta_from_learned_pp": -0.015100000000003888,
+      "dc_delta_from_learned_pp": -0.04000000000000625,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 39.4727,
+          "learned_ap": 39.6209,
+          "delta_pp": -0.14819999999999567
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 74.8616,
+          "learned_ap": 74.7471,
+          "delta_pp": 0.1144999999999925
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 38.5993,
+          "learned_ap": 38.6111,
+          "delta_pp": -0.01180000000000092
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 50.3219,
+          "learned_ap": 50.7101,
+          "delta_pp": -0.38819999999999766
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 88.234,
+          "learned_ap": 88.2738,
+          "delta_pp": -0.03979999999999961
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 66.5676,
+          "learned_ap": 66.2597,
+          "delta_pp": 0.3079000000000036
+        }
+      }
+    },
+    {
+      "policy": "backbone_identity",
+      "condition": "occlusion",
+      "eaa_map": 44.4458,
+      "dc_map": 67.4589,
+      "eaa_delta_from_learned_pp": -5.063200000000002,
+      "dc_delta_from_learned_pp": -3.4491000000000014,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 36.8133,
+          "learned_ap": 44.1973,
+          "delta_pp": -7.384
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 66.5689,
+          "learned_ap": 72.3587,
+          "delta_pp": -5.7898
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 29.9553,
+          "learned_ap": 31.9709,
+          "delta_pp": -2.015599999999999
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 48.3926,
+          "learned_ap": 55.2099,
+          "delta_pp": -6.817299999999996
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 84.9095,
+          "learned_ap": 87.8257,
+          "delta_pp": -2.9162000000000035
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 69.0745,
+          "learned_ap": 69.6884,
+          "delta_pp": -0.613900000000001
+        }
+      }
+    },
+    {
+      "policy": "both_identity",
+      "condition": "clean",
+      "eaa_map": 63.5908,
+      "dc_map": 79.937,
+      "eaa_delta_from_learned_pp": 0.02289999999999992,
+      "dc_delta_from_learned_pp": 0.02029999999999177,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 51.8655,
+          "learned_ap": 51.8086,
+          "delta_pp": 0.05689999999999884
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 77.6274,
+          "learned_ap": 77.6163,
+          "delta_pp": 0.011099999999999
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 61.2795,
+          "learned_ap": 61.2787,
+          "delta_pp": 0.0007999999999981355
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 61.0546,
+          "learned_ap": 60.9872,
+          "delta_pp": 0.06739999999999924
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 88.2794,
+          "learned_ap": 88.2858,
+          "delta_pp": -0.006399999999999295
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 90.4771,
+          "learned_ap": 90.4771,
+          "delta_pp": 0.0
+        }
+      }
+    },
+    {
+      "policy": "both_identity",
+      "condition": "dark",
+      "eaa_map": 56.3181,
+      "dc_map": 72.6629,
+      "eaa_delta_from_learned_pp": -0.32049999999999557,
+      "dc_delta_from_learned_pp": -0.5836000000000041,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 40.6329,
+          "learned_ap": 41.2639,
+          "delta_pp": -0.6310000000000002
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 77.7238,
+          "learned_ap": 77.7028,
+          "delta_pp": 0.021000000000000796
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 50.5974,
+          "learned_ap": 50.9491,
+          "delta_pp": -0.351700000000001
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 50.3397,
+          "learned_ap": 51.6221,
+          "delta_pp": -1.2824000000000026
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 88.3108,
+          "learned_ap": 88.3993,
+          "delta_pp": -0.08849999999999625
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 79.3383,
+          "learned_ap": 79.7183,
+          "delta_pp": -0.37999999999999545
+        }
+      }
+    },
+    {
+      "policy": "both_identity",
+      "condition": "blur",
+      "eaa_map": 50.9247,
+      "dc_map": 68.3676,
+      "eaa_delta_from_learned_pp": -0.0683000000000007,
+      "dc_delta_from_learned_pp": -0.046900000000007935,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 39.3761,
+          "learned_ap": 39.6209,
+          "delta_pp": -0.2447999999999979
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 74.6156,
+          "learned_ap": 74.7471,
+          "delta_pp": -0.13150000000000261
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 38.7823,
+          "learned_ap": 38.6111,
+          "delta_pp": 0.1711999999999989
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 50.3453,
+          "learned_ap": 50.7101,
+          "delta_pp": -0.36479999999999535
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 88.1965,
+          "learned_ap": 88.2738,
+          "delta_pp": -0.07729999999999393
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 66.5611,
+          "learned_ap": 66.2597,
+          "delta_pp": 0.301400000000001
+        }
+      }
+    },
+    {
+      "policy": "both_identity",
+      "condition": "occlusion",
+      "eaa_map": 43.9079,
+      "dc_map": 67.1369,
+      "eaa_delta_from_learned_pp": -5.601100000000002,
+      "dc_delta_from_learned_pp": -3.771100000000004,
+      "per_class": {
+        "Kitti metric/pred_instances_3d/entire_area/Pedestrian_3d_all": {
+          "ap": 36.2098,
+          "learned_ap": 44.1973,
+          "delta_pp": -7.987499999999997
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Cyclist_3d_all": {
+          "ap": 65.7027,
+          "learned_ap": 72.3587,
+          "delta_pp": -6.656000000000006
+        },
+        "Kitti metric/pred_instances_3d/entire_area/Car_3d_all": {
+          "ap": 29.8114,
+          "learned_ap": 31.9709,
+          "delta_pp": -2.1595000000000013
+        },
+        "Kitti metric/pred_instances_3d/roi/Pedestrian_3d_all": {
+          "ap": 48.2995,
+          "learned_ap": 55.2099,
+          "delta_pp": -6.910399999999996
+        },
+        "Kitti metric/pred_instances_3d/roi/Cyclist_3d_all": {
+          "ap": 84.0145,
+          "learned_ap": 87.8257,
+          "delta_pp": -3.8111999999999995
+        },
+        "Kitti metric/pred_instances_3d/roi/Car_3d_all": {
+          "ap": 69.0968,
+          "learned_ap": 69.6884,
+          "delta_pp": -0.5915999999999997
+        }
+      }
+    }
+  ],
+  "learned_repeat_vs_original": [
+    {
+      "condition": "clean",
+      "eaa_delta_pp": 0.0,
+      "dc_delta_pp": 0.0
+    },
+    {
+      "condition": "dark",
+      "eaa_delta_pp": 0.0,
+      "dc_delta_pp": 0.0
+    },
+    {
+      "condition": "blur",
+      "eaa_delta_pp": 0.0,
+      "dc_delta_pp": -0.0020999999999986585
+    },
+    {
+      "condition": "occlusion",
+      "eaa_delta_pp": 0.0,
+      "dc_delta_pp": 0.0
+    }
+  ],
+  "sources": [
+    {
+      "path": "repro/reliability_fusion_v2/attention_intervention/20261102_160250.json",
+      "sha256": "f815b93c8e9c7f3af6a154a35c172a8a402ddaa4b6197beb7cedd17777b7d27d"
+    },
+    {
+      "path": "work_dirs/reliability_fusion_v2/ablation/nas/attention_intervention_20261102_160245/summary.json",
+      "sha256": "f815b93c8e9c7f3af6a154a35c172a8a402ddaa4b6197beb7cedd17777b7d27d"
+    },
+    {
+      "path": "repro/reliability_fusion_v2/robustness/20261031_093806.json",
+      "sha256": "c7e3ddb470fe9da6f1cd838e5add9b8e62f8857f838acfd72783d71dfe63b60b"
+    }
+  ],
+  "checkpoint": {
+    "path": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+    "sha256": "b1d920410f976921c3941e197c47c0531cbe91a3afe54c5af18ca226ad66f1fb",
+    "strict_load": true
+  },
+  "audit": {
+    "all_16_evaluations_valid": true,
+    "original_indices_verified": true,
+    "checkpoint_unchanged": true,
+    "source_hashes_match_run_commit": true,
+    "run_started_clean": true,
+    "selected_valid_gates_equal_one": true,
+    "query_parameters_unchanged": true,
+    "all_observed_projections_valid": true
+  },
+  "conclusions": [
+    "No attention-identity policy restored blur EAA or DC in this seed.",
+    "Backbone attention identity reduced occlusion EAA/DC by 5.0632/3.4491 percentage points; middle attention identity reduced them by .1889/1.6599.",
+    "Keep full V2; current evidence does not support globally weakening attention gates as a direct blur fix.",
+    "Inference intervention is not equivalent to retraining a component ablation; effects include jointly learned feature adaptation."
+  ],
+  "next_step": {
+    "type": "fixed-checkpoint query intervention",
+    "attention_parameters": "retain learned",
+    "query_policies": [
+      "learned",
+      "middle_identity",
+      "backbone_identity",
+      "both_identity"
+    ],
+    "training": false,
+    "conditions": [
+      "clean",
+      "dark",
+      "blur",
+      "occlusion"
+    ],
+    "samples": 1296,
+    "status": "prepared and smoke-tested, full run not started"
+  },
+  "limitations": [
+    "One fine-tuning seed, development validation set, synthetic training-known corruption families.",
+    "Repeated evaluation changed blur DC by -0.0021 pp; use within-run learned reference.",
+    "Projection-invalid branch benefit not evaluated because all observed projections were valid.",
+    "Do not interpret gate-identity drops as gains over an independently trained gate-free baseline."
+  ]
+}
