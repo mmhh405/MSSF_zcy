@@ -2,7 +2,7 @@
 
 分支：`feat/reliability-gate-v2`，从 V1 全量退化分析提交 `8fde873` 创建。V1 的模型、配置和结果保留在原分支/标签及 `README_reliability_fusion.md` 中。
 
-当前阶段：代码与接入验证完成，共新增 18820 个参数、4 个门控。主实验与同增强控制已完成三个 seed 的完整评测；三种组件消融的 seed=0 也全部完成。query-only 缓解模糊 EAA 退步，但遮挡收益低于完整 V2；下一步补 query-only 的 seed=1、2。
+当前阶段：代码与接入验证完成，共新增 18820 个参数、4 个门控。完整 V2 与 query-only 均已完成 seed=0、1、2 的训练和完整评测；query-only 两个复验种子的队列于 2026-11-02 12:43:45 全部结束。
 
 ## 设计与边界
 
@@ -199,6 +199,8 @@ python tools/analysis_tools/reliability_robustness.py --samples 1296 \
 | v2-gate_aug_no_anchor-seed0 | training_completed | 1296 | 6 | 63.5951 | 79.9448 | 96585b3d+dirty | work_dirs/reliability_fusion_v2/ablation/20261031_152210/gate_aug_no_anchor |
 | v2-query-only-inference-smoke | smoke_only | 16 | — | 25.0645 | 17.7489 | 96585b3d+dirty | work_dirs/reliability_fusion_v2/verification/query_only_20261031_201158 |
 | v2-gate_aug_query_only-seed0 | training_completed | 1296 | 6 | 63.5144 | 79.8779 | e9b3f255 | work_dirs/reliability_fusion_v2/ablation/query_only_20261031_201602/gate_aug_query_only |
+| v2-gate_aug_query_only-seed1 | training_completed | 1296 | 6 | 63.5458 | 79.9236 | 64b79b92 | work_dirs/reliability_fusion_v2/ablation/nas/query_only_repeat_20261102_110041/seed1/gate_aug_query_only |
+| v2-gate_aug_query_only-seed2 | training_completed | 1296 | 6 | 63.4769 | 79.8412 | 64b79b92+dirty | work_dirs/reliability_fusion_v2/ablation/nas/query_only_repeat_20261102_110041/seed2/gate_aug_query_only |
 
 <!-- RELIABILITY_RESULTS_END -->
 
@@ -206,27 +208,27 @@ python tools/analysis_tools/reliability_robustness.py --samples 1296 \
 
 <!-- ROBUSTNESS_RESULTS_START -->
 
-完整验证集受控退化评测。同一批 1296 帧、固定所指定的两组权重，无训练。运行 `20261031_205802`；合成退化不等同真实夜间或恶劣天气。
+完整验证集受控退化评测。同一批 1296 帧、固定所指定的两组权重，无训练。运行 `20261102_123324`；合成退化不等同真实夜间或恶劣天气。
 
 | 条件 | 样本数 | 对照 EAA | 门控 EAA | 门控减对照 | 对照 DC | 门控 DC | 门控减对照 |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| clean | 1296 | 63.5594 | 63.5144 | -0.0450 | 79.9024 | 79.8779 | -0.0245 |
-| dark | 1296 | 56.4797 | 56.5581 | +0.0784 | 73.1134 | 73.1626 | +0.0492 |
-| blur | 1296 | 51.5209 | 51.5674 | +0.0465 | 68.1297 | 68.1282 | -0.0015 |
-| occlusion | 1296 | 48.0429 | 48.3040 | +0.2611 | 68.3006 | 70.0573 | +1.7567 |
+| clean | 1296 | 63.4854 | 63.4769 | -0.0085 | 79.8451 | 79.8412 | -0.0039 |
+| dark | 1296 | 56.3481 | 56.4238 | +0.0757 | 73.2276 | 73.3347 | +0.1071 |
+| blur | 1296 | 50.3926 | 50.6219 | +0.2293 | 68.1452 | 68.2423 | +0.0971 |
+| occlusion | 1296 | 48.1980 | 48.3443 | +0.1463 | 68.6256 | 70.1630 | +1.5374 |
 
 | 条件 | 门控阶段 | 有效查询门控均值 | 标准差 | 低于 0.9 的比例 |
 |---|---|---:|---:|---:|
-| clean | backbone/query | 1.0085558 | 0.0502153 | 0.03023 |
-| clean | middle_encoder/query | 1.0207373 | 0.0378249 | 0.01400 |
-| dark | backbone/query | 0.9976481 | 0.0615071 | 0.06915 |
-| dark | middle_encoder/query | 0.9598149 | 0.0629482 | 0.18434 |
-| blur | backbone/query | 0.8708283 | 0.0934811 | 0.66058 |
-| blur | middle_encoder/query | 0.9146691 | 0.0768741 | 0.40329 |
-| occlusion | backbone/query | 1.0305361 | 0.0629918 | 0.03340 |
-| occlusion | middle_encoder/query | 0.9334572 | 0.1074752 | 0.42013 |
+| clean | backbone/query | 1.0133688 | 0.0555096 | 0.03933 |
+| clean | middle_encoder/query | 1.0133567 | 0.0464446 | 0.03778 |
+| dark | backbone/query | 1.0303969 | 0.0789922 | 0.05889 |
+| dark | middle_encoder/query | 0.9308669 | 0.0821611 | 0.34291 |
+| blur | backbone/query | 0.8690688 | 0.1244612 | 0.63971 |
+| blur | middle_encoder/query | 0.8789124 | 0.0880243 | 0.56700 |
+| occlusion | backbone/query | 1.0749983 | 0.1022817 | 0.04022 |
+| occlusion | middle_encoder/query | 0.9118707 | 0.1253584 | 0.44515 |
 
-[完整参数、逐类指标与门控分布](repro/reliability_fusion_v2/robustness/20261031_205802.json)
+[完整参数、逐类指标与门控分布](repro/reliability_fusion_v2/robustness/20261102_123324.json)
 
 <!-- ROBUSTNESS_RESULTS_END -->
 
@@ -362,3 +364,23 @@ seed=0 实验实际于 2026-10-31 21:08 完成：6 epoch、30834 步，四条件
 - 启动脚本已支持 RELIABILITY_SEEDS，默认仍为 seed=0；种子参数、原默认行为及配对控制映射经过 dry-run。后续输出写入 NAS，通过 work_dirs/reliability_fusion_v2/ablation/nas 访问。
 
 [完整比较 JSON](repro/reliability_fusion_v2/ablation/query-only-seed0-summary-20261102.json)；[下一步复验命令](repro/reliability_fusion_v2/ablation/next-query-only-repeats-20261102.md)。
+
+## 最新运行状态（2026-11-02）
+
+query-only 复验队列已出现 ALL_COMPLETED；seed=1、2 均完成 6 epoch、30834 步，并完成 clean/dark/blur/occlusion 各 1296 帧评测。两组权重哈希、样本索引和运行期源码哈希已核验。
+
+| 训练 seed | 训练 | 四条件评测 | 第 6 轮干净验证 EAA / DC (%) |
+|---|---|---|---:|
+| 1 | 已完成 6 轮 | 已完成 | 63.5458 / 79.9236 |
+| 2 | 已完成 6 轮 | 已完成 | 63.4769 / 79.8412 |
+
+总体完成时间为 2026-11-02 12:43:45。查看运行状态：
+
+```bash
+BATCH='/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/ablation/nas/query_only_repeat_20261102_110041'
+tail -n 30 "$BATCH.log"
+```
+
+训练日志位于 <批次>/seedN/gate_aug_query_only/console.log，逐轮结果为该目录的 reliability_result.json，完整退化结果为 robustness/summary.json。训练、评测都结束才算完整队列完成。接下来可将 query-only 三个 seed 与对应完整 V2、控制组进行配对汇总，本轮没有启动新训练。
+
+[本轮状态和完整逐轮记录](repro/reliability_fusion_v2/ablation/query-only-repeat-status-20261102.json)。
