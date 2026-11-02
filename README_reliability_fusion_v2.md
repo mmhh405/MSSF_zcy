@@ -482,10 +482,73 @@ Query-only 原始评测：[seed=0](repro/reliability_fusion_v2/robustness/202610
 
 ### 下一步执行 query 前向干预
 
-已扩展同一入口支持 --gate-kind query，保持两个 attention 参数，按相同四策略干预 query。默认仍是 attention，原有命令含义不变；两个结果分别归档、分别写 README。本轮接入检查完成，但完整 query 评测和新训练均未启动。
+已扩展同一入口支持 --gate-kind query，保持两个 attention 参数，按相同四策略干预 query。默认仍是 attention，原有命令含义不变；两个结果分别归档、分别写 README。当时的接入检查已完成；后续完整 query 评测也已结束，结论和复验计划见文末，仍未启动新训练。
 
 先用这一次固定权重诊断判断是否有 query 阶段可减轻模糊行人损失且保留遮挡；若有，再设计一个明确的残差混合候选并按匹配协议重训练；若没有，转向共享特征漂移/正则项检查，不再盲扫推理门控强度。
 
 [核验与逐类差值](repro/reliability_fusion_v2/attention_intervention/conclusion-seed0-20261102.json)；[本轮完整原始结果](repro/reliability_fusion_v2/attention_intervention/20261102_160250.json)；[下一步完整运行命令](repro/reliability_fusion_v2/ablation/next-query-intervention-20261102.md)；[扩展后的干预脚本](tools/analysis_tools/reliability_attention_intervention.py)；[两类入口接入验证](repro/reliability_fusion_v2/ablation/query-intervention-smoke-20261102.json)。
 
 <!-- ATTENTION_INTERVENTION_CONCLUSION_END -->
+
+## 固定权重query门控干预（自动更新）
+
+<!-- QUERY_INTERVENTION_START -->
+
+这是同一个完整 V2 checkpoint 的推理干预，无训练；两个注意力输出门控参数保持学习值，选中的query门控仅在内存中设为恒等。不能当作重新训练后的结构消融。每组同一 1296 帧，普通 3D AP。
+
+| 条件 | 策略 | EAA (%) | 相对 learned | DC (%) | 相对 learned |
+|---|---|---:|---:|---:|---:|
+| clean | learned | 63.5679 | +0.0000 | 79.9167 | +0.0000 |
+| clean | middle_identity | 63.5749 | +0.0070 | 79.9184 | +0.0017 |
+| clean | backbone_identity | 63.5899 | +0.0220 | 79.9296 | +0.0129 |
+| clean | both_identity | 63.5810 | +0.0131 | 79.9151 | -0.0016 |
+| dark | learned | 56.6386 | +0.0000 | 73.2465 | +0.0000 |
+| dark | middle_identity | 56.5326 | -0.1060 | 73.1710 | -0.0755 |
+| dark | backbone_identity | 56.6684 | +0.0298 | 73.2293 | -0.0172 |
+| dark | both_identity | 56.5451 | -0.0935 | 73.1832 | -0.0633 |
+| blur | learned | 50.9930 | +0.0000 | 68.4145 | +0.0000 |
+| blur | middle_identity | 50.6605 | -0.3325 | 68.3097 | -0.1048 |
+| blur | backbone_identity | 51.0856 | +0.0926 | 68.5157 | +0.1012 |
+| blur | both_identity | 50.5860 | -0.4070 | 68.3501 | -0.0644 |
+| occlusion | learned | 49.5090 | +0.0000 | 70.9060 | +0.0000 |
+| occlusion | middle_identity | 49.2327 | -0.2763 | 69.1105 | -1.7955 |
+| occlusion | backbone_identity | 49.5122 | +0.0032 | 70.8982 | -0.0078 |
+| occlusion | both_identity | 49.1897 | -0.3193 | 69.1129 | -1.7931 |
+
+[逐类指标、门控分布及不可变权重核验](repro/reliability_fusion_v2/query_intervention/20261102_165100.json)
+
+<!-- QUERY_INTERVENTION_END -->
+
+## Query 固定权重诊断结论与下一步（2026-11-02）
+
+<!-- QUERY_INTERVENTION_CONCLUSION_START -->
+
+2026-11-02 17:13:40 完成，实际约 23 分钟；四策略 × 四条件各 1296 帧，共 16 组，无训练。源码提交 75e8994，启动工作区干净。原始帧索引、不可变 checkpoint、源码提交哈希核验通过；选中有效 query 门控均为 1，attention 参数未改，全部观测投影有效。
+
+下表每格为普通 3D AP 的 EAA / DC (%)。
+
+| 条件 | learned 完整 V2 | middle query 恒等 | backbone query 恒等 | 两个 query 恒等 |
+|---|---:|---:|---:|---:|
+| clean | 63.5679 / 79.9167 | 63.5749 / 79.9184 | 63.5899 / 79.9296 | 63.5810 / 79.9151 |
+| dark | 56.6386 / 73.2465 | 56.5326 / 73.1710 | 56.6684 / 73.2293 | 56.5451 / 73.1832 |
+| blur | 50.9930 / 68.4145 | 50.6605 / 68.3097 | 51.0856 / 68.5157 | 50.5860 / 68.3501 |
+| occlusion | 49.5090 / 70.9060 | 49.2327 / 69.1105 | 49.5122 / 70.8982 | 49.1897 / 69.1129 |
+
+**完整 V2 继续保留为主候选，仅 backbone query 恒等作为待复验的小幅线索。**
+
+- 仅 backbone query 恒等：clean EAA/DC +0.0220/+0.0129，dark +0.0298/-0.0172，blur +0.0926/+0.1012，occlusion +0.0032/-0.0078 个百分点。干净和遮挡变化很小，不代表已经证明等效。
+- 模糊 EAA 行人从 39.6209 到 39.7583（+0.1374），但 DC 行人从 50.7101 到 50.5884（-0.1217）；DC 总体提高来自 Car/Cyclist 的抵消。不能说所有类别/区域都改善，也没有解决原有模糊行人的主要差距。
+- middle query 恒等：blur EAA/DC -0.3325/-0.1048，遮挡 -0.2763/-1.7955。两个 query 都恒等：blur -0.4070/-0.0644，遮挡 -0.3193/-1.7931。因此只复验 backbone 这一策略。
+- learned 与上一轮 attention 运行相比，仅遮挡 DC 低 0.0020，其他 EAA/DC 相同。保留原记录，所有本轮差值统一减本轮 learned。
+- 这是同一完整 V2 seed=0 权重的推理干预，原 checkpoint 没有改写。结果包含联合训练后的特征适应，不是重新训练新模型的成绩。
+- 单 seed 的 +0.09/+0.10 还不足以认定稳定收益；验证集多次参与开发、退化类型在训练中出现过，也没有无效投影或真实天气的新证据。
+
+### 下一步只复验 backbone query，复用现有 seed=1、2 权重
+
+每个 seed 仅运行 learned/backbone_identity 两策略 × 四条件 × 1296 帧，两 seed 共 16 组，预计约 22–27 分钟，无需训练。启动器已核验已有权重并完成 dry-run；策略选择入口已通过四帧 clean/blur 接入检查。完整复验尚未启动。
+
+完成后将三个 seed 做配对汇总。若模糊收益方向可重复、且没有明显 clean/遮挡代价，再考虑仅 backbone query 的固定 alpha=0.5 残差混合训练候选；若不能重复，就停止该弱化候选，保留完整 V2，转向训练特征变化与正则项诊断。当前没有改训练算法、配置或启动新训练。
+
+[逐类差值与核验](repro/reliability_fusion_v2/query_intervention/conclusion-seed0-20261102.json)；[本轮完整原始结果](repro/reliability_fusion_v2/query_intervention/20261102_165100.json)；[下一步运行与判读](repro/reliability_fusion_v2/ablation/next-query-backbone-repeats-20261102.md)；[两 seed 顺序启动器](tools/analysis_tools/run_query_backbone_repeats.py)；[策略选择入口](tools/analysis_tools/reliability_attention_intervention.py)；[接入核验](repro/reliability_fusion_v2/ablation/query-backbone-repeat-smoke-20261102.json)。
+
+<!-- QUERY_INTERVENTION_CONCLUSION_END -->

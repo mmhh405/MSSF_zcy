@@ -105,7 +105,10 @@ def record_full_result(report):
                     rows.append(f"| {condition} | {row['policy']} | {row['eaa_map']:.4f} | "
                                 f"{row['eaa_map']-baseline['eaa_map']:+.4f} | "
                                 f"{row['dc_map']:.4f} | {row['dc_map']-baseline['dc_map']:+.4f} |")
-        block = ('\n\n这是同一个完整 V2 checkpoint 的推理干预，无训练；'
+        training_seed = report.get('training_seed')
+        seed_label = str(training_seed) if training_seed is not None else '未指定（见权重路径）'
+        block = (f'\n\n这是同一个完整 V2 checkpoint 的推理干预，无训练；训练 seed={seed_label}，'
+                 f"评测 seed={report['seed']}。"
                  f'{retained}门控参数保持学习值，选中的{label}门控仅在内存中设为恒等。'
                  '不能当作重新训练后的结构消融。每组同一 1296 帧，普通 3D AP。\n\n'
                  + '\n'.join(rows) + '\n\n[逐类指标、门控分布及不可变权重核验]('
@@ -129,6 +132,7 @@ def evaluate(args):
     if any((output / name).exists() for name in ('progress.json', 'summary.json')):
         raise FileExistsError('Use a new work directory; existing results are preserved')
     conditions = ['clean'] + [c for c in dict.fromkeys(args.conditions) if c != 'clean']
+    policies = ['learned'] + [p for p in dict.fromkeys(args.policies) if p != 'learned']
     annotations = load('data/vod/kitti_infos_val.pkl')['data_list']
     indices = uniform_indices(len(annotations), args.samples)
     full = len(indices) == len(annotations)
@@ -147,9 +151,9 @@ def evaluate(args):
     report = dict(
         run_id=datetime.now().strftime('%Y%m%d_%H%M%S'), valid=False,
         experiment_type='fixed-checkpoint inference intervention', training=False,
-        gate_kind=args.gate_kind,
+        gate_kind=args.gate_kind, training_seed=args.training_seed,
         full_validation=full, samples=len(indices), indices=indices, conditions=conditions,
-        policies=list(POLICIES), seed=0, corruption_settings=SETTINGS,
+        policies=policies, seed=0, corruption_settings=SETTINGS,
         original_frame_alignment_checked=True,
         query_gates='policy-controlled' if args.gate_kind == 'query' else 'learned parameters unchanged',
         attention_gates='policy-controlled' if args.gate_kind == 'attention' else 'learned parameters unchanged',
@@ -166,7 +170,7 @@ def evaluate(args):
         matmul_allow_tf32=torch.backends.cuda.matmul.allow_tf32,
         interventions={}, results=[], output_dir=str(output))
     save_report(output / 'progress.json', report)
-    for policy in POLICIES:
+    for policy in policies:
         torch.manual_seed(0)
         np.random.seed(0)
         random.seed(0)
@@ -229,6 +233,9 @@ def evaluate(args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gate-kind', choices=('attention', 'query'), default='attention')
+    parser.add_argument('--policies', nargs='+', choices=list(POLICIES), default=list(POLICIES),
+                        help='Policies to evaluate; learned is always included as the paired reference')
+    parser.add_argument('--training-seed', type=int, help='Checkpoint training seed, provenance only; evaluation RNG stays 0')
     parser.add_argument('--config', default='configs/experiments/reliability_fusion_v2/gate_main.py')
     parser.add_argument('--checkpoint', default='work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth')
     parser.add_argument('--samples', type=int, default=1296)
