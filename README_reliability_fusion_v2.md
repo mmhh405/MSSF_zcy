@@ -360,7 +360,7 @@ seed=0 实验实际于 2026-10-31 21:08 完成：6 epoch、30834 步，四条件
 - query-only 模糊 DC 68.1282，与控制 68.1297 基本相同，低于完整 V2 68.4166。并非模糊所有区域都更好。
 - query-only 遮挡 EAA/DC 48.3040/70.0573，比本轮控制 +0.2611/+1.7567，但比完整 V2 -1.2050/-0.8507。干净集也比本轮控制低 0.0450/0.0245。
 - 这些 seed=0 结果提示注意力输出门控可能涉及遮挡与模糊间的权衡。组件移除同时改变活动门控约束的平均，因此不能单凭该结果证明前向门控的因果作用。
-- 下一步仅补 query-only 的 seed=1、2，复用原控制组和完整 V2，检查权衡能否重复，再考虑分阶段门控或抑制强度的改进。复验尚未启动。
+- 下一步仅补 query-only 的 seed=1、2，复用原控制组和完整 V2，检查权衡能否重复，再考虑分阶段门控或抑制强度的改进。后续复验已完成，三 seed 结论见文末。
 - 启动脚本已支持 RELIABILITY_SEEDS，默认仍为 seed=0；种子参数、原默认行为及配对控制映射经过 dry-run。后续输出写入 NAS，通过 work_dirs/reliability_fusion_v2/ablation/nas 访问。
 
 [完整比较 JSON](repro/reliability_fusion_v2/ablation/query-only-seed0-summary-20261102.json)；[下一步复验命令](repro/reliability_fusion_v2/ablation/next-query-only-repeats-20261102.md)。
@@ -381,6 +381,48 @@ BATCH='/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/ablation/n
 tail -n 30 "$BATCH.log"
 ```
 
-训练日志位于 <批次>/seedN/gate_aug_query_only/console.log，逐轮结果为该目录的 reliability_result.json，完整退化结果为 robustness/summary.json。训练、评测都结束才算完整队列完成。接下来可将 query-only 三个 seed 与对应完整 V2、控制组进行配对汇总，本轮没有启动新训练。
+训练日志位于 <批次>/seedN/gate_aug_query_only/console.log，逐轮结果为该目录的 reliability_result.json，完整退化结果为 robustness/summary.json。训练、评测都结束才算完整队列完成。三 seed 配对汇总已完成，结论和下一步诊断见文末；没有启动新训练。
 
 [本轮状态和完整逐轮记录](repro/reliability_fusion_v2/ablation/query-only-repeat-status-20261102.json)。
+
+## Query-only 三个 seed 的配对分析（2026-11-02）
+
+<!-- QUERY_ONLY_3SEED_START -->
+
+seed=0、1、2 均完成固定第 6 轮及同一 1296 帧四条件评测；seed=1、2 队列于 2026-11-02 12:43:45 完成。权重、配置、原始帧索引和源码核验通过。普通 3D AP；EAA 为 entire_area/map，DC 为 roi/map。下表对同 seed 的模型减各自控制组后，再求均值及样本标准差（ddof=1），单位为百分点，± 不是置信区间。
+
+| 条件 | 完整 V2 − 控制 EAA | query-only − 控制 EAA | 完整 V2 − 控制 DC | query-only − 控制 DC |
+|---|---:|---:|---:|---:|
+| clean | +0.0111 ± 0.0190 | -0.0281 ± 0.0184 | -0.0114 ± 0.0274 | -0.0243 ± 0.0204 |
+| dark | +0.1015 ± 0.0775 | +0.0681 ± 0.0156 | +0.0984 ± 0.0306 | +0.0777 ± 0.0290 |
+| blur | -0.2443 ± 0.5452 | +0.1392 ± 0.0914 | +0.3670 ± 0.0801 | +0.0637 ± 0.0564 |
+| occlusion | +1.8171 ± 0.5976 | +0.6140 ± 0.7129 | +2.5161 ± 0.3682 | +1.5245 ± 0.2389 |
+
+| 条件 | query-only − 完整 V2 EAA | query-only − 完整 V2 DC |
+|---|---:|---:|
+| clean | -0.0397 ± 0.0321 | -0.0130 ± 0.0228 |
+| dark | -0.0335 ± 0.0619 | -0.0207 ± 0.0556 |
+| blur | +0.3837 ± 0.4731 | -0.3011 ± 0.0455 |
+| occlusion | -1.2026 ± 0.1307 | -0.9916 ± 0.5037 |
+
+**结论：完整 V2 继续作为主候选，query-only 作为定位权衡的消融。**
+
+- query-only 的 blur EAA 相对控制组三次均提高，平均 +0.1392；blur EAA 行人 AP 相对控制为 +0.0380、+0.1303、+0.1529，平均 +0.1071。完整 V2 对应行人配对均值为 -1.5102。
+- query-only 的 blur EAA 比完整 V2 平均高 0.3837，但逐 seed 是 +0.5744、+0.7317、-0.1549，只有两次为正；blur DC 三次都低于完整 V2，平均 -0.3011。不能概括为“模糊全面更好”。
+- query-only 的 occlusion EAA/DC 三次均低于完整 V2，平均 -1.2026/-0.9916；完整 V2 相对同增强控制的遮挡收益仍为 +1.8171/+2.5161。
+- query-only 的 clean EAA/DC 三次均略低于控制，未发现干净精度增益。总体仍是遮挡收益与模糊精度之间的权衡。
+- 组件移除也改变了 clean-anchor 活动项的平均，现有重训练比较不能只归因于前向 attention 门控。后续固定 checkpoint 的推理干预用于进一步定位。
+- 控制权重重复评测存在很小漂移，例如 seed=2 blur DC 为 68.1452，对应早先完整 V2 配对控制为 68.1387。原结果均保留；汇总同时提供控制差异和控制收益的差分，不能混用重算后的值覆盖旧记录。
+- 三 seed 仅覆盖同一官方预训练权重下的微调随机性；验证集已多次参与开发，合成退化也属于训练见过的类型。不能宣称统计显著、泛化到真实天气或超过其他论文方法；本轮投影仍全部有效。
+
+### 下一步：固定权重，分阶段 attention 门控干预
+
+脚本已准备并完成 4 帧 clean/blur、全部四策略的接入检查。保持同一完整 V2 seed=0 checkpoint 和两个 query 参数，只在内存中将 middle_encoder、backbone 的 attention 门控分别或共同设为恒等，连同原学习门控共四组；注意力特征分支和无效投影掩码保留。完整实验为四策略 × 四条件 × 1296 帧，无训练，尚未启动。
+
+先检查 learned 能否复现原记录，再看各阶段恒等干预对模糊行人和遮挡的联合影响。若定位到单个阶段，再决定弱化抑制的具体候选并重新训练；当前不直接将 query-only 升为主版本。固定权重诊断与重训练结构消融须分别解释。
+
+[逐 seed / 逐类汇总与来源核验](repro/reliability_fusion_v2/ablation/query-only-multiseed-summary-20261102.json)；[完整 V2 多 seed 记录](repro/reliability_fusion_v2/multiseed/summary-20261031.json)；[下一步完整命令与文件位置](repro/reliability_fusion_v2/ablation/next-attention-intervention-20261102.md)；[诊断脚本](tools/analysis_tools/reliability_attention_intervention.py)；[4 帧接入验证](repro/reliability_fusion_v2/ablation/attention-intervention-smoke-20261102.json)。
+
+Query-only 原始评测：[seed=0](repro/reliability_fusion_v2/robustness/20261031_205802.json)、[seed=1](repro/reliability_fusion_v2/robustness/20261102_114158.json)、[seed=2](repro/reliability_fusion_v2/robustness/20261102_123324.json)。
+
+<!-- QUERY_ONLY_3SEED_END -->
