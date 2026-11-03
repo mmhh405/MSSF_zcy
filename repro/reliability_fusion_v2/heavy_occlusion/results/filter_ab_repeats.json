@@ -1,0 +1,259 @@
+{
+  "valid": true,
+  "frames": 1296,
+  "operating_point": "Fixed post-output pedestrian cutoff A=.10 B=.13; AP/EAA/DC use native detector output",
+  "seeds": {
+    "1": {
+      "A": {
+        "clean": {
+          "eaa_map": 63.6084,
+          "dc_map": 79.928,
+          "pedestrian_ap": 51.8674,
+          "latency": {
+            "median_ms": 44.73305949795758,
+            "p95_ms": 45.91568324030959,
+            "measured_frames": 1266,
+            "warmup_frames": 30
+          },
+          "pedestrian_operating_point": {
+            "score_cutoff": 0.1,
+            "tp": 2101,
+            "fp": 1337,
+            "fn": 1648,
+            "fp_per_frame": 1.0316358024691359,
+            "recall": 0.5604161109629234
+          },
+          "predictions_sha256": "42f94a8491fb4fbbb8bcb58f2345d365f663c2fa3428f8d1f220172dee91fa38"
+        },
+        "blur": {
+          "eaa_map": 51.1351,
+          "dc_map": 68.7154,
+          "pedestrian_ap": 39.4549,
+          "latency": {
+            "median_ms": 45.594218994665425,
+            "p95_ms": 48.472598507942166,
+            "measured_frames": 1266,
+            "warmup_frames": 30
+          },
+          "pedestrian_operating_point": {
+            "score_cutoff": 0.1,
+            "tp": 1773,
+            "fp": 4131,
+            "fn": 1976,
+            "fp_per_frame": 3.1875,
+            "recall": 0.4729261136303014
+          },
+          "predictions_sha256": "9feed2689aa9bc080b2b7b567856baa6e5429fe0205a3af7f01fd743bc648881"
+        },
+        "occlusion": {
+          "eaa_map": 49.5353,
+          "dc_map": 71.4953,
+          "pedestrian_ap": 43.6496,
+          "latency": {
+            "median_ms": 45.30909899767721,
+            "p95_ms": 46.91927250678418,
+            "measured_frames": 1266,
+            "warmup_frames": 30
+          },
+          "pedestrian_operating_point": {
+            "score_cutoff": 0.1,
+            "tp": 1844,
+            "fp": 3798,
+            "fn": 1905,
+            "fp_per_frame": 2.9305555555555554,
+            "recall": 0.4918644971992531
+          },
+          "predictions_sha256": "a27bedd7b28eb56c4751e480f7eb0a462ccd8d08e098e62ee1c0cf28835157b0"
+        }
+      },
+      "B": {
+        "clean": {
+          "eaa_map": 65.257,
+          "dc_map": 82.0058,
+          "pedestrian_ap": 56.8942,
+          "latency": {
+            "median_ms": 44.7010034986306,
+            "p95_ms": 46.02464625349967,
+            "measured_frames": 1266,
+            "warmup_frames": 30
+          },
+          "pedestrian_operating_point": {
+            "score_cutoff": 0.13,
+            "tp": 2115,
+            "fp": 1196,
+            "fn": 1634,
+            "fp_per_frame": 0.9228395061728395,
+            "recall": 0.5641504401173646
+          },
+          "predictions_sha256": "23f8d81e07206a0c4189fcc2d38d77efea6292170526b8b3e2c429222be5e6ea"
+        },
+        "blur": {
+          "eaa_map": 51.7657,
+          "dc_map": 68.7154,
+          "pedestrian_ap": 41.4124,
+          "latency": {
+            "median_ms": 45.43965849734377,
+            "p95_ms": 48.47081350089866,
+            "measured_frames": 1266,
+            "warmup_frames": 30
+          },
+          "pedestrian_operating_point": {
+            "score_cutoff": 0.13,
+            "tp": 1781,
+            "fp": 4026,
+            "fn": 1968,
+            "fp_per_frame": 3.1064814814814814,
+            "recall": 0.4750600160042678
+          },
+          "predictions_sha256": "051dcb7cd7fd39ac40ea2b6ffa60a19143f2f11c5c8093b046ea5bac1532b7c0"
+        },
+        "occlusion": {
+          "eaa_map": 50.2706,
+          "dc_map": 72.5504,
+          "pedestrian_ap": 43.3519,
+          "latency": {
+            "median_ms": 44.99699550069636,
+            "p95_ms": 46.11256525822682,
+            "measured_frames": 1266,
+            "warmup_frames": 30
+          },
+          "pedestrian_operating_point": {
+            "score_cutoff": 0.13,
+            "tp": 1843,
+            "fp": 3554,
+            "fn": 1906,
+            "fp_per_frame": 2.742283950617284,
+            "recall": 0.49159775940250733
+          },
+          "predictions_sha256": "6d63908e0efe909af026fda1457760d87d1eefad232e3c72084dbc28e5d1aa5d"
+        }
+      }
+    },
+    "2": {
+      "A": {
+        "clean": {
+          "eaa_map": 63.4799,
+          "dc_map": 79.8369,
+          "pedestrian_ap": 51.8496,
+          "latency": {
+            "median_ms": 44.69873350171838,
+            "p95_ms": 45.569205743959174,
+            "measured_frames": 1266,
+            "warmup_frames": 30
+          },
+          "pedestrian_operating_point": {
+            "score_cutoff": 0.1,
+            "tp": 2086,
+            "fp": 1297,
+            "fn": 1663,
+            "fp_per_frame": 1.0007716049382716,
+            "recall": 0.5564150440117365
+          },
+          "predictions_sha256": "3c13305237fa718b306e5c3dbfbcb06f57e240b92d88e6da26f92944ba5f5288"
+        },
+        "blur": {
+          "eaa_map": 50.7735,
+          "dc_map": 68.5037,
+          "pedestrian_ap": 39.3061,
+          "latency": {
+            "median_ms": 45.711452497926075,
+            "p95_ms": 48.21742874264601,
+            "measured_frames": 1266,
+            "warmup_frames": 30
+          },
+          "pedestrian_operating_point": {
+            "score_cutoff": 0.1,
+            "tp": 1765,
+            "fp": 4230,
+            "fn": 1984,
+            "fp_per_frame": 3.263888888888889,
+            "recall": 0.470792211256335
+          },
+          "predictions_sha256": "ca05bd400ff6c19b81b29396cf6f00f86dea803b55a69a0f0e5de889244c8748"
+        },
+        "occlusion": {
+          "eaa_map": 49.6764,
+          "dc_map": 70.7364,
+          "pedestrian_ap": 44.166,
+          "latency": {
+            "median_ms": 45.34112199326046,
+            "p95_ms": 46.409057489654515,
+            "measured_frames": 1266,
+            "warmup_frames": 30
+          },
+          "pedestrian_operating_point": {
+            "score_cutoff": 0.1,
+            "tp": 1874,
+            "fp": 3967,
+            "fn": 1875,
+            "fp_per_frame": 3.060956790123457,
+            "recall": 0.4998666311016271
+          },
+          "predictions_sha256": "7c318acddbde1222ab36d4cb45fc179744accf1b441a8518ada387c79a25cee7"
+        }
+      },
+      "B": {
+        "clean": {
+          "eaa_map": 65.1765,
+          "dc_map": 81.9658,
+          "pedestrian_ap": 56.9464,
+          "latency": {
+            "median_ms": 44.89521550567588,
+            "p95_ms": 45.84158250509063,
+            "measured_frames": 1266,
+            "warmup_frames": 30
+          },
+          "pedestrian_operating_point": {
+            "score_cutoff": 0.13,
+            "tp": 2098,
+            "fp": 1151,
+            "fn": 1651,
+            "fp_per_frame": 0.8881172839506173,
+            "recall": 0.559615897572686
+          },
+          "predictions_sha256": "09c1172aa30171030b053d26d9a58fa2675107eeb90f989b4426bb6e01d874ef"
+        },
+        "blur": {
+          "eaa_map": 51.4563,
+          "dc_map": 68.5037,
+          "pedestrian_ap": 41.2092,
+          "latency": {
+            "median_ms": 45.549437490990385,
+            "p95_ms": 47.9137372567493,
+            "measured_frames": 1266,
+            "warmup_frames": 30
+          },
+          "pedestrian_operating_point": {
+            "score_cutoff": 0.13,
+            "tp": 1777,
+            "fp": 4098,
+            "fn": 1972,
+            "fp_per_frame": 3.162037037037037,
+            "recall": 0.4739930648172846
+          },
+          "predictions_sha256": "5f7fad1936bd6835d9d1c8890b6c5f9ed32e23162d2d5fefde30fbffbb259642"
+        },
+        "occlusion": {
+          "eaa_map": 49.6751,
+          "dc_map": 72.794,
+          "pedestrian_ap": 44.2437,
+          "latency": {
+            "median_ms": 45.13342650170671,
+            "p95_ms": 46.03711649906472,
+            "measured_frames": 1266,
+            "warmup_frames": 30
+          },
+          "pedestrian_operating_point": {
+            "score_cutoff": 0.13,
+            "tp": 1868,
+            "fp": 3592,
+            "fn": 1881,
+            "fp_per_frame": 2.771604938271605,
+            "recall": 0.4982662043211523
+          },
+          "predictions_sha256": "918a3495ae94ad44177c7f7c601f28b3e2bd04e83cb62628ae52ca70c337aa83"
+        }
+      }
+    }
+  }
+}

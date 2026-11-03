@@ -1,0 +1,766 @@
+auto_scale_lr = dict(base_batch_size=48, enable=False)
+backend_args = None
+class_names = [
+    'Pedestrian',
+    'Cyclist',
+    'Car',
+]
+custom_hooks = [
+    dict(
+        readme='README_reliability_fusion_v2.md',
+        results='repro/reliability_fusion_v2/results.json',
+        type='ReliabilityExperimentHook'),
+]
+data_root = 'data/vod/'
+dataset_type = 'VodDataset'
+db_sampler = dict(
+    backend_args=None,
+    classes=[
+        'Pedestrian',
+        'Cyclist',
+        'Car',
+    ],
+    data_root='data/vod/',
+    info_path='data/vod/kitti_dbinfos_train.pkl',
+    points_loader=dict(
+        backend_args=None,
+        coord_type='LIDAR',
+        load_dim=7,
+        type='LoadPointsFromFile',
+        use_dim=7),
+    prepare=dict(
+        filter_by_difficulty=[
+            -1,
+        ],
+        filter_by_min_points=dict(Car=5, Cyclist=5, Pedestrian=5)),
+    rate=1.0,
+    sample_groups=dict(Car=15, Cyclist=15, Pedestrian=15))
+default_hooks = dict(
+    checkpoint=dict(interval=1, max_keep_ckpts=2, type='CheckpointHook'),
+    logger=dict(interval=50, type='LoggerHook'),
+    param_scheduler=dict(type='ParamSchedulerHook'),
+    sampler_seed=dict(type='DistSamplerSeedHook'),
+    timer=dict(type='IterTimerHook'),
+    visualization=dict(
+        draw=False, output_detsample_dir=None, type='Det3DVisualizationHook'))
+default_scope = 'mmdet3d'
+env_cfg = dict(
+    cudnn_benchmark=False,
+    dist_cfg=dict(backend='nccl'),
+    mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0))
+epoch_num = 40
+eval_pipeline = [
+    dict(
+        backend_args=None,
+        coord_type='LIDAR',
+        load_dim=7,
+        type='LoadPointsFromFile',
+        use_dim=7),
+    dict(keys=[
+        'points',
+    ], type='Pack3DDetInputs'),
+]
+input_modality = dict(use_camera=True, use_lidar=True)
+launcher = 'none'
+load_from = 'exps/mssf_pp_vod/epoch_40.pth'
+log_level = 'INFO'
+log_processor = dict(by_epoch=True, type='LogProcessor', window_size=50)
+lr = 0.0001
+metainfo = dict(classes=[
+    'Pedestrian',
+    'Cyclist',
+    'Car',
+])
+model = dict(
+    backbone=dict(
+        fuse_bev=True,
+        in_channels=[
+            128,
+            128,
+            128,
+        ],
+        layer_nums=[
+            3,
+            5,
+            5,
+        ],
+        layer_strides=[
+            2,
+            2,
+            2,
+        ],
+        num_features=7,
+        optional_cfg=dict(
+            query_reliability_gate=dict(
+                enabled=True, hidden_channels=16, type='ReliabilityGateV2'),
+            reliability_gate=dict(
+                enabled=True, hidden_channels=16, type='ReliabilityGateV2')),
+        out_channels=[
+            64,
+            128,
+            256,
+        ],
+        sparse_shape=[
+            41,
+            160,
+            160,
+        ],
+        type='SECONDFuse',
+        voxel_layer=dict(
+            max_num_points=32,
+            max_voxels=(
+                16000,
+                40000,
+            ),
+            point_cloud_range=[
+                0,
+                -25.6,
+                -3,
+                51.2,
+                25.6,
+                2,
+            ],
+            voxel_size=[
+                0.32,
+                0.32,
+                0.125,
+            ])),
+    bbox_head=dict(
+        anchor_generator=dict(
+            ranges=[
+                [
+                    0,
+                    -25.6,
+                    -0.6,
+                    51.2,
+                    25.6,
+                    -0.6,
+                ],
+                [
+                    0,
+                    -25.6,
+                    -0.6,
+                    51.2,
+                    25.6,
+                    -0.6,
+                ],
+                [
+                    0,
+                    -25.6,
+                    -1.78,
+                    51.2,
+                    25.6,
+                    -1.78,
+                ],
+            ],
+            reshape_out=False,
+            rotations=[
+                0,
+                1.57,
+            ],
+            sizes=[
+                [
+                    0.8,
+                    0.6,
+                    1.73,
+                ],
+                [
+                    1.76,
+                    0.6,
+                    1.73,
+                ],
+                [
+                    3.9,
+                    1.6,
+                    1.56,
+                ],
+            ],
+            type='AlignedAnchor3DRangeGenerator'),
+        assign_per_class=True,
+        bbox_coder=dict(type='DeltaXYZWLHRBBoxCoder'),
+        diff_rad_by_sin=True,
+        feat_channels=384,
+        in_channels=384,
+        loss_bbox=dict(
+            beta=0.1111111111111111,
+            loss_weight=2.0,
+            type='mmdet.SmoothL1Loss'),
+        loss_cls=dict(
+            alpha=0.25,
+            gamma=2.0,
+            loss_weight=1.0,
+            type='mmdet.FocalLoss',
+            use_sigmoid=True),
+        loss_dir=dict(
+            loss_weight=0.2, type='mmdet.CrossEntropyLoss', use_sigmoid=False),
+        num_classes=3,
+        type='Anchor3DHead',
+        use_direction_classifier=True),
+    data_preprocessor=dict(
+        bgr_to_rgb=True,
+        mean=[
+            123.675,
+            116.28,
+            103.53,
+        ],
+        pad_size_divisor=32,
+        std=[
+            58.395,
+            57.12,
+            57.375,
+        ],
+        type='Det3DDataPreprocessor',
+        voxel=True,
+        voxel_layer=dict(
+            max_num_points=32,
+            max_voxels=(
+                16000,
+                40000,
+            ),
+            point_cloud_range=[
+                0,
+                -25.6,
+                -3,
+                51.2,
+                25.6,
+                2,
+            ],
+            voxel_size=[
+                0.16,
+                0.16,
+                5,
+            ])),
+    freeze_norm_stats=True,
+    gate_clean_weight=0.1,
+    img_backbone=dict(
+        depth=50,
+        frozen_stages=1,
+        init_cfg=None,
+        norm_cfg=dict(requires_grad=True, type='BN'),
+        norm_eval=True,
+        num_stages=4,
+        out_indices=(
+            0,
+            1,
+            2,
+            3,
+        ),
+        style='pytorch',
+        type='mmdet.ResNet'),
+    img_neck=dict(
+        in_channels=[
+            256,
+            512,
+            1024,
+            2048,
+        ],
+        init_cfg=None,
+        num_outs=5,
+        out_channels=256,
+        type='mmdet.FPN'),
+    middle_encoder=dict(
+        in_channels=64,
+        num_features=7,
+        optional_cfg=dict(
+            query_reliability_gate=dict(
+                enabled=True, hidden_channels=16, type='ReliabilityGateV2'),
+            reliability_gate=dict(
+                enabled=True, hidden_channels=16, type='ReliabilityGateV2')),
+        out_channels=128,
+        output_shape=[
+            320,
+            320,
+        ],
+        sparse_shape=[
+            41,
+            320,
+            320,
+        ],
+        type='PointPillarsScatterFuse',
+        voxel_layer=dict(
+            max_num_points=32,
+            max_voxels=(
+                16000,
+                40000,
+            ),
+            point_cloud_range=[
+                0,
+                -25.6,
+                -3,
+                51.2,
+                25.6,
+                2,
+            ],
+            voxel_size=[
+                0.16,
+                0.16,
+                0.125,
+            ])),
+    neck=dict(
+        in_channels=[
+            128,
+            128,
+            256,
+        ],
+        out_channels=[
+            128,
+            128,
+            128,
+        ],
+        type='SECONDFPN',
+        upsample_strides=[
+            1,
+            2,
+            4,
+        ]),
+    test_cfg=dict(
+        max_num=50,
+        min_bbox_size=0,
+        nms_across_levels=False,
+        nms_pre=300,
+        nms_thr=0.01,
+        score_thr=0.1,
+        use_rotate_nms=True),
+    train_cfg=dict(
+        allowed_border=0,
+        assigner=[
+            dict(
+                ignore_iof_thr=-1,
+                iou_calculator=dict(type='mmdet3d.BboxOverlapsNearest3D'),
+                min_pos_iou=0.35,
+                neg_iou_thr=0.35,
+                pos_iou_thr=0.5,
+                type='Max3DIoUAssigner'),
+            dict(
+                ignore_iof_thr=-1,
+                iou_calculator=dict(type='mmdet3d.BboxOverlapsNearest3D'),
+                min_pos_iou=0.35,
+                neg_iou_thr=0.35,
+                pos_iou_thr=0.5,
+                type='Max3DIoUAssigner'),
+            dict(
+                ignore_iof_thr=-1,
+                iou_calculator=dict(type='mmdet3d.BboxOverlapsNearest3D'),
+                min_pos_iou=0.45,
+                neg_iou_thr=0.45,
+                pos_iou_thr=0.6,
+                type='Max3DIoUAssigner'),
+        ],
+        debug=False,
+        pos_weight=-1),
+    type='VoxelNetFuse',
+    voxel_encoder=dict(
+        feat_channels=[
+            64,
+        ],
+        in_channels=7,
+        point_cloud_range=[
+            0,
+            -25.6,
+            -3,
+            51.2,
+            25.6,
+            2,
+        ],
+        type='PillarFeatureNet',
+        voxel_size=[
+            0.16,
+            0.16,
+            5,
+        ],
+        with_distance=False))
+optim_wrapper = dict(
+    clip_grad=dict(max_norm=35, norm_type=2),
+    optimizer=dict(lr=1e-05, type='AdamW', weight_decay=0.01),
+    paramwise_cfg=dict(
+        custom_keys=dict(
+            query_reliability_gate=dict(lr_mult=10.0),
+            reliability_gate=dict(lr_mult=10.0))),
+    type='OptimWrapper')
+param_scheduler = [
+    dict(T_max=6, by_epoch=True, eta_min=1e-06, type='CosineAnnealingLR'),
+]
+point_cloud_range = [
+    0,
+    -25.6,
+    -3,
+    51.2,
+    25.6,
+    2,
+]
+randomness = dict(deterministic=False, seed=0)
+reliability_experiment = dict(purpose='finetune', variant='v2-main')
+resume = False
+test_cfg = dict()
+test_dataloader = dict(
+    batch_size=1,
+    dataset=dict(
+        ann_file='kitti_infos_val.pkl',
+        backend_args=None,
+        box_type_3d='LiDAR',
+        data_prefix=dict(
+            img='training/image_2', pts='training/velodyne_reduced'),
+        data_root='data/vod/',
+        metainfo=dict(classes=[
+            'Pedestrian',
+            'Cyclist',
+            'Car',
+        ]),
+        modality=dict(use_camera=True, use_lidar=True),
+        pipeline=[
+            dict(
+                backend_args=None,
+                coord_type='LIDAR',
+                load_dim=7,
+                type='LoadPointsFromFile',
+                use_dim=7),
+            dict(
+                backend_args=None,
+                color_type='unchanged',
+                to_float32=False,
+                type='LoadImageFromFile'),
+            dict(
+                flip=False,
+                img_scale=(
+                    1333,
+                    800,
+                ),
+                pts_scale_ratio=1,
+                transforms=[
+                    dict(
+                        rot_range=[
+                            0,
+                            0,
+                        ],
+                        scale_ratio_range=[
+                            1.0,
+                            1.0,
+                        ],
+                        translation_std=[
+                            0,
+                            0,
+                            0,
+                        ],
+                        type='GlobalRotScaleTrans'),
+                    dict(type='RandomFlip3D'),
+                    dict(
+                        point_cloud_range=[
+                            0,
+                            -25.6,
+                            -3,
+                            51.2,
+                            25.6,
+                            2,
+                        ],
+                        type='PointsRangeFilter'),
+                ],
+                type='MultiScaleFlipAug3D'),
+            dict(keys=[
+                'points',
+                'img',
+            ], type='Pack3DDetInputs'),
+        ],
+        test_mode=True,
+        type='VodDataset'),
+    drop_last=False,
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+test_evaluator = [
+    dict(
+        ann_file='data/vod/kitti_infos_val.pkl',
+        backend_args=None,
+        metric='bbox',
+        pklfile_prefix=None,
+        submission_prefix=None,
+        type='VODMetric'),
+]
+test_pipeline = [
+    dict(
+        backend_args=None,
+        coord_type='LIDAR',
+        load_dim=7,
+        type='LoadPointsFromFile',
+        use_dim=7),
+    dict(
+        backend_args=None,
+        color_type='unchanged',
+        to_float32=False,
+        type='LoadImageFromFile'),
+    dict(
+        flip=False,
+        img_scale=(
+            1333,
+            800,
+        ),
+        pts_scale_ratio=1,
+        transforms=[
+            dict(
+                rot_range=[
+                    0,
+                    0,
+                ],
+                scale_ratio_range=[
+                    1.0,
+                    1.0,
+                ],
+                translation_std=[
+                    0,
+                    0,
+                    0,
+                ],
+                type='GlobalRotScaleTrans'),
+            dict(type='RandomFlip3D'),
+            dict(
+                point_cloud_range=[
+                    0,
+                    -25.6,
+                    -3,
+                    51.2,
+                    25.6,
+                    2,
+                ],
+                type='PointsRangeFilter'),
+        ],
+        type='MultiScaleFlipAug3D'),
+    dict(keys=[
+        'points',
+        'img',
+    ], type='Pack3DDetInputs'),
+]
+train_cfg = dict(max_epochs=6, type='EpochBasedTrainLoop', val_interval=1)
+train_dataloader = dict(
+    batch_size=1,
+    dataset=dict(
+        dataset=dict(
+            ann_file='kitti_infos_train.pkl',
+            backend_args=None,
+            box_type_3d='LiDAR',
+            data_prefix=dict(
+                img='training/image_2', pts='training/velodyne_reduced'),
+            data_root='data/vod/',
+            metainfo=dict(classes=[
+                'Pedestrian',
+                'Cyclist',
+                'Car',
+            ]),
+            modality=dict(use_camera=True, use_lidar=True),
+            pipeline=[
+                dict(
+                    backend_args=None,
+                    coord_type='LIDAR',
+                    load_dim=7,
+                    type='LoadPointsFromFile',
+                    use_dim=7),
+                dict(
+                    backend_args=None,
+                    color_type='unchanged',
+                    to_float32=False,
+                    type='LoadImageFromFile'),
+                dict(prob=0.5, type='RandomImageDegradation'),
+                dict(
+                    type='LoadAnnotations3D',
+                    with_bbox_3d=True,
+                    with_label_3d=True),
+                dict(flip_ratio_bev_horizontal=0.5, type='RandomFlip3D'),
+                dict(
+                    rot_range=[
+                        -0.78539816,
+                        0.78539816,
+                    ],
+                    scale_ratio_range=[
+                        0.95,
+                        1.05,
+                    ],
+                    type='GlobalRotScaleTrans'),
+                dict(
+                    point_cloud_range=[
+                        0,
+                        -25.6,
+                        -3,
+                        51.2,
+                        25.6,
+                        2,
+                    ],
+                    type='PointsRangeFilter'),
+                dict(
+                    point_cloud_range=[
+                        0,
+                        -25.6,
+                        -3,
+                        51.2,
+                        25.6,
+                        2,
+                    ],
+                    type='ObjectRangeFilter'),
+                dict(type='PointShuffle'),
+                dict(
+                    keys=[
+                        'points',
+                        'img',
+                        'gt_labels_3d',
+                        'gt_bboxes_3d',
+                    ],
+                    type='PackReliabilityInputs'),
+            ],
+            test_mode=False,
+            type='VodDataset'),
+        times=1,
+        type='RepeatDataset'),
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(shuffle=True, type='DefaultSampler'))
+train_pipeline = [
+    dict(
+        backend_args=None,
+        coord_type='LIDAR',
+        load_dim=7,
+        type='LoadPointsFromFile',
+        use_dim=7),
+    dict(
+        backend_args=None,
+        color_type='unchanged',
+        to_float32=False,
+        type='LoadImageFromFile'),
+    dict(prob=0.5, type='RandomImageDegradation'),
+    dict(type='LoadAnnotations3D', with_bbox_3d=True, with_label_3d=True),
+    dict(flip_ratio_bev_horizontal=0.5, type='RandomFlip3D'),
+    dict(
+        rot_range=[
+            -0.78539816,
+            0.78539816,
+        ],
+        scale_ratio_range=[
+            0.95,
+            1.05,
+        ],
+        type='GlobalRotScaleTrans'),
+    dict(
+        point_cloud_range=[
+            0,
+            -25.6,
+            -3,
+            51.2,
+            25.6,
+            2,
+        ],
+        type='PointsRangeFilter'),
+    dict(
+        point_cloud_range=[
+            0,
+            -25.6,
+            -3,
+            51.2,
+            25.6,
+            2,
+        ],
+        type='ObjectRangeFilter'),
+    dict(type='PointShuffle'),
+    dict(
+        keys=[
+            'points',
+            'img',
+            'gt_labels_3d',
+            'gt_bboxes_3d',
+        ],
+        type='PackReliabilityInputs'),
+]
+val_cfg = dict()
+val_dataloader = dict(
+    batch_size=1,
+    dataset=dict(
+        ann_file='kitti_infos_val.pkl',
+        backend_args=None,
+        box_type_3d='LiDAR',
+        data_prefix=dict(
+            img='training/image_2', pts='training/velodyne_reduced'),
+        data_root='data/vod/',
+        metainfo=dict(classes=[
+            'Pedestrian',
+            'Cyclist',
+            'Car',
+        ]),
+        modality=dict(use_camera=True, use_lidar=True),
+        pipeline=[
+            dict(
+                backend_args=None,
+                coord_type='LIDAR',
+                load_dim=7,
+                type='LoadPointsFromFile',
+                use_dim=7),
+            dict(
+                backend_args=None,
+                color_type='unchanged',
+                to_float32=False,
+                type='LoadImageFromFile'),
+            dict(
+                flip=False,
+                img_scale=(
+                    1333,
+                    800,
+                ),
+                pts_scale_ratio=1,
+                transforms=[
+                    dict(
+                        rot_range=[
+                            0,
+                            0,
+                        ],
+                        scale_ratio_range=[
+                            1.0,
+                            1.0,
+                        ],
+                        translation_std=[
+                            0,
+                            0,
+                            0,
+                        ],
+                        type='GlobalRotScaleTrans'),
+                    dict(type='RandomFlip3D'),
+                    dict(
+                        point_cloud_range=[
+                            0,
+                            -25.6,
+                            -3,
+                            51.2,
+                            25.6,
+                            2,
+                        ],
+                        type='PointsRangeFilter'),
+                ],
+                type='MultiScaleFlipAug3D'),
+            dict(keys=[
+                'points',
+                'img',
+            ], type='Pack3DDetInputs'),
+        ],
+        test_mode=True,
+        type='VodDataset'),
+    drop_last=False,
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+val_evaluator = [
+    dict(
+        ann_file='data/vod/kitti_infos_val.pkl',
+        backend_args=None,
+        metric='bbox',
+        pklfile_prefix=None,
+        submission_prefix=None,
+        type='VODMetric'),
+]
+vis_backends = [
+    dict(type='LocalVisBackend'),
+]
+visualizer = dict(
+    name='visualizer',
+    type='Det3DLocalVisualizer',
+    vis_backends=[
+        dict(type='LocalVisBackend'),
+    ])
+voxel_size = [
+    0.16,
+    0.16,
+    5,
+]
+work_dir = 'work_dirs/reliability_fusion_v2/gate_main'

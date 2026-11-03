@@ -1,0 +1,214 @@
+{
+  "valid": true,
+  "frames": 1296,
+  "settings": {
+    "dark_factor": 0.2,
+    "blur_kernel": 21,
+    "blur_sigma": 5.0,
+    "occlusion": "central 50% width x 50% height, black",
+    "blackout": "all image pixels zero; not a radar-only model"
+  },
+  "nms_pre": 300,
+  "score_thr": 0.1,
+  "pedestrian_output_cutoff": 0.13,
+  "seeds": {
+    "0": {
+      "checkpoint_sha256": "31e2133c241083d382cd9762fa101f4ad885b033368b9d8432f4cc3443ea5a5f",
+      "v2_source": "work_dirs/reliability_fusion_v2/ablation/nas/head_filter_2x2_20261103_154357/full/AB",
+      "conditions": {
+        "clean": {
+          "control": {
+            "eaa": 65.2671,
+            "dc": 82.0041,
+            "pedestrian_ap": 56.8641,
+            "ped_tp": 2091,
+            "ped_fp": 1173,
+            "ped_recall": 0.5577487329954655,
+            "ped_fp_frame": 0.9050925925925926
+          },
+          "v2": {
+            "eaa": 65.2389,
+            "dc": 79.9263,
+            "pedestrian_ap": 56.8637,
+            "ped_tp": 2089,
+            "ped_fp": 1166,
+            "ped_recall": 0.5572152574019739,
+            "ped_fp_frame": 0.8996913580246914
+          }
+        },
+        "blur": {
+          "control": {
+            "eaa": 51.3691,
+            "dc": 68.1335,
+            "pedestrian_ap": 41.4323,
+            "ped_tp": 1793,
+            "ped_fp": 3965,
+            "ped_recall": 0.4782608695652174,
+            "ped_fp_frame": 3.059413580246914
+          },
+          "v2": {
+            "eaa": 51.7544,
+            "dc": 68.4166,
+            "pedestrian_ap": 41.5693,
+            "ped_tp": 1791,
+            "ped_fp": 4016,
+            "ped_recall": 0.4777273939717258,
+            "ped_fp_frame": 3.0987654320987654
+          }
+        },
+        "occlusion": {
+          "control": {
+            "eaa": 47.664,
+            "dc": 71.0442,
+            "pedestrian_ap": 42.4996,
+            "ped_tp": 1806,
+            "ped_fp": 2958,
+            "ped_recall": 0.48172846092291277,
+            "ped_fp_frame": 2.2824074074074074
+          },
+          "v2": {
+            "eaa": 49.1823,
+            "dc": 72.96,
+            "pedestrian_ap": 43.7624,
+            "ped_tp": 1837,
+            "ped_fp": 3087,
+            "ped_recall": 0.48999733262203254,
+            "ped_fp_frame": 2.3819444444444446
+          }
+        }
+      }
+    },
+    "1": {
+      "checkpoint_sha256": "8b10dc9adce321dd5816fc2d3a85d857188831b776160977c4b8805250471348",
+      "v2_source": "work_dirs/reliability_fusion_v2/ablation/nas/head_filter_ab_repeats_20261103_161614/seed1",
+      "conditions": {
+        "clean": {
+          "control": {
+            "eaa": 65.2516,
+            "dc": 82.0712,
+            "pedestrian_ap": 56.748,
+            "ped_tp": 2103,
+            "ped_fp": 1201,
+            "ped_recall": 0.560949586556415,
+            "ped_fp_frame": 0.9266975308641975
+          },
+          "v2": {
+            "eaa": 65.257,
+            "dc": 82.0058,
+            "pedestrian_ap": 56.8942,
+            "ped_tp": 2115,
+            "ped_fp": 1196,
+            "ped_recall": 0.5641504401173646,
+            "ped_fp_frame": 0.9228395061728395
+          }
+        },
+        "blur": {
+          "control": {
+            "eaa": 51.5258,
+            "dc": 68.2684,
+            "pedestrian_ap": 40.9661,
+            "ped_tp": 1784,
+            "ped_fp": 4162,
+            "ped_recall": 0.4758602293945052,
+            "ped_fp_frame": 3.2114197530864197
+          },
+          "v2": {
+            "eaa": 51.7657,
+            "dc": 68.7154,
+            "pedestrian_ap": 41.4124,
+            "ped_tp": 1781,
+            "ped_fp": 4026,
+            "ped_recall": 0.4750600160042678,
+            "ped_fp_frame": 3.1064814814814814
+          }
+        },
+        "occlusion": {
+          "control": {
+            "eaa": 47.7093,
+            "dc": 69.7731,
+            "pedestrian_ap": 41.8083,
+            "ped_tp": 1808,
+            "ped_fp": 3547,
+            "ped_recall": 0.48226193651640437,
+            "ped_fp_frame": 2.736882716049383
+          },
+          "v2": {
+            "eaa": 50.2706,
+            "dc": 72.5504,
+            "pedestrian_ap": 43.3519,
+            "ped_tp": 1843,
+            "ped_fp": 3554,
+            "ped_recall": 0.49159775940250733,
+            "ped_fp_frame": 2.742283950617284
+          }
+        }
+      }
+    },
+    "2": {
+      "checkpoint_sha256": "3de41882e52579a8088421b2361430471bd92f78f142658f50e6f6d65b38eba7",
+      "v2_source": "work_dirs/reliability_fusion_v2/ablation/nas/head_filter_ab_repeats_20261103_161614/seed2",
+      "conditions": {
+        "clean": {
+          "control": {
+            "eaa": 65.1998,
+            "dc": 81.9351,
+            "pedestrian_ap": 56.9605,
+            "ped_tp": 2099,
+            "ped_fp": 1163,
+            "ped_recall": 0.5598826353694318,
+            "ped_fp_frame": 0.8973765432098766
+          },
+          "v2": {
+            "eaa": 65.1765,
+            "dc": 81.9658,
+            "pedestrian_ap": 56.9464,
+            "ped_tp": 2098,
+            "ped_fp": 1151,
+            "ped_recall": 0.559615897572686,
+            "ped_fp_frame": 0.8881172839506173
+          }
+        },
+        "blur": {
+          "control": {
+            "eaa": 51.1603,
+            "dc": 68.1338,
+            "pedestrian_ap": 40.9094,
+            "ped_tp": 1775,
+            "ped_fp": 4146,
+            "ped_recall": 0.473459589223793,
+            "ped_fp_frame": 3.199074074074074
+          },
+          "v2": {
+            "eaa": 51.4563,
+            "dc": 68.5037,
+            "pedestrian_ap": 41.2092,
+            "ped_tp": 1777,
+            "ped_fp": 4098,
+            "ped_recall": 0.4739930648172846,
+            "ped_fp_frame": 3.162037037037037
+          }
+        },
+        "occlusion": {
+          "control": {
+            "eaa": 47.8358,
+            "dc": 71.1803,
+            "pedestrian_ap": 41.9672,
+            "ped_tp": 1805,
+            "ped_fp": 3463,
+            "ped_recall": 0.481461723126167,
+            "ped_fp_frame": 2.672067901234568
+          },
+          "v2": {
+            "eaa": 49.6751,
+            "dc": 72.794,
+            "pedestrian_ap": 44.2437,
+            "ped_tp": 1868,
+            "ped_fp": 3592,
+            "ped_recall": 0.4982662043211523,
+            "ped_fp_frame": 2.771604938271605
+          }
+        }
+      }
+    }
+  }
+}

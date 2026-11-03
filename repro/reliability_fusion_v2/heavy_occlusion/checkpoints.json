@@ -1,0 +1,38 @@
+[
+  {
+    "training_seed": 0,
+    "variant": "control_aug",
+    "path": "work_dirs/reliability_fusion_v2/control_aug/20261030_214524/epoch_6.pth",
+    "sha256": "31e2133c241083d382cd9762fa101f4ad885b033368b9d8432f4cc3443ea5a5f"
+  },
+  {
+    "training_seed": 0,
+    "variant": "gate_main",
+    "path": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+    "sha256": "b1d920410f976921c3941e197c47c0531cbe91a3afe54c5af18ca226ad66f1fb"
+  },
+  {
+    "training_seed": 1,
+    "variant": "control_aug",
+    "path": "work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed1/control_aug/epoch_6.pth",
+    "sha256": "8b10dc9adce321dd5816fc2d3a85d857188831b776160977c4b8805250471348"
+  },
+  {
+    "training_seed": 1,
+    "variant": "gate_main",
+    "path": "work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed1/gate_main/epoch_6.pth",
+    "sha256": "5fa61a3c919f3eb0306e761c72a7f0784fc69fec46d15e5af7f6b090c67a159a"
+  },
+  {
+    "training_seed": 2,
+    "variant": "control_aug",
+    "path": "work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed2/control_aug/epoch_6.pth",
+    "sha256": "3de41882e52579a8088421b2361430471bd92f78f142658f50e6f6d65b38eba7"
+  },
+  {
+    "training_seed": 2,
+    "variant": "gate_main",
+    "path": "work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed2/gate_main/epoch_6.pth",
+    "sha256": "f7c7b366f6605aee3c5d822586cb26709c18136455d6dfdc3fd057301d84d7bb"
+  }
+]
