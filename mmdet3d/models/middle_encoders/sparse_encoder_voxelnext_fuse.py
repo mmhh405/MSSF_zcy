@@ -249,6 +249,10 @@ class SparseEncoderVoxelNeXtFuse(nn.Module):
         self.deform_weight_act_fun = self.optional_cfg.get('deform_weight_act_fun', 'softmax')
         self.query_init_feat_src = self.optional_cfg.get('query_init_feat_src', ['img','voxel','pos'])
         self.fusion_block_type = self.optional_cfg.get('fusion_block_type', 'deform')
+        self.geometry_prior = self.optional_cfg.get('geometry_prior', False)
+        semantic_prior = self.optional_cfg.get('semantic_prior', False)
+        if (self.geometry_prior or semantic_prior) and self.fusion_block_type != 'deform':
+            raise ValueError('The geometry and semantic priors require deformable fusion')
         self.fuse_after_residual = self.optional_cfg.get('fuse_after_residual', False)
         self.init_query_order = self.optional_cfg.get('init_query_order', ('img','voxel','pos'))
         self.deform_block_residual = self.optional_cfg.get('deform_block_residual', True)
@@ -295,7 +299,8 @@ class SparseEncoderVoxelNeXtFuse(nn.Module):
                                                     type='MSDeformableAttention',
                                                     num_levels=len(self.img_levels_to_fuse),
                                                     weight_act_func=self.deform_weight_act_fun,
-                                                    residual=self.deform_block_residual
+                                                    residual=self.deform_block_residual,
+                                                    semantic_prior=semantic_prior,
                                                     ),
                                             )
                                     )
@@ -525,9 +530,13 @@ class SparseEncoderVoxelNeXtFuse(nn.Module):
                     batch_mask = (centroid_voxel_coors_all[k][:,0].int()==i)
                     voxel_centroids = centroids_all[k][batch_mask]
                     proj_mat = get_proj_mat_by_coord_type(batch_input_metas[i], self.coord_type)
-                    centroids_img.append(proj_to_img(voxel_centroids[:,1:4], batch_input_metas[i], voxel_centroids.new_tensor(proj_mat), self.coord_type, normalize=True))
-                centroids_img = torch.cat(centroids_img)
-                centroids_img = torch.cat([centroids_all[k][:, 0].unsqueeze(1) ,centroids_img], dim=-1)
+                    centroids_img.append(proj_to_img(
+                        voxel_centroids[:, 1:4], batch_input_metas[i],
+                        voxel_centroids.new_tensor(proj_mat), self.coord_type,
+                        with_depth=self.geometry_prior, normalize=True))
+                projected = torch.cat(centroids_img)
+                centroids_img = torch.cat(
+                    [centroids_all[k][:, :1], projected[:, :2]], dim=-1)
             else:
                 centroids_img = None
             voxel_data_dict[k] = {
@@ -535,6 +544,8 @@ class SparseEncoderVoxelNeXtFuse(nn.Module):
                 'centroids_img': centroids_img,
                 'centroids_coor': centroid_voxel_coors_all[k],
             }
+            if self.use_img and self.geometry_prior:
+                voxel_data_dict[k]['camera_depth'] = projected[:, 2].contiguous()
         return voxel_data_dict
     
     def init_query(self, img_feats, x_conv, voxel_data_dict, batch_input_meta):
@@ -627,6 +638,10 @@ class SparseEncoderVoxelNeXtFuse(nn.Module):
             centroids_img = torch.cat(centroids_img)
             centroids_img = torch.cat([cur_coords[:,0].unsqueeze(1) ,centroids_img], dim=-1)
             voxel_data_dict['centroids_img'] = torch.cat([voxel_data_dict['centroids_img'], centroids_img])
+            if 'camera_depth' in voxel_data_dict:
+                depth = voxel_data_dict['camera_depth']
+                voxel_data_dict['camera_depth'] = torch.cat(
+                    [depth, depth.new_zeros(cur_coords.shape[0])])
 
             assert (voxel_data_dict['centroids'].shape[0] == x_conv.features.shape[0]) \
                and (voxel_data_dict['centroids_img'].shape[0] == x_conv.features.shape[0]) \
@@ -773,13 +788,16 @@ class SparseEncoderVoxelNeXtFuse(nn.Module):
                         seg_results_dict[loc] = dict(seg_results=seg_results, voxel_dict=voxel_dict)
                         #return x, {'seg_results':seg_results, 'voxel_dict':voxel_dict}
 
+                show_deform = False
+                fusion_kwargs = {}
                 if loc == self.fusion_locations[0]:
-                    updated_query, sample_locs, sample_weights = self.fusion_blocks[loc](x, voxel_data_dict[loc], img_data_dict, external_query=init_query)
-                else:
-                    updated_query, sample_locs, sample_weights = self.fusion_blocks[loc](x, voxel_data_dict[loc], img_data_dict)
+                    fusion_kwargs['external_query'] = init_query
+                if self.fusion_block_type == 'deform':
+                    fusion_kwargs['return_sampling'] = show_deform
+                updated_query, sample_locs, sample_weights = self.fusion_blocks[loc](
+                    x, voxel_data_dict[loc], img_data_dict, **fusion_kwargs)
 
                 debug=False
-                show_deform=False
                 if show_deform:# and loc == self.fusion_locations[1]:
                     for i in range(batch_size):
                         batch_mask = (voxel_data_dict[loc]['centroids_coor'][:,0].int()==0)

@@ -75,7 +75,8 @@ class RadarImageCrossAttention(BaseModule):
                 residual=None,
                 spatial_shapes=None,
                 reference_points_cams=None,
-                level_start_index=None):
+                level_start_index=None,
+                sampling_scale=None):
         """Forward Function of Detr3DCrossAtten.
 
         Args:
@@ -96,7 +97,7 @@ class RadarImageCrossAttention(BaseModule):
                 as [0, h_0*w_0, h_0*w_0+h_1*w_1, ...].
             reference_points_cams (List[Tensor]): The reference points in
                 each camera.
-            tpv_masks (List[Tensor]): The mask of each views.
+            sampling_scale (Tensor, optional): Per-query offset scale [B, N].
             level_start_index (List[int]): The start index of each level.
 
         Returns:
@@ -107,6 +108,9 @@ class RadarImageCrossAttention(BaseModule):
         if value is None:
             value = key
 
+        sampling_kwargs = {}
+        if sampling_scale is not None:
+            sampling_kwargs['sampling_scale'] = sampling_scale
         updated_query, sample_locs, sample_weights = self.deformable_attention(
             query=query,
             key=key,
@@ -114,6 +118,7 @@ class RadarImageCrossAttention(BaseModule):
             reference_points=reference_points_cams,
             spatial_shapes=spatial_shapes,
             level_start_index=level_start_index,
+            **sampling_kwargs,
         )
 
         return updated_query, sample_locs, sample_weights
@@ -161,7 +166,8 @@ class MSDeformableAttention(BaseModule):
                  weight_act_func: Optional[str] = 'softmax',
                  residual: Optional[bool] = True,
                  norm_cfg: Optional[dict] = None,
-                 init_cfg: Optional[dict] = None):
+                 init_cfg: Optional[dict] = None,
+                 semantic_prior: bool = False):
         super().__init__(init_cfg)
         if value_embed_dims % num_heads != 0:
             raise ValueError(f'embed_dims must be divisible by num_heads, '
@@ -202,6 +208,11 @@ class MSDeformableAttention(BaseModule):
         self.value_proj = nn.Linear(value_embed_dims, value_embed_dims)
         self.output_proj = nn.Linear(value_embed_dims, output_embed_dims)
         self.init_weights()
+        if semantic_prior:
+            self.semantic_gate = nn.Linear(output_embed_dims, 1)
+            constant_init(self.semantic_gate, 0.)
+        else:
+            self.semantic_gate = None
 
     def init_weights(self) -> None:
         """Default initialization for Parameters of Module."""
@@ -234,6 +245,7 @@ class MSDeformableAttention(BaseModule):
                 reference_points: Optional[torch.Tensor] = None,
                 spatial_shapes: Optional[torch.Tensor] = None,
                 level_start_index: Optional[torch.Tensor] = None,
+                sampling_scale: Optional[torch.Tensor] = None,
                 **kwargs) -> torch.Tensor:
         """Forward Function of MultiScaleDeformAttention.
 
@@ -309,14 +321,20 @@ class MSDeformableAttention(BaseModule):
         if reference_points.shape[-1] == 2:
             offset_normalizer = torch.stack(
                 [spatial_shapes[..., 1], spatial_shapes[..., 0]], -1)
-            sampling_locations = reference_points[:, :, None, :, None, :] \
-                + sampling_offsets \
-                / offset_normalizer[None, None, None, :, None, :]
+            offset_normalizer = offset_normalizer[None, None, None, :, None, :]
+            if sampling_scale is not None:
+                offset_normalizer = offset_normalizer / sampling_scale[
+                    :, :, None, None, None, None]
+            sampling_locations = (
+                reference_points[:, :, None, :, None, :]
+                + sampling_offsets / offset_normalizer)
         elif reference_points.shape[-1] == 4:
-            sampling_locations = reference_points[:, :, None, :, None, :2] \
-                + sampling_offsets / self.num_points \
-                * reference_points[:, :, None, :, None, 2:] \
-                * 0.5
+            box_size = reference_points[:, :, None, :, None, 2:]
+            if sampling_scale is not None:
+                box_size = box_size * sampling_scale[:, :, None, None, None, None]
+            sampling_locations = (
+                reference_points[:, :, None, :, None, :2]
+                + sampling_offsets / self.num_points * box_size * 0.5)
         else:
             raise ValueError(
                 f'Last dim of reference_points must be'
@@ -330,6 +348,9 @@ class MSDeformableAttention(BaseModule):
                 value, spatial_shapes, sampling_locations, attention_weights)
 
         output = self.output_proj(output)
+        if self.semantic_gate is not None:
+            # Gate the camera update before adding the original query.
+            output = output * (1 + self.semantic_gate(output).tanh())
 
         if not self.batch_first:
             # (num_query, bs ,embed_dims)
