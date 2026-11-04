@@ -1,0 +1,40 @@
+{
+  "time": "2026-11-04T17:48:43.219692+08:00",
+  "root": "/home/d514/zcy/MSSF_zcy",
+  "python": "/home/d514/zcy/MSSF_zcy/.runtime/mssf-bench/bin/python",
+  "mmengine": "0.8.4",
+  "torch": "2.0.1+cu118",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "v3_tests": 13,
+  "training_updates": 2,
+  "status": "passed",
+  "training_result": {
+    "run_id": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/migration_startup_smoke_20261104/20261104_174655",
+    "variant": "v3-two-update-backward",
+    "purpose": "smoke",
+    "work_dir": "work_dirs/reliability_fusion_v3/migration_startup_smoke_20261104",
+    "git_commit": "083f36ff4cd06fa2d524848216cb7e6c0c49be95",
+    "git_dirty_at_start": true,
+    "config": "configs/experiments/reliability_fusion_v3/smoke_train.py",
+    "initialization_checkpoint": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+    "random_seed": 0,
+    "status": "smoke_only",
+    "training_completed": true,
+    "updated_at": "2026-11-04T17:47:01.677209+08:00",
+    "phase": "training_completed",
+    "iterations": 2,
+    "train_samples": 2,
+    "last_logged_train_loss": 1.213924527168274,
+    "last_logged_loss_gate_clean": 0.0005094113294035196,
+    "last_logged_gate_clean_mse": 0.005094113294035196,
+    "last_checkpoint": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/migration_startup_smoke_20261104/iter_2.pth"
+  },
+  "preserved_user_changes": [
+    "mmdet3d/models/detectors/voxelnet_fuse_v3.py",
+    "tests/test_reliability_fusion_v3.py"
+  ],
+  "log_sha256": {
+    "unit.log": "266921914d4ea9cf1bea8da7ae91819b3a2481dc3c70393e9ccc1f48b36ff63b",
+    "train_smoke.log": "a7752ef66cc12485bb328e1950e187166d37bd1a312dc5dad6893c5e16d59ba3"
+  }
+}

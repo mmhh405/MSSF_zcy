@@ -44,12 +44,12 @@ V3 通过配置的 `custom_imports` 注册，V1/V2 的模型文件和配置不�
 
 ## 4. 运行步骤
 
+当前服务器为 **192.168.1.144**，项目为 `/home/d514/zcy/MSSF_zcy`。迁移后使用项目的 `activate.sh` 激活环境。后台配对实验使用 `tools/analysis_tools/run_reliability_v3_pair.sh`，该脚本自动定位项目并固定 Python 解释器。完整启动和进度命令见 [新服务器启动修正](repro/reliability_fusion_v3/README_new_server_startup.md)。
+
 以下命令在服务器执行。完整训练和性能对比应在其他 GPU 训练结束后进行。每次用新的运行目录。主配置从现有 V2 seed=0 第 6 轮权重热启动，路由器此时尚未训练。
 
 ```bash
-source /home/d514/miniconda3/etc/profile.d/conda.sh
-conda activate mssf-bench
-cd '/home/d514/桌面/zcy/MSSF_zcy'
+source /home/d514/zcy/MSSF_zcy/activate.sh
 export CUDA_VISIBLE_DEVICES=0 NUMBA_CUDA_USE_NVIDIA_BINDING=1
 export PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1
 ```
@@ -120,5 +120,6 @@ python tools/analysis_tools/profile_reliability_v3.py \
 | 实验 | 类型/状态 | 样本数 | 验证 epoch | EAA mAP (%) | DC mAP (%) | 代码 | 运行目录 |
 |---|---|---:|---:|---:|---:|---|---|
 | v3-two-update-backward | smoke_only | — | — | — | — | 4dad3902+dirty | work_dirs/reliability_fusion_v3/verification_20261104_113049/train_smoke_fixed |
+| v3-two-update-backward | smoke_only | — | — | — | — | 083f36ff+dirty | work_dirs/reliability_fusion_v3/migration_startup_smoke_20261104 |
 
 <!-- RELIABILITY_RESULTS_END -->
