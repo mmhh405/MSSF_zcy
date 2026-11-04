@@ -1,0 +1,183 @@
+{
+  "config": "configs/experiments/reliability_fusion_v3/gate_main.py",
+  "checkpoint": "work_dirs/reliability_fusion_v3/verification_20261104_113049/train_smoke_fixed/iter_2.pth",
+  "checkpoint_sha256": "8ca7e7d6e758ae1caed4b4d48838f2c040323eda2bfc560450fcc360983bb4b0",
+  "uninitialized_router": false,
+  "missing_keys": [],
+  "gpu_name": "NVIDIA GeForce RTX 4090 D",
+  "random_seed": 0,
+  "other_gpu_clients": [
+    "9942, /usr/libexec/gnome-remote-desktop-daemon",
+    "808185, python"
+  ],
+  "competing_compute_clients": [
+    "808185, python"
+  ],
+  "performance_comparison_valid": false,
+  "parameters": 32421444,
+  "router_parameters": 1910,
+  "latency_scope": "test_step: preprocessing through decoded predictions; dataset I/O excluded",
+  "pixel_work_scope": "image backbone input pixels including coarse global and tile halos; excludes router",
+  "modes": {
+    "dense": {
+      "samples": 2,
+      "rows": [
+        {
+          "frame_index": 1,
+          "wall_ms": 77.83238901174627,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965051392,
+          "detections": [
+            12
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 2,
+          "wall_ms": 108.38126498856582,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965178368,
+          "detections": [
+            15
+          ],
+          "mode": "dense"
+        }
+      ],
+      "median_wall_ms": 93.10682700015604,
+      "mean_wall_ms": 93.10682700015604,
+      "max_peak_allocated_bytes": 965178368
+    },
+    "select": {
+      "samples": 2,
+      "rows": [
+        {
+          "frame_index": 1,
+          "wall_ms": 87.94947701971978,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 446608384,
+          "detections": [
+            10
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1422336,
+          "image_pixel_work_ratio": 0.5992234685073339,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 51430400,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.25415066365076233,
+          "global_image_shape": [
+            608,
+            992
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              152,
+              248
+            ],
+            [
+              1,
+              256,
+              76,
+              124
+            ],
+            [
+              1,
+              256,
+              38,
+              62
+            ],
+            [
+              1,
+              256,
+              19,
+              31
+            ],
+            [
+              1,
+              256,
+              10,
+              16
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 315,
+          "radar_pillars_after": 252,
+          "radar_points_before": 360,
+          "radar_points_after": 296
+        },
+        {
+          "frame_index": 2,
+          "wall_ms": 96.5812589856796,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 446844416,
+          "detections": [
+            14
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1422336,
+          "image_pixel_work_ratio": 0.5992234685073339,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 51430400,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.25415066365076233,
+          "global_image_shape": [
+            608,
+            992
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              152,
+              248
+            ],
+            [
+              1,
+              256,
+              76,
+              124
+            ],
+            [
+              1,
+              256,
+              38,
+              62
+            ],
+            [
+              1,
+              256,
+              19,
+              31
+            ],
+            [
+              1,
+              256,
+              10,
+              16
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 446,
+          "radar_pillars_after": 357,
+          "radar_points_before": 549,
+          "radar_points_after": 455
+        }
+      ],
+      "median_wall_ms": 92.26536800269969,
+      "mean_wall_ms": 92.26536800269969,
+      "max_peak_allocated_bytes": 446844416
+    }
+  }
+}

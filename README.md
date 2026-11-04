@@ -106,3 +106,7 @@ See [the implementation and experiment log](README_reliability_fusion.md).
 ## Reliability-aware fusion V2
 
 See [V2 implementation, ablations and experiment results](README_reliability_fusion_v2.md).
+
+## Reliability-aware fusion V3
+
+See [V3 early bidirectional routing, selective computation and resource checks](README_reliability_fusion_v3.md).

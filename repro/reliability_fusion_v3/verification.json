@@ -1,0 +1,245 @@
+{
+  "recorded_at": "2026-11-04T11:36:29.303110+08:00",
+  "base_commit": "19b237a7744d0330e2810f77117f8af3c54e0cb2",
+  "source_sha256": {
+    "configs/experiments/reliability_fusion_v3/dense_control.py": "db418bb42d7bbe8ee99c014d2ec8dc3aaab052dbb0b6e8a7e76cc3ec904719a4",
+    "configs/experiments/reliability_fusion_v3/gate_main.py": "b03ff562158a8e31e3a06948df4a1e69d7987ae55b75dd87c42a47afb4a2d2ad",
+    "configs/experiments/reliability_fusion_v3/image_to_radar_only.py": "8e673afd86fb6cd8fa9af9eb7855dc9ec5a8bf014bf56d6104fa319dc674a87a",
+    "configs/experiments/reliability_fusion_v3/independent.py": "cee6e8339c6bcc987e501fb8a8593fae3ae9e9ebd9493e1539a00361ac9de9c1",
+    "configs/experiments/reliability_fusion_v3/radar_to_image_only.py": "f72eca15b9fac994046f98ab04fe975e8d8844dd1777b6cd8cf8cb814bc9bda2",
+    "configs/experiments/reliability_fusion_v3/smoke_inference.py": "81a50a97b6255cbf3e07be9dfd1c3b494cc0277596c1b9638cafc45c418aadbb",
+    "configs/experiments/reliability_fusion_v3/smoke_train.py": "f9484a37cb6858f6548686b6c0685cfe8592a2cde7bac55ed317f15131676ace",
+    "mmdet3d/models/detectors/voxelnet_fuse_v3.py": "624cbb40b2df589923f5ff525ee6b4a43a937fb2aff6a0f7070508e0b0a6e92f",
+    "mmdet3d/models/layers/fusion_layers/early_budget_gate_v3.py": "f6d779de32d3c35674719b66e6dec353ddd5a2259876228b44b5b025f1314c75",
+    "tests/test_reliability_fusion_v3.py": "ac9ce2a728fd47d35f32aa00da9ee912550091755ed24eaae14887c198c8e25a",
+    "tools/analysis_tools/profile_reliability_v3.py": "adb9394fc71cbd6285716b3a945ec1d5a1d7df48804d4fe53c0732a8ef89824a"
+  },
+  "checks": {
+    "v3_unit_tests": 12,
+    "v2_regression_tests": 9,
+    "real_forward": true,
+    "two_optimizer_updates": true,
+    "strict_checkpoint_reload": true,
+    "all_checkpoint_tensors_finite": true,
+    "frozen_image_state_identical": true
+  },
+  "router_parameters": 1910,
+  "router_heads_abs_sum": {
+    "early_router.visual_head.weight": 0.0031843625474721193,
+    "early_router.image_head.weight": 0.003780985716730356,
+    "early_router.radar_head.2.weight": 0.0027367917355149984
+  },
+  "image_frozen_state_keys": 334,
+  "training_summary": {
+    "run_id": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/verification_20261104_113049/train_smoke_fixed/20261104_113226",
+    "variant": "v3-two-update-backward",
+    "purpose": "smoke",
+    "work_dir": "work_dirs/reliability_fusion_v3/verification_20261104_113049/train_smoke_fixed",
+    "git_commit": "4dad3902383879c87a318f01b706257f26e13d30",
+    "git_dirty_at_start": true,
+    "config": "configs/experiments/reliability_fusion_v3/smoke_train.py",
+    "initialization_checkpoint": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+    "random_seed": 0,
+    "status": "smoke_only",
+    "training_completed": true,
+    "updated_at": "2026-11-04T11:32:33.515125+08:00",
+    "phase": "training_completed",
+    "iterations": 2,
+    "train_samples": 2,
+    "last_logged_train_loss": 1.1767995357513428,
+    "last_logged_loss_gate_clean": 0.0005032766493968666,
+    "last_logged_gate_clean_mse": 0.0050327661447227,
+    "last_checkpoint": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/verification_20261104_113049/train_smoke_fixed/iter_2.pth"
+  },
+  "resource_smoke": {
+    "config": "configs/experiments/reliability_fusion_v3/gate_main.py",
+    "checkpoint": "work_dirs/reliability_fusion_v3/verification_20261104_113049/train_smoke_fixed/iter_2.pth",
+    "checkpoint_sha256": "8ca7e7d6e758ae1caed4b4d48838f2c040323eda2bfc560450fcc360983bb4b0",
+    "uninitialized_router": false,
+    "missing_keys": [],
+    "gpu_name": "NVIDIA GeForce RTX 4090 D",
+    "random_seed": 0,
+    "other_gpu_clients": [
+      "9942, /usr/libexec/gnome-remote-desktop-daemon",
+      "808185, python"
+    ],
+    "competing_compute_clients": [
+      "808185, python"
+    ],
+    "performance_comparison_valid": false,
+    "parameters": 32421444,
+    "router_parameters": 1910,
+    "latency_scope": "test_step: preprocessing through decoded predictions; dataset I/O excluded",
+    "pixel_work_scope": "image backbone input pixels including coarse global and tile halos; excludes router",
+    "modes": {
+      "dense": {
+        "samples": 2,
+        "rows": [
+          {
+            "frame_index": 1,
+            "wall_ms": 77.83238901174627,
+            "predictions_finite": true,
+            "peak_allocated_bytes": 965051392,
+            "detections": [
+              12
+            ],
+            "mode": "dense"
+          },
+          {
+            "frame_index": 2,
+            "wall_ms": 108.38126498856582,
+            "predictions_finite": true,
+            "peak_allocated_bytes": 965178368,
+            "detections": [
+              15
+            ],
+            "mode": "dense"
+          }
+        ],
+        "median_wall_ms": 93.10682700015604,
+        "mean_wall_ms": 93.10682700015604,
+        "max_peak_allocated_bytes": 965178368
+      },
+      "select": {
+        "samples": 2,
+        "rows": [
+          {
+            "frame_index": 1,
+            "wall_ms": 87.94947701971978,
+            "predictions_finite": true,
+            "peak_allocated_bytes": 446608384,
+            "detections": [
+              10
+            ],
+            "image_dense_pixels": 2373632,
+            "image_executed_pixels": 1422336,
+            "image_pixel_work_ratio": 0.5992234685073339,
+            "image_selected_tiles": 8,
+            "image_total_tiles": 40,
+            "fpn_persistent_bytes": 51430400,
+            "fpn_dense_reference_bytes": 202361856,
+            "fpn_storage_ratio": 0.25415066365076233,
+            "global_image_shape": [
+              608,
+              992
+            ],
+            "tile_input_shape": [
+              320,
+              320
+            ],
+            "feature_shapes": [
+              [
+                1,
+                256,
+                152,
+                248
+              ],
+              [
+                1,
+                256,
+                76,
+                124
+              ],
+              [
+                1,
+                256,
+                38,
+                62
+              ],
+              [
+                1,
+                256,
+                19,
+                31
+              ],
+              [
+                1,
+                256,
+                10,
+                16
+              ]
+            ],
+            "mode": "select",
+            "radar_pillars_before": 315,
+            "radar_pillars_after": 252,
+            "radar_points_before": 360,
+            "radar_points_after": 296
+          },
+          {
+            "frame_index": 2,
+            "wall_ms": 96.5812589856796,
+            "predictions_finite": true,
+            "peak_allocated_bytes": 446844416,
+            "detections": [
+              14
+            ],
+            "image_dense_pixels": 2373632,
+            "image_executed_pixels": 1422336,
+            "image_pixel_work_ratio": 0.5992234685073339,
+            "image_selected_tiles": 8,
+            "image_total_tiles": 40,
+            "fpn_persistent_bytes": 51430400,
+            "fpn_dense_reference_bytes": 202361856,
+            "fpn_storage_ratio": 0.25415066365076233,
+            "global_image_shape": [
+              608,
+              992
+            ],
+            "tile_input_shape": [
+              320,
+              320
+            ],
+            "feature_shapes": [
+              [
+                1,
+                256,
+                152,
+                248
+              ],
+              [
+                1,
+                256,
+                76,
+                124
+              ],
+              [
+                1,
+                256,
+                38,
+                62
+              ],
+              [
+                1,
+                256,
+                19,
+                31
+              ],
+              [
+                1,
+                256,
+                10,
+                16
+              ]
+            ],
+            "mode": "select",
+            "radar_pillars_before": 446,
+            "radar_pillars_after": 357,
+            "radar_points_before": 549,
+            "radar_points_after": 455
+          }
+        ],
+        "median_wall_ms": 92.26536800269969,
+        "mean_wall_ms": 92.26536800269969,
+        "max_peak_allocated_bytes": 446844416
+      }
+    }
+  },
+  "logs_directory": "/home/d514/桌面/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/verification_20261104_113049",
+  "known_limits": [
+    "No full V3 fine-tuning or full validation yet",
+    "Other GPU training was active; timing is not a valid performance benchmark",
+    "Pixel-work proxy and FPN bytes do not equal total FLOPs or total peak-memory savings",
+    "Dense SECOND BEV and detection head are retained"
+  ],
+  "repaired_integration_issue": "Auxiliary loss uses input_shape from route state because sample.metainfo returns a fresh dict; covered by regression test"
+}

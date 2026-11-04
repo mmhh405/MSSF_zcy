@@ -13,3 +13,4 @@ __pycache__/
 /repro/reliability_fusion/*.lock
 
 /repro/reliability_fusion_v2/*.lock
+/repro/reliability_fusion_v3/*.lock
