@@ -131,6 +131,7 @@ python tools/analysis_tools/profile_reliability_v3.py \
 | v3-diagnostic-quality-first-fixed-weights | test_only | 1296 | — | 62.9796 | 81.3995 | bdcea1ff+dirty | work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/resources_20261105_095307/diagnostic_quality_first |
 | v3-diagnostic-image-budget-only-fixed-weights | test_only | 1296 | — | 63.0114 | 81.4219 | bdcea1ff+dirty | work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/resources_20261105_095307/diagnostic_image_budget_only |
 | v3-image-budget-only-radar100-global0625 | training_completed | 1296 | 6 | 63.0273 | 81.6050 | 8bcf31f8+dirty | work_dirs/reliability_fusion_v3/image_budget_only_20261105_110401 |
+| v3-image-budget-independent-radar100-global0625 | training_completed | 1296 | 6 | 62.8032 | 81.7427 | 21b45913+dirty | work_dirs/reliability_fusion_v3/image_budget_independent_20261105_170439 |
 
 <!-- RELIABILITY_RESULTS_END -->
 
@@ -141,3 +142,7 @@ python tools/analysis_tools/profile_reliability_v3.py \
 ## 8. 保留雷达对照的正式结果（2026-11-05）
 
 本轮固定第6轮 EAA/DC 为 63.0273/81.6050；相对原 V3 恢复 +1.0501/+0.0468 pp，相对完整计算对照仍低 0.5626/0.4411 pp。实际延迟减少 10.29%，峰值 allocated 显存减少 46.70%。完整分析、类别差异、R40 和下一轮等预算对照命令见 [本轮分析报告](repro/reliability_fusion_v3/image_budget_study_20261105/README.md)。
+
+## 9. 同预算早期先验消融（2026-11-05）
+
+固定第6轮seed=0：guided EAA/DC为63.0273/81.6050，independent为62.8032/81.7427，差值+0.2241/−0.1377 pp。训练协议与计算预算一致。当前收益较小且方向不一致，需补seed=1、2。完整分析及可恢复队列命令见[本轮报告](repro/reliability_fusion_v3/prior_ablation_seed0_20261105/README.md)。新队列尚未启动。

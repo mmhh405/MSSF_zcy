@@ -1,0 +1,79 @@
+{
+  "fixed_epoch": 6,
+  "seed": 0,
+  "metrics": {
+    "entire_area/map": {
+      "guided": 63.0273,
+      "independent": 62.8032
+    },
+    "entire_area/Car_3d_all": {
+      "guided": 59.9664,
+      "independent": 59.3504
+    },
+    "entire_area/Pedestrian_3d_all": {
+      "guided": 50.9152,
+      "independent": 50.8358
+    },
+    "entire_area/Cyclist_3d_all": {
+      "guided": 78.2003,
+      "independent": 78.2234
+    },
+    "entire_area/Car_3d_all_r40": {
+      "guided": 59.2958,
+      "independent": 58.9648
+    },
+    "entire_area/Pedestrian_3d_all_r40": {
+      "guided": 51.5826,
+      "independent": 51.4059
+    },
+    "entire_area/Cyclist_3d_all_r40": {
+      "guided": 79.8879,
+      "independent": 79.8357
+    },
+    "roi/map": {
+      "guided": 81.605,
+      "independent": 81.7427
+    },
+    "roi/Car_3d_all": {
+      "guided": 90.493,
+      "independent": 90.4581
+    },
+    "roi/Pedestrian_3d_all": {
+      "guided": 59.9588,
+      "independent": 60.2286
+    },
+    "roi/Cyclist_3d_all": {
+      "guided": 94.3631,
+      "independent": 94.5415
+    },
+    "roi/Car_3d_all_r40": {
+      "guided": 94.3252,
+      "independent": 94.2117
+    },
+    "roi/Pedestrian_3d_all_r40": {
+      "guided": 60.3112,
+      "independent": 60.415
+    },
+    "roi/Cyclist_3d_all_r40": {
+      "guided": 95.082,
+      "independent": 95.2988
+    }
+  },
+  "guided_minus_independent_pp": {
+    "entire_area/map": 0.22409999999999997,
+    "entire_area/Car_3d_all": 0.6159999999999997,
+    "entire_area/Pedestrian_3d_all": 0.07939999999999969,
+    "entire_area/Cyclist_3d_all": -0.023099999999999454,
+    "entire_area/Car_3d_all_r40": 0.33100000000000307,
+    "entire_area/Pedestrian_3d_all_r40": 0.17669999999999675,
+    "entire_area/Cyclist_3d_all_r40": 0.052199999999999136,
+    "roi/map": -0.13769999999999527,
+    "roi/Car_3d_all": 0.03489999999999327,
+    "roi/Pedestrian_3d_all": -0.2698000000000036,
+    "roi/Cyclist_3d_all": -0.17839999999999634,
+    "roi/Car_3d_all_r40": 0.11350000000000193,
+    "roi/Pedestrian_3d_all_r40": -0.10379999999999967,
+    "roi/Cyclist_3d_all_r40": -0.21680000000000632
+  },
+  "conclusion": "Mixed small single-seed effect; paired repeat seeds 1/2 required."
+}

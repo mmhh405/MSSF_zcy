@@ -1,0 +1,8 @@
+.REJECTED_CHECKPOINT /tmp/tmpxyvqdr7u/epoch_3.pth Nonfinite model state
+REJECTED_CHECKPOINT /tmp/tmpxyvqdr7u/epoch_6.pth Ran out of input
+..
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+PREFLIGHT_OK /home/d514/zcy/MSSF_zcy/.runtime/mssf-bench/bin/python seeds=1,2 epochs=6 batch=1

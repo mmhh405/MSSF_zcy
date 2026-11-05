@@ -1,0 +1,42 @@
+{
+  "checks": {
+    "model_equal_except_prior": true,
+    "train_cfg_equal": true,
+    "train_dataloader_equal": true,
+    "val_dataloader_equal": true,
+    "val_evaluator_equal": true,
+    "optim_wrapper_equal": true,
+    "param_scheduler_equal": true,
+    "randomness_equal": true,
+    "load_from_equal": true,
+    "no_shared_model_or_training_code_change_between_commits": true
+  },
+  "changed_paths_between_commits": [
+    "configs/experiments/reliability_fusion_v3/gate_image_budget_independent.py"
+  ],
+  "sources": {
+    "guided": {
+      "work_dir": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/image_budget_only_20261105_110401",
+      "git_commit": "8bcf31f8c1ca2b543e8a5d156c2c00115b7e5f32",
+      "git_dirty_at_start": true,
+      "result_sha256": "69fc8ab9a3730f0b4e22ef3f8e64a88c0a4070d899481c7873b142a4628467e9",
+      "checkpoint_sha256": "4def6d2414281c1e5dd0e96657f172b7ca65b84a7bfe8890ec15dbf634bf216b",
+      "checkpoint_bytes": 182530298,
+      "checkpoint_epoch": 6,
+      "checkpoint_iter": 30834,
+      "checkpoint_finite": true
+    },
+    "independent": {
+      "work_dir": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/image_budget_independent_20261105_170439",
+      "git_commit": "21b45913c0263183ae012d521fce9c56f10f59de",
+      "git_dirty_at_start": true,
+      "result_sha256": "e3da17eba55dba939601fa9c4d48bfe043a4b95895027cace15c1241c7d17d2e",
+      "checkpoint_sha256": "3d582f09e4f5f342b592284dd5be9ea2d2719a1aee7bcec9ebb018825ae2c197",
+      "checkpoint_bytes": 182529594,
+      "checkpoint_epoch": 6,
+      "checkpoint_iter": 30834,
+      "checkpoint_finite": true
+    }
+  },
+  "note": "Both runs report dirty workspaces; resolved configurations and original result files are archived."
+}
