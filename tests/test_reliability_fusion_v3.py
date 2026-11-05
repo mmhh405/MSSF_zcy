@@ -190,6 +190,21 @@ class V3Test(unittest.TestCase):
         self.assertEqual(backbone.calls[0], (2, 3, 128, 192))
         self.assertEqual(stats['image_selected_tiles'], 0)
 
+    def test_standalone_eval_freezes_image_without_weight_initialization(self):
+        from mmdet3d.registry import MODELS
+        from mmdet3d.utils import register_all_modules
+        register_all_modules()
+        root = Path(__file__).resolve().parents[1]
+        cfg = Config.fromfile(str(root / 'configs/experiments/reliability_fusion_v3/gate_main.py'))
+        model = MODELS.build(cfg.model)
+        # Do not call init_weights: this matches Runner.test's setup path.
+        model.eval()
+        for branch in (model.img_backbone, model.img_neck):
+            self.assertTrue(all(not p.requires_grad for p in branch.parameters()))
+        self.assertTrue(any(p.requires_grad for p in model.early_router.parameters()))
+        model.train()
+        self.assertTrue(all(not p.requires_grad for p in model.img_backbone.parameters()))
+
     def test_configurations_keep_protocol_and_result_paths(self):
         root = Path(__file__).resolve().parents[1]
         folder = root / 'configs/experiments/reliability_fusion_v3'

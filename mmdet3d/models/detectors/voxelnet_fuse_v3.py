@@ -24,6 +24,17 @@ class VoxelNetFuseV3(VoxelNetFuse):
         self.last_budget_stats = {}
         self._route_state = None
 
+    def train(self, mode=True):
+        super().train(mode)
+        # Runner.test() loads a checkpoint without calling init_weights().
+        # Enforce the inherited frozen-image policy for standalone evaluation.
+        if not mode and self.freeze_img:
+            for name in ('img_backbone', 'img_neck'):
+                module = getattr(self, name, None)
+                if module is not None:
+                    module.requires_grad_(False)
+        return self
+
     def extract_feat(self, inputs, metas):
         if self.routing_mode == 'dense':
             self.last_budget_stats = dict(mode='dense')
