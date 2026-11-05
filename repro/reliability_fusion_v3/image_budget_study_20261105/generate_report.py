@@ -125,7 +125,9 @@ lines += ['', f'本轮延迟减少 **{latency_reduction:.2f}%**，测量峰值 a
 markdown='\n'.join(lines)
 for name,r in evaluations.items():
     (out/f'{name}_evaluation.json').write_text(json.dumps(r,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
-for path in res.glob('*.json'):
+raw_profiles = [res/'protocol_audit.json', *sorted(res.glob('control_[12].json')),
+                *sorted(res.glob('image_budget_[12].json'))]
+for path in raw_profiles:
     shutil.copyfile(path,out/path.name)
 (out/'README.md').write_text(markdown,encoding='utf-8')
 (out/'summary.json').write_text(json.dumps(summary,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
