@@ -1,0 +1,150 @@
+{
+  "recorded_at": "2026-11-05T10:15:03.118903+08:00",
+  "batch_directory": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0",
+  "resource_directory": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/resources_20261105_095307",
+  "models": {
+    "control": {
+      "eaa": 63.5899,
+      "dc": 82.0461,
+      "Car": 61.1487,
+      "Car_r40": 59.6902,
+      "Pedestrian": 51.8155,
+      "Pedestrian_r40": 52.9683,
+      "Cyclist": 77.8054,
+      "Cyclist_r40": 79.6819,
+      "eaa_r40_mean": 64.11346666666667
+    },
+    "v3": {
+      "eaa": 61.9772,
+      "dc": 81.5582,
+      "Car": 57.4813,
+      "Car_r40": 56.7154,
+      "Pedestrian": 50.3888,
+      "Pedestrian_r40": 50.7919,
+      "Cyclist": 78.0616,
+      "Cyclist_r40": 79.6742,
+      "eaa_r40_mean": 62.39383333333333
+    },
+    "radar100": {
+      "eaa": 63.3838,
+      "dc": 81.2737,
+      "Car": 57.5763,
+      "Car_r40": 56.6912,
+      "Pedestrian": 54.6542,
+      "Pedestrian_r40": 52.6646,
+      "Cyclist": 77.921,
+      "Cyclist_r40": 79.5203,
+      "eaa_r40_mean": 62.9587
+    },
+    "global0625": {
+      "eaa": 62.6413,
+      "dc": 81.5397,
+      "Car": 59.7531,
+      "Car_r40": 59.1247,
+      "Pedestrian": 50.1108,
+      "Pedestrian_r40": 50.2756,
+      "Cyclist": 78.0601,
+      "Cyclist_r40": 79.76,
+      "eaa_r40_mean": 63.05343333333333
+    },
+    "quality_first": {
+      "eaa": 62.9796,
+      "dc": 81.3995,
+      "Car": 60.4263,
+      "Car_r40": 59.2664,
+      "Pedestrian": 50.5512,
+      "Pedestrian_r40": 51.038,
+      "Cyclist": 77.9613,
+      "Cyclist_r40": 79.6404,
+      "eaa_r40_mean": 63.31493333333333
+    },
+    "image_budget_only": {
+      "eaa": 63.0114,
+      "dc": 81.4219,
+      "Car": 60.5582,
+      "Car_r40": 59.3113,
+      "Pedestrian": 50.5879,
+      "Pedestrian_r40": 51.1311,
+      "Cyclist": 77.8881,
+      "Cyclist_r40": 79.5414,
+      "eaa_r40_mean": 63.327933333333334
+    }
+  },
+  "costs": {
+    "control": {
+      "repeats": 2,
+      "median_ms": 42.27156950219069,
+      "min_run_median_ms": 42.13791599977412,
+      "max_run_median_ms": 42.40522300460725,
+      "peak_allocated_mib": 920.6162109375
+    },
+    "v3": {
+      "repeats": 4,
+      "median_ms": 34.587473497595056,
+      "min_run_median_ms": 34.15275599763845,
+      "max_run_median_ms": 34.89216399611905,
+      "peak_allocated_mib": 426.4248046875,
+      "latency_reduction_pct": 18.177929268033,
+      "peak_allocated_reduction_pct": 53.6805022960377,
+      "mean_image_pixel_work_ratio": 0.5992234685073339,
+      "mean_fpn_storage_ratio": 0.25415066365076233
+    },
+    "same_weight_dense": {
+      "repeats": 4,
+      "median_ms": 42.20817549867206,
+      "min_run_median_ms": 42.062436001288006,
+      "max_run_median_ms": 42.48469799858867,
+      "peak_allocated_mib": 920.6162109375
+    },
+    "quality_first": {
+      "repeats": 2,
+      "median_ms": 38.04681650035491,
+      "min_run_median_ms": 37.745684501715004,
+      "max_run_median_ms": 38.34794849899481,
+      "peak_allocated_mib": 490.62646484375,
+      "latency_reduction_pct": 9.994313084629692,
+      "peak_allocated_reduction_pct": 46.706731967697415,
+      "mean_image_pixel_work_ratio": 0.7489214840379638,
+      "mean_fpn_storage_ratio": 0.4038073262186328
+    },
+    "image_budget_only": {
+      "repeats": 2,
+      "median_ms": 37.95235825054988,
+      "min_run_median_ms": 37.76333499990869,
+      "max_run_median_ms": 38.14138150119106,
+      "peak_allocated_mib": 490.654296875,
+      "latency_reduction_pct": 10.217768827857142,
+      "peak_allocated_reduction_pct": 46.703708771829334,
+      "mean_image_pixel_work_ratio": 0.7489214840379638,
+      "mean_fpn_storage_ratio": 0.4038073262186328
+    }
+  },
+  "model_checkpoint_sha256": {
+    "control": "609bf6cdb2aa1a4b62d0e60a6e1019c6bb39cb60b8167adda846d04e314866d3",
+    "v3": "dfe99cec2440f6391df21e684807d19451de97ad30c148e091b3dbeca073b60b"
+  },
+  "protocol": {
+    "training_seed": 0,
+    "fixed_epoch": 6,
+    "full_validation_samples": 1296,
+    "timing_samples_per_mode_per_repeat": 128,
+    "timing_warmup": 10,
+    "batch_size": 1,
+    "cpu_threads": 4,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "torch": "2.0.1+cu118",
+    "cuda": "11.8",
+    "precision": "float32",
+    "latency_scope": "test_step: preprocessing through decoded predictions; dataset I/O excluded",
+    "memory_scope": "PyTorch peak allocated; not all driver allocations",
+    "diagnostic_scope": "Inference-only changes on the same trained V3 checkpoint; not retrained models"
+  },
+  "caveats": [
+    "One training seed only",
+    "Timing repeats are not independent training seeds",
+    "Budgets are explored on the development validation set",
+    "Quality-first results below use existing V3 weights, not a new six-epoch trained model",
+    "Checkpoint size and original dataset disk usage are not reduced by activation selection",
+    "Current uniform reserve samples indices and does not guarantee physical spatial stratification"
+  ]
+}

@@ -7,7 +7,7 @@
 - **主干前预览。** 已归一化图像先缩放到 160×256，经两层轻量卷积生成视觉预览。雷达在 PillarFeatureNet、稀疏卷积和跨模态注意力之前统计每个 pillar 的位置、点数、RCS、补偿径向速度和距离。投影沿用 MSSF 的点云增强反变换、图像缩放与翻转规则。
 - **雷达→图像。** 点投影产生密度、速度和距离先验，与预览特征共同计算图像区域的执行优先级。投影图做邻域扩展。雷达没有回波的图像区域仍可由视觉分数和空间保留名额入选。
 - **图像→雷达。** 在 pillar 投影处采样预览语义及局部对比度线索，和雷达自身统计一起预测 pillar 执行分数。投影无效时视觉输入清零，雷达自身分数和保留名额仍然生效。局部对比度只是质量线索，不能解释为校准后的可靠性。
-- **确定的执行预算。** 图像默认选择 20% 区域，雷达默认保留 80% pillar，每帧至少保留 32 个已有 pillar。预算内分别预留本模态、另一模态和空间均匀采样名额，剩余按联合分数选择。小于 32 个 pillar 的帧全部保留。预算决定选择数量，训练正则控制连续分数分布。
+- **确定的执行预算。** 图像默认选择 20% 区域，雷达默认保留 80% pillar，每帧至少保留 32 个已有 pillar。预算内分别预留本模态、另一模态和按索引分散抽样名额（尚非严格空间分层），剩余按联合分数选择。小于 32 个 pillar 的帧全部保留。预算决定选择数量，训练正则控制连续分数分布。
 - **实际选择性图像计算。** 冻结的 ResNet/FPN 先处理半分辨率全图，再只处理入选的原分辨率图像块。分块核心约 256 像素，额外 halo 为 32 像素，输入补齐到 32 的倍数，每次最多处理 2 个块。高分辨率块按原图坐标融合回低分辨率 FPN，默认混合系数 0.5。
 - **实际减少早期雷达工作量。** 同步筛选原始点和预处理后的 pillar。两处稀疏雷达融合、pillar 编码和注意力的输入随之减少。后续 SECOND 稠密 BEV 主干及检测头仍按原尺寸计算。
 - **区分计算选择与融合权重。** V3 路由分数选择执行区域，原 V2 的四个门控继续调节已计算图像特征的融合强度。
@@ -30,6 +30,8 @@ V3 保存和传给融合模块的是低分辨率稠密 FPN，不是全分辨率�
 | `mmdet3d/models/layers/fusion_layers/early_budget_gate_v3.py` | `BidirectionalBudgetRouter` 双向先验、保留预算、点/pillar 同步筛选及训练损失；`CoarseTileImageExecutor` 选区主干执行和低分辨率特征保存 |
 | `mmdet3d/models/detectors/voxelnet_fuse_v3.py` | `VoxelNetFuseV3.extract_feat/loss` 在图像和雷达昂贵特征提取前接入选择，消费辅助损失，释放训练缓存 |
 | `configs/experiments/reliability_fusion_v3/gate_main.py` | 主版本，继承 V2 增强、归一化冻结及 6 轮微调协议 |
+| `configs/experiments/reliability_fusion_v3/gate_quality_first.py` | 95% 雷达、62.5% 全局图像的待微调候选 |
+| `configs/experiments/reliability_fusion_v3/gate_image_budget_only.py` | 保留全部雷达几何的图像省算对照，下一轮优先微调 |
 | `configs/experiments/reliability_fusion_v3/dense_control.py` | 完整 V2 执行方式的匹配微调对照 |
 | `configs/experiments/reliability_fusion_v3/radar_to_image_only.py` | 关闭图像→雷达先验，保持预算一致 |
 | `configs/experiments/reliability_fusion_v3/image_to_radar_only.py` | 关闭雷达→图像先验，保持预算一致 |
@@ -101,7 +103,7 @@ python tools/analysis_tools/profile_reliability_v3.py \
 
 ## 6. 接入检查与后续结果
 
-本节只记录本版本真实执行的验证。检查详情见 `repro/reliability_fusion_v3/verification.json`。正式 V3 精度和独占 GPU 性能结果尚待训练后取得。
+本节保留接入检查记录。首轮正式训练及空闲 GPU 资源测量已于 2026-11-05 汇总，见下方首轮结果链接。
 
 <!-- V3_VERIFICATION_START -->
 
@@ -121,5 +123,15 @@ python tools/analysis_tools/profile_reliability_v3.py \
 |---|---|---:|---:|---:|---:|---|---|
 | v3-two-update-backward | smoke_only | — | — | — | — | 4dad3902+dirty | work_dirs/reliability_fusion_v3/verification_20261104_113049/train_smoke_fixed |
 | v3-two-update-backward | smoke_only | — | — | — | — | 083f36ff+dirty | work_dirs/reliability_fusion_v3/migration_startup_smoke_20261104 |
+| v3-dense-v2-control | training_completed | 1296 | 6 | 63.5899 | 82.0461 | bdcea1ff+dirty | work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/dense_control |
+| v3-bidirectional-budget | training_completed | 1296 | 6 | 61.9772 | 81.5582 | bdcea1ff+dirty | work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/gate_main |
+| v3-diagnostic-radar100-fixed-weights | test_only | 1296 | — | 63.3838 | 81.2737 | bdcea1ff+dirty | work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/resources_20261105_095307/diagnostic_radar100 |
+| v3-diagnostic-global0625-fixed-weights | test_only | 1296 | — | 62.6413 | 81.5397 | bdcea1ff+dirty | work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/resources_20261105_095307/diagnostic_global0625 |
+| v3-diagnostic-quality-first-fixed-weights | test_only | 1296 | — | 62.9796 | 81.3995 | bdcea1ff+dirty | work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/resources_20261105_095307/diagnostic_quality_first |
+| v3-diagnostic-image-budget-only-fixed-weights | test_only | 1296 | — | 63.0114 | 81.4219 | bdcea1ff+dirty | work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/resources_20261105_095307/diagnostic_image_budget_only |
 
 <!-- RELIABILITY_RESULTS_END -->
+
+## 7. 首轮正式结果与下一步（2026-11-05）
+
+固定第六轮的 V3 EAA/DC 为 61.9772/81.5582，对照为 63.5899/82.0461。资源复测中，V3 延迟减少 18.18%，峰值 allocated 显存减少 53.68%。当前收益是精度与资源的折中。完整结果、R40 补充、固定权重诊断和下一轮可执行命令见 [首轮实验报告](repro/reliability_fusion_v3/first_pair_20261105/README.md)。

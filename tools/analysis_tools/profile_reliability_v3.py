@@ -28,11 +28,15 @@ def main():
     parser.add_argument('--checkpoint')
     parser.add_argument('--samples', type=int, default=32)
     parser.add_argument('--warmup', type=int, default=5)
+    parser.add_argument('--modes', nargs='+', choices=['dense', 'select'],
+                        default=['dense', 'select'])
     parser.add_argument('--allow-busy-gpu', action='store_true')
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
     if args.samples < 1 or args.warmup < 0:
         parser.error('samples must be positive and warmup nonnegative')
+    if len(args.modes) != len(set(args.modes)):
+        parser.error('modes must not repeat')
     output = Path(args.output)
     if output.exists():
         raise FileExistsError(output)
@@ -72,16 +76,19 @@ def main():
     summary = dict(config=args.config, checkpoint=str(checkpoint_path),
         checkpoint_sha256=checkpoint_hash, uninitialized_router=bool(missing),
         missing_keys=missing, gpu_name=torch.cuda.get_device_name(),
+        torch_version=torch.__version__, cuda_version=torch.version.cuda,
+        mode_order=args.modes, warmup=args.warmup, cpu_threads=4,
         random_seed=cfg.get('randomness', {}).get('seed', 0),
         other_gpu_clients=other_clients, competing_compute_clients=competing_clients,
         performance_comparison_valid=not bool(competing_clients) and args.samples >= 32 and args.warmup >= 5,
         parameters=sum(p.numel() for p in model.parameters()),
+        parameter_bytes=sum(p.numel()*p.element_size() for p in model.parameters()),
         router_parameters=sum(p.numel() for p in model.early_router.parameters()),
         latency_scope='test_step: preprocessing through decoded predictions; dataset I/O excluded',
         pixel_work_scope='image backbone input pixels including coarse global and tile halos; excludes router',
         modes={})
     torch.set_num_threads(4)
-    for mode in ('dense', 'select'):
+    for mode in args.modes:
         model.routing_mode = mode
         rows = []
         for index, data in enumerate(loader):
@@ -110,6 +117,13 @@ def main():
             mean_wall_ms=statistics.mean(row['wall_ms'] for row in rows),
             max_peak_allocated_bytes=max(row['peak_allocated_bytes'] for row in rows))
         print('COMPLETED', mode, summary['modes'][mode]['median_wall_ms'], flush=True)
+    final_clients = subprocess.check_output(['nvidia-smi', '--query-compute-apps=pid,process_name',
+                                             '--format=csv,noheader'], text=True).strip()
+    final_competing = [line for line in final_clients.splitlines()
+        if line.split(',')[0].strip() != str(os.getpid()) and not any(
+            name in line for name in desktop_names)]
+    summary['competing_compute_clients_at_end'] = final_competing
+    summary['performance_comparison_valid'] &= not bool(final_competing)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     print('SAVED', output)

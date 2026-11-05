@@ -1,0 +1,9 @@
+{
+  "time": "2026-11-04T21:55:51.752374+08:00",
+  "reason": "Server reboot at approximately 18:40-18:41; gate checkpoint is zero bytes",
+  "action": "Restart only gate_main from original V2 initialization; preserve completed dense_control",
+  "preserved_directory": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/gate_main_interrupted_20261104_1840",
+  "source_hashes_verified": true,
+  "warm_start_hash_verified": true,
+  "control_checkpoint_verified": true
+}
