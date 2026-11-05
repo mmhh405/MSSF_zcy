@@ -1,0 +1,264 @@
+{
+  "recorded_at": "2026-11-05T16:45:19.827894+08:00",
+  "paths": {
+    "run": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/image_budget_only_20261105_110401",
+    "base": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0",
+    "resources": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/image_budget_only_20261105_110401/analysis_20261105_160905"
+  },
+  "protocol_audit": {
+    "control": {
+      "epoch": 6,
+      "iterations": 30834,
+      "bytes": 180810794,
+      "config": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/dense_control/dense_control.py",
+      "batch_size": 1,
+      "seed": 0,
+      "epochs": 6,
+      "initialization": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+      "mode": "dense",
+      "radar_keep_ratio": 0.8,
+      "image_keep_ratio": 0.2,
+      "global_scale": 0.5,
+      "nms_pre": 300,
+      "score_thr": 0.1,
+      "all_state_tensors_finite": true
+    },
+    "original_v3": {
+      "epoch": 6,
+      "iterations": 30834,
+      "bytes": 182532410,
+      "config": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/gate_main/gate_main.py",
+      "batch_size": 1,
+      "seed": 0,
+      "epochs": 6,
+      "initialization": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+      "mode": "select",
+      "radar_keep_ratio": 0.8,
+      "image_keep_ratio": 0.2,
+      "global_scale": 0.5,
+      "nms_pre": 300,
+      "score_thr": 0.1,
+      "all_state_tensors_finite": true
+    },
+    "image_budget": {
+      "epoch": 6,
+      "iterations": 30834,
+      "bytes": 182530298,
+      "config": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/image_budget_only_20261105_110401/gate_image_budget_only.py",
+      "batch_size": 1,
+      "seed": 0,
+      "epochs": 6,
+      "initialization": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+      "mode": "select",
+      "radar_keep_ratio": 1.0,
+      "image_keep_ratio": 0.2,
+      "global_scale": 0.625,
+      "nms_pre": 300,
+      "score_thr": 0.1,
+      "all_state_tensors_finite": true
+    }
+  },
+  "metrics": {
+    "control": {
+      "eaa": 63.5899,
+      "dc": 82.0461,
+      "Car": 61.1487,
+      "Car_r40": 59.6902,
+      "Car_dc": 90.487,
+      "Pedestrian": 51.8155,
+      "Pedestrian_r40": 52.9683,
+      "Pedestrian_dc": 61.0666,
+      "Cyclist": 77.8054,
+      "Cyclist_r40": 79.6819,
+      "Cyclist_dc": 94.5848,
+      "r40_mean": 64.11346666666667
+    },
+    "original_v3": {
+      "eaa": 61.9772,
+      "dc": 81.5582,
+      "Car": 57.4813,
+      "Car_r40": 56.7154,
+      "Car_dc": 89.8796,
+      "Pedestrian": 50.3888,
+      "Pedestrian_r40": 50.7919,
+      "Pedestrian_dc": 60.4311,
+      "Cyclist": 78.0616,
+      "Cyclist_r40": 79.6742,
+      "Cyclist_dc": 94.3638,
+      "r40_mean": 62.39383333333333
+    },
+    "image_budget": {
+      "eaa": 63.0273,
+      "dc": 81.605,
+      "Car": 59.9664,
+      "Car_r40": 59.2958,
+      "Car_dc": 90.493,
+      "Pedestrian": 50.9152,
+      "Pedestrian_r40": 51.5826,
+      "Pedestrian_dc": 59.9588,
+      "Cyclist": 78.2003,
+      "Cyclist_r40": 79.8879,
+      "Cyclist_dc": 94.3631,
+      "r40_mean": 63.588766666666665
+    }
+  },
+  "delta_vs_control": {
+    "eaa": -0.5626000000000033,
+    "dc": -0.4410999999999916,
+    "Car": -1.182299999999998,
+    "Car_r40": -0.3943999999999974,
+    "Car_dc": 0.006000000000000227,
+    "Pedestrian": -0.9003000000000014,
+    "Pedestrian_r40": -1.3857,
+    "Pedestrian_dc": -1.1078000000000046,
+    "Cyclist": 0.3948999999999927,
+    "Cyclist_r40": 0.20600000000000307,
+    "Cyclist_dc": -0.22169999999999845,
+    "r40_mean": -0.5247000000000028
+  },
+  "delta_vs_original_v3": {
+    "eaa": 1.0500999999999934,
+    "dc": 0.046800000000004616,
+    "Car": 2.4851000000000028,
+    "Car_r40": 2.5803999999999974,
+    "Car_dc": 0.6133999999999986,
+    "Pedestrian": 0.5263999999999953,
+    "Pedestrian_r40": 0.7907000000000011,
+    "Pedestrian_dc": -0.47230000000000416,
+    "Cyclist": 0.13870000000000005,
+    "Cyclist_r40": 0.2137000000000029,
+    "Cyclist_dc": -0.0006999999999948159,
+    "r40_mean": 1.1949333333333314
+  },
+  "curves": {
+    "control": [
+      {
+        "epoch": 1,
+        "eaa": 64.8251,
+        "dc": 81.937
+      },
+      {
+        "epoch": 2,
+        "eaa": 65.186,
+        "dc": 82.0058
+      },
+      {
+        "epoch": 3,
+        "eaa": 65.2911,
+        "dc": 81.9888
+      },
+      {
+        "epoch": 4,
+        "eaa": 63.6285,
+        "dc": 82.0098
+      },
+      {
+        "epoch": 5,
+        "eaa": 65.3483,
+        "dc": 82.0379
+      },
+      {
+        "epoch": 6,
+        "eaa": 63.5899,
+        "dc": 82.0461
+      }
+    ],
+    "original_v3": [
+      {
+        "epoch": 1,
+        "eaa": 60.1078,
+        "dc": 78.8213
+      },
+      {
+        "epoch": 2,
+        "eaa": 61.7894,
+        "dc": 81.1608
+      },
+      {
+        "epoch": 3,
+        "eaa": 63.1219,
+        "dc": 82.7616
+      },
+      {
+        "epoch": 4,
+        "eaa": 63.1043,
+        "dc": 81.3745
+      },
+      {
+        "epoch": 5,
+        "eaa": 63.2305,
+        "dc": 81.4745
+      },
+      {
+        "epoch": 6,
+        "eaa": 61.9772,
+        "dc": 81.5582
+      }
+    ],
+    "image_budget": [
+      {
+        "epoch": 1,
+        "eaa": 63.731,
+        "dc": 81.5526
+      },
+      {
+        "epoch": 2,
+        "eaa": 62.6365,
+        "dc": 81.5704
+      },
+      {
+        "epoch": 3,
+        "eaa": 64.4014,
+        "dc": 81.6981
+      },
+      {
+        "epoch": 4,
+        "eaa": 62.9122,
+        "dc": 81.6982
+      },
+      {
+        "epoch": 5,
+        "eaa": 63.1085,
+        "dc": 81.693
+      },
+      {
+        "epoch": 6,
+        "eaa": 63.0273,
+        "dc": 81.605
+      }
+    ]
+  },
+  "costs": {
+    "control": {
+      "repeats": 2,
+      "median_ms": 43.07377850273042,
+      "run_medians_ms": [
+        43.4977945042192,
+        42.64976250124164
+      ],
+      "peak_allocated_mib": 920.6162109375
+    },
+    "image_budget": {
+      "repeats": 2,
+      "median_ms": 38.63971999089699,
+      "run_medians_ms": [
+        38.93494699150324,
+        38.344492990290746
+      ],
+      "peak_allocated_mib": 490.654296875
+    }
+  },
+  "latency_reduction_pct": 10.294101576327597,
+  "peak_allocated_reduction_pct": 46.703708771829334,
+  "checkpoint_sha256": {
+    "control": "609bf6cdb2aa1a4b62d0e60a6e1019c6bb39cb60b8167adda846d04e314866d3",
+    "image_budget": "4def6d2414281c1e5dd0e96657f172b7ca65b84a7bfe8890ec15dbf634bf216b"
+  },
+  "limits": [
+    "Single training seed; no statistical significance claim",
+    "Resource timing uses 128 frames, 10 warmup frames, two repetitions per model with reversed order",
+    "Timing excludes data loading; memory is PyTorch peak allocated, not all driver VRAM",
+    "Compared with original V3, both radar retention and global image resolution changed",
+    "Efficiency relative to full computation does not isolate the benefit of cross-modal routing priors"
+  ]
+}

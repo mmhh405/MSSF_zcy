@@ -1,0 +1,36 @@
+test_augmented_projection_and_behind_camera (__main__.V3Test) ... ok
+test_configurations_keep_protocol_and_result_paths (__main__.V3Test) ... ok
+test_disabled_image_to_radar_is_independent_of_image (__main__.V3Test) ... ok
+test_disabled_radar_to_image_is_independent_of_radar (__main__.V3Test) ... ok
+test_empty_radar_router_and_nonfinite_padding (__main__.V3Test) ... ok
+test_exact_budget_and_three_independent_reserves (__main__.V3Test) ... ok
+test_executor_avoids_unselected_high_resolution_calls (__main__.V3Test) ... ok
+test_executor_only_calls_selected_tiles_and_bounds_storage (__main__.V3Test) ... ok
+test_metadata_cannot_change_routing (__main__.V3Test) ... ok
+test_missing_camera_evidence_keeps_radar_budget (__main__.V3Test) ... ok
+test_per_sample_radar_budget_and_raw_point_alignment (__main__.V3Test) ... ok
+test_standalone_eval_freezes_image_without_weight_initialization (__main__.V3Test) ... /home/d514/zcy/MSSF_zcy/.runtime/mssf-bench/lib/python3.9/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(torch.__version__) < LooseVersion("1.0.0"):
+/home/d514/zcy/MSSF_zcy/.runtime/mssf-bench/lib/python3.9/site-packages/thop/profile.py:68: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(torch.__version__) >= LooseVersion("1.1.0"):
+/home/d514/zcy/MSSF_zcy/mmdet3d/evaluation/functional/kitti_utils/eval.py:10: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  def get_thresholds(scores: np.ndarray, num_gt, num_sample_pts=41):
+/home/d514/zcy/MSSF_zcy/mmdet3d/evaluation/functional/kitti_utils/eval_tj4d.py:9: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  def get_thresholds(scores: np.ndarray, num_gt, num_sample_pts=41):
+/home/d514/zcy/MSSF_zcy/mmdet3d/evaluation/functional/kitti_utils/eval_vod.py:8: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  def get_thresholds(scores: np.ndarray, num_gt,
+/home/d514/zcy/MSSF_zcy/mmdet3d/evaluation/functional/kitti_utils/eval_vod.py:191: NumbaDeprecationWarning: The keyword argument 'nopython=False' was supplied. From Numba 0.59.0 the default is being changed to True and use of 'nopython=False' will raise a warning as the argument will have no effect. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit(nopython=False)
+/home/d514/zcy/MSSF_zcy/mmdet3d/evaluation/functional/kitti_utils/eval_vod_velo_3.py:8: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  def get_thresholds(scores: np.ndarray, num_gt,
+/home/d514/zcy/MSSF_zcy/mmdet3d/evaluation/functional/kitti_utils/eval_vod_velo_3.py:198: NumbaDeprecationWarning: The keyword argument 'nopython=False' was supplied. From Numba 0.59.0 the default is being changed to True and use of 'nopython=False' will raise a warning as the argument will have no effect. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit(nopython=False)
+/home/d514/zcy/MSSF_zcy/mmdet3d/models/dense_heads/anchor3d_head.py:94: UserWarning: dir_offset and dir_limit_offset will be depressed and be incorporated into box coder in the future
+  warnings.warn(
+ok
+test_supervision_gradients_and_rotated_box_targets (__main__.V3Test) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.433s
+
+OK

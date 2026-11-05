@@ -1,0 +1,53 @@
+{
+  "control": {
+    "epoch": 6,
+    "iterations": 30834,
+    "bytes": 180810794,
+    "config": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/dense_control/dense_control.py",
+    "batch_size": 1,
+    "seed": 0,
+    "epochs": 6,
+    "initialization": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+    "mode": "dense",
+    "radar_keep_ratio": 0.8,
+    "image_keep_ratio": 0.2,
+    "global_scale": 0.5,
+    "nms_pre": 300,
+    "score_thr": 0.1,
+    "all_state_tensors_finite": true
+  },
+  "original_v3": {
+    "epoch": 6,
+    "iterations": 30834,
+    "bytes": 182532410,
+    "config": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/gate_main/gate_main.py",
+    "batch_size": 1,
+    "seed": 0,
+    "epochs": 6,
+    "initialization": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+    "mode": "select",
+    "radar_keep_ratio": 0.8,
+    "image_keep_ratio": 0.2,
+    "global_scale": 0.5,
+    "nms_pre": 300,
+    "score_thr": 0.1,
+    "all_state_tensors_finite": true
+  },
+  "image_budget": {
+    "epoch": 6,
+    "iterations": 30834,
+    "bytes": 182530298,
+    "config": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/image_budget_only_20261105_110401/gate_image_budget_only.py",
+    "batch_size": 1,
+    "seed": 0,
+    "epochs": 6,
+    "initialization": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+    "mode": "select",
+    "radar_keep_ratio": 1.0,
+    "image_keep_ratio": 0.2,
+    "global_scale": 0.625,
+    "nms_pre": 300,
+    "score_thr": 0.1,
+    "all_state_tensors_finite": true
+  }
+}

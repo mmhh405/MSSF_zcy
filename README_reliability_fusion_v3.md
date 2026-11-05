@@ -31,6 +31,7 @@ V3 保存和传给融合模块的是低分辨率稠密 FPN，不是全分辨率�
 | `mmdet3d/models/detectors/voxelnet_fuse_v3.py` | `VoxelNetFuseV3.extract_feat/loss` 在图像和雷达昂贵特征提取前接入选择，消费辅助损失，释放训练缓存 |
 | `configs/experiments/reliability_fusion_v3/gate_main.py` | 主版本，继承 V2 增强、归一化冻结及 6 轮微调协议 |
 | `configs/experiments/reliability_fusion_v3/gate_quality_first.py` | 95% 雷达、62.5% 全局图像的待微调候选 |
+| `configs/experiments/reliability_fusion_v3/gate_image_budget_independent.py` | 同雷达/图像预算，关闭早期跨模态先验的待训练对照 |
 | `configs/experiments/reliability_fusion_v3/gate_image_budget_only.py` | 保留全部雷达几何的图像省算对照，下一轮优先微调 |
 | `configs/experiments/reliability_fusion_v3/dense_control.py` | 完整 V2 执行方式的匹配微调对照 |
 | `configs/experiments/reliability_fusion_v3/radar_to_image_only.py` | 关闭图像→雷达先验，保持预算一致 |
@@ -129,9 +130,14 @@ python tools/analysis_tools/profile_reliability_v3.py \
 | v3-diagnostic-global0625-fixed-weights | test_only | 1296 | — | 62.6413 | 81.5397 | bdcea1ff+dirty | work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/resources_20261105_095307/diagnostic_global0625 |
 | v3-diagnostic-quality-first-fixed-weights | test_only | 1296 | — | 62.9796 | 81.3995 | bdcea1ff+dirty | work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/resources_20261105_095307/diagnostic_quality_first |
 | v3-diagnostic-image-budget-only-fixed-weights | test_only | 1296 | — | 63.0114 | 81.4219 | bdcea1ff+dirty | work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/resources_20261105_095307/diagnostic_image_budget_only |
+| v3-image-budget-only-radar100-global0625 | training_completed | 1296 | 6 | 63.0273 | 81.6050 | 8bcf31f8+dirty | work_dirs/reliability_fusion_v3/image_budget_only_20261105_110401 |
 
 <!-- RELIABILITY_RESULTS_END -->
 
 ## 7. 首轮正式结果与下一步（2026-11-05）
 
 固定第六轮的 V3 EAA/DC 为 61.9772/81.5582，对照为 63.5899/82.0461。资源复测中，V3 延迟减少 18.18%，峰值 allocated 显存减少 53.68%。当前收益是精度与资源的折中。完整结果、R40 补充、固定权重诊断和下一轮可执行命令见 [首轮实验报告](repro/reliability_fusion_v3/first_pair_20261105/README.md)。
+
+## 8. 保留雷达对照的正式结果（2026-11-05）
+
+本轮固定第6轮 EAA/DC 为 63.0273/81.6050；相对原 V3 恢复 +1.0501/+0.0468 pp，相对完整计算对照仍低 0.5626/0.4411 pp。实际延迟减少 10.29%，峰值 allocated 显存减少 46.70%。完整分析、类别差异、R40 和下一轮等预算对照命令见 [本轮分析报告](repro/reliability_fusion_v3/image_budget_study_20261105/README.md)。
