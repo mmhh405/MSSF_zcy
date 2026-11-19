@@ -1,0 +1,5 @@
+START seed=1
+DONE seed=1
+START seed=2
+DONE seed=2
+ALL_COMPLETED /home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/radar_to_image_repeats_20261109_143724

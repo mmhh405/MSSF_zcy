@@ -1,0 +1,1315 @@
+{
+  "config": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/dense_control_repeats_20261118_103208/seed1/dense_control.py",
+  "checkpoint": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/dense_control_repeats_20261118_103208/seed1/epoch_6.pth",
+  "checkpoint_sha256": "3cf6bf6f5c5ee6a3ec7df0a0d1b41a680d4c3621e0acd5906d60fafd925d1104",
+  "uninitialized_router": false,
+  "missing_keys": [],
+  "gpu_name": "NVIDIA GeForce RTX 4090",
+  "torch_version": "2.0.1+cu118",
+  "cuda_version": "11.8",
+  "mode_order": [
+    "dense"
+  ],
+  "warmup": 10,
+  "cpu_threads": 4,
+  "random_seed": 1,
+  "other_gpu_clients": [],
+  "competing_compute_clients": [],
+  "performance_comparison_valid": true,
+  "parameters": 32421444,
+  "parameter_bytes": 129685776,
+  "router_parameters": 1910,
+  "latency_scope": "test_step: preprocessing through decoded predictions; dataset I/O excluded",
+  "pixel_work_scope": "image backbone input pixels including coarse global and tile halos; excludes router",
+  "modes": {
+    "dense": {
+      "samples": 128,
+      "rows": [
+        {
+          "frame_index": 10,
+          "wall_ms": 43.30312996171415,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965321728,
+          "detections": [
+            12
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 11,
+          "wall_ms": 43.17264910787344,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965336064,
+          "detections": [
+            13
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 12,
+          "wall_ms": 43.009546818211675,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965303296,
+          "detections": [
+            8
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 13,
+          "wall_ms": 42.95321414247155,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965288448,
+          "detections": [
+            6
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 14,
+          "wall_ms": 43.247563065961,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965274624,
+          "detections": [
+            7
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 15,
+          "wall_ms": 43.171297991648316,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965227520,
+          "detections": [
+            9
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 16,
+          "wall_ms": 43.505562003701925,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965206528,
+          "detections": [
+            7
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 17,
+          "wall_ms": 43.27759891748428,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965201920,
+          "detections": [
+            6
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 18,
+          "wall_ms": 43.4162279125303,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965208064,
+          "detections": [
+            7
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 19,
+          "wall_ms": 43.301024939864874,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965210624,
+          "detections": [
+            13
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 20,
+          "wall_ms": 43.45345986075699,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965245952,
+          "detections": [
+            9
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 21,
+          "wall_ms": 43.555004987865686,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965234176,
+          "detections": [
+            8
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 22,
+          "wall_ms": 43.774810852482915,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965220352,
+          "detections": [
+            11
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 23,
+          "wall_ms": 42.813026113435626,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965228032,
+          "detections": [
+            7
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 24,
+          "wall_ms": 43.76699193380773,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965222400,
+          "detections": [
+            9
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 25,
+          "wall_ms": 42.39181987941265,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965216256,
+          "detections": [
+            13
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 26,
+          "wall_ms": 43.02646778523922,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965215744,
+          "detections": [
+            13
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 27,
+          "wall_ms": 42.9893909022212,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965161984,
+          "detections": [
+            11
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 28,
+          "wall_ms": 42.93713113293052,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965163520,
+          "detections": [
+            11
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 29,
+          "wall_ms": 42.94303897768259,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965206016,
+          "detections": [
+            13
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 30,
+          "wall_ms": 43.16107602789998,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965195776,
+          "detections": [
+            18
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 31,
+          "wall_ms": 42.99050197005272,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965172736,
+          "detections": [
+            13
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 32,
+          "wall_ms": 42.986849090084434,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965155328,
+          "detections": [
+            20
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 33,
+          "wall_ms": 42.580547044053674,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965169664,
+          "detections": [
+            17
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 34,
+          "wall_ms": 43.16335287876427,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965136896,
+          "detections": [
+            16
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 35,
+          "wall_ms": 43.306614039465785,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965127168,
+          "detections": [
+            15
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 36,
+          "wall_ms": 42.687250999733806,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965120512,
+          "detections": [
+            13
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 37,
+          "wall_ms": 42.56410710513592,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965139456,
+          "detections": [
+            14
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 38,
+          "wall_ms": 42.46738110668957,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965150720,
+          "detections": [
+            18
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 39,
+          "wall_ms": 42.59520722553134,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965202432,
+          "detections": [
+            10
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 40,
+          "wall_ms": 42.73923905566335,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965181952,
+          "detections": [
+            10
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 41,
+          "wall_ms": 42.67635405994952,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965191168,
+          "detections": [
+            14
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 42,
+          "wall_ms": 42.8151551168412,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965202432,
+          "detections": [
+            13
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 43,
+          "wall_ms": 42.97169391065836,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965176832,
+          "detections": [
+            10
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 44,
+          "wall_ms": 43.02013688720763,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965171712,
+          "detections": [
+            10
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 45,
+          "wall_ms": 42.82052395865321,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965202944,
+          "detections": [
+            10
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 46,
+          "wall_ms": 42.85834217444062,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965198336,
+          "detections": [
+            12
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 47,
+          "wall_ms": 42.70531004294753,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965210112,
+          "detections": [
+            15
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 48,
+          "wall_ms": 43.03671303205192,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965199872,
+          "detections": [
+            20
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 49,
+          "wall_ms": 43.22787583805621,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965158912,
+          "detections": [
+            23
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 50,
+          "wall_ms": 42.79780201613903,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965123072,
+          "detections": [
+            18
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 51,
+          "wall_ms": 42.50072198919952,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965117440,
+          "detections": [
+            7
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 52,
+          "wall_ms": 42.135962983593345,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965062144,
+          "detections": [
+            7
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 53,
+          "wall_ms": 42.754908092319965,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965067264,
+          "detections": [
+            7
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 54,
+          "wall_ms": 42.52916807308793,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965083648,
+          "detections": [
+            16
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 55,
+          "wall_ms": 42.496718000620604,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965097472,
+          "detections": [
+            11
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 56,
+          "wall_ms": 42.37028583884239,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965084160,
+          "detections": [
+            7
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 57,
+          "wall_ms": 41.983937844634056,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965122048,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 58,
+          "wall_ms": 42.47407312504947,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965127168,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 59,
+          "wall_ms": 42.626087088137865,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965132800,
+          "detections": [
+            7
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 60,
+          "wall_ms": 41.957831010222435,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965160960,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 61,
+          "wall_ms": 41.99109296314418,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965167104,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 62,
+          "wall_ms": 41.954096872359514,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965155328,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 63,
+          "wall_ms": 41.91353311762214,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965140992,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 64,
+          "wall_ms": 42.214132845401764,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965115392,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 65,
+          "wall_ms": 41.925002820789814,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965109760,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 66,
+          "wall_ms": 42.32869413681328,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965102592,
+          "detections": [
+            5
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 67,
+          "wall_ms": 42.191345943138,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965079040,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 68,
+          "wall_ms": 42.017797008156776,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965068800,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 69,
+          "wall_ms": 42.14651882648468,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965046784,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 70,
+          "wall_ms": 41.628591949120164,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965025280,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 71,
+          "wall_ms": 41.38631606474519,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964994048,
+          "detections": [
+            0
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 72,
+          "wall_ms": 41.974280029535294,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965015552,
+          "detections": [
+            0
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 73,
+          "wall_ms": 42.16786101460457,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965009920,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 74,
+          "wall_ms": 41.96722921915352,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965013504,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 75,
+          "wall_ms": 42.04950318671763,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965019136,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 76,
+          "wall_ms": 42.113596107810736,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965006848,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 77,
+          "wall_ms": 41.789409006014466,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964985856,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 78,
+          "wall_ms": 41.9775799382478,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964975104,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 79,
+          "wall_ms": 41.77590203471482,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964961280,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 80,
+          "wall_ms": 41.59142496064305,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964940800,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 81,
+          "wall_ms": 41.609585052356124,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964945408,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 82,
+          "wall_ms": 41.66518501006067,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964937216,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 83,
+          "wall_ms": 41.66550887748599,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964941312,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 84,
+          "wall_ms": 41.718777967616916,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964932608,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 85,
+          "wall_ms": 41.59680102020502,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964916736,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 86,
+          "wall_ms": 41.83115786872804,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964910592,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 87,
+          "wall_ms": 41.12787405028939,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964905984,
+          "detections": [
+            0
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 88,
+          "wall_ms": 42.0748598407954,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964884480,
+          "detections": [
+            4
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 89,
+          "wall_ms": 41.97503183968365,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964887040,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 90,
+          "wall_ms": 42.101590894162655,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964896256,
+          "detections": [
+            4
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 91,
+          "wall_ms": 42.257619090378284,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964906496,
+          "detections": [
+            7
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 92,
+          "wall_ms": 42.37317619845271,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964923904,
+          "detections": [
+            4
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 93,
+          "wall_ms": 42.51179005950689,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964935168,
+          "detections": [
+            4
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 94,
+          "wall_ms": 42.811513878405094,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964948992,
+          "detections": [
+            4
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 95,
+          "wall_ms": 42.461934965103865,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964959744,
+          "detections": [
+            4
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 96,
+          "wall_ms": 42.68560605123639,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964964864,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 97,
+          "wall_ms": 42.39332000724971,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964955648,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 98,
+          "wall_ms": 41.773423086851835,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964958720,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 99,
+          "wall_ms": 42.38284192979336,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964953600,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 100,
+          "wall_ms": 42.00341715477407,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964961792,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 101,
+          "wall_ms": 42.465953854843974,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964954112,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 102,
+          "wall_ms": 41.95976792834699,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964945408,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 103,
+          "wall_ms": 42.273086961358786,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964938752,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 104,
+          "wall_ms": 41.99072811752558,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964941824,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 105,
+          "wall_ms": 42.49136405996978,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964938240,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 106,
+          "wall_ms": 42.36214701086283,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964928000,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 107,
+          "wall_ms": 42.231549974530935,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964939776,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 108,
+          "wall_ms": 41.944792959839106,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964953088,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 109,
+          "wall_ms": 42.257099179551005,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 964971008,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 110,
+          "wall_ms": 42.00174589641392,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965004800,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 111,
+          "wall_ms": 42.352073127403855,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965025280,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 112,
+          "wall_ms": 42.20040002837777,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965033472,
+          "detections": [
+            4
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 113,
+          "wall_ms": 42.50994906760752,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965036032,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 114,
+          "wall_ms": 42.306917952373624,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965036544,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 115,
+          "wall_ms": 41.81545996107161,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965015040,
+          "detections": [
+            0
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 116,
+          "wall_ms": 41.86186590231955,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965026816,
+          "detections": [
+            0
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 117,
+          "wall_ms": 42.31604398228228,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965066752,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 118,
+          "wall_ms": 41.82771500200033,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965093888,
+          "detections": [
+            0
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 119,
+          "wall_ms": 41.62462707608938,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965150208,
+          "detections": [
+            0
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 120,
+          "wall_ms": 41.978590888902545,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965187584,
+          "detections": [
+            0
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 121,
+          "wall_ms": 41.79161600768566,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965155840,
+          "detections": [
+            0
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 122,
+          "wall_ms": 41.56992514617741,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965154816,
+          "detections": [
+            0
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 123,
+          "wall_ms": 51.732141990214586,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965152768,
+          "detections": [
+            0
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 124,
+          "wall_ms": 41.75126808695495,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965095424,
+          "detections": [
+            0
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 125,
+          "wall_ms": 42.3441119492054,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965061120,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 126,
+          "wall_ms": 42.05690510571003,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965071360,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 127,
+          "wall_ms": 42.172885965555906,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965066752,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 128,
+          "wall_ms": 42.186819948256016,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965074432,
+          "detections": [
+            1
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 129,
+          "wall_ms": 42.30604902841151,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965132800,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 130,
+          "wall_ms": 42.74165304377675,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965160960,
+          "detections": [
+            4
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 131,
+          "wall_ms": 42.66399401240051,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965174784,
+          "detections": [
+            7
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 132,
+          "wall_ms": 42.34147886745632,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965213696,
+          "detections": [
+            7
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 133,
+          "wall_ms": 42.73930797353387,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965221376,
+          "detections": [
+            11
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 134,
+          "wall_ms": 42.263458017259836,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965153280,
+          "detections": [
+            4
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 135,
+          "wall_ms": 42.42503712885082,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965140480,
+          "detections": [
+            2
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 136,
+          "wall_ms": 42.641531908884645,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965100544,
+          "detections": [
+            5
+          ],
+          "mode": "dense"
+        },
+        {
+          "frame_index": 137,
+          "wall_ms": 42.30975778773427,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 965016576,
+          "detections": [
+            3
+          ],
+          "mode": "dense"
+        }
+      ],
+      "median_wall_ms": 42.36621642485261,
+      "mean_wall_ms": 42.49176116172748,
+      "max_peak_allocated_bytes": 965336064
+    }
+  },
+  "competing_compute_clients_at_end": []
+}

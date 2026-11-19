@@ -1,0 +1,366 @@
+{
+  "trials": [
+    {
+      "seed": 0,
+      "repeat": 1,
+      "order": [
+        "dense",
+        "independent",
+        "guided"
+      ],
+      "arms": {
+        "dense": {
+          "median_ms": 42.52936493139714,
+          "p95_ms": 43.32769406028092,
+          "peak_allocated_mib": 920.6162109375,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "609bf6cdb2aa1a4b62d0e60a6e1019c6bb39cb60b8167adda846d04e314866d3",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed0/rep1_attempt1/dense/profile.json"
+        },
+        "independent": {
+          "median_ms": 37.99274447374046,
+          "p95_ms": 39.17625895701349,
+          "peak_allocated_mib": 490.654296875,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "3d582f09e4f5f342b592284dd5be9ea2d2719a1aee7bcec9ebb018825ae2c197",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed0/rep1_attempt1/independent/profile.json",
+          "fpn_feature_mib": 77.9296875,
+          "matched_dense_fpn_reference_mib": 192.9873046875,
+          "image_pixel_work_ratio": 0.7489214840379638
+        },
+        "guided": {
+          "median_ms": 37.87556302268058,
+          "p95_ms": 39.04675203375518,
+          "peak_allocated_mib": 490.654296875,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "4def6d2414281c1e5dd0e96657f172b7ca65b84a7bfe8890ec15dbf634bf216b",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed0/rep1_attempt1/guided/profile.json",
+          "fpn_feature_mib": 77.9296875,
+          "matched_dense_fpn_reference_mib": 192.9873046875,
+          "image_pixel_work_ratio": 0.7489214840379638
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "repeat": 2,
+      "order": [
+        "guided",
+        "independent",
+        "dense"
+      ],
+      "arms": {
+        "guided": {
+          "median_ms": 38.07314287405461,
+          "p95_ms": 39.53120205551386,
+          "peak_allocated_mib": 490.654296875,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "4def6d2414281c1e5dd0e96657f172b7ca65b84a7bfe8890ec15dbf634bf216b",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed0/rep2_attempt1/guided/profile.json",
+          "fpn_feature_mib": 77.9296875,
+          "matched_dense_fpn_reference_mib": 192.9873046875,
+          "image_pixel_work_ratio": 0.7489214840379638
+        },
+        "independent": {
+          "median_ms": 37.75924991350621,
+          "p95_ms": 38.64039992913604,
+          "peak_allocated_mib": 490.654296875,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "3d582f09e4f5f342b592284dd5be9ea2d2719a1aee7bcec9ebb018825ae2c197",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed0/rep2_attempt1/independent/profile.json",
+          "fpn_feature_mib": 77.9296875,
+          "matched_dense_fpn_reference_mib": 192.9873046875,
+          "image_pixel_work_ratio": 0.7489214840379638
+        },
+        "dense": {
+          "median_ms": 42.235228000208735,
+          "p95_ms": 43.26649708673358,
+          "peak_allocated_mib": 920.6162109375,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "609bf6cdb2aa1a4b62d0e60a6e1019c6bb39cb60b8167adda846d04e314866d3",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed0/rep2_attempt1/dense/profile.json"
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "repeat": 1,
+      "order": [
+        "independent",
+        "guided",
+        "dense"
+      ],
+      "arms": {
+        "independent": {
+          "median_ms": 37.74535201955587,
+          "p95_ms": 39.110241923481226,
+          "peak_allocated_mib": 490.65478515625,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "a0dab29e4db6f4b63debfd167d393ec39b8dd0a39e360ae3f4fe82847a62926d",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed1/rep1_attempt1/independent/profile.json",
+          "fpn_feature_mib": 77.9296875,
+          "matched_dense_fpn_reference_mib": 192.9873046875,
+          "image_pixel_work_ratio": 0.7489214840379638
+        },
+        "guided": {
+          "median_ms": 38.56655699200928,
+          "p95_ms": 39.617575937882066,
+          "peak_allocated_mib": 490.65478515625,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "39a2161191a37f886534d3c6c97274c3ed46c2a7be546745e35d5d7331699c22",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed1/rep1_attempt1/guided/profile.json",
+          "fpn_feature_mib": 77.9296875,
+          "matched_dense_fpn_reference_mib": 192.9873046875,
+          "image_pixel_work_ratio": 0.7489214840379638
+        },
+        "dense": {
+          "median_ms": 42.19011904206127,
+          "p95_ms": 43.360070092603564,
+          "peak_allocated_mib": 920.6162109375,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "3cf6bf6f5c5ee6a3ec7df0a0d1b41a680d4c3621e0acd5906d60fafd925d1104",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed1/rep1_attempt1/dense/profile.json"
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "repeat": 2,
+      "order": [
+        "dense",
+        "guided",
+        "independent"
+      ],
+      "arms": {
+        "dense": {
+          "median_ms": 42.36621642485261,
+          "p95_ms": 43.4162279125303,
+          "peak_allocated_mib": 920.6162109375,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "3cf6bf6f5c5ee6a3ec7df0a0d1b41a680d4c3621e0acd5906d60fafd925d1104",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed1/rep2_attempt1/dense/profile.json"
+        },
+        "guided": {
+          "median_ms": 38.124575396068394,
+          "p95_ms": 38.929431000724435,
+          "peak_allocated_mib": 490.65478515625,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "39a2161191a37f886534d3c6c97274c3ed46c2a7be546745e35d5d7331699c22",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed1/rep2_attempt1/guided/profile.json",
+          "fpn_feature_mib": 77.9296875,
+          "matched_dense_fpn_reference_mib": 192.9873046875,
+          "image_pixel_work_ratio": 0.7489214840379638
+        },
+        "independent": {
+          "median_ms": 38.5139825521037,
+          "p95_ms": 39.57230597734451,
+          "peak_allocated_mib": 490.65478515625,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "a0dab29e4db6f4b63debfd167d393ec39b8dd0a39e360ae3f4fe82847a62926d",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed1/rep2_attempt1/independent/profile.json",
+          "fpn_feature_mib": 77.9296875,
+          "matched_dense_fpn_reference_mib": 192.9873046875,
+          "image_pixel_work_ratio": 0.7489214840379638
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "repeat": 1,
+      "order": [
+        "guided",
+        "dense",
+        "independent"
+      ],
+      "arms": {
+        "guided": {
+          "median_ms": 37.867421517148614,
+          "p95_ms": 38.7542478274554,
+          "peak_allocated_mib": 490.654296875,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "47c79d5cfe602f161dc02f1b6bcf9e5a332e7b43a35e45b46526ade30b74a38b",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed2/rep1_attempt1/guided/profile.json",
+          "fpn_feature_mib": 77.9296875,
+          "matched_dense_fpn_reference_mib": 192.9873046875,
+          "image_pixel_work_ratio": 0.7489214840379638
+        },
+        "dense": {
+          "median_ms": 42.18126554042101,
+          "p95_ms": 43.46990422345698,
+          "peak_allocated_mib": 920.6162109375,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "4e21621212a8985de5a9c8dc6f30c96d68f29fd607906bbec29b32a621d08ca3",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed2/rep1_attempt1/dense/profile.json"
+        },
+        "independent": {
+          "median_ms": 37.691989564336836,
+          "p95_ms": 38.74857095070183,
+          "peak_allocated_mib": 490.654296875,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "38f33f478f56b66f74601c4ac036e4dcecfa1f7fd32d2fa2929080b8b3e24b49",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed2/rep1_attempt1/independent/profile.json",
+          "fpn_feature_mib": 77.9296875,
+          "matched_dense_fpn_reference_mib": 192.9873046875,
+          "image_pixel_work_ratio": 0.7489214840379638
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "repeat": 2,
+      "order": [
+        "independent",
+        "dense",
+        "guided"
+      ],
+      "arms": {
+        "independent": {
+          "median_ms": 38.21598261129111,
+          "p95_ms": 39.98770588077605,
+          "peak_allocated_mib": 490.654296875,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "38f33f478f56b66f74601c4ac036e4dcecfa1f7fd32d2fa2929080b8b3e24b49",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed2/rep2_attempt1/independent/profile.json",
+          "fpn_feature_mib": 77.9296875,
+          "matched_dense_fpn_reference_mib": 192.9873046875,
+          "image_pixel_work_ratio": 0.7489214840379638
+        },
+        "dense": {
+          "median_ms": 42.66133299097419,
+          "p95_ms": 44.04476401396096,
+          "peak_allocated_mib": 920.6162109375,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "4e21621212a8985de5a9c8dc6f30c96d68f29fd607906bbec29b32a621d08ca3",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed2/rep2_attempt1/dense/profile.json"
+        },
+        "guided": {
+          "median_ms": 38.611658033914864,
+          "p95_ms": 39.73274282179773,
+          "peak_allocated_mib": 490.654296875,
+          "parameter_bytes": 129685776,
+          "checkpoint_sha256": "47c79d5cfe602f161dc02f1b6bcf9e5a332e7b43a35e45b46526ade30b74a38b",
+          "raw": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/seed2/rep2_attempt1/guided/profile.json",
+          "fpn_feature_mib": 77.9296875,
+          "matched_dense_fpn_reference_mib": 192.9873046875,
+          "image_pixel_work_ratio": 0.7489214840379638
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "seed": 0,
+      "repeat": 1,
+      "arm": "independent",
+      "median_latency_reduction_pct": 10.66703080324517,
+      "p95_latency_reduction_pct": 9.581481759660749,
+      "peak_allocated_reduction_pct": 46.703708771829334,
+      "fpn_feature_reduction_pct": 59.61926737813672
+    },
+    {
+      "seed": 0,
+      "repeat": 1,
+      "arm": "guided",
+      "median_latency_reduction_pct": 10.94256148951076,
+      "p95_latency_reduction_pct": 9.880382788361064,
+      "peak_allocated_reduction_pct": 46.703708771829334,
+      "fpn_feature_reduction_pct": 59.61926737813672
+    },
+    {
+      "seed": 0,
+      "repeat": 2,
+      "arm": "independent",
+      "median_latency_reduction_pct": 10.597736294167525,
+      "p95_latency_reduction_pct": 10.692100052204134,
+      "peak_allocated_reduction_pct": 46.703708771829334,
+      "fpn_feature_reduction_pct": 59.61926737813672
+    },
+    {
+      "seed": 0,
+      "repeat": 2,
+      "arm": "guided",
+      "median_latency_reduction_pct": 9.854534527749092,
+      "p95_latency_reduction_pct": 8.633227283761414,
+      "peak_allocated_reduction_pct": 46.703708771829334,
+      "fpn_feature_reduction_pct": 59.61926737813672
+    },
+    {
+      "seed": 1,
+      "repeat": 1,
+      "arm": "independent",
+      "median_latency_reduction_pct": 10.535090024453853,
+      "p95_latency_reduction_pct": 9.801248383699646,
+      "peak_allocated_reduction_pct": 46.703655733305325,
+      "fpn_feature_reduction_pct": 59.61926737813672
+    },
+    {
+      "seed": 1,
+      "repeat": 1,
+      "arm": "guided",
+      "median_latency_reduction_pct": 8.58865092662927,
+      "p95_latency_reduction_pct": 8.631199503895404,
+      "peak_allocated_reduction_pct": 46.703655733305325,
+      "fpn_feature_reduction_pct": 59.61926737813672
+    },
+    {
+      "seed": 1,
+      "repeat": 2,
+      "arm": "independent",
+      "median_latency_reduction_pct": 9.09270215239031,
+      "p95_latency_reduction_pct": 8.853652470523354,
+      "peak_allocated_reduction_pct": 46.703655733305325,
+      "fpn_feature_reduction_pct": 59.61926737813672
+    },
+    {
+      "seed": 1,
+      "repeat": 2,
+      "arm": "guided",
+      "median_latency_reduction_pct": 10.011847615205049,
+      "p95_latency_reduction_pct": 10.334377553124419,
+      "peak_allocated_reduction_pct": 46.703655733305325,
+      "fpn_feature_reduction_pct": 59.61926737813672
+    },
+    {
+      "seed": 2,
+      "repeat": 1,
+      "arm": "independent",
+      "median_latency_reduction_pct": 10.64281955168519,
+      "p95_latency_reduction_pct": 10.861154072217738,
+      "peak_allocated_reduction_pct": 46.703708771829334,
+      "fpn_feature_reduction_pct": 59.61926737813672
+    },
+    {
+      "seed": 2,
+      "repeat": 1,
+      "arm": "guided",
+      "median_latency_reduction_pct": 10.226919387088017,
+      "p95_latency_reduction_pct": 10.848094745644598,
+      "peak_allocated_reduction_pct": 46.703708771829334,
+      "fpn_feature_reduction_pct": 59.61926737813672
+    },
+    {
+      "seed": 2,
+      "repeat": 2,
+      "arm": "independent",
+      "median_latency_reduction_pct": 10.420092547561921,
+      "p95_latency_reduction_pct": 9.21121550770243,
+      "peak_allocated_reduction_pct": 46.703708771829334,
+      "fpn_feature_reduction_pct": 59.61926737813672
+    },
+    {
+      "seed": 2,
+      "repeat": 2,
+      "arm": "guided",
+      "median_latency_reduction_pct": 9.492612333318585,
+      "p95_latency_reduction_pct": 9.790088081290293,
+      "peak_allocated_reduction_pct": 46.703708771829334,
+      "fpn_feature_reduction_pct": 59.61926737813672
+    }
+  ],
+  "timed_frames": 128,
+  "warmup_frames": 10,
+  "threads": 4,
+  "batch_size": 1,
+  "fpn_baseline": "shape-calculated dense FPN bytes for each routed frame",
+  "latency_scope": "GPU synchronized test_step; excludes dataset loading"
+}

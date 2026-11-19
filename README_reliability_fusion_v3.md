@@ -132,6 +132,16 @@ python tools/analysis_tools/profile_reliability_v3.py \
 | v3-diagnostic-image-budget-only-fixed-weights | test_only | 1296 | — | 63.0114 | 81.4219 | bdcea1ff+dirty | work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/resources_20261105_095307/diagnostic_image_budget_only |
 | v3-image-budget-only-radar100-global0625 | training_completed | 1296 | 6 | 63.0273 | 81.6050 | 8bcf31f8+dirty | work_dirs/reliability_fusion_v3/image_budget_only_20261105_110401 |
 | v3-image-budget-independent-radar100-global0625 | training_completed | 1296 | 6 | 62.8032 | 81.7427 | 21b45913+dirty | work_dirs/reliability_fusion_v3/image_budget_independent_20261105_170439 |
+| v3-image-budget-only-radar100-global0625 | training_completed | 1296 | 6 | 63.3737 | 81.6923 | 9101947b+dirty | work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed1/guided |
+| v3-image-budget-independent-radar100-global0625 | training_completed | 1296 | 6 | 62.7212 | 81.7362 | 9101947b+dirty | work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed1/independent |
+| v3-image-budget-independent-radar100-global0625 | training_completed | 1296 | 6 | 62.2814 | 81.7015 | 9101947b+dirty | work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/independent |
+| v3-image-budget-only-radar100-global0625 | training_completed | 1296 | 6 | 64.6061 | 81.7045 | 9101947b+dirty | work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/guided |
+| v3-single-prior-radar_to_image-seed0 | training_completed | 1296 | 6 | 63.0322 | 81.7481 | 9101947b+dirty | work_dirs/reliability_fusion_v3/single_prior_20261106_110941/radar_to_image |
+| v3-single-prior-image_to_radar-seed0 | training_completed | 1296 | 6 | 62.6421 | 81.7088 | 9101947b+dirty | work_dirs/reliability_fusion_v3/single_prior_20261106_110941/image_to_radar |
+| v3-single-prior-radar_to_image-seed1 | training_completed | 1296 | 6 | 63.1746 | 81.6351 | 9101947b+dirty | work_dirs/reliability_fusion_v3/radar_to_image_repeats_20261109_143724/seed1 |
+| v3-single-prior-radar_to_image-seed2 | training_completed | 1296 | 6 | 63.0638 | 81.5843 | 9101947b+dirty | work_dirs/reliability_fusion_v3/radar_to_image_repeats_20261109_143724/seed2 |
+| v3-dense-control-seed1 | training_completed | 1296 | 6 | 65.3030 | 81.9836 | 9101947b+dirty | work_dirs/reliability_fusion_v3/dense_control_repeats_20261118_103208/seed1 |
+| v3-dense-control-seed2 | training_completed | 1296 | 6 | 63.4650 | 79.8348 | 9101947b+dirty | work_dirs/reliability_fusion_v3/dense_control_repeats_20261118_103208/seed2 |
 
 <!-- RELIABILITY_RESULTS_END -->
 
@@ -146,3 +156,18 @@ python tools/analysis_tools/profile_reliability_v3.py \
 ## 9. 同预算早期先验消融（2026-11-05）
 
 固定第6轮seed=0：guided EAA/DC为63.0273/81.6050，independent为62.8032/81.7427，差值+0.2241/−0.1377 pp。训练协议与计算预算一致。当前收益较小且方向不一致，需补seed=1、2。完整分析及可恢复队列命令见[本轮报告](repro/reliability_fusion_v3/prior_ablation_seed0_20261105/README.md)。新队列尚未启动。
+
+## 10. 已完成复验的 Git 归档（2026-11-19）
+
+当前主候选为 gate_image_budget_only.py：雷达保留 100%、全局图像缩放 0.625、高分辨率图像块预算 20%，保留 V2 四处门控。完整计算、双向路由、独立路由和雷达→图像单向已完成三个 seed；图像→雷达单向保留 seed=0 探索记录。上述训练均为 V2 权重初始化后的 6 轮微调，后续 80 轮完整训练尚未执行。
+
+完整计算与双向 V3 的 42.25% 居中遮挡复评显示，V3−完整计算的 EAA/DC 普通 mAP 平均为 −0.9049/−0.7473 个百分点。空闲 RTX 4090 的三 seed、两次重复测速中，中位延迟和峰值 allocated 显存平均降低 9.85%/46.70%。这支持精度与成本取舍，不表示 V3 的精度全面优于 V2。
+
+- [V3 实验整理](重遮挡实验V3.md)
+- [最终固定权重复评与统计](repro/reliability_fusion_v3/verified_20261119/closeout_20261118/analysis.json)
+- [正式测速与原始记录](repro/reliability_fusion_v3/verified_20261119/closeout_20261118/resources/summary.json)
+- [归档文件与原服务器路径映射](repro/reliability_fusion_v3/verified_20261119/archive_manifest.json)
+- [V2/V3 权重清单及 SHA256](repro/verified_backup_20261119/checkpoints.json)
+- [服务器方法源码核验清单](repro/verified_backup_20261119/source_manifest.json)
+
+收尾的 evaluate.py、summarize.py、measure_cost.py 按原文件内容归档；它们依赖归档清单中的原运行布局、配置、VoD 数据和权重。恢复到其他机器时需准备这些外部文件并重建／调整路径，不会仅凭代码仓库自动下载数据和权重。历史结果保留原提交与路径，便于审计。

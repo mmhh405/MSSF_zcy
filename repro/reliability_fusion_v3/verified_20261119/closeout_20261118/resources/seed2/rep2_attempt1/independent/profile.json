@@ -1,0 +1,7971 @@
+{
+  "config": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/independent/gate_image_budget_independent.py",
+  "checkpoint": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/independent/epoch_6.pth",
+  "checkpoint_sha256": "38f33f478f56b66f74601c4ac036e4dcecfa1f7fd32d2fa2929080b8b3e24b49",
+  "uninitialized_router": false,
+  "missing_keys": [],
+  "gpu_name": "NVIDIA GeForce RTX 4090",
+  "torch_version": "2.0.1+cu118",
+  "cuda_version": "11.8",
+  "mode_order": [
+    "select"
+  ],
+  "warmup": 10,
+  "cpu_threads": 4,
+  "random_seed": 2,
+  "other_gpu_clients": [],
+  "competing_compute_clients": [],
+  "performance_comparison_valid": true,
+  "parameters": 32421444,
+  "parameter_bytes": 129685776,
+  "router_parameters": 1910,
+  "latency_scope": "test_step: preprocessing through decoded predictions; dataset I/O excluded",
+  "pixel_work_scope": "image backbone input pixels including coarse global and tile halos; excludes router",
+  "modes": {
+    "select": {
+      "samples": 128,
+      "rows": [
+        {
+          "frame_index": 10,
+          "wall_ms": 39.98770588077605,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514459136,
+          "detections": [
+            16
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 592,
+          "radar_pillars_after": 592,
+          "radar_points_before": 859,
+          "radar_points_after": 859
+        },
+        {
+          "frame_index": 11,
+          "wall_ms": 39.1565877944231,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514488320,
+          "detections": [
+            16
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 606,
+          "radar_pillars_after": 606,
+          "radar_points_before": 878,
+          "radar_points_after": 878
+        },
+        {
+          "frame_index": 12,
+          "wall_ms": 39.30580383166671,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514420736,
+          "detections": [
+            14
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 572,
+          "radar_pillars_after": 572,
+          "radar_points_before": 852,
+          "radar_points_after": 852
+        },
+        {
+          "frame_index": 13,
+          "wall_ms": 39.4567521288991,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514390528,
+          "detections": [
+            7
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 556,
+          "radar_pillars_after": 556,
+          "radar_points_before": 824,
+          "radar_points_after": 824
+        },
+        {
+          "frame_index": 14,
+          "wall_ms": 39.364174008369446,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514361856,
+          "detections": [
+            12
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 542,
+          "radar_pillars_after": 542,
+          "radar_points_before": 822,
+          "radar_points_after": 822
+        },
+        {
+          "frame_index": 15,
+          "wall_ms": 40.0585129391402,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514263552,
+          "detections": [
+            11
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 493,
+          "radar_pillars_after": 493,
+          "radar_points_before": 763,
+          "radar_points_after": 763
+        },
+        {
+          "frame_index": 16,
+          "wall_ms": 39.7832291200757,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514221056,
+          "detections": [
+            8
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 472,
+          "radar_pillars_after": 472,
+          "radar_points_before": 712,
+          "radar_points_after": 712
+        },
+        {
+          "frame_index": 17,
+          "wall_ms": 39.139037020504475,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514211328,
+          "detections": [
+            7
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 466,
+          "radar_pillars_after": 466,
+          "radar_points_before": 742,
+          "radar_points_after": 742
+        },
+        {
+          "frame_index": 18,
+          "wall_ms": 41.343305027112365,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514224128,
+          "detections": [
+            8
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 472,
+          "radar_pillars_after": 472,
+          "radar_points_before": 761,
+          "radar_points_after": 761
+        },
+        {
+          "frame_index": 19,
+          "wall_ms": 40.70729692466557,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514229248,
+          "detections": [
+            8
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 475,
+          "radar_pillars_after": 475,
+          "radar_points_before": 749,
+          "radar_points_after": 749
+        },
+        {
+          "frame_index": 20,
+          "wall_ms": 40.71124782785773,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514300928,
+          "detections": [
+            11
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 512,
+          "radar_pillars_after": 512,
+          "radar_points_before": 809,
+          "radar_points_after": 809
+        },
+        {
+          "frame_index": 21,
+          "wall_ms": 39.50879513286054,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514277376,
+          "detections": [
+            8
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 498,
+          "radar_pillars_after": 498,
+          "radar_points_before": 824,
+          "radar_points_after": 824
+        },
+        {
+          "frame_index": 22,
+          "wall_ms": 39.58766418509185,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514249216,
+          "detections": [
+            9
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 483,
+          "radar_pillars_after": 483,
+          "radar_points_before": 813,
+          "radar_points_after": 813
+        },
+        {
+          "frame_index": 23,
+          "wall_ms": 39.80878787115216,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514264576,
+          "detections": [
+            9
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 491,
+          "radar_pillars_after": 491,
+          "radar_points_before": 828,
+          "radar_points_after": 828
+        },
+        {
+          "frame_index": 24,
+          "wall_ms": 39.32933509349823,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514253312,
+          "detections": [
+            10
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 486,
+          "radar_pillars_after": 486,
+          "radar_points_before": 800,
+          "radar_points_after": 800
+        },
+        {
+          "frame_index": 25,
+          "wall_ms": 38.830028148368,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514241024,
+          "detections": [
+            12
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 480,
+          "radar_pillars_after": 480,
+          "radar_points_before": 799,
+          "radar_points_after": 799
+        },
+        {
+          "frame_index": 26,
+          "wall_ms": 38.9317290391773,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514240000,
+          "detections": [
+            10
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 479,
+          "radar_pillars_after": 479,
+          "radar_points_before": 792,
+          "radar_points_after": 792
+        },
+        {
+          "frame_index": 27,
+          "wall_ms": 38.550401804968715,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514129408,
+          "detections": [
+            11
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 422,
+          "radar_pillars_after": 422,
+          "radar_points_before": 758,
+          "radar_points_after": 758
+        },
+        {
+          "frame_index": 28,
+          "wall_ms": 38.35615701973438,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514132480,
+          "detections": [
+            8
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 424,
+          "radar_pillars_after": 424,
+          "radar_points_before": 753,
+          "radar_points_after": 753
+        },
+        {
+          "frame_index": 29,
+          "wall_ms": 38.55331987142563,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514219520,
+          "detections": [
+            15
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 469,
+          "radar_pillars_after": 469,
+          "radar_points_before": 790,
+          "radar_points_after": 790
+        },
+        {
+          "frame_index": 30,
+          "wall_ms": 38.49881305359304,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514199040,
+          "detections": [
+            14
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 458,
+          "radar_pillars_after": 458,
+          "radar_points_before": 772,
+          "radar_points_after": 772
+        },
+        {
+          "frame_index": 31,
+          "wall_ms": 38.37577090598643,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514151424,
+          "detections": [
+            17
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 434,
+          "radar_pillars_after": 434,
+          "radar_points_before": 734,
+          "radar_points_after": 734
+        },
+        {
+          "frame_index": 32,
+          "wall_ms": 38.3403180167079,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514115584,
+          "detections": [
+            18
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 416,
+          "radar_pillars_after": 416,
+          "radar_points_before": 732,
+          "radar_points_after": 732
+        },
+        {
+          "frame_index": 33,
+          "wall_ms": 38.21374219842255,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514144256,
+          "detections": [
+            18
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 431,
+          "radar_pillars_after": 431,
+          "radar_points_before": 713,
+          "radar_points_after": 713
+        },
+        {
+          "frame_index": 34,
+          "wall_ms": 38.83374808356166,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514078208,
+          "detections": [
+            13
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 398,
+          "radar_pillars_after": 398,
+          "radar_points_before": 654,
+          "radar_points_after": 654
+        },
+        {
+          "frame_index": 35,
+          "wall_ms": 38.65778096951544,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514058752,
+          "detections": [
+            13
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 387,
+          "radar_pillars_after": 387,
+          "radar_points_before": 654,
+          "radar_points_after": 654
+        },
+        {
+          "frame_index": 36,
+          "wall_ms": 38.0131178535521,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514043392,
+          "detections": [
+            11
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 382,
+          "radar_pillars_after": 382,
+          "radar_points_before": 640,
+          "radar_points_after": 640
+        },
+        {
+          "frame_index": 37,
+          "wall_ms": 39.723834954202175,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514083328,
+          "detections": [
+            13
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 401,
+          "radar_pillars_after": 401,
+          "radar_points_before": 654,
+          "radar_points_after": 654
+        },
+        {
+          "frame_index": 38,
+          "wall_ms": 39.534874027594924,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514106368,
+          "detections": [
+            16
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 413,
+          "radar_pillars_after": 413,
+          "radar_points_before": 675,
+          "radar_points_after": 675
+        },
+        {
+          "frame_index": 39,
+          "wall_ms": 39.131410187110305,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514212352,
+          "detections": [
+            15
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 467,
+          "radar_pillars_after": 467,
+          "radar_points_before": 715,
+          "radar_points_after": 715
+        },
+        {
+          "frame_index": 40,
+          "wall_ms": 38.48386905156076,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514170368,
+          "detections": [
+            12
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 445,
+          "radar_pillars_after": 445,
+          "radar_points_before": 714,
+          "radar_points_after": 714
+        },
+        {
+          "frame_index": 41,
+          "wall_ms": 38.542077876627445,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514189312,
+          "detections": [
+            14
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 455,
+          "radar_pillars_after": 455,
+          "radar_points_before": 703,
+          "radar_points_after": 703
+        },
+        {
+          "frame_index": 42,
+          "wall_ms": 38.76159992069006,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514212352,
+          "detections": [
+            16
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 467,
+          "radar_pillars_after": 467,
+          "radar_points_before": 727,
+          "radar_points_after": 727
+        },
+        {
+          "frame_index": 43,
+          "wall_ms": 38.58073987066746,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514160128,
+          "detections": [
+            11
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 439,
+          "radar_pillars_after": 439,
+          "radar_points_before": 719,
+          "radar_points_after": 719
+        },
+        {
+          "frame_index": 44,
+          "wall_ms": 38.53977099061012,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514149376,
+          "detections": [
+            10
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 434,
+          "radar_pillars_after": 434,
+          "radar_points_before": 707,
+          "radar_points_after": 707
+        },
+        {
+          "frame_index": 45,
+          "wall_ms": 38.593204924836755,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514213376,
+          "detections": [
+            13
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 468,
+          "radar_pillars_after": 468,
+          "radar_points_before": 724,
+          "radar_points_after": 724
+        },
+        {
+          "frame_index": 46,
+          "wall_ms": 38.34213805384934,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514204160,
+          "detections": [
+            10
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 462,
+          "radar_pillars_after": 462,
+          "radar_points_before": 748,
+          "radar_points_after": 748
+        },
+        {
+          "frame_index": 47,
+          "wall_ms": 38.11146994121373,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514228224,
+          "detections": [
+            14
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 474,
+          "radar_pillars_after": 474,
+          "radar_points_before": 768,
+          "radar_points_after": 768
+        },
+        {
+          "frame_index": 48,
+          "wall_ms": 38.258424028754234,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514207232,
+          "detections": [
+            12
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 464,
+          "radar_pillars_after": 464,
+          "radar_points_before": 740,
+          "radar_points_after": 740
+        },
+        {
+          "frame_index": 49,
+          "wall_ms": 37.97696786932647,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514122240,
+          "detections": [
+            13
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 421,
+          "radar_pillars_after": 421,
+          "radar_points_before": 667,
+          "radar_points_after": 667
+        },
+        {
+          "frame_index": 50,
+          "wall_ms": 38.0603619851172,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514047488,
+          "detections": [
+            14
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 384,
+          "radar_pillars_after": 384,
+          "radar_points_before": 641,
+          "radar_points_after": 641
+        },
+        {
+          "frame_index": 51,
+          "wall_ms": 37.809469969943166,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514037248,
+          "detections": [
+            7
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 379,
+          "radar_pillars_after": 379,
+          "radar_points_before": 614,
+          "radar_points_after": 614
+        },
+        {
+          "frame_index": 52,
+          "wall_ms": 37.76746988296509,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513924608,
+          "detections": [
+            5
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 321,
+          "radar_pillars_after": 321,
+          "radar_points_before": 544,
+          "radar_points_after": 544
+        },
+        {
+          "frame_index": 53,
+          "wall_ms": 37.67448500730097,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513934848,
+          "detections": [
+            10
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 326,
+          "radar_pillars_after": 326,
+          "radar_points_before": 565,
+          "radar_points_after": 565
+        },
+        {
+          "frame_index": 54,
+          "wall_ms": 38.91597595065832,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513968640,
+          "detections": [
+            11
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 343,
+          "radar_pillars_after": 343,
+          "radar_points_before": 573,
+          "radar_points_after": 573
+        },
+        {
+          "frame_index": 55,
+          "wall_ms": 38.684337167069316,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513996800,
+          "detections": [
+            8
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 358,
+          "radar_pillars_after": 358,
+          "radar_points_before": 575,
+          "radar_points_after": 575
+        },
+        {
+          "frame_index": 56,
+          "wall_ms": 39.295794907957315,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513969664,
+          "detections": [
+            8
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 344,
+          "radar_pillars_after": 344,
+          "radar_points_before": 585,
+          "radar_points_after": 585
+        },
+        {
+          "frame_index": 57,
+          "wall_ms": 38.80687290802598,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514046464,
+          "detections": [
+            4
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 384,
+          "radar_pillars_after": 384,
+          "radar_points_before": 635,
+          "radar_points_after": 635
+        },
+        {
+          "frame_index": 58,
+          "wall_ms": 38.568229880183935,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514058752,
+          "detections": [
+            4
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 388,
+          "radar_pillars_after": 388,
+          "radar_points_before": 630,
+          "radar_points_after": 630
+        },
+        {
+          "frame_index": 59,
+          "wall_ms": 38.104600040242076,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514070016,
+          "detections": [
+            7
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 394,
+          "radar_pillars_after": 394,
+          "radar_points_before": 640,
+          "radar_points_after": 640
+        },
+        {
+          "frame_index": 60,
+          "wall_ms": 37.90945978835225,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514127360,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 424,
+          "radar_pillars_after": 424,
+          "radar_points_before": 666,
+          "radar_points_after": 666
+        },
+        {
+          "frame_index": 61,
+          "wall_ms": 38.007627008482814,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514140160,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 430,
+          "radar_pillars_after": 430,
+          "radar_points_before": 667,
+          "radar_points_after": 667
+        },
+        {
+          "frame_index": 62,
+          "wall_ms": 38.21822302415967,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514115584,
+          "detections": [
+            4
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 418,
+          "radar_pillars_after": 418,
+          "radar_points_before": 654,
+          "radar_points_after": 654
+        },
+        {
+          "frame_index": 63,
+          "wall_ms": 38.07339887134731,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514086912,
+          "detections": [
+            4
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 403,
+          "radar_pillars_after": 403,
+          "radar_points_before": 634,
+          "radar_points_after": 634
+        },
+        {
+          "frame_index": 64,
+          "wall_ms": 38.04480703547597,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514033152,
+          "detections": [
+            4
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 377,
+          "radar_pillars_after": 377,
+          "radar_points_before": 614,
+          "radar_points_after": 614
+        },
+        {
+          "frame_index": 65,
+          "wall_ms": 37.6507518813014,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514021888,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 371,
+          "radar_pillars_after": 371,
+          "radar_points_before": 591,
+          "radar_points_after": 591
+        },
+        {
+          "frame_index": 66,
+          "wall_ms": 38.08087692596018,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514007040,
+          "detections": [
+            6
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 364,
+          "radar_pillars_after": 364,
+          "radar_points_before": 574,
+          "radar_points_after": 574
+        },
+        {
+          "frame_index": 67,
+          "wall_ms": 37.705342983826995,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513958912,
+          "detections": [
+            5
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 340,
+          "radar_pillars_after": 340,
+          "radar_points_before": 545,
+          "radar_points_after": 545
+        },
+        {
+          "frame_index": 68,
+          "wall_ms": 37.6590380910784,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513937920,
+          "detections": [
+            4
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 329,
+          "radar_pillars_after": 329,
+          "radar_points_before": 515,
+          "radar_points_after": 515
+        },
+        {
+          "frame_index": 69,
+          "wall_ms": 37.74836286902428,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513892864,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 306,
+          "radar_pillars_after": 306,
+          "radar_points_before": 485,
+          "radar_points_after": 485
+        },
+        {
+          "frame_index": 70,
+          "wall_ms": 38.85110700502992,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513848832,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 284,
+          "radar_pillars_after": 284,
+          "radar_points_before": 464,
+          "radar_points_after": 464
+        },
+        {
+          "frame_index": 71,
+          "wall_ms": 38.605057168751955,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513783808,
+          "detections": [
+            0
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 252,
+          "radar_pillars_after": 252,
+          "radar_points_before": 427,
+          "radar_points_after": 427
+        },
+        {
+          "frame_index": 72,
+          "wall_ms": 38.29067084006965,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513830912,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 275,
+          "radar_pillars_after": 275,
+          "radar_points_before": 441,
+          "radar_points_after": 441
+        },
+        {
+          "frame_index": 73,
+          "wall_ms": 38.437604904174805,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513820672,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 269,
+          "radar_pillars_after": 269,
+          "radar_points_before": 443,
+          "radar_points_after": 443
+        },
+        {
+          "frame_index": 74,
+          "wall_ms": 38.64207002334297,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513824768,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 271,
+          "radar_pillars_after": 271,
+          "radar_points_before": 452,
+          "radar_points_after": 452
+        },
+        {
+          "frame_index": 75,
+          "wall_ms": 38.52041810750961,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513836544,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 277,
+          "radar_pillars_after": 277,
+          "radar_points_before": 459,
+          "radar_points_after": 459
+        },
+        {
+          "frame_index": 76,
+          "wall_ms": 38.29755797050893,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513811456,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 264,
+          "radar_pillars_after": 264,
+          "radar_points_before": 449,
+          "radar_points_after": 449
+        },
+        {
+          "frame_index": 77,
+          "wall_ms": 38.19682216271758,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513767424,
+          "detections": [
+            5
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 243,
+          "radar_pillars_after": 243,
+          "radar_points_before": 416,
+          "radar_points_after": 416
+        },
+        {
+          "frame_index": 78,
+          "wall_ms": 38.3319859392941,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513745408,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 232,
+          "radar_pillars_after": 232,
+          "radar_points_before": 401,
+          "radar_points_after": 401
+        },
+        {
+          "frame_index": 79,
+          "wall_ms": 37.97018085606396,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513717248,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 217,
+          "radar_pillars_after": 217,
+          "radar_points_before": 388,
+          "radar_points_after": 388
+        },
+        {
+          "frame_index": 80,
+          "wall_ms": 38.13473996706307,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513675264,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 196,
+          "radar_pillars_after": 196,
+          "radar_points_before": 354,
+          "radar_points_after": 354
+        },
+        {
+          "frame_index": 81,
+          "wall_ms": 38.19692716933787,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513684480,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 201,
+          "radar_pillars_after": 201,
+          "radar_points_before": 357,
+          "radar_points_after": 357
+        },
+        {
+          "frame_index": 82,
+          "wall_ms": 38.42758387327194,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513667584,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 192,
+          "radar_pillars_after": 192,
+          "radar_points_before": 367,
+          "radar_points_after": 367
+        },
+        {
+          "frame_index": 83,
+          "wall_ms": 38.26075210236013,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513676288,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 196,
+          "radar_pillars_after": 196,
+          "radar_points_before": 369,
+          "radar_points_after": 369
+        },
+        {
+          "frame_index": 84,
+          "wall_ms": 37.581881042569876,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513658368,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 187,
+          "radar_pillars_after": 187,
+          "radar_points_before": 350,
+          "radar_points_after": 350
+        },
+        {
+          "frame_index": 85,
+          "wall_ms": 36.959313089028,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513625600,
+          "detections": [
+            0
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 170,
+          "radar_pillars_after": 170,
+          "radar_points_before": 348,
+          "radar_points_after": 348
+        },
+        {
+          "frame_index": 86,
+          "wall_ms": 37.41716197691858,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513611264,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 164,
+          "radar_pillars_after": 164,
+          "radar_points_before": 334,
+          "radar_points_after": 334
+        },
+        {
+          "frame_index": 87,
+          "wall_ms": 37.42676298134029,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513603584,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 160,
+          "radar_pillars_after": 160,
+          "radar_points_before": 316,
+          "radar_points_after": 316
+        },
+        {
+          "frame_index": 88,
+          "wall_ms": 39.804495172575116,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513563136,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 138,
+          "radar_pillars_after": 138,
+          "radar_points_before": 306,
+          "radar_points_after": 306
+        },
+        {
+          "frame_index": 89,
+          "wall_ms": 39.670575177296996,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513565184,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 139,
+          "radar_pillars_after": 139,
+          "radar_points_before": 309,
+          "radar_points_after": 309
+        },
+        {
+          "frame_index": 90,
+          "wall_ms": 39.70989189110696,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513584128,
+          "detections": [
+            4
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 149,
+          "radar_pillars_after": 149,
+          "radar_points_before": 327,
+          "radar_points_after": 327
+        },
+        {
+          "frame_index": 91,
+          "wall_ms": 40.49974912777543,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513604608,
+          "detections": [
+            5
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 159,
+          "radar_pillars_after": 159,
+          "radar_points_before": 350,
+          "radar_points_after": 350
+        },
+        {
+          "frame_index": 92,
+          "wall_ms": 40.00099305994809,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513640448,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 177,
+          "radar_pillars_after": 177,
+          "radar_points_before": 377,
+          "radar_points_after": 377
+        },
+        {
+          "frame_index": 93,
+          "wall_ms": 39.67110603116453,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513663488,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 189,
+          "radar_pillars_after": 189,
+          "radar_points_before": 394,
+          "radar_points_after": 394
+        },
+        {
+          "frame_index": 94,
+          "wall_ms": 39.06500805169344,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513692160,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 203,
+          "radar_pillars_after": 203,
+          "radar_points_before": 409,
+          "radar_points_after": 409
+        },
+        {
+          "frame_index": 95,
+          "wall_ms": 38.60824811272323,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513714176,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 215,
+          "radar_pillars_after": 215,
+          "radar_points_before": 398,
+          "radar_points_after": 398
+        },
+        {
+          "frame_index": 96,
+          "wall_ms": 37.90973802097142,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513724928,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 221,
+          "radar_pillars_after": 221,
+          "radar_points_before": 392,
+          "radar_points_after": 392
+        },
+        {
+          "frame_index": 97,
+          "wall_ms": 37.385212955996394,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513705472,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 211,
+          "radar_pillars_after": 211,
+          "radar_points_before": 394,
+          "radar_points_after": 394
+        },
+        {
+          "frame_index": 98,
+          "wall_ms": 38.14416192471981,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513712128,
+          "detections": [
+            4
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 214,
+          "radar_pillars_after": 214,
+          "radar_points_before": 388,
+          "radar_points_after": 388
+        },
+        {
+          "frame_index": 99,
+          "wall_ms": 37.81198710203171,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513701376,
+          "detections": [
+            4
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 209,
+          "radar_pillars_after": 209,
+          "radar_points_before": 390,
+          "radar_points_after": 390
+        },
+        {
+          "frame_index": 100,
+          "wall_ms": 38.053872995078564,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513718272,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 217,
+          "radar_pillars_after": 217,
+          "radar_points_before": 406,
+          "radar_points_after": 406
+        },
+        {
+          "frame_index": 101,
+          "wall_ms": 37.86332090385258,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513702400,
+          "detections": [
+            4
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 209,
+          "radar_pillars_after": 209,
+          "radar_points_before": 414,
+          "radar_points_after": 414
+        },
+        {
+          "frame_index": 102,
+          "wall_ms": 38.10597909614444,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513684480,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 200,
+          "radar_pillars_after": 200,
+          "radar_points_before": 388,
+          "radar_points_after": 388
+        },
+        {
+          "frame_index": 103,
+          "wall_ms": 37.88185794837773,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513671168,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 193,
+          "radar_pillars_after": 193,
+          "radar_points_before": 378,
+          "radar_points_after": 378
+        },
+        {
+          "frame_index": 104,
+          "wall_ms": 37.364191841334105,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513677312,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 197,
+          "radar_pillars_after": 197,
+          "radar_points_before": 349,
+          "radar_points_after": 349
+        },
+        {
+          "frame_index": 105,
+          "wall_ms": 37.27899701334536,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513670144,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 194,
+          "radar_pillars_after": 194,
+          "radar_points_before": 320,
+          "radar_points_after": 320
+        },
+        {
+          "frame_index": 106,
+          "wall_ms": 37.279904121533036,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513649152,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 184,
+          "radar_pillars_after": 184,
+          "radar_points_before": 306,
+          "radar_points_after": 306
+        },
+        {
+          "frame_index": 107,
+          "wall_ms": 37.317708134651184,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513673216,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 196,
+          "radar_pillars_after": 196,
+          "radar_points_before": 313,
+          "radar_points_after": 313
+        },
+        {
+          "frame_index": 108,
+          "wall_ms": 37.27200906723738,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513700352,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 210,
+          "radar_pillars_after": 210,
+          "radar_points_before": 334,
+          "radar_points_after": 334
+        },
+        {
+          "frame_index": 109,
+          "wall_ms": 37.37219097092748,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513737216,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 228,
+          "radar_pillars_after": 228,
+          "radar_points_before": 378,
+          "radar_points_after": 378
+        },
+        {
+          "frame_index": 110,
+          "wall_ms": 37.745165871456265,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513807360,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 262,
+          "radar_pillars_after": 262,
+          "radar_points_before": 436,
+          "radar_points_after": 436
+        },
+        {
+          "frame_index": 111,
+          "wall_ms": 37.75057918392122,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513848832,
+          "detections": [
+            5
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 284,
+          "radar_pillars_after": 284,
+          "radar_points_before": 470,
+          "radar_points_after": 470
+        },
+        {
+          "frame_index": 112,
+          "wall_ms": 37.76148706674576,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513865216,
+          "detections": [
+            5
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 292,
+          "radar_pillars_after": 292,
+          "radar_points_before": 492,
+          "radar_points_after": 492
+        },
+        {
+          "frame_index": 113,
+          "wall_ms": 37.88641304709017,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513870848,
+          "detections": [
+            5
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 294,
+          "radar_pillars_after": 294,
+          "radar_points_before": 497,
+          "radar_points_after": 497
+        },
+        {
+          "frame_index": 114,
+          "wall_ms": 37.45564888231456,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513871872,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 295,
+          "radar_pillars_after": 295,
+          "radar_points_before": 481,
+          "radar_points_after": 481
+        },
+        {
+          "frame_index": 115,
+          "wall_ms": 37.61040698736906,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513827840,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 273,
+          "radar_pillars_after": 273,
+          "radar_points_before": 449,
+          "radar_points_after": 449
+        },
+        {
+          "frame_index": 116,
+          "wall_ms": 37.77665179222822,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513854976,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 287,
+          "radar_pillars_after": 287,
+          "radar_points_before": 473,
+          "radar_points_after": 473
+        },
+        {
+          "frame_index": 117,
+          "wall_ms": 37.658731918781996,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513936896,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 329,
+          "radar_pillars_after": 329,
+          "radar_points_before": 495,
+          "radar_points_after": 495
+        },
+        {
+          "frame_index": 118,
+          "wall_ms": 37.57383208721876,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513989632,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 355,
+          "radar_pillars_after": 355,
+          "radar_points_before": 532,
+          "radar_points_after": 532
+        },
+        {
+          "frame_index": 119,
+          "wall_ms": 37.380567053332925,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514108416,
+          "detections": [
+            0
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 416,
+          "radar_pillars_after": 416,
+          "radar_points_before": 605,
+          "radar_points_after": 605
+        },
+        {
+          "frame_index": 120,
+          "wall_ms": 37.93857805430889,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514183680,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 455,
+          "radar_pillars_after": 455,
+          "radar_points_before": 622,
+          "radar_points_after": 622
+        },
+        {
+          "frame_index": 121,
+          "wall_ms": 37.37198491580784,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514120192,
+          "detections": [
+            0
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 422,
+          "radar_pillars_after": 422,
+          "radar_points_before": 596,
+          "radar_points_after": 596
+        },
+        {
+          "frame_index": 122,
+          "wall_ms": 38.13762194477022,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514116608,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 421,
+          "radar_pillars_after": 421,
+          "radar_points_before": 589,
+          "radar_points_after": 589
+        },
+        {
+          "frame_index": 123,
+          "wall_ms": 37.7230909653008,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514113536,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 419,
+          "radar_pillars_after": 419,
+          "radar_points_before": 569,
+          "radar_points_after": 569
+        },
+        {
+          "frame_index": 124,
+          "wall_ms": 37.81323484145105,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513995776,
+          "detections": [
+            1
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 360,
+          "radar_pillars_after": 360,
+          "radar_points_before": 510,
+          "radar_points_after": 510
+        },
+        {
+          "frame_index": 125,
+          "wall_ms": 38.56640006415546,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513925632,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 323,
+          "radar_pillars_after": 323,
+          "radar_points_before": 481,
+          "radar_points_after": 481
+        },
+        {
+          "frame_index": 126,
+          "wall_ms": 37.80545084737241,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513943552,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 333,
+          "radar_pillars_after": 333,
+          "radar_points_before": 492,
+          "radar_points_after": 492
+        },
+        {
+          "frame_index": 127,
+          "wall_ms": 37.323675118386745,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513933824,
+          "detections": [
+            3
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 327,
+          "radar_pillars_after": 327,
+          "radar_points_before": 495,
+          "radar_points_after": 495
+        },
+        {
+          "frame_index": 128,
+          "wall_ms": 37.231142865493894,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513949696,
+          "detections": [
+            2
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 336,
+          "radar_pillars_after": 336,
+          "radar_points_before": 501,
+          "radar_points_after": 501
+        },
+        {
+          "frame_index": 129,
+          "wall_ms": 37.670529913157225,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514070016,
+          "detections": [
+            5
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 396,
+          "radar_pillars_after": 396,
+          "radar_points_before": 573,
+          "radar_points_after": 573
+        },
+        {
+          "frame_index": 130,
+          "wall_ms": 38.059392012655735,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514127360,
+          "detections": [
+            6
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 426,
+          "radar_pillars_after": 426,
+          "radar_points_before": 602,
+          "radar_points_after": 602
+        },
+        {
+          "frame_index": 131,
+          "wall_ms": 38.13665686175227,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514156032,
+          "detections": [
+            9
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 441,
+          "radar_pillars_after": 441,
+          "radar_points_before": 602,
+          "radar_points_after": 602
+        },
+        {
+          "frame_index": 132,
+          "wall_ms": 38.36531494744122,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514235904,
+          "detections": [
+            13
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 481,
+          "radar_pillars_after": 481,
+          "radar_points_before": 645,
+          "radar_points_after": 645
+        },
+        {
+          "frame_index": 133,
+          "wall_ms": 38.273860001936555,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514251264,
+          "detections": [
+            13
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 490,
+          "radar_pillars_after": 490,
+          "radar_points_before": 636,
+          "radar_points_after": 636
+        },
+        {
+          "frame_index": 134,
+          "wall_ms": 37.99793589860201,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514111488,
+          "detections": [
+            8
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 418,
+          "radar_pillars_after": 418,
+          "radar_points_before": 584,
+          "radar_points_after": 584
+        },
+        {
+          "frame_index": 135,
+          "wall_ms": 38.01412810571492,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514085888,
+          "detections": [
+            8
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 405,
+          "radar_pillars_after": 405,
+          "radar_points_before": 553,
+          "radar_points_after": 553
+        },
+        {
+          "frame_index": 136,
+          "wall_ms": 37.894663866609335,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 514002944,
+          "detections": [
+            8
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 363,
+          "radar_pillars_after": 363,
+          "radar_points_before": 530,
+          "radar_points_after": 530
+        },
+        {
+          "frame_index": 137,
+          "wall_ms": 38.24135102331638,
+          "predictions_finite": true,
+          "peak_allocated_bytes": 513831424,
+          "detections": [
+            4
+          ],
+          "image_dense_pixels": 2373632,
+          "image_executed_pixels": 1777664,
+          "image_pixel_work_ratio": 0.7489214840379638,
+          "image_selected_tiles": 8,
+          "image_total_tiles": 40,
+          "fpn_persistent_bytes": 81715200,
+          "fpn_dense_reference_bytes": 202361856,
+          "fpn_storage_ratio": 0.4038073262186328,
+          "global_image_shape": [
+            768,
+            1248
+          ],
+          "tile_input_shape": [
+            320,
+            320
+          ],
+          "feature_shapes": [
+            [
+              1,
+              256,
+              192,
+              312
+            ],
+            [
+              1,
+              256,
+              96,
+              156
+            ],
+            [
+              1,
+              256,
+              48,
+              78
+            ],
+            [
+              1,
+              256,
+              24,
+              39
+            ],
+            [
+              1,
+              256,
+              12,
+              20
+            ]
+          ],
+          "mode": "select",
+          "radar_pillars_before": 276,
+          "radar_pillars_after": 276,
+          "radar_points_before": 411,
+          "radar_points_after": 411
+        }
+      ],
+      "median_wall_ms": 38.21598261129111,
+      "mean_wall_ms": 38.39494782550901,
+      "max_peak_allocated_bytes": 514488320
+    }
+  },
+  "competing_compute_clients_at_end": []
+}

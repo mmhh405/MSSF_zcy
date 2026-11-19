@@ -1,0 +1,11 @@
+{
+  "source_files_verified": 934,
+  "existing_unit_tests": 35,
+  "accuracy_groups": 9,
+  "validation_frames": 1296,
+  "valid_resource_profiles": 18,
+  "checked_files": 125,
+  "json_parsed": 80,
+  "python_parsed": 30,
+  "shell_parsed": 4
+}

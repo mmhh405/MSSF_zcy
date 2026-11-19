@@ -1,0 +1,10 @@
+PREFLIGHT_OK /home/d514/zcy/MSSF_zcy/.runtime/mssf-bench/bin/python seeds=1,2 epochs=6 batch=1
+START 1 guided resume_epoch=0 /home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed1/guided
+DONE 1 guided
+START 1 independent resume_epoch=0 /home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed1/independent
+DONE 1 independent
+START 2 independent resume_epoch=0 /home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/independent
+DONE 2 independent
+START 2 guided resume_epoch=0 /home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/guided
+DONE 2 guided
+ALL_COMPLETED /home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/comparison.json

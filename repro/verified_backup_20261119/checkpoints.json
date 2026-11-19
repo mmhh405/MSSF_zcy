@@ -1,0 +1,205 @@
+{
+  "note": "Weight files are stored on the server/NAS, not embedded in Git.",
+  "files": [
+    {
+      "version": "V3",
+      "variant": "v3-dense-v2-control",
+      "seed": 0,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/dense_control/epoch_6.pth",
+      "sha256": "609bf6cdb2aa1a4b62d0e60a6e1019c6bb39cb60b8167adda846d04e314866d3",
+      "bytes": 180810794,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-bidirectional-budget",
+      "seed": 0,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/paired_20261104_174843_seed0/gate_main/epoch_6.pth",
+      "sha256": "dfe99cec2440f6391df21e684807d19451de97ad30c148e091b3dbeca073b60b",
+      "bytes": 182532410,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-image-budget-only-radar100-global0625",
+      "seed": 0,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/image_budget_only_20261105_110401/epoch_6.pth",
+      "sha256": "4def6d2414281c1e5dd0e96657f172b7ca65b84a7bfe8890ec15dbf634bf216b",
+      "bytes": 182530298,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-image-budget-independent-radar100-global0625",
+      "seed": 0,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/image_budget_independent_20261105_170439/epoch_6.pth",
+      "sha256": "3d582f09e4f5f342b592284dd5be9ea2d2719a1aee7bcec9ebb018825ae2c197",
+      "bytes": 182529594,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-image-budget-only-radar100-global0625",
+      "seed": 1,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed1/guided/epoch_6.pth",
+      "sha256": "39a2161191a37f886534d3c6c97274c3ed46c2a7be546745e35d5d7331699c22",
+      "bytes": 182531578,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-image-budget-independent-radar100-global0625",
+      "seed": 1,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed1/independent/epoch_6.pth",
+      "sha256": "a0dab29e4db6f4b63debfd167d393ec39b8dd0a39e360ae3f4fe82847a62926d",
+      "bytes": 182531898,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-image-budget-independent-radar100-global0625",
+      "seed": 2,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/independent/epoch_6.pth",
+      "sha256": "38f33f478f56b66f74601c4ac036e4dcecfa1f7fd32d2fa2929080b8b3e24b49",
+      "bytes": 182532090,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-image-budget-only-radar100-global0625",
+      "seed": 2,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/guided/epoch_6.pth",
+      "sha256": "47c79d5cfe602f161dc02f1b6bcf9e5a332e7b43a35e45b46526ade30b74a38b",
+      "bytes": 182531194,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-single-prior-radar_to_image-seed0",
+      "seed": 0,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/single_prior_20261106_110941/radar_to_image/epoch_6.pth",
+      "sha256": "29f55c5a6a367d3fa4bb80b3f208244f887849389771fdbec506d2a113602bb3",
+      "bytes": 182531706,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-single-prior-image_to_radar-seed0",
+      "seed": 0,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/single_prior_20261106_110941/image_to_radar/epoch_6.pth",
+      "sha256": "01a237d9fe833879680687bd355531a0f89f9127e0829b8b2c6eee1219bcfac9",
+      "bytes": 182532794,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-single-prior-radar_to_image-seed1",
+      "seed": 1,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/radar_to_image_repeats_20261109_143724/seed1/epoch_6.pth",
+      "sha256": "fc379bb56c783100f3da920f530a1e2c75556ef90f73790c886eb377fd474eb1",
+      "bytes": 182532794,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-single-prior-radar_to_image-seed2",
+      "seed": 2,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/radar_to_image_repeats_20261109_143724/seed2/epoch_6.pth",
+      "sha256": "2396b09e6a495b91cc0229d6ef372953c279ed00d30b6ccdc22d96d4755889e1",
+      "bytes": 182531706,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-dense-control-seed1",
+      "seed": 1,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/dense_control_repeats_20261118_103208/seed1/epoch_6.pth",
+      "sha256": "3cf6bf6f5c5ee6a3ec7df0a0d1b41a680d4c3621e0acd5906d60fafd925d1104",
+      "bytes": 180807914,
+      "in_git": false
+    },
+    {
+      "version": "V3",
+      "variant": "v3-dense-control-seed2",
+      "seed": 2,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/dense_control_repeats_20261118_103208/seed2/epoch_6.pth",
+      "sha256": "4e21621212a8985de5a9c8dc6f30c96d68f29fd607906bbec29b32a621d08ca3",
+      "bytes": 180809578,
+      "in_git": false
+    },
+    {
+      "version": "V2",
+      "variant": "control_aug",
+      "seed": 0,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/control_aug/20261030_214524/epoch_6.pth",
+      "sha256": "31e2133c241083d382cd9762fa101f4ad885b033368b9d8432f4cc3443ea5a5f",
+      "bytes": 179453763,
+      "in_git": false
+    },
+    {
+      "version": "V2",
+      "variant": "gate_main",
+      "seed": 0,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+      "sha256": "b1d920410f976921c3941e197c47c0531cbe91a3afe54c5af18ca226ad66f1fb",
+      "bytes": 180784122,
+      "in_git": false
+    },
+    {
+      "version": "V2",
+      "variant": "control_aug",
+      "seed": 1,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed1/control_aug/epoch_6.pth",
+      "sha256": "8b10dc9adce321dd5816fc2d3a85d857188831b776160977c4b8805250471348",
+      "bytes": 179453507,
+      "in_git": false
+    },
+    {
+      "version": "V2",
+      "variant": "gate_main",
+      "seed": 1,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed1/gate_main/epoch_6.pth",
+      "sha256": "5fa61a3c919f3eb0306e761c72a7f0784fc69fec46d15e5af7f6b090c67a159a",
+      "bytes": 180785210,
+      "in_git": false
+    },
+    {
+      "version": "V2",
+      "variant": "control_aug",
+      "seed": 2,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed2/control_aug/epoch_6.pth",
+      "sha256": "3de41882e52579a8088421b2361430471bd92f78f142658f50e6f6d65b38eba7",
+      "bytes": 179454083,
+      "in_git": false
+    },
+    {
+      "version": "V2",
+      "variant": "gate_main",
+      "seed": 2,
+      "epoch": 6,
+      "path": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v2/multiseed/20261031_100513/seed2/gate_main/epoch_6.pth",
+      "sha256": "f7c7b366f6605aee3c5d822586cb26709c18136455d6dfdc3fd057301d84d7bb",
+      "bytes": 180783738,
+      "in_git": false
+    }
+  ]
+}

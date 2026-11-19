@@ -1,0 +1,213 @@
+{
+  "metric": "ordinary 3D AP; fixed epoch 6; guided minus independent",
+  "conditional_on_shared_V2_seed0_initialization": true,
+  "pairs": [
+    {
+      "seed": 0,
+      "arms": {
+        "guided": {
+          "run_id": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/image_budget_only_20261105_110401/20261105_110405",
+          "variant": "v3-image-budget-only-radar100-global0625",
+          "purpose": "finetune",
+          "work_dir": "work_dirs/reliability_fusion_v3/image_budget_only_20261105_110401",
+          "git_commit": "8bcf31f8c1ca2b543e8a5d156c2c00115b7e5f32",
+          "git_dirty_at_start": true,
+          "config": "configs/experiments/reliability_fusion_v3/gate_image_budget_only.py",
+          "initialization_checkpoint": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+          "random_seed": 0,
+          "status": "training_completed",
+          "training_completed": true,
+          "updated_at": "2026-11-05T11:45:44.721135+08:00",
+          "phase": "training_completed",
+          "eaa_map": 63.0273,
+          "dc_map": 81.605,
+          "samples": 1296,
+          "validation_epoch": 6,
+          "last_checkpoint": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/image_budget_only_20261105_110401/epoch_6.pth",
+          "iterations": 30834,
+          "train_samples": 5139,
+          "last_logged_train_loss": 0.8101416826248169,
+          "last_logged_loss_gate_clean": 0.0,
+          "last_logged_gate_clean_mse": 0.0
+        },
+        "independent": {
+          "run_id": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/image_budget_independent_20261105_170439/20261105_170443",
+          "variant": "v3-image-budget-independent-radar100-global0625",
+          "purpose": "finetune",
+          "work_dir": "work_dirs/reliability_fusion_v3/image_budget_independent_20261105_170439",
+          "git_commit": "21b45913c0263183ae012d521fce9c56f10f59de",
+          "git_dirty_at_start": true,
+          "config": "configs/experiments/reliability_fusion_v3/gate_image_budget_independent.py",
+          "initialization_checkpoint": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+          "random_seed": 0,
+          "status": "training_completed",
+          "training_completed": true,
+          "updated_at": "2026-11-05T17:45:52.340063+08:00",
+          "phase": "training_completed",
+          "eaa_map": 62.8032,
+          "dc_map": 81.7427,
+          "samples": 1296,
+          "validation_epoch": 6,
+          "last_checkpoint": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/image_budget_independent_20261105_170439/epoch_6.pth",
+          "iterations": 30834,
+          "train_samples": 5139,
+          "last_logged_train_loss": 0.8702185750007629,
+          "last_logged_loss_gate_clean": 0.0,
+          "last_logged_gate_clean_mse": 0.0
+        }
+      },
+      "delta_pp": {
+        "eaa_map": 0.22409999999999997,
+        "dc_map": -0.13769999999999527
+      }
+    },
+    {
+      "seed": 1,
+      "arms": {
+        "guided": {
+          "run_id": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed1/guided/20261105_193315",
+          "variant": "v3-image-budget-only-radar100-global0625",
+          "purpose": "finetune",
+          "work_dir": "work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed1/guided",
+          "git_commit": "9101947be0a3a74a529370c5f60a0baa5872cf4f",
+          "git_dirty_at_start": true,
+          "config": "/home/d514/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v3/gate_image_budget_only.py",
+          "initialization_checkpoint": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+          "random_seed": 1,
+          "status": "training_completed",
+          "training_completed": true,
+          "updated_at": "2026-11-05T20:18:21.051728+08:00",
+          "phase": "training_completed",
+          "eaa_map": 63.3737,
+          "dc_map": 81.6923,
+          "samples": 1296,
+          "validation_epoch": 6,
+          "last_checkpoint": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed1/guided/epoch_6.pth",
+          "iterations": 30834,
+          "train_samples": 5139,
+          "last_logged_train_loss": 0.8210533261299133,
+          "last_logged_loss_gate_clean": 0.0,
+          "last_logged_gate_clean_mse": 0.0
+        },
+        "independent": {
+          "run_id": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed1/independent/20261105_201826",
+          "variant": "v3-image-budget-independent-radar100-global0625",
+          "purpose": "finetune",
+          "work_dir": "work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed1/independent",
+          "git_commit": "9101947be0a3a74a529370c5f60a0baa5872cf4f",
+          "git_dirty_at_start": true,
+          "config": "/home/d514/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v3/gate_image_budget_independent.py",
+          "initialization_checkpoint": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+          "random_seed": 1,
+          "status": "training_completed",
+          "training_completed": true,
+          "updated_at": "2026-11-05T21:01:58.649308+08:00",
+          "phase": "training_completed",
+          "eaa_map": 62.7212,
+          "dc_map": 81.7362,
+          "samples": 1296,
+          "validation_epoch": 6,
+          "last_checkpoint": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed1/independent/epoch_6.pth",
+          "iterations": 30834,
+          "train_samples": 5139,
+          "last_logged_train_loss": 0.8055288195610046,
+          "last_logged_loss_gate_clean": 0.0,
+          "last_logged_gate_clean_mse": 0.0
+        }
+      },
+      "delta_pp": {
+        "eaa_map": 0.6524999999999963,
+        "dc_map": -0.04389999999999361
+      }
+    },
+    {
+      "seed": 2,
+      "arms": {
+        "guided": {
+          "run_id": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/guided/20261105_220757",
+          "variant": "v3-image-budget-only-radar100-global0625",
+          "purpose": "finetune",
+          "work_dir": "work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/guided",
+          "git_commit": "9101947be0a3a74a529370c5f60a0baa5872cf4f",
+          "git_dirty_at_start": true,
+          "config": "/home/d514/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v3/gate_image_budget_only.py",
+          "initialization_checkpoint": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+          "random_seed": 2,
+          "status": "training_completed",
+          "training_completed": true,
+          "updated_at": "2026-11-05T23:46:00.013448+08:00",
+          "phase": "training_completed",
+          "eaa_map": 64.6061,
+          "dc_map": 81.7045,
+          "samples": 1296,
+          "validation_epoch": 6,
+          "last_checkpoint": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/guided/epoch_6.pth",
+          "iterations": 30834,
+          "train_samples": 5139,
+          "last_logged_train_loss": 1.029579758644104,
+          "last_logged_loss_gate_clean": 0.0,
+          "last_logged_gate_clean_mse": 0.0
+        },
+        "independent": {
+          "run_id": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/independent/20261105_210204",
+          "variant": "v3-image-budget-independent-radar100-global0625",
+          "purpose": "finetune",
+          "work_dir": "work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/independent",
+          "git_commit": "9101947be0a3a74a529370c5f60a0baa5872cf4f",
+          "git_dirty_at_start": true,
+          "config": "/home/d514/zcy/MSSF_zcy/configs/experiments/reliability_fusion_v3/gate_image_budget_independent.py",
+          "initialization_checkpoint": "work_dirs/reliability_fusion_v2/gate_main/20261030_214524/epoch_6.pth",
+          "random_seed": 2,
+          "status": "training_completed",
+          "training_completed": true,
+          "updated_at": "2026-11-05T22:07:51.068712+08:00",
+          "phase": "training_completed",
+          "eaa_map": 62.2814,
+          "dc_map": 81.7015,
+          "samples": 1296,
+          "validation_epoch": 6,
+          "last_checkpoint": "/home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/prior_repeats_20261105_193306/seed2/independent/epoch_6.pth",
+          "iterations": 30834,
+          "train_samples": 5139,
+          "last_logged_train_loss": 1.0495986938476562,
+          "last_logged_loss_gate_clean": 0.0,
+          "last_logged_gate_clean_mse": 0.0
+        }
+      },
+      "delta_pp": {
+        "eaa_map": 2.3247,
+        "dc_map": 0.0030000000000001137
+      }
+    }
+  ],
+  "statistics": {
+    "eaa_map": {
+      "guided": {
+        "mean": 63.66903333333333,
+        "sample_sd": 0.829800393669064
+      },
+      "independent": {
+        "mean": 62.601933333333335,
+        "sample_sd": 0.2806015205470807
+      },
+      "paired_delta_pp": {
+        "mean": 1.0670999999999988,
+        "sample_sd": 1.1099774592305924
+      }
+    },
+    "dc_map": {
+      "guided": {
+        "mean": 81.66726666666666,
+        "sample_sd": 0.05426843772703438
+      },
+      "independent": {
+        "mean": 81.7268,
+        "sample_sd": 0.022150169299580146
+      },
+      "paired_delta_pp": {
+        "mean": -0.05953333333332959,
+        "sample_sd": 0.07164093336447447
+      }
+    }
+  }
+}

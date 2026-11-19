@@ -494,28 +494,20 @@ Query-only 原始评测：[seed=0](repro/reliability_fusion_v2/robustness/202610
 
 <!-- QUERY_INTERVENTION_START -->
 
-这是同一个完整 V2 checkpoint 的推理干预，无训练；两个注意力输出门控参数保持学习值，选中的query门控仅在内存中设为恒等。不能当作重新训练后的结构消融。每组同一 1296 帧，普通 3D AP。
+这是同一个完整 V2 checkpoint 的推理干预，无训练；训练 seed=2，评测 seed=0。两个注意力输出门控参数保持学习值，选中的query门控仅在内存中设为恒等。不能当作重新训练后的结构消融。每组同一 1296 帧，普通 3D AP。
 
 | 条件 | 策略 | EAA (%) | 相对 learned | DC (%) | 相对 learned |
 |---|---|---:|---:|---:|---:|
-| clean | learned | 63.5679 | +0.0000 | 79.9167 | +0.0000 |
-| clean | middle_identity | 63.5749 | +0.0070 | 79.9184 | +0.0017 |
-| clean | backbone_identity | 63.5899 | +0.0220 | 79.9296 | +0.0129 |
-| clean | both_identity | 63.5810 | +0.0131 | 79.9151 | -0.0016 |
-| dark | learned | 56.6386 | +0.0000 | 73.2465 | +0.0000 |
-| dark | middle_identity | 56.5326 | -0.1060 | 73.1710 | -0.0755 |
-| dark | backbone_identity | 56.6684 | +0.0298 | 73.2293 | -0.0172 |
-| dark | both_identity | 56.5451 | -0.0935 | 73.1832 | -0.0633 |
-| blur | learned | 50.9930 | +0.0000 | 68.4145 | +0.0000 |
-| blur | middle_identity | 50.6605 | -0.3325 | 68.3097 | -0.1048 |
-| blur | backbone_identity | 51.0856 | +0.0926 | 68.5157 | +0.1012 |
-| blur | both_identity | 50.5860 | -0.4070 | 68.3501 | -0.0644 |
-| occlusion | learned | 49.5090 | +0.0000 | 70.9060 | +0.0000 |
-| occlusion | middle_identity | 49.2327 | -0.2763 | 69.1105 | -1.7955 |
-| occlusion | backbone_identity | 49.5122 | +0.0032 | 70.8982 | -0.0078 |
-| occlusion | both_identity | 49.1897 | -0.3193 | 69.1129 | -1.7931 |
+| clean | learned | 63.4799 | +0.0000 | 79.8369 | +0.0000 |
+| clean | backbone_identity | 63.5028 | +0.0229 | 79.8426 | +0.0057 |
+| dark | learned | 56.4804 | +0.0000 | 73.3142 | +0.0000 |
+| dark | backbone_identity | 56.4924 | +0.0120 | 73.3537 | +0.0395 |
+| blur | learned | 50.7768 | +0.0000 | 68.5037 | +0.0000 |
+| blur | backbone_identity | 50.6568 | -0.1200 | 68.6194 | +0.1157 |
+| occlusion | learned | 49.6764 | +0.0000 | 70.7364 | +0.0000 |
+| occlusion | backbone_identity | 49.6850 | +0.0086 | 70.7964 | +0.0600 |
 
-[逐类指标、门控分布及不可变权重核验](repro/reliability_fusion_v2/query_intervention/20261102_165100.json)
+[逐类指标、门控分布及不可变权重核验](repro/reliability_fusion_v2/query_intervention/20261103_095737.json)
 
 <!-- QUERY_INTERVENTION_END -->
 

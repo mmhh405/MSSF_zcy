@@ -1,0 +1,27 @@
+WAITING_FOR_ACCURACY
+ANALYSIS_COMPLETED /home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/analysis.json
+/home/d514/zcy/MSSF_zcy/mmdet3d/evaluation/functional/kitti_utils/eval.py:10: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  def get_thresholds(scores: np.ndarray, num_gt, num_sample_pts=41):
+/home/d514/zcy/MSSF_zcy/mmdet3d/evaluation/functional/kitti_utils/eval_tj4d.py:9: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  def get_thresholds(scores: np.ndarray, num_gt, num_sample_pts=41):
+/home/d514/zcy/MSSF_zcy/mmdet3d/evaluation/functional/kitti_utils/eval_vod.py:8: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  def get_thresholds(scores: np.ndarray, num_gt,
+/home/d514/zcy/MSSF_zcy/mmdet3d/evaluation/functional/kitti_utils/eval_vod.py:191: NumbaDeprecationWarning: The keyword argument 'nopython=False' was supplied. From Numba 0.59.0 the default is being changed to True and use of 'nopython=False' will raise a warning as the argument will have no effect. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit(nopython=False)
+/home/d514/zcy/MSSF_zcy/mmdet3d/evaluation/functional/kitti_utils/eval_vod_velo_3.py:8: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  def get_thresholds(scores: np.ndarray, num_gt,
+/home/d514/zcy/MSSF_zcy/mmdet3d/evaluation/functional/kitti_utils/eval_vod_velo_3.py:198: NumbaDeprecationWarning: The keyword argument 'nopython=False' was supplied. From Numba 0.59.0 the default is being changed to True and use of 'nopython=False' will raise a warning as the argument will have no effect. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit(nopython=False)
+START_RESOURCE 0 1 ['dense', 'independent', 'guided'] 1
+DONE_RESOURCE 0 1
+START_RESOURCE 0 2 ['guided', 'independent', 'dense'] 1
+DONE_RESOURCE 0 2
+START_RESOURCE 1 1 ['independent', 'guided', 'dense'] 1
+DONE_RESOURCE 1 1
+START_RESOURCE 1 2 ['dense', 'guided', 'independent'] 1
+DONE_RESOURCE 1 2
+START_RESOURCE 2 1 ['guided', 'dense', 'independent'] 1
+DONE_RESOURCE 2 1
+START_RESOURCE 2 2 ['independent', 'dense', 'guided'] 1
+DONE_RESOURCE 2 2
+ALL_COMPLETED /home/d514/zcy/MSSF_zcy/work_dirs/reliability_fusion_v3/closeout_20261118_151825/resources/summary.json
