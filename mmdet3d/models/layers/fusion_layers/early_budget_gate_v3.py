@@ -38,6 +38,51 @@ def select_with_reserves(joint, own, cross, keep_ratio, reserve_fraction=.25,
     return mask
 
 
+def select_image_with_coverage(joint, own, cross, grid_shape, keep_ratio,
+                               reserve_fraction=.25, coverage='spatial'):
+    """Keep exact budgets with own/cross reserves followed by image coverage.
+
+    Index coverage uses the same reserve order as spatial coverage.
+    Spatial coverage greedily maximizes distance to retained tile centres in
+    normalized image coordinates. Ties use the joint utility score.
+    """
+    rows, cols = grid_shape
+    n = joint.numel()
+    if coverage not in ('index', 'spatial'):
+        raise ValueError('Coverage must be index or spatial')
+    if n != rows * cols or own.numel() != n or cross.numel() != n:
+        raise ValueError('Image score lengths must match the tile grid')
+    mask = torch.zeros(n, dtype=torch.bool, device=joint.device)
+    if not n:
+        return mask
+    k = min(n, max(1, math.ceil(n * keep_ratio)))
+    if k == n:
+        return ~mask
+    reserve = min(k // 3, max(1, int(k * reserve_fraction)))
+    joint, own, cross = (score.detach().flatten() for score in (joint, own, cross))
+    for score in (own, cross):
+        if reserve:
+            mask[score.masked_fill(mask, -torch.inf).topk(reserve).indices] = True
+    indices = torch.arange(n, device=joint.device)
+    centres = torch.stack(((indices // cols + .5) / rows,
+                           (indices % cols + .5) / cols), -1)
+    anchors = torch.linspace(0, n - 1, reserve, device=joint.device).round().long()
+    for anchor in anchors:
+        if coverage == 'index':
+            distance = (indices - anchor).abs().masked_fill(mask, n + 1)
+            chosen = distance.argmin()
+        else:
+            distance = (centres[:, None] - centres[mask][None]).square().sum(-1).amin(-1)
+            distance = distance.masked_fill(mask, -1)
+            candidates = distance == distance.max()
+            chosen = joint.masked_fill(~candidates, -torch.inf).argmax()
+        mask[chosen] = True
+    remaining = k - int(mask.sum())
+    if remaining:
+        mask[joint.masked_fill(mask, -torch.inf).topk(remaining).indices] = True
+    return mask
+
+
 def project(points, meta):
     matrix = points.new_tensor(get_proj_mat_by_coord_type(meta, 'LIDAR'))
     uvz = proj_to_img(points, meta, matrix, 'LIDAR', with_depth=True, normalize=True)
@@ -72,12 +117,16 @@ class BidirectionalBudgetRouter(nn.Module):
                  point_cloud_range=(0., -25.6, -3., 51.2, 25.6, 2.),
                  rcs_index=3, velocity_index=5,
                  use_radar_to_image=True, use_image_to_radar=True,
-                 supervision_weight=.2, budget_weight=.01):
+                 supervision_weight=.2, budget_weight=.01,
+                 image_selection='legacy'):
         super().__init__()
         if not (0 < image_keep_ratio <= 1 and 0 < radar_keep_ratio <= 1):
             raise ValueError('Keep ratios must be in (0, 1]')
         if not 0 <= reserve_fraction <= 1 / 3:
             raise ValueError('Each of the three reserves must fit the budget')
+        if image_selection not in ('legacy', 'index_matched', 'spatial'):
+            raise ValueError('Unknown image selection policy')
+        self.image_selection = image_selection
         self.preview_size = tuple(preview_size)
         self.tile_size = int(tile_size)
         self.image_keep_ratio = image_keep_ratio
@@ -183,10 +232,17 @@ class BidirectionalBudgetRouter(nn.Module):
             keep = select_with_reserves(joint, own[ids], cross, self.radar_keep_ratio,
                                        self.reserve_fraction, self.min_pillars)
             radar_mask[ids] = keep
-            image_mask.append(select_with_reserves(
-                (image_joint[batch] + .5 * image_cross[batch]).flatten(),
-                image_own[batch].flatten(), image_cross[batch].flatten(),
-                self.image_keep_ratio, self.reserve_fraction).view(gh, gw))
+            image_scores = ((image_joint[batch] + .5 * image_cross[batch]).flatten(),
+                            image_own[batch].flatten(), image_cross[batch].flatten())
+            if self.image_selection == 'legacy':
+                selected = select_with_reserves(
+                    *image_scores, self.image_keep_ratio, self.reserve_fraction)
+            else:
+                coverage = 'index' if self.image_selection == 'index_matched' else 'spatial'
+                selected = select_image_with_coverage(
+                    *image_scores, (gh, gw), self.image_keep_ratio,
+                    self.reserve_fraction, coverage)
+            image_mask.append(selected.view(gh, gw))
         return dict(image_mask=torch.stack(image_mask), radar_mask=radar_mask,
                     visual_logits=visual_logits, image_logits=image_logits,
                     radar_logits=radar_logits, means=means, coors=coors,

@@ -1,0 +1,126 @@
+{
+  "base_commit": "f5c9726",
+  "tests_passed": true,
+  "unit_tests": 44,
+  "smoke_optimizer_updates": 2,
+  "frozen_image_state_tensors_verified": 334,
+  "router_heads_updated": true,
+  "coverage_checks": {
+    "legacy": {
+      "frames": 8,
+      "objects": 64,
+      "tile_counts": [
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ]
+      ]
+    },
+    "index_matched": {
+      "frames": 8,
+      "objects": 64,
+      "tile_counts": [
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ]
+      ]
+    },
+    "spatial": {
+      "frames": 8,
+      "objects": 64,
+      "tile_counts": [
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          8,
+          40
+        ]
+      ]
+    }
+  },
+  "formal_training_started": false,
+  "training_configs_prepared": 15
+}
